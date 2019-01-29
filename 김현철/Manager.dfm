@@ -11,6 +11,8 @@ object frmManager: TfrmManager
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnActivate = FormActivate
+  OnDeactivate = FormDeactivate
   PixelsPerInch = 96
   TextHeight = 18
   object Label1: TLabel
@@ -51,7 +53,7 @@ object frmManager: TfrmManager
     TabOrder = 1
   end
   object DBEdit1: TDBEdit
-    Left = 160
+    Left = 136
     Top = 61
     Width = 121
     Height = 26
@@ -74,19 +76,11 @@ object frmManager: TfrmManager
     Top = 144
   end
   object FDTable1: TFDTable
-    Active = True
     IndexFieldNames = 'id'
-    Connection = FDConnection1
+    ConnectionName = 'TTMS'
     UpdateOptions.UpdateTableName = 'manager'
     TableName = 'manager'
     Left = 192
-    Top = 144
-  end
-  object FDConnection1: TFDConnection
-    Params.Strings = (
-      'ConnectionDef=TTMS')
-    Connected = True
-    Left = 96
     Top = 144
   end
 end

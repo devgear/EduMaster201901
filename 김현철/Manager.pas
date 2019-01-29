@@ -17,12 +17,13 @@ type
     DBGrid1: TDBGrid;
     DataSource1: TDataSource;
     FDTable1: TFDTable;
-    FDConnection1: TFDConnection;
     DBNavigator1: TDBNavigator;
     Label1: TLabel;
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
     Label2: TLabel;
+    procedure FormActivate(Sender: TObject);
+    procedure FormDeactivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,5 +36,15 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmManager.FormActivate(Sender: TObject);
+begin
+  FDTable1.Open;
+end;
+
+procedure TfrmManager.FormDeactivate(Sender: TObject);
+begin
+  FDTable1.Close;
+end;
 
 end.

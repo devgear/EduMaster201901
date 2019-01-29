@@ -12,17 +12,19 @@ uses
   FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
-  TForm1 = class(TForm)
-    Button1: TButton;
+  TMenu = class(TForm)
+    btnEvent: TButton;
     edtPass: TEdit;
     Label1: TLabel;
     btnPass: TButton;
     FDQuery1: TFDQuery;
     FDConnection1: TFDConnection;
-    procedure Button1Click(Sender: TObject);
+    btnManager: TButton;
+    procedure btnEventClick(Sender: TObject);
     procedure btnPassClick(Sender: TObject);
     procedure edtPassExit(Sender: TObject);
     procedure edtPassKeyPress(Sender: TObject; var Key: Char);
+    procedure btnManagerClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,7 +32,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  Menu: TMenu;
 
 implementation
 
@@ -38,12 +40,17 @@ implementation
 
 uses EventManager, Manager;
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TMenu.btnEventClick(Sender: TObject);
 begin
   frmEvent.Show;
 end;
 
-procedure TForm1.btnPassClick(Sender: TObject);
+procedure TMenu.btnManagerClick(Sender: TObject);
+begin
+  frmManager.Show;
+end;
+
+procedure TMenu.btnPassClick(Sender: TObject);
 begin
     with FDQuery1 do
     begin
@@ -57,17 +64,18 @@ begin
         Exit
       end
       else begin
-        Button1.Enabled := True;
+        btnEvent.Enabled := True;
+        btnManager.Enabled := True;
       end;
     end;
 end;
 
-procedure TForm1.edtPassExit(Sender: TObject);
+procedure TMenu.edtPassExit(Sender: TObject);
 begin
   ShowMessage('leave');
 end;
 
-procedure TForm1.edtPassKeyPress(Sender: TObject; var Key: Char);
+procedure TMenu.edtPassKeyPress(Sender: TObject; var Key: Char);
 begin
   if ord(Key) = VK_RETURN then
   begin

@@ -2,7 +2,7 @@ program TTMS;
 
 uses
   Vcl.Forms,
-  MainMenu in 'MainMenu.pas' {Form1},
+  MainMenu in 'MainMenu.pas' {Menu},
   EventManager in 'EventManager.pas' {frmEvent},
   Manager in 'Manager.pas' {frmManager};
 
@@ -11,7 +11,7 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TMenu, Menu);
   Application.CreateForm(TfrmEvent, frmEvent);
   Application.CreateForm(TfrmManager, frmManager);
   Application.Run;

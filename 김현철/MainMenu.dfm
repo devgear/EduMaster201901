@@ -1,7 +1,7 @@
-object Form1: TForm1
+object Menu: TMenu
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = #50668#54665#49324' '#44256#44061' '#50696#50557#44288#47532' '#49884#49828#53596
   ClientHeight = 505
   ClientWidth = 616
   Color = clBtnFace
@@ -20,7 +20,7 @@ object Form1: TForm1
     Height = 19
     Caption = 'PASSWORD'
   end
-  object Button1: TButton
+  object btnEvent: TButton
     Left = 352
     Top = 64
     Width = 75
@@ -28,7 +28,7 @@ object Form1: TForm1
     Caption = #50696#50557#44288#47532
     Enabled = False
     TabOrder = 0
-    OnClick = Button1Click
+    OnClick = btnEventClick
   end
   object edtPass: TEdit
     Left = 111
@@ -42,9 +42,19 @@ object Form1: TForm1
     Top = 64
     Width = 75
     Height = 25
-    Caption = 'btnPass'
+    Caption = #47196#44536#51064
     TabOrder = 2
     OnClick = btnPassClick
+  end
+  object btnManager: TButton
+    Left = 488
+    Top = 312
+    Width = 75
+    Height = 25
+    Caption = #50516#54840#44288#47532
+    Enabled = False
+    TabOrder = 3
+    OnClick = btnManagerClick
   end
   object FDQuery1: TFDQuery
     ConnectionName = 'TTMS'
@@ -52,8 +62,8 @@ object Form1: TForm1
       'SELECT * '
       'FROM manager'
       'WHERE pass = :pass')
-    Left = 352
-    Top = 272
+    Left = 216
+    Top = 280
     ParamData = <
       item
         Name = 'PASS'
@@ -61,7 +71,7 @@ object Form1: TForm1
       end>
   end
   object FDConnection1: TFDConnection
-    Left = 160
-    Top = 232
+    Left = 128
+    Top = 280
   end
 end
