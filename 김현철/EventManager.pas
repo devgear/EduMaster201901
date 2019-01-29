@@ -93,7 +93,7 @@ var
   NowDate: string;
 begin
   NowDate := formatDateTime('yyyy-mm-dd', now);
-  DBTextReservationDate.Field.AsDateTime := now;
+//  DBTextReservationDate.Field.AsDateTime := now;
 //  DBTextProcessDate.Field.AsDate := now;
 end;
 
