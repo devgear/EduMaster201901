@@ -36,12 +36,14 @@ object ServerMethods1: TServerMethods1
   object SignUpQuery: TFDQuery
     ConnectionName = 'Coffee'
     SQL.Strings = (
-      
-        'insert into tb_biz (biz_num, pw, name, addr) values ( :biz_num, ' +
-        ':pw, :name, :addr )'
+      'INSERT INTO TB_BIZ (BIZ_NUM, PW, NAME, ADDR) '
+      'VALUES ( :BIZ_NUM, :PW, :NAME, :ADDR);'
+      ''
+      ''
+      ''
       '')
-    Left = 280
-    Top = 176
+    Left = 184
+    Top = 136
     ParamData = <
       item
         Name = 'BIZ_NUM'
@@ -128,5 +130,29 @@ object ServerMethods1: TServerMethods1
     DataSet = Tb_Biz_Info
     Left = 96
     Top = 128
+  end
+  object DupChkQuery: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT COUNT(BIZ_CODE) AS DUPCNT FROM TB_BIZ'
+      'WHERE BIZ_NUM = :BIZ_NUM')
+    Left = 184
+    Top = 72
+    ParamData = <
+      item
+        Name = 'BIZ_NUM'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 12
+        Value = Null
+      end>
+  end
+  object SignUpQuery2: TFDQuery
+    ConnectionName = 'Coffee'
+    SQL.Strings = (
+      'INSERT INTO TB_BIZ_INFO (BIZ_CODE) '
+      'VALUES (gen_id(biz_code_gen,0));')
+    Left = 240
+    Top = 136
   end
 end

@@ -33,6 +33,8 @@ type
     Tb_Biz_InfoIMG_3: TBlobField;
     Tb_Biz_InfoIMG_4: TBlobField;
     Tb_Biz_InfoCOUPON: TIntegerField;
+    DupChkQuery: TFDQuery;
+    SignUpQuery2: TFDQuery;
   private
     { Private declarations }
   public
@@ -40,6 +42,7 @@ type
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
     procedure SignUp(Biz_Num, pw, name, addr: string);
+    function DupChk(Biz_num: string): Integer;
   end;
 
 implementation
@@ -49,6 +52,15 @@ implementation
 
 
 uses System.StrUtils;
+
+function TServerMethods1.DupChk(Biz_num: string): Integer;
+begin
+  DupChkQuery.Close;
+  DupChkQuery.Params[0].AsString := Biz_Num;
+  DupChkQuery.Open;
+
+  Result := DupChkQuery.FieldByName('DUPCNT').AsInteger;
+end;
 
 function TServerMethods1.EchoString(Value: string): string;
 begin
@@ -63,11 +75,23 @@ end;
 procedure TServerMethods1.SignUp(Biz_Num, pw, name, addr: string);
 begin
   SignUpQuery.Close;
+  SignUpQuery2.Close;
+
   SignUpQuery.Params[0].AsString := biz_num;
   SignUpQuery.Params[1].AsString := pw;
   SignUpQuery.Params[2].AsString := name;
   SignUpQuery.Params[3].AsString := addr;
-  SignUpQuery.ExecSQL;
+
+
+  FDConnection1.StartTransaction;
+  try
+    SignUpQuery.ExecSQL;
+    SignUpQuery2.ExecSQL;
+    FDConnection1.Commit;
+  except
+    FDConnection1.Rollback;
+    raise;
+  end;
 
 end;
 

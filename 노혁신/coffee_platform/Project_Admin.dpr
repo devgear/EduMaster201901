@@ -3,14 +3,13 @@ program Project_Admin;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  UCoffee_Admin in 'UCoffee_Admin.pas' {MainForm},
-  USignUp_Admin in 'USignUp_Admin.pas' {SignUpForm},
+  UAdmin_Client in 'UAdmin_Client.pas' {Form2},
   UAdminClass in 'UAdminClass.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TMainForm, MainForm);
+  Application.CreateForm(TForm2, Form2);
   Application.Run;
 end.

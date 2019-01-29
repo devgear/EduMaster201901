@@ -6,10 +6,10 @@
         <Projects Include="Project_Server.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Project_Admin.dproj">
+        <Projects Include="Project_Client.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Project_Client.dproj">
+        <Projects Include="Project_Admin.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -29,15 +29,6 @@
     <Target Name="Project_Server:Make">
         <MSBuild Projects="Project_Server.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Project_Admin">
-        <MSBuild Projects="Project_Admin.dproj"/>
-    </Target>
-    <Target Name="Project_Admin:Clean">
-        <MSBuild Projects="Project_Admin.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="Project_Admin:Make">
-        <MSBuild Projects="Project_Admin.dproj" Targets="Make"/>
-    </Target>
     <Target Name="Project_Client">
         <MSBuild Projects="Project_Client.dproj"/>
     </Target>
@@ -47,14 +38,23 @@
     <Target Name="Project_Client:Make">
         <MSBuild Projects="Project_Client.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Project_Admin">
+        <MSBuild Projects="Project_Admin.dproj"/>
+    </Target>
+    <Target Name="Project_Admin:Clean">
+        <MSBuild Projects="Project_Admin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project_Admin:Make">
+        <MSBuild Projects="Project_Admin.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Project_Server;Project_Admin;Project_Client"/>
+        <CallTarget Targets="Project_Server;Project_Client;Project_Admin"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Project_Server:Clean;Project_Admin:Clean;Project_Client:Clean"/>
+        <CallTarget Targets="Project_Server:Clean;Project_Client:Clean;Project_Admin:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Project_Server:Make;Project_Admin:Make;Project_Client:Make"/>
+        <CallTarget Targets="Project_Server:Make;Project_Client:Make;Project_Admin:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

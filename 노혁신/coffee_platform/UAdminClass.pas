@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 2019-01-29 오전 11:20:49
+// 2019-01-29 오후 3:55:36
 //
 
 unit UAdminClass;
@@ -15,6 +15,7 @@ type
     FEchoStringCommand: TDBXCommand;
     FReverseStringCommand: TDBXCommand;
     FSignUpCommand: TDBXCommand;
+    FDupChkCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
@@ -22,6 +23,7 @@ type
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
     procedure SignUp(Biz_Num: string; pw: string; name: string; addr: string);
+    function DupChk(Biz_num: string): Integer;
   end;
 
 implementation
@@ -70,6 +72,20 @@ begin
   FSignUpCommand.ExecuteUpdate;
 end;
 
+function TServerMethods1Client.DupChk(Biz_num: string): Integer;
+begin
+  if FDupChkCommand = nil then
+  begin
+    FDupChkCommand := FDBXConnection.CreateCommand;
+    FDupChkCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FDupChkCommand.Text := 'TServerMethods1.DupChk';
+    FDupChkCommand.Prepare;
+  end;
+  FDupChkCommand.Parameters[0].Value.SetWideString(Biz_num);
+  FDupChkCommand.ExecuteUpdate;
+  Result := FDupChkCommand.Parameters[1].Value.GetInt32;
+end;
+
 constructor TServerMethods1Client.Create(ADBXConnection: TDBXConnection);
 begin
   inherited Create(ADBXConnection);
@@ -85,6 +101,7 @@ begin
   FEchoStringCommand.DisposeOf;
   FReverseStringCommand.DisposeOf;
   FSignUpCommand.DisposeOf;
+  FDupChkCommand.DisposeOf;
   inherited;
 end;
 
