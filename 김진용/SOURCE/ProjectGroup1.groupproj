@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{591F29FB-B33F-4C3F-B1C9-5FDD4EA65766}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ProjectServer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ProjectDeliveryMan.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ProjectServer">
+        <MSBuild Projects="ProjectServer.dproj"/>
+    </Target>
+    <Target Name="ProjectServer:Clean">
+        <MSBuild Projects="ProjectServer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjectServer:Make">
+        <MSBuild Projects="ProjectServer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ProjectDeliveryMan">
+        <MSBuild Projects="ProjectDeliveryMan.dproj"/>
+    </Target>
+    <Target Name="ProjectDeliveryMan:Clean">
+        <MSBuild Projects="ProjectDeliveryMan.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjectDeliveryMan:Make">
+        <MSBuild Projects="ProjectDeliveryMan.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ProjectServer;ProjectDeliveryMan"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ProjectServer:Clean;ProjectDeliveryMan:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ProjectServer:Make;ProjectDeliveryMan:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
