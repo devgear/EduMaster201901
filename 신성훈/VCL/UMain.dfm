@@ -20,8 +20,6 @@ object MainForm: TMainForm
     Height = 41
     Align = alTop
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = -4
     DesignSize = (
       853
       41)
@@ -82,6 +80,10 @@ object MainForm: TMainForm
         TabOrder = 0
         object TabSheet1: TTabSheet
           Caption = #54924#50896#51221#48372
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Panel1: TPanel
             Left = 0
             Top = 0
@@ -164,7 +166,6 @@ object MainForm: TMainForm
             Height = 41
             Align = alTop
             TabOrder = 0
-            ExplicitTop = 8
             object Label1: TLabel
               Left = 6
               Top = 21
@@ -216,8 +217,6 @@ object MainForm: TMainForm
       Height = 516
       Align = alRight
       TabOrder = 1
-      ExplicitLeft = 562
-      ExplicitTop = -3
       DesignSize = (
         292
         516)

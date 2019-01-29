@@ -1,4 +1,4 @@
-program Project_User;
+program Project_VCL;
 
 uses
   Vcl.Forms,
