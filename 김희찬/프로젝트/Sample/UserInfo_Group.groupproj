@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{94F3CCC1-78CC-4EC1-9648-01C545C3857C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="UserInfoServer\UserInfoServer_Project.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="UserInfoClient\Client_Project.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="UserInfoServer_Project">
+        <MSBuild Projects="UserInfoServer\UserInfoServer_Project.dproj"/>
+    </Target>
+    <Target Name="UserInfoServer_Project:Clean">
+        <MSBuild Projects="UserInfoServer\UserInfoServer_Project.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="UserInfoServer_Project:Make">
+        <MSBuild Projects="UserInfoServer\UserInfoServer_Project.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Client_Project">
+        <MSBuild Projects="UserInfoClient\Client_Project.dproj"/>
+    </Target>
+    <Target Name="Client_Project:Clean">
+        <MSBuild Projects="UserInfoClient\Client_Project.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Client_Project:Make">
+        <MSBuild Projects="UserInfoClient\Client_Project.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="UserInfoServer_Project;Client_Project"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="UserInfoServer_Project:Clean;Client_Project:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="UserInfoServer_Project:Make;Client_Project:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
