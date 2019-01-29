@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3D7F86A3-E0A4-4D6E-A1C6-BDFF91429F18}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="WinaceS.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="WinaceM.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="WinaceS">
+        <MSBuild Projects="WinaceS.dproj"/>
+    </Target>
+    <Target Name="WinaceS:Clean">
+        <MSBuild Projects="WinaceS.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WinaceS:Make">
+        <MSBuild Projects="WinaceS.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="WinaceM">
+        <MSBuild Projects="WinaceM.dproj"/>
+    </Target>
+    <Target Name="WinaceM:Clean">
+        <MSBuild Projects="WinaceM.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WinaceM:Make">
+        <MSBuild Projects="WinaceM.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="WinaceS;WinaceM"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="WinaceS:Clean;WinaceM:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="WinaceS:Make;WinaceM:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

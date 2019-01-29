@@ -1,0 +1,770 @@
+object fmMain: TfmMain
+  Left = 0
+  Top = 0
+  Caption = 'Winace'
+  ClientHeight = 565
+  ClientWidth = 345
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Align = Client
+    Size.Width = 345.000000000000000000
+    Size.Height = 565.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object ToolBar1: TToolBar
+      Size.Width = 345.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object bbnMaster: TButton
+        Align = FitLeft
+        Size.Width = 41.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'detailstoolbutton'
+        TabOrder = 0
+        Text = 'bbnMaster'
+        OnClick = bbnMasterClick
+      end
+      object bbnPopup: TButton
+        Align = FitRight
+        Position.X = 302.000000000000000000
+        Size.Width = 43.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'escapetoolbuttonbordered'
+        TabOrder = 1
+        Text = 'bbnPopup'
+        OnClick = bbnPopupClick
+      end
+      object txMaster: TText
+        Anchors = [akLeft, akTop, akRight, akBottom]
+        Position.X = 128.000000000000000000
+        Position.Y = 3.000000000000000000
+        Size.Width = 86.000000000000000000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+        Text = #47196#44536#51064
+        TextSettings.Font.Size = 14.000000000000000000
+      end
+    end
+    object TabControl1: TTabControl
+      Align = Client
+      Size.Width = 345.000000000000000000
+      Size.Height = 525.000000000000000000
+      Size.PlatformDefault = False
+      TabIndex = 1
+      TabOrder = 3
+      TabPosition = Dots
+      OnChange = TabControl1Change
+      Sizes = (
+        345s
+        525s
+        345s
+        525s
+        345s
+        525s
+        345s
+        525s
+        345s
+        525s
+        345s
+        525s
+        345s
+        525s
+        345s
+        525s)
+      object TabItem1: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 8.000000000000000000
+        Size.Height = 8.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'TabItem1'
+        ExplicitSize.cx = 8.000000000000000000
+        ExplicitSize.cy = 8.000000000000000000
+        object lbUserID: TLabel
+          StyledSettings = [Family, Style, FontColor]
+          Position.X = 82.000000000000000000
+          Position.Y = 129.000000000000000000
+          Size.Width = 57.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          Text = #49324#50857#51088'ID'
+          TabOrder = 1
+        end
+        object Label1: TLabel
+          StyledSettings = [Family, Style, FontColor]
+          Position.X = 82.000000000000000000
+          Position.Y = 172.000000000000000000
+          Size.Width = 57.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          Text = #48708#48128#48264#54840
+          TabOrder = 0
+        end
+        object cbEmp: TComboBox
+          Position.X = 143.000000000000000000
+          Position.Y = 128.000000000000000000
+          Size.Width = 113.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+        end
+        object ePassword: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          TabOrder = 3
+          Password = True
+          Position.X = 143.000000000000000000
+          Position.Y = 170.000000000000000000
+          Size.Width = 113.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object bbnConfirm: TButton
+          StyledSettings = [Family, Style, FontColor]
+          ImageIndex = 0
+          Position.X = 88.000000000000000000
+          Position.Y = 272.000000000000000000
+          Size.Width = 73.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 5
+          Text = #54869#51064
+          TextSettings.Font.Size = 11.000000000000000000
+          OnClick = bbnConfirmClick
+        end
+        object bbnCancel: TButton
+          StyledSettings = [Family, Style, FontColor]
+          Position.X = 184.000000000000000000
+          Position.Y = 272.000000000000000000
+          Size.Width = 73.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          Text = #52712#49548
+          TextSettings.Font.Size = 11.000000000000000000
+          OnClick = bbnCancelClick
+        end
+      end
+      object TabItem2: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = True
+        Size.Width = 8.000000000000000000
+        Size.Height = 8.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'TabItem2'
+        ExplicitSize.cx = 8.000000000000000000
+        ExplicitSize.cy = 8.000000000000000000
+        object ListView1: TListView
+          ItemAppearanceClassName = 'TListItemAppearance'
+          ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+          HeaderAppearanceClassName = 'TListHeaderObjects'
+          FooterAppearanceClassName = 'TListHeaderObjects'
+          Align = Client
+          Size.Width = 345.000000000000000000
+          Size.Height = 493.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+        end
+        object ToolBar2: TToolBar
+          Size.Width = 345.000000000000000000
+          Size.Height = 32.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          object Edit1: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            TabOrder = 2
+            Text = '2019-01-29'
+            Position.X = 2.000000000000000000
+            Position.Y = 4.000000000000000000
+            Size.Width = 68.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+          end
+          object Edit2: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            TabOrder = 1
+            Text = '2019-01-29'
+            Position.X = 95.000000000000000000
+            Position.Y = 4.000000000000000000
+            Size.Width = 68.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+          end
+          object Button1: TButton
+            Images = ImageList
+            ImageIndex = 0
+            Position.X = 71.000000000000000000
+            Position.Y = 4.000000000000000000
+            Size.Width = 23.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 7
+            Text = 'Button1'
+          end
+          object Button2: TButton
+            Images = ImageList
+            ImageIndex = 0
+            Position.X = 164.000000000000000000
+            Position.Y = 4.000000000000000000
+            Size.Width = 23.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 6
+            Text = 'Button1'
+          end
+          object Button3: TButton
+            Anchors = [akLeft, akTop, akRight, akBottom]
+            Images = ImageList
+            ImageIndex = 1
+            Position.X = 188.000000000000000000
+            Position.Y = 1.000000000000000000
+            Size.Width = 52.000000000000000000
+            Size.Height = 27.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 5
+            Text = #44160#49353
+          end
+          object Button4: TButton
+            Anchors = [akLeft, akTop, akRight, akBottom]
+            Images = ImageList
+            ImageIndex = 1
+            Position.X = 241.000000000000000000
+            Position.Y = 1.000000000000000000
+            Size.Width = 51.000000000000000000
+            Size.Height = 27.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 4
+            Text = #49688#51221
+          end
+          object Button5: TButton
+            Anchors = [akLeft, akTop, akRight, akBottom]
+            Images = ImageList
+            ImageIndex = 1
+            Position.X = 293.000000000000000000
+            Position.Y = 1.000000000000000000
+            Size.Width = 51.000000000000000000
+            Size.Height = 27.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 3
+            Text = #49325#51228
+          end
+        end
+      end
+      object TabItem3: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 8.000000000000000000
+        Size.Height = 8.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'TabItem3'
+        ExplicitSize.cx = 8.000000000000000000
+        ExplicitSize.cy = 8.000000000000000000
+      end
+      object TabItem4: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 8.000000000000000000
+        Size.Height = 8.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'TabItem4'
+        ExplicitSize.cx = 8.000000000000000000
+        ExplicitSize.cy = 8.000000000000000000
+      end
+      object TabItem5: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 8.000000000000000000
+        Size.Height = 8.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'TabItem5'
+        ExplicitSize.cx = 8.000000000000000000
+        ExplicitSize.cy = 8.000000000000000000
+      end
+      object TabItem6: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 8.000000000000000000
+        Size.Height = 8.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'TabItem6'
+        ExplicitSize.cx = 8.000000000000000000
+        ExplicitSize.cy = 8.000000000000000000
+      end
+      object TabItem7: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 8.000000000000000000
+        Size.Height = 8.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'TabItem7'
+        ExplicitSize.cx = 8.000000000000000000
+        ExplicitSize.cy = 8.000000000000000000
+      end
+      object TabItem8: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 8.000000000000000000
+        Size.Height = 8.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = 'TabItem8'
+        ExplicitSize.cx = 8.000000000000000000
+        ExplicitSize.cy = 8.000000000000000000
+      end
+    end
+    object MultiView1: TMultiView
+      Mode = Drawer
+      NavigationPaneOptions.CollapsedWidth = 161.000000000000000000
+      Size.Width = 250.000000000000000000
+      Size.Height = 525.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      TabOrder = 2
+      object ListBox1: TListBox
+        Size.Width = 250.000000000000000000
+        Size.Height = 430.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        DisableFocusEffect = True
+        DefaultItemStyles.ItemStyle = ''
+        DefaultItemStyles.GroupHeaderStyle = ''
+        DefaultItemStyles.GroupFooterStyle = ''
+        OnChange = ListBox1Change
+        Viewport.Width = 246.000000000000000000
+        Viewport.Height = 393.000000000000000000
+        object ListBoxItem1: TListBoxItem
+          ItemData.Accessory = aMore
+          ItemData.Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+            F4000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            0B544944415458473557097055E515FEEEF6D6242FFBF2F2129040C1200453C4
+            5610978AD6A2A0EDE8A8D58ED2719CAA442B566B45EB88ADD2711D104B5B66DC
+            6A284D10F716B555ACECAB4410481301654BC84292B7DCEDF4FBEF4BFFE4BE7B
+            EFBF9DF39FEF3BCBD58EA5AAC482064B04A2F9D0F967F18226D07C8167EA3004
+            08F15DD734C015F8EA196C9AFAF5B98E8F410F27F2096A2F5F535B04AF4137E7
+            F97AFEC516B57FD005DDE2A63A27A8396A5B8F23EC87C90D2C43434C7C84D9A3
+            AB4D9530F6E9DC80EA7116EFA30284CA4A2058ADE6FE3C0C74CE577F142094A3
+            F159E7BE793DBCFC81C57361187CE7261A851986C943FA9C3C8C21DDC469DFC5
+            88EF216752352F04CDC980371E9E8BDC3405E99CCBBF4080EAE7AF3286BAA8AC
+            C6694AB0A65B1412A6820EC4B4610487E2784F6DB518D45099D9E5548BC20BB8
+            F93A238C47B359F4E8197CC78D23E5DA98645A5850E0F359493290A18D5D8707
+            A0458273731F8D2714B5993A903ABD4F4DB827071031C330250BDB33098701C7
+            72A0F5D5558B4EF329F515465157612A98C38D53575C8F4B2E3A0F8383A7F14D
+            6F2F3ED9D789A9DB3FC74BA686F7A87D6B8E16D394023E5C6E68FA06D752BB00
+            AE3C488A270A26A56094FCB9271AC7F96262D8B361EA5968276A2B25AC991C56
+            786928A6A65F1A2E7EE284B0F4C53FE19AF957A96D82F697D56D58DA72079E09
+            99F86DAC0813E75F87FAB262D884491D590BC8E5E527072D5081BFC4DD8AE25F
+            DB77C2FBE47DBC6D86506DFA705CCA3D515729FDA94AE9A9AF9233C91A117AC5
+            FB351532B571926CDBB69BBC12F24AE4546F8FCCBE7A9E3C515A21FF4C954AF3
+            9469D2D5F93507D584D1499ECF1BEFFF7FF63C42CE8BCF6ACEC9937DF2BDCBE7
+            CAA29A2291FA52191A5325BAE99BB0751D05AE8B308994A1353AB239F8610DE3
+            EBEBE129747890AFBF3D89EEED9B302724B06CC0D146E05AA3EE145CFC21848A
+            8CC173FEDCD0E8C6F93EA0A22C818A7801894D427A1CB75D981E4911E54B8F1E
+            C55277085D431E760D0F634AFD2C848A6204863873F5B62D9F61B8B7078BC351
+            0C91273D94DDF67A2BE235090CDB1442D8E29E8F38A34826E3E0E20B67E29CEF
+            4E8338D44591931EB17CE59FF1C5C68FB0C62A81ABF5C10649D85F5B2B219266
+            89E7607D531366CFBC04BA3D8C39E7FF0073AEBC94DAE783D307EFBC830D3B77
+            C1B322548811213D88D75F6B450DE796F3E4092D82BD968F23197A4D6A02DE6D
+            E7D8B871A007076EBEF9B3CDB8EAE737A2256D63B166234BC27ACA5507EAAAA4
+            8F785C5DA44BCBFDBF0930578D90F1C7134F61682B3C7DC2AA300E86E5F0F163
+            523A2625AF5494C808F75899AC93FACA2A29E1F5D65BEF0473D25E709393A7FB
+            A4F9EAF932BF3042DC2BC54915936F09E9AD4D8AEE7A1E2201881635A5AAA34D
+            5C0FB4288D441FB788970A300EEFA3244F0F65112374C592E37A1FAB9C61DCB4
+            E82174EED98B79F3E61263BA1DD7535FDCFBC4629CF9CF8778BEA80C06F7CD31
+            F81B7A9C76CC4277341282C1A2CE2CC08E037BB06CE572AC6B5B87E19191003B
+            8B9ED275E8103EF8C77B4AC72046A8D67DE4280AA9783244F141B0D1515A1842
+            697505E30EC339D7826B5F5DBB06FF7EF9753C178A612CE1143D02520859FEA8
+            68AA6B3CA6C39977C62C44B66FC303F72EC4FA8FD723168D126B4EA0B0F6F637
+            F1E2F297F2E4269954F319601C7A0E5162DCF11172B2709C5C7E8C9762FEEEDD
+            1D7872C9E358400B5E112960487730CC2BC2B5A6A4A1C2876E9B8221C9603C03
+            F16B0CBD130A0A316E5A13CC108F4B59C41E870E1C442C160F80E22182961B1A
+            447FCEC163B6835F30B21D56FECA3D8216E412E0EDF51FE050C77E1C460CB7A4
+            87701BE16E71336857F9961671981318DD550424CEAE851D8C07525C89E6C6A9
+            F98DD88E9F388E8E7D1D9839EBC2D19E7C2B2F29C24F6FFB196C86E5AC8470A5
+            97C5ECC6E62023068AF3765ED334DC7B570BCE1432A5DBCCA94C48FDE93E2C79
+            6F2DCE1E71319696C1B164917C4B57B46BCBE4A9920A9932E37C3971AA274F5F
+            B6AD5BB74AA238212B56ACC87790D9BE23E2D80E2F9B0F0EDF7D711D9B89D517
+            C7559EC33959619F27AECDDCEA3AEC538B7C397AF81B6998D428AB2B8AC5ADAA
+            61A6666E35FC0C06C8F2FDDA101A274F465971C9E839819D3B7661706090FD8D
+            C1BBCAFB2AC59A64A7691126D364B4D360D0967A502BF0F4069313A135543163
+            318C31C5EB9C07CE8BC72D96021EC1B2190C85ECD33DBA137094ECDC45E22C98
+            71013756B99ED2B8A6B4AC144D0C50A9DA7A4A5764D7904BE7F0F1864F7164B0
+            1F054CDBB60A368C3833A69D83C6C68954D267A6D37060EF016CDBB51B995898
+            8A913C74F323A74E2047E16574DE2C533D8E33318C24ABE4DD54995424CB64D3
+            96CD7953D362CADCB69D93CECE4E193A93A649F3437B767C2153A74C920915E5
+            726E6AAC34338955270AE5D9175E0CC6E919417BFED9659228B4644A2A214DA9
+            A44CAE49CAD994B538999481AA7A39982C569584CE5C6E33FEFB983AF55CD48F
+            4905A666E00BFCC9B242686868A017441500C1D8C68E9DD0BB8FA28D15539B97
+            41AB3182B17A0E393FEF86CA0354CB30BC4FE0C95FF5C2F89BE3E00D069E76E6
+            9E45843CC75AC076089B6E449123761BB2194C3F6F369255B5C16223C46D8884
+            64695FBA984B761B8AF174D50FD77F840AAE9BC4D26C9CE1A0CA89D08F8A200A
+            3A367B54031D21A268A28E9C9848CE4CD462481905C8D2C587EC0CD2455CC708
+            0FCD65351365E0E8DA8FD6F6B5E8E9391D6CB0A6F5EFD87B707F107C0277A501
+            22E108E65E76393A0A0D2CCF0DE5FD2D6C32B1888AD44163C60E9ACB920BE488
+            472BE79061DA4FC364A54574C8251F39BAA19E538C65CEBC2F9184FFF69B78E4
+            D69B70DD8FAFC50D37DF8C4D9B37A2BCBC3428E95469A584A9C50B6EBD05BF7A
+            64091E0E1763B563C06569A633C2D118F936AA88E2BAC6A257A347F84CF7F043
+            C8A950CE7F5D2F403F0FAA9B0C2219E68326BB07EB8A4AF0604102DB3EFF0CDD
+            DF7463D1FDF721994C52015A4925235A22AB0A3C6ED072FBEDF8F5C25FE2219E
+            FC66BA413721A92B2DCB4B1E6D1E53B4FA38500609D1C37416AB1A4F6D913B60
+            EA2E57AE3B22238CCB2422ABFF3616944B9D115C76E3F5685DF50A52F5757078
+            7ADD34D0DBDB8FAE7D871055BC5096A51E339BA7A061FA0C9C7BFF5D58FADC73
+            B86AEE0F298CE246C3755C799E5089488495326552AEAE62061530AD30C2CC37
+            E8AA4E485FB254B6D757CA98AA0A59F8C8E332D03710B891AAE75461E0A6B372
+            C3AD77C8A5975F2A430383C1D85787BA64F2B473E4CA2BAE153B33EA9F9C9B55
+            F5DFA81BFEFE856532A3AC4C4E4DA817AF212599863A49378C91C17167C9B7E3
+            1B64EF598C841A99E9D0BC119B44F40CD4141520519208CCAC19C49D277D66C5
+            F3F8B07D353AB76CC2C34F3F859D3BF7E1EE071F85BDB703C7F6EDC2862D1B83
+            132BCBF0D345D13FB0C2C1835FA18EAE59C8E30B53AF688CBABC5B8442913A44
+            7219F714C61EA3EA883211254259FC6ED356D257C3AC0BBE0F8F99F0D9E5CBB0
+            E40F4FE349BAE57C7264C5EE2FF0F25BADA8EE3E80972AAAF0E9C031E4CAC6E0
+            B28B66C16142CAE6B2F872FF577861D51B58DDF632EE36E3984E2F71598AAB28
+            EA319DAA324F951019E2A87527CB99230C8419D60BA8FDDA4C0E8BE231DCBDB0
+            05278E0F63CD1B2BF13B12ED4E62E670E17F191CFAC9EF14DDEB2C66B707467A
+            F0D7D4785C73F18FB0AF7B0F7ACFD0DD8E0F207EAA13B7476358102D85A59D61
+            EAB560B11A723D0B1E3DCF23990718A8B4AE64B5A8E4129883E408B1E66A65A1
+            B18A655331CD780F49332F62B2686111495C543191F733E54B1E4E9B51FC31ED
+            607B6E04A42C6AAD2234D3FFA71716A344D565B426A94F12AA1A81919230D373
+            193535E6105AA02B552E16BF0598B8D49614A0BE8A431826A0EA8BAF3CC23C4E
+            7EB8CA74E404CB52554E70BEFA74579994C0339165381E55E00B3F1A54445452
+            C294CF04C4BA2FC8922A1B061E42C1642A43938BFF010A58F20E3BADA5420000
+            000049454E44AE426082}
+          Size.Width = 246.000000000000000000
+          Size.Height = 49.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'listboxitembottomdetail'
+          TabOrder = 0
+          Text = #47196#44536#51064
+        end
+        object ListBoxItem2: TListBoxItem
+          ItemData.Accessory = aMore
+          ItemData.Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+            F4000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            0204494441545847ED965B7283300C45A1D385B1339A9D9195A53E8AAF471636
+            76329DF6A76746083F245D2B2464F9E7AF59B39FE591FD0C53B93FB2BF82A266
+            5F5FE992EEA27FA44B6D759C8D3A8C545A51B1EFCB72BB3D7D0FD6233947B3D6
+            5507BAC55B45C08BF322739E6627AE3A60015E846875C08B8B225D8E979E393A
+            609FE1711C66F1A366BDE78993B9F1899E22DB9C022BF6BD99239D767CB09C6B
+            AA03A658AA47271D798C3C9679821284D176E664B345F13E2E5997D812DB9C92
+            9CD8B623D996472FF1DE8327E334323AC27ACFFB3837BEE4D48114F8368A4D62
+            ABAF21E4B561374C35A7E504AF78C5692EAE6B0F457A9440EE653E49CF6B9FE6
+            BCF935ED4D56F02DB185145411C73D52F2D2F6F84B08FAF5643EE7B4DA12508A
+            FB8224BDDF8F3C5A96E3D8ECDBE03DFBD907B1684422D667D52280569D8ACF22
+            01ADE22A08ACAB337889B0B7A117A0A0916F315AF32244250050C63D3E06C5E0
+            59F2690DE5119FD91701E0C580C67ECF085F44CF08C443D08195C40AC03326A8
+            E5A3F5889DD2387640FF88D69F6E7D8CF145FDFCE92F1922B421FA595AC5F09A
+            F7EB9580D85236F27D970779A1AE812F02BA8F07C9FBED5A1EC216CF8D7A0547
+            7F06312A4AAC1E3EE6543CE205F030F27B7D6A97C6BD24407175831CCA03CCB1
+            06D9DBD17AA0DB2C25B1174ACF7BF3718A8DFBF35AC5A592C429E08298AB153B
+            AAF7DB2CCB37B66D3E5B3AD138B20000000049454E44AE426082}
+          Position.Y = 49.000000000000000000
+          Size.Width = 246.000000000000000000
+          Size.Height = 49.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'listboxitembottomdetail'
+          TabOrder = 1
+          Text = #51452#47928#45236#50669
+        end
+        object ListBoxItem3: TListBoxItem
+          ItemData.Accessory = aMore
+          ItemData.Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+            F4000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            0215494441545847ED966B72C3200C84710F9413E52E49EEE213E542AE56D6D2
+            45069BE974DA3FFD66881C10EC22C8A3FCF3D72C1167D922CE30B5F64C52157D
+            DE4A79587BBDDB58CADDC7BF58CBB2C6E3CE50E7CAC00651D28AF6C178E6B9F7
+            75B53E22F6188AF744809A5393B14EF7F8CE2AE013D404E95540CD6593510130
+            73E415540026AAF3ED5E366D181F45A4B3E5759491234FB6890D8F5BBE6C3BAF
+            777BE37A8CEE41EF0EC0B18B63929EE92EB41E22D03C8DE0EC1266BC5C6CEC63
+            BB2ABB469D676D4876E5C9B6C801DB05724F171B30B573E23B4064C36ED89010
+            E3A3589BBC3FE550019BF86DF87133B3CDC7104C5FC27CF16623E64158C5751C
+            FDC6A122EAA8EE9E3B015C108B8C22BEF743A08A131A23F11B51751B0378C947
+            A066CEC83BCF46D007D01F6BBA368FA08A63902D2621D15B98CBB1D921C8E240
+            CD2958D84BEFA2697006CCD3DD2B2A867156069147E115A0B8ECFA32F6B81A53
+            136437609D1007708667C43C294F9E2576EB701D528F40A1995978046A504588
+            E684861FC1924B0F4358B417731B412384EF6982F053B0FC74E9F31C15D57E1A
+            A860574CC871969E1822FB75DCBF0C82C35D40A25564B1F26F8836BE59953C46
+            8A83CA71AE2E0E7AE679FE7839544089DB0B718F31D1A336A2CF31C7C9A614AD
+            00C0CF6E2D572F8E70339683883500F339C667A3EAE60A5C5E46C09889C5EBEE
+            994743591CE40A642EFF5008876A4654AEF47E9B523E01A80273D9DE3E1A0000
+            00000049454E44AE426082}
+          Position.Y = 98.000000000000000000
+          Size.Width = 246.000000000000000000
+          Size.Height = 49.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'listboxitembottomdetail'
+          TabOrder = 2
+          Text = #51452#47928#51077#47141
+        end
+        object ListBoxItem4: TListBoxItem
+          ItemData.Accessory = aMore
+          Position.Y = 147.000000000000000000
+          Size.Width = 246.000000000000000000
+          Size.Height = 49.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          Text = #44144#47000#52376
+        end
+        object ListBoxItem5: TListBoxItem
+          ItemData.Accessory = aMore
+          Position.Y = 196.000000000000000000
+          Size.Width = 246.000000000000000000
+          Size.Height = 49.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          Text = #54408#47785
+        end
+        object ListBoxItem6: TListBoxItem
+          ItemData.Accessory = aMore
+          Position.Y = 245.000000000000000000
+          Size.Width = 246.000000000000000000
+          Size.Height = 49.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 5
+          Text = #53685#44228#51088#47308
+        end
+        object ListBoxItem7: TListBoxItem
+          ItemData.Accessory = aMore
+          Position.Y = 294.000000000000000000
+          Size.Width = 246.000000000000000000
+          Size.Height = 49.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 6
+          Text = #49444#51221
+        end
+        object ListBoxHeader1: TListBoxHeader
+          Size.Width = 246.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object Text1: TText
+            Position.X = 75.000000000000000000
+            Position.Y = 6.000000000000000000
+            Size.Width = 73.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+            Text = #47700#45684#49440#53469
+          end
+          object bbnMaster2: TButton
+            Align = FitLeft
+            Size.Width = 41.000000000000000000
+            Size.Height = 33.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = 'detailstoolbutton'
+            TabOrder = 0
+            Text = 'bbnMaster2'
+            OnClick = bbnMaster2Click
+          end
+        end
+      end
+    end
+  end
+  object ActionList1: TActionList
+    Left = 92
+    object NextTabAction1: TNextTabAction
+      Category = 'Tab'
+      TabControl = TabControl1
+    end
+    object PreviousTabAction1: TPreviousTabAction
+      Category = 'Tab'
+      TabControl = TabControl1
+    end
+  end
+  object GestureManager1: TGestureManager
+    Sensitivity = 80.000000000000000000
+    Left = 24
+    Top = 134
+  end
+  object SQLConnection: TSQLConnection
+    DriverName = 'DataSnap'
+    LoginPrompt = False
+    Params.Strings = (
+      'DriverUnit=Data.DbxDatasnap'
+      'CommunicationProtocol=tcp/ip'
+      'DatasnapContext=datasnap/'
+      
+        'DriverAssemblyLoader=Borland.Data.TDBXClientDriverLoader,Borland' +
+        '.Data.DbxClientDriver,Version=24.0.0.0,Culture=neutral,PublicKey' +
+        'Token=91d62ebb5b0d1b1b'
+      'DriverName=DataSnap'
+      'HostName=localhost'
+      'port=211'
+      'Filters={}')
+    Connected = True
+    Left = 240
+    UniqueId = '{B08D103A-9531-46BC-BF6D-805839F78C1E}'
+  end
+  object cdsEmp: TClientDataSet
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftWideString
+        Name = 'PISPRGUSE'
+        ParamType = ptInput
+        Size = 1
+      end>
+    ProviderName = 'dspEmpPrgUseInq'
+    RemoteServer = DSProviderConnection
+    Left = 24
+    Top = 189
+    object cdsEmpEMPNO: TIntegerField
+      FieldName = 'EMPNO'
+      Required = True
+    end
+    object cdsEmpEMPNAME: TWideStringField
+      FieldName = 'EMPNAME'
+      Size = 50
+    end
+  end
+  object DSProviderConnection: TDSProviderConnection
+    ServerClassName = 'TServerMethods1'
+    Connected = True
+    SQLConnection = SQLConnection
+    Left = 264
+    Top = 144
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = cdsEmp
+    ScopeMappings = <>
+    Left = 264
+    Top = 192
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 65533
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'EMPNAME'
+      Control = cbEmp
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+  object cdsGlobalCCInq: TClientDataSet
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftWideString
+        Name = 'PCLASS'
+        ParamType = ptInput
+        Size = 50
+      end
+      item
+        DataType = ftWideString
+        Name = 'PCODE'
+        ParamType = ptInput
+        Size = 50
+      end>
+    ProviderName = 'dspGlobalCCInq'
+    RemoteServer = DSProviderConnection
+    Left = 24
+    Top = 232
+  end
+  object ImageList: TImageList
+    Source = <
+      item
+        MultiResBitmap.Width = 32
+        MultiResBitmap.LoadSize = 0
+        MultiResBitmap.TransparentColor = 536870912
+        MultiResBitmap = <
+          item
+            Width = 32
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D494844520000002000000010080600000077007D
+              59000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              00B449444154484BED94610AC3200C46D39D6C3D997AB2EE662E9F4D8A15E234
+              EE671F589E42F5330137A29C698110A2980F33C0717CC44EF6FD2D76C70A10E3
+              7DBD9D2B1C80162B10C47CBCF0C95C8476606324EBB982DBB543F9E525804975
+              88E9C2D680B59120A505DE32A694FED382C81B69AA5957EAF98C9F2D182975A7
+              05DEC3C1D382A70500F7E177252388ED42EDF817735DEBB9D2FA780B3A8C941A
+              E80305D44B0B205EF816623EAE442BA09CA293107D01285916FAC15B28A50000
+              000049454E44AE426082}
+            FileName = 'D:\00Winace10\BMP\Delphi\CALENDAR.BMP'
+          end>
+        Name = 'CALENDAR'
+      end
+      item
+        MultiResBitmap.Width = 32
+        MultiResBitmap.LoadSize = 0
+        MultiResBitmap.TransparentColor = 536870912
+        MultiResBitmap = <
+          item
+            Width = 32
+            Height = 16
+            PNG = {
+              89504E470D0A1A0A0000000D494844520000002000000010080600000077007D
+              59000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              010C49444154484BC5930B1283200C44A517474FDEF2429609D4BF9DE99BC108
+              C4EC1A74FA37C9E355DE1EE1728D9C737BFEE5F16FDCEDC063DE05E213036AE3
+              AD1A3A86F10858D4B80C45357CE910DCB7E4DA142E694AF5BD0EDF2E8A2DCB92
+              D4DA799E6D6E1B1B909BB8A226F1E4CA3B584249AF4239134C30C62D644AC683
+              01E6ECED4775A6CC58E80C14F3B6CB9BD9E20AEACC8A01A65CAAD84E27BA0D15
+              8A0660EB3BD031916BF14C07BC6E2BEE984011B2C968001020B2C710E4C960F8
+              0BBE4529E735BBC2674040C23A7784C1129CD601188F81E85BDD4391D8EAF1AB
+              A70332310A03FB5282781F59136F79F1081823F1CC7DA933BD56FC0CD168FBF7
+              11D17D248AC32F0C3CA61A9DA60F073DBCE5D4A438D70000000049454E44AE42
+              6082}
+            FileName = 'D:\00Winace10\BMP\Delphi\FIND.BMP'
+          end>
+        Name = 'FIND'
+      end>
+    Destination = <
+      item
+        Layers = <
+          item
+            Name = 'CALENDAR'
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'FIND'
+          end>
+      end>
+    Left = 16
+    Top = 80
+  end
+end
