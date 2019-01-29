@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{7E8292A2-025F-4A28-9342-5C4EFC1C2846}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Project_Buger.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="D:\델파이 교육 모바일 (Fire Monkey)\모바일\Project_InsaList.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Project_Buger">
+        <MSBuild Projects="Project_Buger.dproj"/>
+    </Target>
+    <Target Name="Project_Buger:Clean">
+        <MSBuild Projects="Project_Buger.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project_Buger:Make">
+        <MSBuild Projects="Project_Buger.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project_InsaList">
+        <MSBuild Projects="D:\델파이 교육 모바일 (Fire Monkey)\모바일\Project_InsaList.dproj"/>
+    </Target>
+    <Target Name="Project_InsaList:Clean">
+        <MSBuild Projects="D:\델파이 교육 모바일 (Fire Monkey)\모바일\Project_InsaList.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project_InsaList:Make">
+        <MSBuild Projects="D:\델파이 교육 모바일 (Fire Monkey)\모바일\Project_InsaList.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Project_Buger;Project_InsaList"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Project_Buger:Clean;Project_InsaList:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Project_Buger:Make;Project_InsaList:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
