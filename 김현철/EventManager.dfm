@@ -453,6 +453,7 @@ object frmEvent: TfrmEvent
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
+      'Database=C:\Users\healt\Documents\GitProject\'#44608#54788#52384'\ttms.sdb'
       'ConnectionDef=TTMS')
     LoginPrompt = False
     Left = 280

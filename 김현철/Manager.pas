@@ -38,6 +38,7 @@ type
     DBCheckBox11: TDBCheckBox;
     DBCheckBox12: TDBCheckBox;
     DBCheckBox13: TDBCheckBox;
+    FDConnection1: TFDConnection;
     procedure FormActivate(Sender: TObject);
     procedure FormDeactivate(Sender: TObject);
   private
@@ -55,12 +56,14 @@ implementation
 
 procedure TfrmManager.FormActivate(Sender: TObject);
 begin
+  FDConnection1.Connected := True;;
   FDTable1.Open;
 end;
 
 procedure TfrmManager.FormDeactivate(Sender: TObject);
 begin
   FDTable1.Close;
+  FDConnection1.Connected := False;
 end;
 
 end.

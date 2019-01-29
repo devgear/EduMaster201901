@@ -1,4 +1,4 @@
-object Menu: TMenu
+object frmMenu: TfrmMenu
   Left = 0
   Top = 0
   ActiveControl = edtPass
@@ -169,7 +169,7 @@ object Menu: TMenu
     end
   end
   object FDQuery1: TFDQuery
-    ConnectionName = 'TTMS'
+    Connection = FDConnection1
     SQL.Strings = (
       'SELECT * '
       'FROM manager'
@@ -183,6 +183,9 @@ object Menu: TMenu
       end>
   end
   object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=C:\Users\healt\Documents\GitProject\'#44608#54788#52384'\ttms.sdb'
+      'ConnectionDef=TTMS')
     Left = 128
     Top = 280
   end

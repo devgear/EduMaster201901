@@ -12,7 +12,7 @@ uses
   FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.ExtCtrls;
 
 type
-  TMenu = class(TForm)
+  TfrmMenu = class(TForm)
     edtPass: TEdit;
     Label1: TLabel;
     btnPass: TButton;
@@ -44,7 +44,7 @@ type
   end;
 
 var
-  Menu: TMenu;
+  frmMenu: TfrmMenu;
 
 implementation
 
@@ -52,7 +52,7 @@ implementation
 
 uses EventManager, Manager;
 
-procedure TMenu.SetButton(Button: TButton; Bool: Integer);
+procedure TfrmMenu.SetButton(Button: TButton; Bool: Integer);
 begin
   if Bool = 1 then
     Button.Enabled := True
@@ -60,7 +60,7 @@ begin
     Button.Enabled := False;
 end;
 
-procedure TMenu.SetAllButton;
+procedure TfrmMenu.SetAllButton;
 begin
     with FDQuery1 do
     begin
@@ -91,17 +91,17 @@ begin
     end;
 end;
 
-procedure TMenu.btnReservationClick(Sender: TObject);
+procedure TfrmMenu.btnReservationClick(Sender: TObject);
 begin
   frmEvent.Show;
 end;
 
-procedure TMenu.btnManagerClick(Sender: TObject);
+procedure TfrmMenu.btnManagerClick(Sender: TObject);
 begin
   frmManager.Show;
 end;
 
-procedure TMenu.edtPassKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmMenu.edtPassKeyPress(Sender: TObject; var Key: Char);
 begin
   if ord(Key) = VK_RETURN then
   begin

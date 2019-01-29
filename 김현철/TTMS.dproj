@@ -99,7 +99,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="MainMenu.pas">
-            <Form>Menu</Form>
+            <Form>frmMenu</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="EventManager.pas">

@@ -73,7 +73,6 @@ object frmManager: TfrmManager
     Height = 202
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 189
     object Panel2: TPanel
       Left = 1
       Top = 1
@@ -82,9 +81,6 @@ object frmManager: TfrmManager
       Align = alTop
       Caption = #51089' '#50629' '#44428' '#54620
       TabOrder = 0
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 185
     end
     object DBCheckBox1: TDBCheckBox
       Left = 24
@@ -224,8 +220,6 @@ object frmManager: TfrmManager
     Height = 89
     Align = alTop
     TabOrder = 2
-    ExplicitLeft = 8
-    ExplicitTop = 168
     object Label1: TLabel
       Left = 24
       Top = 23
@@ -274,10 +268,17 @@ object frmManager: TfrmManager
   end
   object FDTable1: TFDTable
     IndexFieldNames = 'id'
-    ConnectionName = 'TTMS'
+    Connection = FDConnection1
     UpdateOptions.UpdateTableName = 'manager'
     TableName = 'manager'
     Left = 264
     Top = 368
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=C:\Users\healt\Documents\GitProject\'#44608#54788#52384'\ttms.sdb'
+      'ConnectionDef=TTMS')
+    Left = 184
+    Top = 376
   end
 end
