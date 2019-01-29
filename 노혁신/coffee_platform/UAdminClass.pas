@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 2019-01-29 오후 5:14:23
+// 2019-01-30 오전 3:18:34
 //
 
 unit UAdminClass;
@@ -14,16 +14,16 @@ type
   private
     FEchoStringCommand: TDBXCommand;
     FReverseStringCommand: TDBXCommand;
-    FSignUpCommand: TDBXCommand;
     FDupChkCommand: TDBXCommand;
+    FSignUpCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
     destructor Destroy; override;
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
-    procedure SignUp(Biz_Num: string; pw: string; name: string; addr: string);
-    function DupChk(Biz_num: string): Integer;
+    function DupChk(biz_num: string): Integer;
+    function SignUp(biz_num: string; pw: string; name: string; addr: string): Boolean;
   end;
 
 implementation
@@ -56,23 +56,7 @@ begin
   Result := FReverseStringCommand.Parameters[1].Value.GetWideString;
 end;
 
-procedure TServerMethods1Client.SignUp(Biz_Num: string; pw: string; name: string; addr: string);
-begin
-  if FSignUpCommand = nil then
-  begin
-    FSignUpCommand := FDBXConnection.CreateCommand;
-    FSignUpCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FSignUpCommand.Text := 'TServerMethods1.SignUp';
-    FSignUpCommand.Prepare;
-  end;
-  FSignUpCommand.Parameters[0].Value.SetWideString(Biz_Num);
-  FSignUpCommand.Parameters[1].Value.SetWideString(pw);
-  FSignUpCommand.Parameters[2].Value.SetWideString(name);
-  FSignUpCommand.Parameters[3].Value.SetWideString(addr);
-  FSignUpCommand.ExecuteUpdate;
-end;
-
-function TServerMethods1Client.DupChk(Biz_num: string): Integer;
+function TServerMethods1Client.DupChk(biz_num: string): Integer;
 begin
   if FDupChkCommand = nil then
   begin
@@ -81,9 +65,26 @@ begin
     FDupChkCommand.Text := 'TServerMethods1.DupChk';
     FDupChkCommand.Prepare;
   end;
-  FDupChkCommand.Parameters[0].Value.SetWideString(Biz_num);
+  FDupChkCommand.Parameters[0].Value.SetWideString(biz_num);
   FDupChkCommand.ExecuteUpdate;
   Result := FDupChkCommand.Parameters[1].Value.GetInt32;
+end;
+
+function TServerMethods1Client.SignUp(biz_num: string; pw: string; name: string; addr: string): Boolean;
+begin
+  if FSignUpCommand = nil then
+  begin
+    FSignUpCommand := FDBXConnection.CreateCommand;
+    FSignUpCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FSignUpCommand.Text := 'TServerMethods1.SignUp';
+    FSignUpCommand.Prepare;
+  end;
+  FSignUpCommand.Parameters[0].Value.SetWideString(biz_num);
+  FSignUpCommand.Parameters[1].Value.SetWideString(pw);
+  FSignUpCommand.Parameters[2].Value.SetWideString(name);
+  FSignUpCommand.Parameters[3].Value.SetWideString(addr);
+  FSignUpCommand.ExecuteUpdate;
+  Result := FSignUpCommand.Parameters[4].Value.GetBoolean;
 end;
 
 constructor TServerMethods1Client.Create(ADBXConnection: TDBXConnection);
@@ -100,8 +101,8 @@ destructor TServerMethods1Client.Destroy;
 begin
   FEchoStringCommand.DisposeOf;
   FReverseStringCommand.DisposeOf;
-  FSignUpCommand.DisposeOf;
   FDupChkCommand.DisposeOf;
+  FSignUpCommand.DisposeOf;
   inherited;
 end;
 

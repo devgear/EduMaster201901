@@ -1,6 +1,6 @@
 object ServerMethods1: TServerMethods1
   OldCreateOrder = False
-  Height = 407
+  Height = 689
   Width = 594
   object FDConnection1: TFDConnection
     Params.Strings = (
@@ -42,8 +42,8 @@ object ServerMethods1: TServerMethods1
       ''
       ''
       '')
-    Left = 184
-    Top = 136
+    Left = 208
+    Top = 128
     ParamData = <
       item
         Name = 'BIZ_NUM'
@@ -77,7 +77,7 @@ object ServerMethods1: TServerMethods1
     Connection = FDConnection1
     UpdateOptions.UpdateTableName = 'TB_BIZ_INFO'
     TableName = 'TB_BIZ_INFO'
-    Left = 96
+    Left = 112
     Top = 72
     object Tb_Biz_InfoBIZ_CODE: TIntegerField
       AutoGenerateValue = arAutoInc
@@ -128,7 +128,7 @@ object ServerMethods1: TServerMethods1
   end
   object Tb_Biz_InfoProvider: TDataSetProvider
     DataSet = Tb_Biz_Info
-    Left = 96
+    Left = 112
     Top = 128
   end
   object DupChkQuery: TFDQuery
@@ -136,7 +136,7 @@ object ServerMethods1: TServerMethods1
     SQL.Strings = (
       'SELECT COUNT(BIZ_CODE) AS DUPCNT FROM TB_BIZ'
       'WHERE BIZ_NUM = :BIZ_NUM')
-    Left = 184
+    Left = 208
     Top = 72
     ParamData = <
       item
@@ -152,7 +152,7 @@ object ServerMethods1: TServerMethods1
     SQL.Strings = (
       'INSERT INTO TB_BIZ_INFO (BIZ_CODE) '
       'VALUES (gen_id(biz_code_gen,0));')
-    Left = 240
-    Top = 136
+    Left = 296
+    Top = 128
   end
 end

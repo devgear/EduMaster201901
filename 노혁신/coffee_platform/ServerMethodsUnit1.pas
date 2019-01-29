@@ -41,8 +41,8 @@ type
     { Public declarations }
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
-    procedure SignUp(Biz_Num, pw, name, addr: string);
-    function DupChk(Biz_num: string): Integer;
+    function DupChk(biz_num: string): Integer; // 중복체크: Return > 0 then 중복
+    function SignUp(biz_num, pw, name, addr: string): Boolean;
   end;
 
 implementation
@@ -72,8 +72,9 @@ begin
   Result := System.StrUtils.ReverseString(Value);
 end;
 
-procedure TServerMethods1.SignUp(Biz_Num, pw, name, addr: string);
+function TServerMethods1.SignUp(Biz_Num, pw, name, addr: string): Boolean;
 begin
+  Result := False;
   SignUpQuery.Close;
   SignUpQuery2.Close;
 
@@ -82,12 +83,12 @@ begin
   SignUpQuery.Params[2].AsString := name;
   SignUpQuery.Params[3].AsString := addr;
 
-
   FDConnection1.StartTransaction;
   try
     SignUpQuery.ExecSQL;
     SignUpQuery2.ExecSQL;
     FDConnection1.Commit;
+    Result := True;
   except
     FDConnection1.Rollback;
     raise;
