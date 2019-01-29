@@ -26,6 +26,7 @@ var
 
 implementation
 
+//sdfsdf
 {$R *.dfm}
 
 end.
