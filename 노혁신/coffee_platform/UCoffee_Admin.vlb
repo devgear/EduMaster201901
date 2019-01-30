@@ -1,13 +1,7 @@
-﻿[SQLConnection1]
-Coordinates=242,1,97,33
-
-[Layout1]
+﻿[Layout1]
 Coordinates=241,78,53,33
 
-[DSProviderConnection1]
-Coordinates=223,56,132,33
-
 []
-Coordinates=10,10,53,51
+Coordinates=242,1,97,33
 Visible=True
 

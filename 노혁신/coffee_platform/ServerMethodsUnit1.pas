@@ -35,14 +35,16 @@ type
     Tb_Biz_InfoCOUPON: TIntegerField;
     DupChkQuery: TFDQuery;
     SignUpQuery2: TFDQuery;
+    SignInQuery: TFDQuery;
   private
     { Private declarations }
   public
     { Public declarations }
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
-    function DupChk(biz_num: string): Integer; // 중복체크: Return > 0 then 중복
-    function SignUp(biz_num, pw, name, addr: string): Boolean;
+    function DupChk(ABizNum: string): Integer; // 중복체크: Return > 0 then 중복
+    function SignUp(ABizNum, APw, AName, AAddr: string): Boolean; // 회원 가입
+    function SignIn(ABizNum, APw: string): Boolean; // 로그인
   end;
 
 implementation
@@ -52,15 +54,6 @@ implementation
 
 
 uses System.StrUtils;
-
-function TServerMethods1.DupChk(Biz_num: string): Integer;
-begin
-  DupChkQuery.Close;
-  DupChkQuery.Params[0].AsString := Biz_Num;
-  DupChkQuery.Open;
-
-  Result := DupChkQuery.FieldByName('DUPCNT').AsInteger;
-end;
 
 function TServerMethods1.EchoString(Value: string): string;
 begin
@@ -72,16 +65,29 @@ begin
   Result := System.StrUtils.ReverseString(Value);
 end;
 
-function TServerMethods1.SignUp(Biz_Num, pw, name, addr: string): Boolean;
+function TServerMethods1.SignIn(ABizNum, APw: string): Boolean;
+begin
+  Result := True;
+
+  SignInQuery.Close;
+  SignInQuery.Params[0].AsString := ABizNum;
+  SignInQuery.Params[1].AsString := APw;
+  SignInQuery.Open;
+
+  if SignInQuery.RecordCount = 0 then
+    Result := False;
+end;
+
+function TServerMethods1.SignUp(ABizNum, APw, AName, AAddr: string): Boolean;
 begin
   Result := False;
   SignUpQuery.Close;
   SignUpQuery2.Close;
 
-  SignUpQuery.Params[0].AsString := biz_num;
-  SignUpQuery.Params[1].AsString := pw;
-  SignUpQuery.Params[2].AsString := name;
-  SignUpQuery.Params[3].AsString := addr;
+  SignUpQuery.Params[0].AsString := ABizNum;
+  SignUpQuery.Params[1].AsString := APw;
+  SignUpQuery.Params[2].AsString := AName;
+  SignUpQuery.Params[3].AsString := AAddr;
 
   FDConnection1.StartTransaction;
   try
@@ -94,6 +100,16 @@ begin
     raise;
   end;
 
+
+end;
+
+function TServerMethods1.DupChk(ABizNum: string): Integer;
+begin
+  DupChkQuery.Close;
+  DupChkQuery.Params[0].AsString := ABizNum;
+  DupChkQuery.Open;
+
+  Result := DupChkQuery.FieldByName('DUPCNT').AsInteger;
 end;
 
 end.

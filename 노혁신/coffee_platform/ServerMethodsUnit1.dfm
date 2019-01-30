@@ -132,7 +132,7 @@ object ServerMethods1: TServerMethods1
     Top = 128
   end
   object DupChkQuery: TFDQuery
-    Connection = FDConnection1
+    ConnectionName = 'Coffee'
     SQL.Strings = (
       'SELECT COUNT(BIZ_CODE) AS DUPCNT FROM TB_BIZ'
       'WHERE BIZ_NUM = :BIZ_NUM')
@@ -154,5 +154,27 @@ object ServerMethods1: TServerMethods1
       'VALUES (gen_id(biz_code_gen,0));')
     Left = 296
     Top = 128
+  end
+  object SignInQuery: TFDQuery
+    ConnectionName = 'Coffee'
+    SQL.Strings = (
+      'SELECT BIZ_CODE, NAME, ADDR, TEL FROM TB_BIZ'
+      'WHERE BIZ_NUM = :BIZ_NUM AND PW = :PW')
+    Left = 208
+    Top = 192
+    ParamData = <
+      item
+        Name = 'BIZ_NUM'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 12
+        Value = Null
+      end
+      item
+        Name = 'PW'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 30
+      end>
   end
 end

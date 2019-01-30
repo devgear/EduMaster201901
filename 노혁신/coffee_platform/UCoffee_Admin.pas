@@ -10,43 +10,23 @@ uses
   FMX.Controls.Presentation, FMX.Edit, FMX.Layouts, System.Rtti, FMX.Grid.Style,
   Data.Bind.EngExt, Fmx.Bind.DBEngExt, Fmx.Bind.Grid, System.Bindings.Outputs,
   Fmx.Bind.Editors, Data.Bind.Components, Data.Bind.Grid, Data.Bind.DBScope,
-  FMX.ScrollBox, FMX.Grid, FMX.TabControl;
+  FMX.ScrollBox, FMX.Grid, FMX.TabControl, FireDAC.UI.Intf, FireDAC.FMXUI.Login,
+  FireDAC.Stan.Intf, FireDAC.Comp.UI;
 
 type
   TMainForm = class(TForm)
     Layout1: TLayout;
-    SQLConnection1: TSQLConnection;
-    DSProviderConnection1: TDSProviderConnection;
     TabControl1: TTabControl;
     TabItem1: TTabItem;
-    Label1: TLabel;
-    Edit1: TEdit;
-    Edit4: TEdit;
-    btn_SignUp: TButton;
-    btn_SignIn: TButton;
-    Label2: TLabel;
-    Label3: TLabel;
-    Edit2: TEdit;
-    Edit3: TEdit;
     TabItem2: TTabItem;
-    Label4: TLabel;
-    Edit5: TEdit;
-    Edit6: TEdit;
-    Edit7: TEdit;
-    Edit8: TEdit;
-    Edit9: TEdit;
-    Edit10: TEdit;
-    btn_reg: TButton;
-    btn_back: TButton;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
+    TabItem3: TTabItem;
+    TabItem4: TTabItem;
+    ToolBar1: TToolBar;
+    Label1: TLabel;
     procedure FormCreate(Sender: TObject);
-    procedure btn_SignInClick(Sender: TObject);
-    procedure btn_SignUpClick(Sender: TObject);
-    procedure btn_regClick(Sender: TObject);
-    procedure btn_backClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure TabControl1Change(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -62,54 +42,39 @@ implementation
 {$R *.iPhone47in.fmx IOS}
 {$R *.LgXhdpiPh.fmx ANDROID}
 
-uses UAdminClass;
+uses USignIn_Admin, DMAdmin;
 var
-  Client: TServerMethods1Client;
+  dm: TDMAdminAccess;
 
-
-
-procedure TMainForm.btn_backClick(Sender: TObject);
+procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  TabControl1.ActiveTab := TabItem1;
-end;
-
-procedure TMainForm.btn_regClick(Sender: TObject);
-var
-  biz_num, pw, name, addr: string;
-begin
-  biz_num := Edit5.Text + '-' + Edit6.Text + '-' + Edit7.Text;
-  pw := Edit8.Text;
-  name := Edit9.Text;
-  addr := Edit10.Text;
-  Client.SignUp(biz_num, pw, name, addr);
-end;
-
-procedure TMainForm.btn_SignInClick(Sender: TObject);
-begin
-  if (length(Edit1.Text) < 3) or (length(Edit2.Text) < 2) or (length(Edit3.Text) < 5) then
-  begin
-    ShowMessage('사업자 번호를 입력해 주세요.');
-    Edit1.SetFocus;
-    Exit;
-  end;
-  if (Edit4.Text.IsEmpty) then
-  begin
-    ShowMessage('비밀번호를 입력해 주세요.');
-    Edit4.SetFocus;
-    Exit;
-  end;
-
-  ShowMessage('로그인 구현 중..');
-end;
-
-procedure TMainForm.btn_SignUpClick(Sender: TObject);
-begin
-  TabControl1.ActiveTab := TabItem2;
+  FreeAndNil(Client);
+  FreeAndNil(dm);
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
+var
+  SignForm: TSignForm;
 begin
-  Client := TserverMethods1Client.Create(SQLConnection1.DBXConnection);
+  dm := TDMAdminAccess.Create(application);
+  SignForm := TSignForm.Create(nil);
+  SignForm.ShowModal(procedure(modalResult: TModalResult)
+                      begin
+                        if ModalResult = mrOk then
+                           //do something
+                      end);
+  TabControl1.ActiveTab := TabItem1;
+
+end;
+
+procedure TMainForm.TabControl1Change(Sender: TObject);
+begin
+  case TabControl1.TabIndex of
+    0: label1.Text := '홈';
+    1: label1.Text := '공지';
+    2: label1.Text := '예약설정';
+    3: label1.Text := '회원관리';
+  end;
 end;
 
 end.
