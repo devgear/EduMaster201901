@@ -2,7 +2,7 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   ClientHeight = 643
-  ClientWidth = 431
+  ClientWidth = 490
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -11,13 +11,13 @@ object MainForm: TMainForm
   DesignerMasterStyle = 0
   object Layout1: TLayout
     Align = Client
-    Size.Width = 431.000000000000000000
+    Size.Width = 490.000000000000000000
     Size.Height = 643.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object TabControl1: TTabControl
       Align = Client
-      Size.Width = 431.000000000000000000
+      Size.Width = 490.000000000000000000
       Size.Height = 603.000000000000000000
       Size.PlatformDefault = False
       TabIndex = 0
@@ -25,13 +25,13 @@ object MainForm: TMainForm
       TabPosition = Bottom
       OnChange = TabControl1Change
       Sizes = (
-        431s
+        490s
         577s
-        431s
+        490s
         577s
-        431s
+        490s
         577s
-        431s
+        490s
         577s)
       object TabItem1: TTabItem
         CustomIcon = <
@@ -44,6 +44,143 @@ object MainForm: TMainForm
         StyleLookup = ''
         TabOrder = 0
         Text = 'RegInfo'
+        ExplicitSize.cx = 61.000000000000000000
+        ExplicitSize.cy = 26.000000000000000000
+        object GroupBox1: TGroupBox
+          Position.X = 48.000000000000000000
+          Position.Y = 16.000000000000000000
+          Size.Width = 337.000000000000000000
+          Size.Height = 121.000000000000000000
+          Size.PlatformDefault = False
+          Text = #51064#49324#47568
+          TabOrder = 1
+          object Memo1: TMemo
+            Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+            DataDetectorTypes = []
+            ImeMode = imHanguel
+            Position.X = 8.000000000000000000
+            Position.Y = 24.000000000000000000
+            Size.Width = 321.000000000000000000
+            Size.Height = 89.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Viewport.Width = 317.000000000000000000
+            Viewport.Height = 85.000000000000000000
+          end
+        end
+        object GroupBox2: TGroupBox
+          Position.X = 48.000000000000000000
+          Position.Y = 152.000000000000000000
+          Size.Width = 337.000000000000000000
+          Size.Height = 185.000000000000000000
+          Size.PlatformDefault = False
+          Text = #49884#44536#45768#52376' '#49345#54408' '#51060#48120#51648' '#48143' '#49548#44060
+          TabOrder = 0
+          object Memo2: TMemo
+            Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+            DataDetectorTypes = []
+            ImeMode = imHanguel
+            Position.X = 168.000000000000000000
+            Position.Y = 24.000000000000000000
+            Size.Width = 161.000000000000000000
+            Size.Height = 153.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            Viewport.Width = 157.000000000000000000
+            Viewport.Height = 149.000000000000000000
+          end
+          object Image1: TImage
+            MultiResBitmap = <
+              item
+              end>
+            Position.X = 8.000000000000000000
+            Position.Y = 24.000000000000000000
+            Size.Width = 153.000000000000000000
+            Size.Height = 153.000000000000000000
+            Size.PlatformDefault = False
+          end
+        end
+        object GroupBox3: TGroupBox
+          Position.X = 48.000000000000000000
+          Position.Y = 352.000000000000000000
+          Size.Width = 337.000000000000000000
+          Size.Height = 100.000000000000000000
+          Size.PlatformDefault = False
+          Text = #51060#48120#51648' '#50629#47196#46300
+          TabOrder = 2
+          object Image2: TImage
+            MultiResBitmap = <
+              item
+              end>
+            Position.X = 16.000000000000000000
+            Position.Y = 32.000000000000000000
+          end
+          object Image3: TImage
+            MultiResBitmap = <
+              item
+              end>
+            Position.X = 96.000000000000000000
+            Position.Y = 32.000000000000000000
+          end
+          object Image4: TImage
+            MultiResBitmap = <
+              item
+              end>
+            Position.X = 168.000000000000000000
+            Position.Y = 32.000000000000000000
+          end
+          object Image5: TImage
+            MultiResBitmap = <
+              item
+              end>
+            Position.X = 240.000000000000000000
+            Position.Y = 32.000000000000000000
+          end
+        end
+        object GroupBox4: TGroupBox
+          Position.X = 48.000000000000000000
+          Position.Y = 456.000000000000000000
+          Size.Width = 337.000000000000000000
+          Size.Height = 81.000000000000000000
+          Size.PlatformDefault = False
+          Text = #54200#51032#49884#49444
+          TabOrder = 3
+          object SpeedButton1: TSpeedButton
+            Position.X = 16.000000000000000000
+            Position.Y = 32.000000000000000000
+            Size.Width = 49.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'wifi'
+          end
+          object SpeedButton2: TSpeedButton
+            Position.X = 80.000000000000000000
+            Position.Y = 32.000000000000000000
+            Size.Width = 49.000000000000000000
+            Size.Height = 22.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'smoke'
+          end
+        end
+        object Button3: TButton
+          Position.X = 296.000000000000000000
+          Position.Y = 544.000000000000000000
+          TabOrder = 4
+          Text = #51200#51109
+          OnClick = Button3Click
+        end
+        object StringGrid1: TStringGrid
+          CanFocus = True
+          ClipChildren = True
+          Position.Y = 64.000000000000000000
+          Size.Width = 425.000000000000000000
+          Size.Height = 100.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 5
+          RowCount = 0
+          Viewport.Width = 421.000000000000000000
+          Viewport.Height = 75.000000000000000000
+        end
       end
       object TabItem2: TTabItem
         CustomIcon = <
@@ -56,6 +193,15 @@ object MainForm: TMainForm
         StyleLookup = ''
         TabOrder = 0
         Text = 'Notify'
+        ExplicitSize.cx = 53.000000000000000000
+        ExplicitSize.cy = 26.000000000000000000
+        object Layout3: TLayout
+          Align = Client
+          Size.Width = 490.000000000000000000
+          Size.Height = 577.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+        end
       end
       object TabItem3: TTabItem
         CustomIcon = <
@@ -68,6 +214,15 @@ object MainForm: TMainForm
         StyleLookup = ''
         TabOrder = 0
         Text = 'Reserv'
+        ExplicitSize.cx = 55.000000000000000000
+        ExplicitSize.cy = 26.000000000000000000
+        object Layout4: TLayout
+          Align = Client
+          Size.Width = 490.000000000000000000
+          Size.Height = 577.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+        end
       end
       object TabItem4: TTabItem
         CustomIcon = <
@@ -80,10 +235,19 @@ object MainForm: TMainForm
         StyleLookup = ''
         TabOrder = 0
         Text = 'My'
+        ExplicitSize.cx = 37.000000000000000000
+        ExplicitSize.cy = 26.000000000000000000
+        object Layout5: TLayout
+          Align = Client
+          Size.Width = 490.000000000000000000
+          Size.Height = 577.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+        end
       end
     end
     object ToolBar1: TToolBar
-      Size.Width = 431.000000000000000000
+      Size.Width = 490.000000000000000000
       Size.Height = 40.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -97,6 +261,29 @@ object MainForm: TMainForm
         Text = #54856
         TabOrder = 0
       end
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = DMAdminAccess.BizInfoQuery
+    Left = 440
+    Top = 192
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = DMAdminAccess.BizInfoQuery
+    ScopeMappings = <>
+    Left = 232
+    Top = 304
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = StringGrid1
+      Columns = <>
     end
   end
 end

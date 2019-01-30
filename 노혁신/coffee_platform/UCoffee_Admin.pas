@@ -11,7 +11,7 @@ uses
   Data.Bind.EngExt, Fmx.Bind.DBEngExt, Fmx.Bind.Grid, System.Bindings.Outputs,
   Fmx.Bind.Editors, Data.Bind.Components, Data.Bind.Grid, Data.Bind.DBScope,
   FMX.ScrollBox, FMX.Grid, FMX.TabControl, FireDAC.UI.Intf, FireDAC.FMXUI.Login,
-  FireDAC.Stan.Intf, FireDAC.Comp.UI;
+  FireDAC.Stan.Intf, FireDAC.Comp.UI, FMX.Objects, FMX.Memo;
 
 type
   TMainForm = class(TForm)
@@ -23,9 +23,32 @@ type
     TabItem4: TTabItem;
     ToolBar1: TToolBar;
     Label1: TLabel;
+    Layout3: TLayout;
+    Layout4: TLayout;
+    Layout5: TLayout;
+    Memo1: TMemo;
+    GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
+    Memo2: TMemo;
+    Image1: TImage;
+    GroupBox3: TGroupBox;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    GroupBox4: TGroupBox;
+    Button3: TButton;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    StringGrid1: TStringGrid;
+    DataSource1: TDataSource;
+    BindSourceDB1: TBindSourceDB;
+    BindingsList1: TBindingsList;
+    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure TabControl1Change(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -45,6 +68,15 @@ implementation
 uses USignIn_Admin, DMAdmin;
 var
   dm: TDMAdminAccess;
+
+procedure TMainForm.Button3Click(Sender: TObject);
+var
+  Content: string;
+begin
+
+  Content := Memo1.Text;
+
+end;
 
 procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -75,6 +107,7 @@ begin
     2: label1.Text := '예약설정';
     3: label1.Text := '회원관리';
   end;
+
 end;
 
 end.

@@ -42,8 +42,8 @@ object ServerMethods1: TServerMethods1
       ''
       ''
       '')
-    Left = 208
-    Top = 128
+    Left = 288
+    Top = 72
     ParamData = <
       item
         Name = 'BIZ_NUM'
@@ -79,52 +79,6 @@ object ServerMethods1: TServerMethods1
     TableName = 'TB_BIZ_INFO'
     Left = 112
     Top = 72
-    object Tb_Biz_InfoBIZ_CODE: TIntegerField
-      AutoGenerateValue = arAutoInc
-      FieldName = 'BIZ_CODE'
-      Origin = 'BIZ_CODE'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object Tb_Biz_InfoCONTENT: TStringField
-      FieldName = 'CONTENT'
-      Origin = 'CONTENT'
-      Size = 50
-    end
-    object Tb_Biz_InfoAMENITY: TStringField
-      FieldName = 'AMENITY'
-      Origin = 'AMENITY'
-      Size = 100
-    end
-    object Tb_Biz_InfoSIG_IMG: TBlobField
-      FieldName = 'SIG_IMG'
-      Origin = 'SIG_IMG'
-    end
-    object Tb_Biz_InfoSIG_NAME: TStringField
-      FieldName = 'SIG_NAME'
-      Origin = 'SIG_NAME'
-      Size = 50
-    end
-    object Tb_Biz_InfoIMG_1: TBlobField
-      FieldName = 'IMG_1'
-      Origin = 'IMG_1'
-    end
-    object Tb_Biz_InfoIMG_2: TBlobField
-      FieldName = 'IMG_2'
-      Origin = 'IMG_2'
-    end
-    object Tb_Biz_InfoIMG_3: TBlobField
-      FieldName = 'IMG_3'
-      Origin = 'IMG_3'
-    end
-    object Tb_Biz_InfoIMG_4: TBlobField
-      FieldName = 'IMG_4'
-      Origin = 'IMG_4'
-    end
-    object Tb_Biz_InfoCOUPON: TIntegerField
-      FieldName = 'COUPON'
-      Origin = 'COUPON'
-    end
   end
   object Tb_Biz_InfoProvider: TDataSetProvider
     DataSet = Tb_Biz_Info
@@ -152,10 +106,11 @@ object ServerMethods1: TServerMethods1
     SQL.Strings = (
       'INSERT INTO TB_BIZ_INFO (BIZ_CODE) '
       'VALUES (gen_id(biz_code_gen,0));')
-    Left = 296
-    Top = 128
+    Left = 368
+    Top = 72
   end
   object SignInQuery: TFDQuery
+    Active = True
     ConnectionName = 'Coffee'
     SQL.Strings = (
       'SELECT BIZ_CODE, NAME, ADDR, TEL FROM TB_BIZ'
@@ -176,5 +131,31 @@ object ServerMethods1: TServerMethods1
         ParamType = ptInput
         Size = 30
       end>
+  end
+  object BizInfoQuery: TFDQuery
+    Active = True
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from tb_biz_info'
+      'where biz_code = :biz_code')
+    Left = 208
+    Top = 256
+    ParamData = <
+      item
+        Name = 'BIZ_CODE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+  end
+  object SignInQueryProvider: TDataSetProvider
+    DataSet = SignInQuery
+    Left = 296
+    Top = 192
+  end
+  object BizInfoQueryProvider: TDataSetProvider
+    DataSet = BizInfoQuery
+    Left = 296
+    Top = 256
   end
 end

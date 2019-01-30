@@ -23,28 +23,24 @@ type
     SignUpQuery: TFDQuery;
     Tb_Biz_Info: TFDTable;
     Tb_Biz_InfoProvider: TDataSetProvider;
-    Tb_Biz_InfoBIZ_CODE: TIntegerField;
-    Tb_Biz_InfoCONTENT: TStringField;
-    Tb_Biz_InfoAMENITY: TStringField;
-    Tb_Biz_InfoSIG_IMG: TBlobField;
-    Tb_Biz_InfoSIG_NAME: TStringField;
-    Tb_Biz_InfoIMG_1: TBlobField;
-    Tb_Biz_InfoIMG_2: TBlobField;
-    Tb_Biz_InfoIMG_3: TBlobField;
-    Tb_Biz_InfoIMG_4: TBlobField;
-    Tb_Biz_InfoCOUPON: TIntegerField;
     DupChkQuery: TFDQuery;
     SignUpQuery2: TFDQuery;
     SignInQuery: TFDQuery;
+    BizInfoQuery: TFDQuery;
+    SignInQueryProvider: TDataSetProvider;
+    BizInfoQueryProvider: TDataSetProvider;
   private
     { Private declarations }
   public
+    var
+      BizCode: Integer;
     { Public declarations }
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
     function DupChk(ABizNum: string): Integer; // 중복체크: Return > 0 then 중복
     function SignUp(ABizNum, APw, AName, AAddr: string): Boolean; // 회원 가입
     function SignIn(ABizNum, APw: string): Boolean; // 로그인
+
   end;
 
 implementation
@@ -67,15 +63,26 @@ end;
 
 function TServerMethods1.SignIn(ABizNum, APw: string): Boolean;
 begin
-  Result := True;
-
   SignInQuery.Close;
   SignInQuery.Params[0].AsString := ABizNum;
   SignInQuery.Params[1].AsString := APw;
   SignInQuery.Open;
+  BizInfoQuery.Close;
 
   if SignInQuery.RecordCount = 0 then
-    Result := False;
+    Result := False
+  else if SignInQuery.RecordCount = 1 then
+  begin
+//  // 코드 받아와서
+    BizCode := SignInQuery.FieldByName('biz_code').AsInteger;
+  // 데이터 넣음
+    BizInfoQuery.Params[0].AsInteger := BizCode;
+    BizInfoQuery.Open;
+    Result := True;
+  end
+  else
+//    raise Exception.Create('로그인데이터 중복값 있는지 확인');
+
 end;
 
 function TServerMethods1.SignUp(ABizNum, APw, AName, AAddr: string): Boolean;
