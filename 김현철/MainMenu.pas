@@ -17,7 +17,6 @@ type
     Label1: TLabel;
     btnPass: TButton;
     FDQuery1: TFDQuery;
-    FDConnection1: TFDConnection;
     Panel1: TPanel;
     btnReservation: TButton;
     btnEvent: TButton;
@@ -50,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses EventManager, Manager;
+uses DataModule, EventManager, Manager;
 
 procedure TfrmMenu.SetButton(Button: TButton; Bool: Integer);
 begin

@@ -169,7 +169,7 @@ object frmMenu: TfrmMenu
     end
   end
   object FDQuery1: TFDQuery
-    Connection = FDConnection1
+    Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'SELECT * '
       'FROM manager'
@@ -181,12 +181,5 @@ object frmMenu: TfrmMenu
         Name = 'PASS'
         ParamType = ptInput
       end>
-  end
-  object FDConnection1: TFDConnection
-    Params.Strings = (
-      'Database=C:\Users\healt\Documents\GitProject\'#44608#54788#52384'\ttms.sdb'
-      'ConnectionDef=TTMS')
-    Left = 128
-    Top = 280
   end
 end

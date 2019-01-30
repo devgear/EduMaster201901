@@ -17,11 +17,8 @@ uses
 
 type
   TfrmEvent = class(TForm)
-    FDConnection1: TFDConnection;
     DataSource1: TDataSource;
     FDTable1: TFDTable;
-    BindSourceDB1: TBindSourceDB;
-    BindingsList1: TBindingsList;
     DBNavigator1: TDBNavigator;
     DBGrid1: TDBGrid;
     DBEdit1: TDBEdit;
@@ -87,6 +84,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses DataModule;
 
 procedure TfrmEvent.FormCreate(Sender: TObject);
 var

@@ -2,7 +2,7 @@ object frmManager: TfrmManager
   Left = 0
   Top = 0
   Caption = #50516#54840#44288#47532
-  ClientHeight = 474
+  ClientHeight = 618
   ClientWidth = 634
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object frmManager: TfrmManager
   TextHeight = 18
   object DBGrid1: TDBGrid
     Left = 0
-    Top = 291
+    Top = 435
     Width = 634
     Height = 183
     Align = alBottom
@@ -59,20 +59,17 @@ object frmManager: TfrmManager
         FieldName = 'email'
         Title.Caption = 'Email'
         Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'auth_reservation'
-        Visible = True
       end>
   end
   object Panel1: TPanel
     Left = 0
     Top = 89
     Width = 634
-    Height = 202
+    Height = 346
     Align = alClient
     TabOrder = 1
+    ExplicitLeft = -80
+    ExplicitTop = 83
     object Panel2: TPanel
       Left = 1
       Top = 1
@@ -261,24 +258,123 @@ object frmManager: TfrmManager
       TabOrder = 2
     end
   end
+  object cbReservation: TCheckBox
+    Left = 24
+    Top = 296
+    Width = 97
+    Height = 17
+    Caption = #50696#50557#44288#47532
+    TabOrder = 3
+  end
+  object cbEvent: TCheckBox
+    Left = 152
+    Top = 296
+    Width = 97
+    Height = 17
+    Caption = #54665#49324#44288#47532
+    TabOrder = 4
+  end
+  object cbMogaek: TCheckBox
+    Left = 288
+    Top = 296
+    Width = 97
+    Height = 17
+    Caption = #47784#44061#54788#54889
+    TabOrder = 5
+  end
+  object cbPartner: TCheckBox
+    Left = 416
+    Top = 296
+    Width = 97
+    Height = 17
+    Caption = #44144#47000#52376#44288#47532
+    TabOrder = 6
+  end
+  object cbCalculate: TCheckBox
+    Left = 24
+    Top = 328
+    Width = 97
+    Height = 17
+    Caption = #51221#49328#44288#47532
+    TabOrder = 7
+  end
+  object cbHotel: TCheckBox
+    Left = 152
+    Top = 328
+    Width = 97
+    Height = 17
+    Caption = #49689#49548#44288#47532
+    TabOrder = 8
+  end
+  object cbSubul: TCheckBox
+    Left = 288
+    Top = 328
+    Width = 97
+    Height = 17
+    Caption = #49688#48520#44288#47532
+    TabOrder = 9
+  end
+  object cbCustomer: TCheckBox
+    Left = 416
+    Top = 328
+    Width = 97
+    Height = 17
+    Caption = #44256#44061#44288#47532
+    TabOrder = 10
+  end
+  object cbBanking: TCheckBox
+    Left = 24
+    Top = 360
+    Width = 97
+    Height = 17
+    Caption = #51077#52636#44552#44288#47532
+    TabOrder = 11
+  end
+  object cbPackage: TCheckBox
+    Left = 152
+    Top = 360
+    Width = 97
+    Height = 17
+    Caption = #54056#53412#51648#44288#47532
+    TabOrder = 12
+  end
+  object cbCancel: TCheckBox
+    Left = 288
+    Top = 360
+    Width = 97
+    Height = 17
+    Caption = #52712#49548#54788#54889
+    TabOrder = 13
+  end
+  object cbBackup: TCheckBox
+    Left = 416
+    Top = 360
+    Width = 97
+    Height = 17
+    Caption = #51088#47308#48372#44288
+    TabOrder = 14
+  end
+  object cbManager: TCheckBox
+    Left = 24
+    Top = 391
+    Width = 97
+    Height = 17
+    Caption = #50516#54840#44288#47532
+    TabOrder = 15
+  end
   object DataSource1: TDataSource
     DataSet = FDTable1
-    Left = 336
-    Top = 368
+    Left = 480
+    Top = 48
   end
   object FDTable1: TFDTable
+    BeforePost = FDTable1BeforePost
+    AfterScroll = FDTable1AfterScroll
     IndexFieldNames = 'id'
-    Connection = FDConnection1
+    Connection = DataModule1.FDConnection1
     UpdateOptions.UpdateTableName = 'manager'
     TableName = 'manager'
-    Left = 264
-    Top = 368
-  end
-  object FDConnection1: TFDConnection
-    Params.Strings = (
-      'Database=C:\Users\healt\Documents\GitProject\'#44608#54788#52384'\ttms.sdb'
-      'ConnectionDef=TTMS')
-    Left = 184
-    Top = 376
+    Left = 408
+    Top = 48
   end
 end

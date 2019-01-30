@@ -451,14 +451,6 @@ object frmEvent: TfrmEvent
     DataSource = DataSource1
     TabOrder = 25
   end
-  object FDConnection1: TFDConnection
-    Params.Strings = (
-      'Database=C:\Users\healt\Documents\GitProject\'#44608#54788#52384'\ttms.sdb'
-      'ConnectionDef=TTMS')
-    LoginPrompt = False
-    Left = 280
-    Top = 488
-  end
   object DataSource1: TDataSource
     DataSet = FDTable1
     Left = 536
@@ -466,22 +458,10 @@ object frmEvent: TfrmEvent
   end
   object FDTable1: TFDTable
     IndexFieldNames = 'serial'
-    Connection = FDConnection1
+    Connection = DataModule1.FDConnection1
     UpdateOptions.UpdateTableName = 'event'
     TableName = 'event'
     Left = 464
     Top = 488
-  end
-  object BindSourceDB1: TBindSourceDB
-    DataSet = FDTable1
-    ScopeMappings = <>
-    Left = 392
-    Top = 488
-  end
-  object BindingsList1: TBindingsList
-    Methods = <>
-    OutputConverters = <>
-    Left = 596
-    Top = 493
   end
 end
