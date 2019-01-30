@@ -5,9 +5,9 @@ uses
   FMX.Forms,
   Client_Form in 'Client_Form.pas' {ClientFrm},
   LogIn_Form in 'LogIn_Form.pas' {LogInFrm},
-  ClientClass in 'ClientClass.pas',
   SignUp_Form in 'SignUp_Form.pas' {SIgnUpFrm},
-  Overall_DM in 'Overall_DM.pas' {OverallDM: TDataModule};
+  Overall_DM in 'Overall_DM.pas' {OverallDM: TDataModule},
+  ClientClass in 'ClientClass.pas';
 
 {$R *.res}
 

@@ -158,4 +158,9 @@ object ServerMethods1: TServerMethods1
       Required = True
     end
   end
+  object LogInQuery: TFDQuery
+    Connection = FDConnection1
+    Left = 384
+    Top = 96
+  end
 end

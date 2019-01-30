@@ -6,13 +6,15 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.StdCtrls, FMX.Controls.Presentation, FMX.Edit, Data.DB,
-  Datasnap.DBClient, System.Actions, FMX.ActnList, FMX.StdActns, Overall_DM;
+  Datasnap.DBClient, System.Actions, FMX.ActnList, FMX.StdActns, Overall_DM,
+  Data.FMTBcd, Data.SqlExpr;
 
 type
   TLogInFrm = class(TForm)
     IDEdit: TEdit;
     PWEdit: TEdit;
     LogInBtn: TButton;
+    SqlServerMethod1: TSqlServerMethod;
     procedure LogInBtnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
@@ -35,26 +37,15 @@ end;
 
 procedure TLogInFrm.LogInBtnClick(Sender: TObject);
 begin
-  OverallDM.User_Log.Open;
-  OverallDM.User_Log.First;
-  while not OverallDM.User_Log.Eof do
-  begin
-    if IntToStr(OverallDM.User_Log.FieldByName('STUDENT_CODE').Value) = IDEdit.Text then
-    begin
-      if OverallDM.User_Log.FieldByName('PASSWORD').Value = PWEdit.Text then
-      begin
-        close;
-        Exit;
-      end
-      else
-      begin
-        ShowMessage('비밀번호가 틀립니다.');
-        Exit;
-      end;
-    end;
-    OverallDM.User_Log.Next;
-  end;
-  ShowMessage('등록되지 않은 학번(ID)입니다.');
-end;
+  SqlServerMethod1.Close;
+  SqlServerMethod1.Params[0].AsString := IDEdit.Text;
+  SqlServerMethod1.Params[1].AsString := PWEdit.Text;
+  SqlServerMethod1.ExecuteMethod;
 
+  case SqlServerMethod1.Params[2].AsInteger of
+    0: ShowMessage('등록되지 않은 학번(ID)입니다.');
+    1: ShowMessage('비밀번호가 올바르지 않습니다.');
+    2: close;
+  end;
+end;
 end.

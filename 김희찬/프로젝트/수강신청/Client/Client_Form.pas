@@ -22,7 +22,7 @@ implementation
 
 {$R *.fmx}
 
-uses LogIn_Form, LogIn_DM;
+uses LogIn_Form;
 
 procedure TClientFrm.FormCreate(Sender: TObject);
 var

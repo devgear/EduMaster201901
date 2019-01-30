@@ -38,4 +38,30 @@ object LogInFrm: TLogInFrm
     Text = #47196#44536#51064
     OnClick = LogInBtnClick
   end
+  object SqlServerMethod1: TSqlServerMethod
+    Params = <
+      item
+        DataType = ftWideString
+        Precision = 2000
+        Name = 'ID'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftWideString
+        Precision = 2000
+        Name = 'PW'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Precision = 4
+        Name = 'ReturnParameter'
+        ParamType = ptResult
+        Size = 4
+      end>
+    SQLConnection = OverallDM.SQLConnection1
+    ServerMethodName = 'TServerMethods1.LogInCheck'
+    Left = 40
+    Top = 56
+  end
 end

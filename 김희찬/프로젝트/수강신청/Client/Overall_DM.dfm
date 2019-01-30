@@ -24,12 +24,11 @@ object OverallDM: TOverallDM
         'Token=91d62ebb5b0d1b1b'
       'Filters={}')
     Connected = True
-    Left = 40
+    Left = 32
     Top = 40
     UniqueId = '{79909507-016C-4B6B-A775-A56B00D8D594}'
   end
   object Subject_Log: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'Subject_logProvider'
@@ -38,7 +37,6 @@ object OverallDM: TOverallDM
     Top = 136
   end
   object SignedUp: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'SignedUpProvider'
@@ -47,7 +45,6 @@ object OverallDM: TOverallDM
     Top = 136
   end
   object Basket: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'BasketProvider'

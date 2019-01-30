@@ -322,7 +322,6 @@
             <Form>LogInFrm</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="ClientClass.pas"/>
         <DCCReference Include="SignUp_Form.pas">
             <Form>SIgnUpFrm</Form>
             <FormType>fmx</FormType>
@@ -332,6 +331,7 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="ClientClass.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -871,7 +871,7 @@
                 <Platform value="Win64">True</Platform>
             </Platforms>
             <DataSnapProxyLookup>
-                <ClientClass>{99DCC9ED-A35D-4CC6-B837-DA9080D03BB5}</ClientClass>
+                <ClientClass>{79909507-016C-4B6B-A775-A56B00D8D594}</ClientClass>
             </DataSnapProxyLookup>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
