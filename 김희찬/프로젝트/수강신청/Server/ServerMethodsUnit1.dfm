@@ -120,14 +120,17 @@ object ServerMethods1: TServerMethods1
     end
   end
   object Subject_logProvider: TDataSetProvider
+    DataSet = Subject_Log
     Left = 56
     Top = 208
   end
   object BasketProvider: TDataSetProvider
+    DataSet = Basket
     Left = 128
     Top = 208
   end
   object SignedUpProvider: TDataSetProvider
+    DataSet = SignedUp
     Left = 200
     Top = 208
   end

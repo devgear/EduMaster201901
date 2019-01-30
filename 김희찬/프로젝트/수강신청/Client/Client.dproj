@@ -318,19 +318,19 @@
             <Form>ClientFrm</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="LogIn_DM.pas">
-            <Form>LogInDM</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="LogIn_Form.pas">
             <Form>LogInFrm</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="ClientClass.pas"/>
         <DCCReference Include="SignUp_Form.pas">
-            <Form>Form1</Form>
+            <Form>SIgnUpFrm</Form>
             <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="Overall_DM.pas">
+            <Form>OverallDM</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
