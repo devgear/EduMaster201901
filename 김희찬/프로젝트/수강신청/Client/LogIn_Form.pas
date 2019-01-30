@@ -25,7 +25,7 @@ type
 var
   LogInFrm: TLogInFrm;
 
-  ShowLogInDM: TLogInDM;
+  TempLogInDM: TLogInDM;
 
 implementation
 
@@ -33,24 +33,24 @@ implementation
 
 procedure TLogInFrm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  ShowLogInDM.Free;
+  TempLogInDM.Free;
   Action := TCloseAction.caFree;
 end;
 
 procedure TLogInFrm.FormCreate(Sender: TObject);
 begin
-  ShowLogInDM := TLogInDM.Create(LogInFrm);
-  //ShowLogInDM.
+  TempLogInDM := TLogInDM.Create(LogInFrm);
 end;
 
 procedure TLogInFrm.LogInBtnClick(Sender: TObject);
 begin
-  LogInDM.User_Log.First;
-  while not LogInDM.User_Log.Eof do
+  TempLogInDM.User_Log.Open;
+  TempLogInDM.User_Log.First;
+  while not TempLogInDM.User_Log.Eof do
   begin
-    if IntToStr(LogInDM.User_Log.FieldByName('STUDENT_CODE').Value) = IDEdit.Text then
+    if IntToStr(TempLogInDM.User_Log.FieldByName('STUDENT_CODE').Value) = IDEdit.Text then
     begin
-      if LogInDM.User_Log.FieldByName('PASSWORD').Value = PWEdit.Text then
+      if TempLogInDM.User_Log.FieldByName('PASSWORD').Value = PWEdit.Text then
       begin
         close;
         Exit;
@@ -61,7 +61,7 @@ begin
         Exit;
       end;
     end;
-    LogInDM.User_Log.Next;
+    TempLogInDM.User_Log.Next;
   end;
   ShowMessage('등록되지 않은 학번(ID)입니다.');
 end;
