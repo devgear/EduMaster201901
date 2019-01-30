@@ -24,12 +24,17 @@ type
     UserTableID: TWideStringField;
     UserTablePASSWORD: TWideStringField;
     UserTableNAME: TWideStringField;
-    FDQuery2: TFDQuery;
     ProductTable: TFDTable;
     ProductSource: TDataSource;
     ProductTableCODE: TWideStringField;
     ProductTableEXPLANATION: TWideStringField;
     ProductTableNAME: TWideStringField;
+    UserQueryUSERCODE: TWideStringField;
+    UserQuerySCHOOL: TWideStringField;
+    UserQueryPHONE: TWideStringField;
+    UserQueryID: TWideStringField;
+    UserQueryPASSWORD: TWideStringField;
+    UserQueryNAME: TWideStringField;
   private
     { Private declarations }
   public
@@ -44,5 +49,6 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
 
 end.

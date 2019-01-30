@@ -16,8 +16,8 @@ object DM: TDM
       'ConnectionDef=Project')
     Connected = True
     LoginPrompt = False
-    Left = 184
-    Top = 72
+    Left = 128
+    Top = 64
   end
   object UserTable: TFDTable
     Active = True
@@ -82,14 +82,44 @@ object DM: TDM
       'SELECT * FROM USERTABLE')
     Left = 224
     Top = 136
-  end
-  object FDQuery2: TFDQuery
-    Connection = FDConnection1
-    Left = 224
-    Top = 192
+    object UserQueryUSERCODE: TWideStringField
+      FieldName = 'USERCODE'
+      Origin = 'USERCODE'
+      Required = True
+      Size = 40
+    end
+    object UserQuerySCHOOL: TWideStringField
+      FieldName = 'SCHOOL'
+      Origin = 'SCHOOL'
+      Required = True
+      Size = 80
+    end
+    object UserQueryPHONE: TWideStringField
+      FieldName = 'PHONE'
+      Origin = 'PHONE'
+      Required = True
+      Size = 80
+    end
+    object UserQueryID: TWideStringField
+      FieldName = 'ID'
+      Origin = 'ID'
+      Required = True
+      Size = 200
+    end
+    object UserQueryPASSWORD: TWideStringField
+      FieldName = 'PASSWORD'
+      Origin = '"PASSWORD"'
+      Required = True
+      Size = 200
+    end
+    object UserQueryNAME: TWideStringField
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      Required = True
+      Size = 40
+    end
   end
   object ProductTable: TFDTable
-    Active = True
     IndexFieldNames = 'CODE'
     Connection = FDConnection1
     UpdateOptions.UpdateTableName = 'PRODUCTTABLE'

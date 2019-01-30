@@ -11,6 +11,7 @@ object frmUser: TfrmUser
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object pnlHeader: TPanel
@@ -53,7 +54,6 @@ object frmUser: TfrmUser
     Height = 313
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 451
     object Splitter1: TSplitter
       Left = 453
       Top = 1
@@ -70,7 +70,6 @@ object frmUser: TfrmUser
       Height = 311
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 449
       object pnlGridHeader: TPanel
         Left = 1
         Top = 1
@@ -92,28 +91,8 @@ object frmUser: TfrmUser
           Height = 21
           TabOrder = 0
         end
-        object chkSearchName: TCheckBox
-          Left = 177
-          Top = 13
-          Width = 48
-          Height = 17
-          Caption = #51060#47492
-          Checked = True
-          State = cbChecked
-          TabOrder = 1
-        end
-        object chkSearchPhone: TCheckBox
-          Left = 230
-          Top = 13
-          Width = 97
-          Height = 17
-          Caption = #51204#54868#48264#54840
-          Checked = True
-          State = cbChecked
-          TabOrder = 2
-        end
       end
-      object grdList: TDBGrid
+      object DBGrid1: TDBGrid
         Left = 1
         Top = 42
         Width = 450
@@ -130,58 +109,44 @@ object frmUser: TfrmUser
         Columns = <
           item
             Expanded = False
-            FieldName = 'USER_NAME'
+            FieldName = 'USERCODE'
+            Title.Caption = #53076#46300#47749
+            Width = 50
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NAME'
             Title.Caption = #51060#47492
+            Width = 50
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'SCHOOL'
+            Title.Caption = #54617#44368
+            Width = 110
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PHONE'
+            Title.Caption = #50672#46973#52376
             Width = 100
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'USER_BIRTH'
-            Title.Caption = #49373#45380#50900#51068
+            FieldName = 'ID'
+            Title.Caption = #50500#51060#46356
+            Width = 80
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'USER_SEX_STR'
-            Title.Caption = #49457#48324
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'USER_PHONE'
-            Title.Caption = #51204#54868#48264#54840
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'USER_MAIL'
-            Title.Caption = #47700#51068#51452#49548
-            Width = 120
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'USER_REG_DATE'
-            Title.Caption = #46321#47197#51068#49884
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'USER_OUT'
-            Title.Caption = #53448#53748#50668#48512
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'USER_OUT_DATE'
-            Title.Caption = #53448#53748#51068#49884
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'USER_RENT_COUNT'
-            Title.Caption = #45824#50668#44428#49688
+            FieldName = 'PASSWORD'
+            Title.Caption = #48708#48128#48264#54840
+            Width = 80
             Visible = True
           end>
       end
@@ -193,8 +158,6 @@ object frmUser: TfrmUser
       Height = 311
       Align = alRight
       TabOrder = 1
-      ExplicitLeft = 458
-      ExplicitTop = -3
       DesignSize = (
         327
         311)
@@ -356,7 +319,7 @@ object frmUser: TfrmUser
   end
   object DataSource1: TDataSource
     DataSet = DM.UserQuery
-    Left = 192
-    Top = 216
+    Left = 480
+    Top = 16
   end
 end

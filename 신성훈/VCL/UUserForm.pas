@@ -18,11 +18,8 @@ type
     pnlInput: TPanel;
     Splitter1: TSplitter;
     pnlGridHeader: TPanel;
-    grdList: TDBGrid;
     Label1: TLabel;
     edtSearch: TEdit;
-    chkSearchName: TCheckBox;
-    chkSearchPhone: TCheckBox;
     Label4: TLabel;
     edtPhone: TDBEdit;
     Label5: TLabel;
@@ -42,7 +39,9 @@ type
     Label7: TLabel;
     btnAdd: TButton;
     DataSource1: TDataSource;
+    DBGrid1: TDBGrid;
     procedure btnAddClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     function DuplicatedUser: Boolean;
@@ -74,6 +73,11 @@ end;
 function TfrmUser.DuplicatedUser: Boolean;
 begin
 
+end;
+
+procedure TfrmUser.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  frmUser.Free;
 end;
 
 end.

@@ -36,7 +36,7 @@ object MainForm: TMainForm
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object btnClose: TButton
+    object BtnClose: TButton
       Left = 761
       Top = 7
       Width = 75
@@ -44,7 +44,6 @@ object MainForm: TMainForm
       Anchors = [akTop, akRight]
       Caption = #45803#44592
       TabOrder = 0
-      OnClick = btnCloseClick
     end
   end
   object pnlContent: TPanel
@@ -75,15 +74,11 @@ object MainForm: TMainForm
         Top = 1
         Width = 554
         Height = 514
-        ActivePage = TabSheet2
+        ActivePage = TabSheet1
         Align = alClient
         TabOrder = 0
         object TabSheet1: TTabSheet
           Caption = #54924#50896#51221#48372
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel1: TPanel
             Left = 0
             Top = 0
@@ -91,8 +86,6 @@ object MainForm: TMainForm
             Height = 41
             Align = alTop
             TabOrder = 0
-            ExplicitLeft = 2
-            ExplicitTop = -6
             object Label12: TLabel
               Left = 6
               Top = 19
@@ -108,52 +101,24 @@ object MainForm: TMainForm
               TabOrder = 0
             end
           end
-          object grdList: TDBGrid
+          object GridUser: TStringGrid
+            Tag = 6
             Left = 0
             Top = 41
             Width = 546
             Height = 445
             Align = alClient
-            DataSource = DM.UserSource
-            Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            ColCount = 6
+            FixedCols = 0
+            RowCount = 10
             TabOrder = 1
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -11
-            TitleFont.Name = 'Tahoma'
-            TitleFont.Style = []
-            Columns = <
-              item
-                Expanded = False
-                FieldName = 'USERCODE'
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'NAME'
-                Width = 54
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'SCHOOL'
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'PHONE'
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'ID'
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'PASSWORD'
-                Visible = True
-              end>
+            ColWidths = (
+              64
+              64
+              64
+              64
+              64
+              64)
           end
         end
         object TabSheet2: TTabSheet
@@ -181,7 +146,7 @@ object MainForm: TMainForm
               TabOrder = 0
             end
           end
-          object DBGrid1: TDBGrid
+          object GridPr: TDBGrid
             Left = 0
             Top = 41
             Width = 546
@@ -233,7 +198,7 @@ object MainForm: TMainForm
           208)
         object Label2: TLabel
           Left = 3
-          Top = 119
+          Top = 155
           Width = 11
           Height = 13
           Caption = 'ID'
@@ -246,22 +211,22 @@ object MainForm: TMainForm
           Caption = #54924#50896#53076#46300
         end
         object Label4: TLabel
-          Left = 3
-          Top = 165
+          Left = 171
+          Top = 115
           Width = 33
           Height = 13
           Caption = #50672#46973#52376
         end
         object Label8: TLabel
-          Left = 103
-          Top = 165
+          Left = 3
+          Top = 115
           Width = 33
           Height = 13
           Caption = #54617#44368#47749
         end
         object Label9: TLabel
           Left = 103
-          Top = 119
+          Top = 155
           Width = 48
           Height = 13
           Caption = 'PassWord'
@@ -273,26 +238,25 @@ object MainForm: TMainForm
           Height = 13
           Caption = #51060#47492
         end
-        object btnFindUser: TButton
+        object BtnCodeFind: TButton
           Left = 103
           Top = 47
           Width = 162
           Height = 25
           Caption = #54924#50896#53076#46300' '#44160#49353
           TabOrder = 0
-          OnClick = btnFindUserClick
         end
-        object edtUserName: TDBEdit
+        object EdtID: TDBEdit
           Left = 3
-          Top = 138
+          Top = 174
           Width = 94
           Height = 21
           Anchors = [akLeft, akTop, akRight]
           DataField = 'ID'
           DataSource = DM.UserSource
-          TabOrder = 1
+          TabOrder = 5
         end
-        object edtUserBirth: TDBEdit
+        object EdtUserCode: TDBEdit
           Left = 3
           Top = 49
           Width = 94
@@ -300,11 +264,11 @@ object MainForm: TMainForm
           Anchors = [akLeft, akTop, akRight]
           DataField = 'USERCODE'
           DataSource = DM.UserSource
-          TabOrder = 2
+          TabOrder = 1
         end
-        object edtUserPhone: TDBEdit
-          Left = 3
-          Top = 181
+        object EdtPhone: TDBEdit
+          Left = 171
+          Top = 132
           Width = 94
           Height = 21
           Anchors = [akLeft, akTop, akRight]
@@ -312,9 +276,9 @@ object MainForm: TMainForm
           DataSource = DM.UserSource
           TabOrder = 3
         end
-        object DBEdit1: TDBEdit
-          Left = 103
-          Top = 181
+        object EdtSchool: TDBEdit
+          Left = 3
+          Top = 132
           Width = 162
           Height = 21
           Anchors = [akLeft, akTop, akRight]
@@ -322,17 +286,17 @@ object MainForm: TMainForm
           DataSource = DM.UserSource
           TabOrder = 4
         end
-        object DBEdit2: TDBEdit
+        object EdtPassword: TDBEdit
           Left = 103
-          Top = 138
+          Top = 174
           Width = 162
           Height = 21
           Anchors = [akLeft, akTop, akRight]
           DataField = 'PASSWORD'
           DataSource = DM.UserSource
-          TabOrder = 5
+          TabOrder = 6
         end
-        object DBEdit4: TDBEdit
+        object EdtUserName: TDBEdit
           Left = 3
           Top = 92
           Width = 94
@@ -340,7 +304,7 @@ object MainForm: TMainForm
           Anchors = [akLeft, akTop, akRight]
           DataField = 'NAME'
           DataSource = DM.UserSource
-          TabOrder = 6
+          TabOrder = 2
         end
       end
       object GroupBox2: TGroupBox
@@ -350,7 +314,7 @@ object MainForm: TMainForm
         Height = 193
         Anchors = [akLeft, akTop, akRight]
         Caption = #49345#54408' '#51221#48372
-        TabOrder = 1
+        TabOrder = 6
         DesignSize = (
           275
           193)
@@ -362,8 +326,8 @@ object MainForm: TMainForm
           Caption = #49345#54408#47749
         end
         object Label7: TLabel
-          Left = 159
-          Top = 32
+          Left = 152
+          Top = 8
           Width = 55
           Height = 13
           Caption = #49345#54408#51060#48120#51648
@@ -383,12 +347,12 @@ object MainForm: TMainForm
           Caption = #48516#47448
         end
         object GroupBox3: TGroupBox
-          Left = 160
-          Top = 48
+          Left = 153
+          Top = 24
           Width = 112
           Height = 137
           TabOrder = 0
-          object imgBook: TImage
+          object ImgPr: TImage
             Left = 2
             Top = 3
             Width = 108
@@ -397,18 +361,17 @@ object MainForm: TMainForm
             Stretch = True
           end
         end
-        object btnFindBook: TButton
+        object BtnPrFind: TButton
           Left = 3
-          Top = 160
+          Top = 165
           Width = 142
           Height = 25
           Caption = #49345#54408' '#44160#49353
-          TabOrder = 1
-          OnClick = btnFindBookClick
+          TabOrder = 4
         end
-        object edtBookTitle: TDBEdit
+        object EdtPrName: TDBEdit
           Left = 3
-          Top = 82
+          Top = 80
           Width = 142
           Height = 21
           Anchors = [akLeft, akTop, akRight]
@@ -416,81 +379,147 @@ object MainForm: TMainForm
           DataSource = DM.ProductSource
           TabOrder = 2
         end
-        object DBEdit3: TDBEdit
-          Left = 3
+        object EdtPrCode: TDBEdit
+          Left = 5
           Top = 36
           Width = 142
           Height = 21
           Anchors = [akLeft, akTop, akRight]
           DataField = 'CODE'
           DataSource = DM.ProductSource
-          TabOrder = 3
+          TabOrder = 1
         end
         object DBEdit5: TDBEdit
-          Left = 3
+          Left = 5
           Top = 126
           Width = 142
           Height = 21
           Anchors = [akLeft, akTop, akRight]
           DataField = 'NAME'
           DataSource = DM.ProductSource
-          TabOrder = 4
+          TabOrder = 3
         end
       end
-      object btnRent: TButton
-        Left = 6
+      object BtnPrRent: TButton
+        Left = 87
         Top = 480
         Width = 75
         Height = 25
         Caption = #49345#54408#49688#51221
-        TabOrder = 2
-        OnClick = btnRentClick
+        TabOrder = 4
       end
-      object btnReturn: TButton
-        Left = 87
+      object BtnPrNew: TButton
+        Left = 6
         Top = 480
         Width = 75
         Height = 25
         Caption = #49345#54408#46321#47197
         TabOrder = 3
-        OnClick = btnReturnClick
       end
-      object btnCancel: TButton
+      object BtnPrCancel: TButton
+        Left = 165
+        Top = 446
+        Width = 108
+        Height = 25
+        Anchors = [akTop, akRight]
+        Caption = #49325#51228
+        TabOrder = 7
+      end
+      object BtnUserNew: TButton
+        Left = 125
+        Top = 233
+        Width = 75
+        Height = 25
+        Caption = #49888#44508#46321#47197
+        TabOrder = 1
+        OnClick = BtnUserNewClick
+      end
+      object BtnUserSave: TButton
+        Left = 206
+        Top = 233
+        Width = 75
+        Height = 25
+        Caption = #51200#51109
+        TabOrder = 2
+        OnClick = BtnUserSaveClick
+      end
+      object BtnPrSave: TButton
         Left = 206
         Top = 480
         Width = 75
         Height = 25
-        Anchors = [akTop, akRight]
-        Caption = #49325#51228
-        TabOrder = 4
-        OnClick = btnCancelClick
+        Caption = #49345#54408#51200#51109
+        TabOrder = 5
       end
-      object Button1: TButton
+      object BtnUserRent: TButton
+        Left = 197
+        Top = 97
+        Width = 75
+        Height = 25
+        Caption = #49688#51221#50756#47308
+        TabOrder = 8
+        OnClick = BtnUserRentClick
+      end
+      object BtnUserDelete: TButton
         Left = 6
         Top = 233
         Width = 75
         Height = 25
-        Caption = #54924#50896#46321#47197
-        TabOrder = 5
+        Caption = #54924#50896#51221#48372#49325#51228
+        TabOrder = 9
+        OnClick = BtnUserDeleteClick
       end
-      object Button2: TButton
-        Left = 87
-        Top = 233
+      object BtnCancel: TButton
+        Left = 109
+        Top = 97
         Width = 75
         Height = 25
-        Caption = #54924#50896#49688#51221
-        TabOrder = 6
-      end
-      object Button3: TButton
-        Left = 206
-        Top = 233
-        Width = 75
-        Height = 25
-        Anchors = [akTop, akRight]
-        Caption = #51200#51109
-        TabOrder = 7
-        OnClick = btnCancelClick
+        Caption = #52712#49548
+        TabOrder = 10
+        OnClick = BtnCancelClick
       end
     end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSource = MainUserSource
+    ScopeMappings = <>
+    Left = 552
+    Top = 8
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 476
+    Top = 5
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = GridUser
+      Columns = <
+        item
+          MemberName = 'USERCODE'
+        end
+        item
+          MemberName = 'NAME'
+        end
+        item
+          MemberName = 'SCHOOL'
+        end
+        item
+          MemberName = 'PHONE'
+        end
+        item
+          MemberName = 'ID'
+        end
+        item
+          MemberName = 'PASSWORD'
+        end>
+    end
+  end
+  object MainUserSource: TDataSource
+    DataSet = DM.UserTable
+    OnStateChange = MainUserSourceStateChange
+    Left = 624
+    Top = 8
   end
 end
