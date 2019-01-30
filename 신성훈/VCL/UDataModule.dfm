@@ -20,7 +20,6 @@ object DM: TDM
     Top = 64
   end
   object UserTable: TFDTable
-    Active = True
     IndexFieldNames = 'ID'
     Connection = FDConnection1
     UpdateOptions.UpdateTableName = 'USERTABLE'
@@ -80,12 +79,12 @@ object DM: TDM
     Connection = FDConnection1
     SQL.Strings = (
       'SELECT * FROM USERTABLE')
-    Left = 224
+    Left = 200
     Top = 136
     object UserQueryUSERCODE: TWideStringField
       FieldName = 'USERCODE'
       Origin = 'USERCODE'
-      Required = True
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Size = 40
     end
     object UserQuerySCHOOL: TWideStringField
@@ -106,9 +105,9 @@ object DM: TDM
       Required = True
       Size = 200
     end
-    object UserQueryPASSWORD: TWideStringField
-      FieldName = 'PASSWORD'
-      Origin = '"PASSWORD"'
+    object UserQueryPW: TWideStringField
+      FieldName = 'PW'
+      Origin = 'PW'
       Required = True
       Size = 200
     end

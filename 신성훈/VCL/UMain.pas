@@ -9,7 +9,7 @@ uses
   Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls,
   Data.Bind.EngExt, Vcl.Bind.DBEngExt, Vcl.Bind.Grid, System.Rtti,
   System.Bindings.Outputs, Vcl.Bind.Editors, Data.Bind.Components,
-  Data.Bind.Grid, Data.Bind.DBScope;
+  Data.Bind.Grid, Data.Bind.DBScope, FireDAC.Stan.Error;
 
 type
   TMainForm = class(TForm)
@@ -22,11 +22,8 @@ type
     Splitter1: TSplitter;
     grpUser: TGroupBox;
     GroupBox2: TGroupBox;
-    BtnCodeFind: TButton;
     Label2: TLabel;
     EdtID: TDBEdit;
-    EdtUserCode: TDBEdit;
-    Label3: TLabel;
     EdtPhone: TDBEdit;
     Label4: TLabel;
     GroupBox3: TGroupBox;
@@ -40,7 +37,7 @@ type
     BtnPrCancel: TButton;
     Label8: TLabel;
     EdtSchool: TDBEdit;
-    EdtPassword: TDBEdit;
+    EdtPW: TDBEdit;
     Label9: TLabel;
     EdtPrCode: TDBEdit;
     Label10: TLabel;
@@ -55,26 +52,22 @@ type
     TabSheet2: TTabSheet;
     Panel1: TPanel;
     Panel2: TPanel;
-    GridPr: TDBGrid;
     Edit1: TEdit;
     Label12: TLabel;
     Edit2: TEdit;
     Label1: TLabel;
-    GridUser: TStringGrid;
-    BindSourceDB1: TBindSourceDB;
-    BindingsList1: TBindingsList;
-    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
-    MainUserSource: TDataSource;
     BtnPrSave: TButton;
-    BtnUserRent: TButton;
     BtnUserDelete: TButton;
     BtnCancel: TButton;
+    MainUserSource: TDataSource;
+    DBGrid1: TDBGrid;
     procedure BtnUserNewClick(Sender: TObject);
     procedure BtnUserSaveClick(Sender: TObject);
-    procedure MainUserSourceStateChange(Sender: TObject);
     procedure BtnUserRentClick(Sender: TObject);
     procedure BtnUserDeleteClick(Sender: TObject);
     procedure BtnCancelClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure MainUserSourceStateChange(Sender: TObject);
 
   private
     { Private declarations }
@@ -94,7 +87,7 @@ uses
 
 procedure TMainForm.BtnCancelClick(Sender: TObject);
 begin
-  DM.UserTable.Cancel;
+  DM.UserQuery.Cancel;
 end;
 
 
@@ -102,7 +95,17 @@ end;
 
 procedure TMainForm.BtnUserDeleteClick(Sender: TObject);
 begin
-  DM.UserTable.Delete;         //되감기 기능이 됬으면// Grid상태 변화 시키면안됨
+  if MessageDlg('정말 삭제?',mtconfirmation,[mbYes,mbNo] ,0) = mrYes then
+     try
+     DM.UserQuery.Delete;
+     except
+     on e:eFDDBengineException do
+        if e.Kind = ekobjnotExists then
+           showmessage('그런 데이터 없음')
+        else showmessage(inttostr(e.Errors[1].ErrorCode));
+
+
+     end;
 end;
 
 
@@ -111,29 +114,11 @@ end;
 
 procedure TMainForm.BtnUserNewClick(Sender: TObject);
 begin
-  DM.UserTable.Append;
-  edtusercode.SetFocus;
+  DM.UserQuery.Append;
+  EdtUserName.SetFocus;
 end;
 
 
-
-
-
-
-
-procedure TMainForm.MainUserSourceStateChange(Sender: TObject);
-var
-  State : TDataSetState;
-begin
-  State := dm.UserTable.State;
-
-  BtnUserNew.Enabled := (State = dsBrowse);             // 활성화
-  BtnUserDelete.Enabled := (State = dsBrowse);          //
-
-  BtnUserRent.Enabled := (State <> dsBrowse);           //
-  BtnUserSave.Enabled := (State <> dsBrowse);           // 비활성화
-  BtnCancel.Enabled := (State <> dsBrowse);             //
-end;
 
 
 
@@ -142,8 +127,8 @@ end;
 procedure TMainForm.BtnUserRentClick(Sender: TObject);
 begin
 
-  DM.UserTable.Post;               // DBEdit와 Table 정보가 같으면 에러
-  DM.UserTable.Refresh;            // 도서대여 259Line 참고
+  DM.UserQuery.Post;               // DBEdit와 Table 정보가 같으면 에러
+  DM.UserQuery.Refresh;            // 도서대여 259Line 참고
 end;
 
 
@@ -160,14 +145,6 @@ begin
 //        DM.UserTable.Refresh;
 //      end;                             //신규등록 > 입력없이 > 저장 = 에러
 
-
-  if EdtUserCode.Text = '' then
-  begin
-    Showmessage('코드명을 입력세요.');
-    EdtUserName.SetFocus;
-    Exit
-  end;
-
   if EdtID.Text = '' then
   begin
     Showmessage('아이디을 입력세요.');
@@ -175,10 +152,10 @@ begin
     Exit
   end;
 
-    if EdtPassword.Text = '' then
+    if EdtPW.Text = '' then
   begin
     Showmessage('비밀번호을 입력세요.');
-    EdtPassword.SetFocus;
+    EdtPW.SetFocus;
     Exit
   end;
 
@@ -203,9 +180,31 @@ begin
     Exit
   end;
 
-  DM.UserTable.Post;
-  DM.UserTable.Refresh;
+  DM.UserQuery.Post;
+  DM.UserQuery.Refresh;
 
+end;
+
+procedure TMainForm.Button1Click(Sender: TObject);
+begin
+    EdtID.Text := '';
+    EdtPW.Text := '';
+    EdtPhone.Text := '';
+    EdtSchool.Text := '';
+    EdtUserName.Text := '';
+end;
+
+procedure TMainForm.MainUserSourceStateChange(Sender: TObject);
+var
+  State : TDataSetState;
+begin
+  State := dm.UserQuery.State;
+
+  BtnUserNew.Enabled := (State = dsBrowse);             // 활성화
+  BtnUserDelete.Enabled := (State = dsBrowse);          //
+
+  BtnUserSave.Enabled := (State <> dsBrowse);           // 비활성화
+  BtnCancel.Enabled := (State <> dsBrowse);             //
 end;
 
 end.

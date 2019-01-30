@@ -33,7 +33,7 @@ type
     UserQuerySCHOOL: TWideStringField;
     UserQueryPHONE: TWideStringField;
     UserQueryID: TWideStringField;
-    UserQueryPASSWORD: TWideStringField;
+    UserQueryPW: TWideStringField;
     UserQueryNAME: TWideStringField;
   private
     { Private declarations }
