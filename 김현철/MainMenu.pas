@@ -16,7 +16,6 @@ type
     edtPass: TEdit;
     Label1: TLabel;
     btnPass: TButton;
-    FDQuery1: TFDQuery;
     Panel1: TPanel;
     btnReservation: TButton;
     btnEvent: TButton;
@@ -61,7 +60,7 @@ end;
 
 procedure TfrmMenu.SetAllButton;
 begin
-    with FDQuery1 do
+    with DataModule1.FDQueryManager do
     begin
       Close;
       ParamByName('pass').AsString := edtPass.Text;

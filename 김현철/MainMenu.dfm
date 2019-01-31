@@ -49,7 +49,6 @@ object frmMenu: TfrmMenu
       Width = 122
       Height = 41
       Caption = #50696#50557#44288#47532
-      Enabled = False
       TabOrder = 0
       OnClick = btnReservationClick
     end
@@ -167,19 +166,5 @@ object frmMenu: TfrmMenu
       Enabled = False
       TabOrder = 12
     end
-  end
-  object FDQuery1: TFDQuery
-    Connection = DataModule1.FDConnection1
-    SQL.Strings = (
-      'SELECT * '
-      'FROM manager'
-      'WHERE pass = :pass')
-    Left = 216
-    Top = 280
-    ParamData = <
-      item
-        Name = 'PASS'
-        ParamType = ptInput
-      end>
   end
 end
