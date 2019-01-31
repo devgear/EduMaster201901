@@ -22,25 +22,23 @@ type
     Subject_logProvider: TDataSetProvider;
     BasketProvider: TDataSetProvider;
     SignedUpProvider: TDataSetProvider;
-    User_LogProvider: TDataSetProvider;
+    qryLogInProvider: TDataSetProvider;
     BasketSUBJECT_CODE: TIntegerField;
     BasketSTUDENT_CODE: TIntegerField;
     SignedUpSUBJECT_CODE: TIntegerField;
     SignedUpSTUDENT_CODE: TIntegerField;
-    User_Log: TFDQuery;
     qryLogIn: TFDQuery;
-    Subject_LogTYPE: TWideStringField;
-    Subject_LogCODE: TIntegerField;
-    Subject_LogTITLE: TWideStringField;
-    Subject_LogLECTURER: TWideStringField;
-    Subject_LogTIME: TWideStringField;
-    Subject_LogCLASSROOM: TWideStringField;
+    Subject_LogTYPE: TIntegerField;
+    Subject_LogSUBJECT_CODE: TIntegerField;
+    Subject_LogTITLE: TStringField;
+    Subject_LogLECTURER: TStringField;
+    Subject_LogTIME: TStringField;
+    Subject_LogCLASSROOM: TStringField;
     Subject_LogCREDIT: TIntegerField;
     Subject_LogGRADE: TIntegerField;
     Subject_LogCAPACITY: TIntegerField;
-    Subject_LogDETAIL: TWideStringField;
-    User_LogSTUDENT_CODE: TStringField;
-    User_LogPASSWORD: TStringField;
+    Subject_LogSTUDENTNUM: TIntegerField;
+    Subject_LogDETAIL: TStringField;
   private
     { Private declarations }
   public
@@ -72,9 +70,9 @@ begin
   qryLogIn.SQL.Text := Msg;
   qryLogIn.ParamByName('STUDENT_CODE').AsString := ID;
   qryLogIn.Open;
-  if qryLogIn.Fields[0].AsString <> ID then //등록되지 않은 ID
+  if qryLogIn.Fields[1].AsString <> ID then //등록되지 않은 ID
     Result := LOGIN_CHECK_NOTFOUND_ID
-  else if qryLogIn.Fields[1].AsString <> PW then  //비밀번호 틀림
+  else if qryLogIn.Fields[2].AsString <> PW then  //비밀번호 틀림
     Result := LOGIN_CHECK_INCORRECT_PW
   else
     Result := LOGIN_CHECK_OK;

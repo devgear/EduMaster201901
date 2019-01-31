@@ -4,6 +4,7 @@ object SIgnUpFrm: TSIgnUpFrm
   Caption = 'Form1'
   ClientHeight = 480
   ClientWidth = 433
+  Position = Designed
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]

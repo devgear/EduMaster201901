@@ -56,10 +56,9 @@ object OverallDM: TOverallDM
     Top = 136
   end
   object User_Log: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
-    ProviderName = 'User_LogProvider'
+    ProviderName = 'qryLogInProvider'
     RemoteServer = DSProviderConnection1
     Left = 384
     Top = 136

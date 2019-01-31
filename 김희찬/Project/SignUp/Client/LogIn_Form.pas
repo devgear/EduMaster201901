@@ -47,7 +47,11 @@ begin
   case SqlServerMethod1.Params[2].AsInteger of
     LOGIN_CHECK_NOTFOUND_ID: ShowMessage('등록되지 않은 학번(ID)입니다.');
     LOGIN_CHECK_INCORRECT_PW: ShowMessage('비밀번호가 올바르지 않습니다.');
-    LOGIN_CHECK_OK: close;
+    LOGIN_CHECK_OK:
+    begin
+      OverallDM.User_Log.Open;
+      Close;
+    end;
   end;
 end;
 end.

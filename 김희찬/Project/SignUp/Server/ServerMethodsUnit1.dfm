@@ -21,40 +21,37 @@ object ServerMethods1: TServerMethods1
       'select * from SUBJECT_LOG')
     Left = 56
     Top = 144
-    object Subject_LogTYPE: TWideStringField
+    object Subject_LogTYPE: TIntegerField
       FieldName = 'TYPE'
       Origin = '"TYPE"'
       Required = True
-      Size = 80
     end
-    object Subject_LogCODE: TIntegerField
-      FieldName = 'CODE'
-      Origin = 'CODE'
+    object Subject_LogSUBJECT_CODE: TIntegerField
+      FieldName = 'SUBJECT_CODE'
+      Origin = 'SUBJECT_CODE'
       Required = True
     end
-    object Subject_LogTITLE: TWideStringField
+    object Subject_LogTITLE: TStringField
       FieldName = 'TITLE'
       Origin = 'TITLE'
       Required = True
-      Size = 200
+      Size = 50
     end
-    object Subject_LogLECTURER: TWideStringField
+    object Subject_LogLECTURER: TStringField
       FieldName = 'LECTURER'
       Origin = 'LECTURER'
       Required = True
-      Size = 120
+      Size = 30
     end
-    object Subject_LogTIME: TWideStringField
+    object Subject_LogTIME: TStringField
       FieldName = 'TIME'
       Origin = '"TIME"'
-      Required = True
-      Size = 120
+      Size = 30
     end
-    object Subject_LogCLASSROOM: TWideStringField
+    object Subject_LogCLASSROOM: TStringField
       FieldName = 'CLASSROOM'
       Origin = 'CLASSROOM'
-      Required = True
-      Size = 120
+      Size = 30
     end
     object Subject_LogCREDIT: TIntegerField
       FieldName = 'CREDIT'
@@ -70,10 +67,15 @@ object ServerMethods1: TServerMethods1
       Origin = 'CAPACITY'
       Required = True
     end
-    object Subject_LogDETAIL: TWideStringField
+    object Subject_LogSTUDENTNUM: TIntegerField
+      FieldName = 'STUDENTNUM'
+      Origin = 'STUDENTNUM'
+      Required = True
+    end
+    object Subject_LogDETAIL: TStringField
       FieldName = 'DETAIL'
       Origin = 'DETAIL'
-      Size = 400
+      Size = 200
     end
   end
   object Basket: TFDQuery
@@ -125,31 +127,14 @@ object ServerMethods1: TServerMethods1
     Left = 200
     Top = 208
   end
-  object User_LogProvider: TDataSetProvider
-    DataSet = User_Log
-    Left = 272
+  object qryLogInProvider: TDataSetProvider
+    DataSet = qryLogIn
+    Left = 384
     Top = 208
-  end
-  object User_Log: TFDQuery
-    Connection = FDConnection1
-    SQL.Strings = (
-      'select * from USER_LOG')
-    Left = 272
-    Top = 144
-    object User_LogSTUDENT_CODE: TStringField
-      FieldName = 'STUDENT_CODE'
-      Origin = 'STUDENT_CODE'
-      Required = True
-    end
-    object User_LogPASSWORD: TStringField
-      FieldName = 'PASSWORD'
-      Origin = '"PASSWORD"'
-      Required = True
-    end
   end
   object qryLogIn: TFDQuery
     Connection = FDConnection1
     Left = 384
-    Top = 96
+    Top = 144
   end
 end

@@ -5,11 +5,17 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  FMX.Controls.Presentation, FMX.StdCtrls;
+  FMX.Controls.Presentation, FMX.StdCtrls, System.Rtti,
+  System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.EngExt,
+  Fmx.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope, FMX.Edit;
 
 type
   TClientFrm = class(TForm)
     Button1: TButton;
+    Edit1: TEdit;
+    BindSourceDB1: TBindSourceDB;
+    BindingsList1: TBindingsList;
+    LinkControlToField1: TLinkControlToField;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
   private
@@ -25,7 +31,7 @@ implementation
 
 {$R *.fmx}
 
-uses LogIn_Form, SignUp_Form;
+uses LogIn_Form, SignUp_Form, Overall_DM;
 
 procedure TClientFrm.Button1Click(Sender: TObject);
 var
