@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 2019-01-30 오후 10:01:28
+// 2019-01-31 오전 2:46:04
 //
 
 unit UAdminClass;
@@ -25,7 +25,7 @@ type
     function ReverseString(Value: string): string;
     function DupChk(ABizNum: string): Integer;
     function SignUp(ABizNum: string; APw: string; AName: string; AAddr: string): Boolean;
-    function SignIn(ABizNum: string; APw: string): Boolean;
+    function SignIn(ABizNum: string; APw: string): Integer;
   end;
 
 implementation
@@ -89,7 +89,7 @@ begin
   Result := FSignUpCommand.Parameters[4].Value.GetBoolean;
 end;
 
-function TServerMethods1Client.SignIn(ABizNum: string; APw: string): Boolean;
+function TServerMethods1Client.SignIn(ABizNum: string; APw: string): Integer;
 begin
   if FSignInCommand = nil then
   begin
@@ -101,7 +101,7 @@ begin
   FSignInCommand.Parameters[0].Value.SetWideString(ABizNum);
   FSignInCommand.Parameters[1].Value.SetWideString(APw);
   FSignInCommand.ExecuteUpdate;
-  Result := FSignInCommand.Parameters[2].Value.GetBoolean;
+  Result := FSignInCommand.Parameters[2].Value.GetInt32;
 end;
 
 constructor TServerMethods1Client.Create(ADBXConnection: TDBXConnection);

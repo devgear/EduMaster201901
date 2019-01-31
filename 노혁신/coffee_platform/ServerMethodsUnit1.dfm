@@ -7,7 +7,7 @@ object ServerMethods1: TServerMethods1
       'ConnectionDef=Coffee')
     Connected = True
     LoginPrompt = False
-    Left = 24
+    Left = 40
     Top = 16
   end
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
@@ -19,20 +19,6 @@ object ServerMethods1: TServerMethods1
     Left = 530
     Top = 64
   end
-  object Tb_Biz: TFDTable
-    Active = True
-    IndexFieldNames = 'BIZ_NUM'
-    Connection = FDConnection1
-    UpdateOptions.UpdateTableName = 'TB_BIZ'
-    TableName = 'TB_BIZ'
-    Left = 24
-    Top = 72
-  end
-  object Tb_BizProvider: TDataSetProvider
-    DataSet = Tb_Biz
-    Left = 24
-    Top = 128
-  end
   object SignUpQuery: TFDQuery
     ConnectionName = 'Coffee'
     SQL.Strings = (
@@ -42,8 +28,8 @@ object ServerMethods1: TServerMethods1
       ''
       ''
       '')
-    Left = 288
-    Top = 72
+    Left = 128
+    Top = 16
     ParamData = <
       item
         Name = 'BIZ_NUM'
@@ -71,27 +57,13 @@ object ServerMethods1: TServerMethods1
         Size = 100
       end>
   end
-  object Tb_Biz_Info: TFDTable
-    Active = True
-    IndexFieldNames = 'BIZ_CODE'
-    Connection = FDConnection1
-    UpdateOptions.UpdateTableName = 'TB_BIZ_INFO'
-    TableName = 'TB_BIZ_INFO'
-    Left = 112
-    Top = 72
-  end
-  object Tb_Biz_InfoProvider: TDataSetProvider
-    DataSet = Tb_Biz_Info
-    Left = 112
-    Top = 128
-  end
   object DupChkQuery: TFDQuery
     ConnectionName = 'Coffee'
     SQL.Strings = (
       'SELECT COUNT(BIZ_CODE) AS DUPCNT FROM TB_BIZ'
       'WHERE BIZ_NUM = :BIZ_NUM')
-    Left = 208
-    Top = 72
+    Left = 296
+    Top = 16
     ParamData = <
       item
         Name = 'BIZ_NUM'
@@ -106,40 +78,62 @@ object ServerMethods1: TServerMethods1
     SQL.Strings = (
       'INSERT INTO TB_BIZ_INFO (BIZ_CODE) '
       'VALUES (gen_id(biz_code_gen,0));')
-    Left = 368
-    Top = 72
+    Left = 208
+    Top = 16
   end
   object SignInQuery: TFDQuery
-    Active = True
     ConnectionName = 'Coffee'
     SQL.Strings = (
-      'SELECT BIZ_CODE, NAME, ADDR, TEL FROM TB_BIZ'
+      'SELECT BIZ_CODE FROM TB_BIZ'
       'WHERE BIZ_NUM = :BIZ_NUM AND PW = :PW')
-    Left = 208
-    Top = 192
+    Left = 40
+    Top = 88
     ParamData = <
       item
         Name = 'BIZ_NUM'
         DataType = ftString
         ParamType = ptInput
         Size = 12
-        Value = Null
+        Value = '444-44-44444'
       end
       item
         Name = 'PW'
         DataType = ftString
         ParamType = ptInput
         Size = 30
+        Value = '444'
       end>
+    object SignInQueryBIZ_CODE: TIntegerField
+      FieldName = 'BIZ_CODE'
+      Origin = 'BIZ_CODE'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object SignInQueryNAME: TStringField
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      Required = True
+      Size = 80
+    end
+    object SignInQueryADDR: TStringField
+      FieldName = 'ADDR'
+      Origin = 'ADDR'
+      Required = True
+      Size = 400
+    end
+    object SignInQueryTEL: TStringField
+      FieldName = 'TEL'
+      Origin = 'TEL'
+      Size = 80
+    end
   end
   object BizInfoQuery: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from tb_biz_info'
       'where biz_code = :biz_code')
-    Left = 208
-    Top = 256
+    Left = 40
+    Top = 216
     ParamData = <
       item
         Name = 'BIZ_CODE'
@@ -147,15 +141,60 @@ object ServerMethods1: TServerMethods1
         ParamType = ptInput
         Value = Null
       end>
+    object BizInfoQueryBIZ_CODE: TIntegerField
+      FieldName = 'BIZ_CODE'
+      Origin = 'BIZ_CODE'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object BizInfoQueryCONTENT: TStringField
+      FieldName = 'CONTENT'
+      Origin = 'CONTENT'
+      Size = 200
+    end
+    object BizInfoQueryAMENITY: TStringField
+      FieldName = 'AMENITY'
+      Origin = 'AMENITY'
+      Size = 400
+    end
+    object BizInfoQuerySIG_IMG: TBlobField
+      FieldName = 'SIG_IMG'
+      Origin = 'SIG_IMG'
+    end
+    object BizInfoQuerySIG_NAME: TStringField
+      FieldName = 'SIG_NAME'
+      Origin = 'SIG_NAME'
+      Size = 200
+    end
+    object BizInfoQueryIMG_1: TBlobField
+      FieldName = 'IMG_1'
+      Origin = 'IMG_1'
+    end
+    object BizInfoQueryIMG_2: TBlobField
+      FieldName = 'IMG_2'
+      Origin = 'IMG_2'
+    end
+    object BizInfoQueryIMG_3: TBlobField
+      FieldName = 'IMG_3'
+      Origin = 'IMG_3'
+    end
+    object BizInfoQueryIMG_4: TBlobField
+      FieldName = 'IMG_4'
+      Origin = 'IMG_4'
+    end
+    object BizInfoQueryCOUPON: TIntegerField
+      FieldName = 'COUPON'
+      Origin = 'COUPON'
+    end
   end
   object SignInQueryProvider: TDataSetProvider
     DataSet = SignInQuery
-    Left = 296
-    Top = 192
+    Left = 40
+    Top = 152
   end
   object BizInfoQueryProvider: TDataSetProvider
     DataSet = BizInfoQuery
-    Left = 296
-    Top = 256
+    Left = 40
+    Top = 280
   end
 end

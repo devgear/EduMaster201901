@@ -18,28 +18,36 @@ type
     FDConnection1: TFDConnection;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     FDPhysIBDriverLink1: TFDPhysIBDriverLink;
-    Tb_Biz: TFDTable;
-    Tb_BizProvider: TDataSetProvider;
     SignUpQuery: TFDQuery;
-    Tb_Biz_Info: TFDTable;
-    Tb_Biz_InfoProvider: TDataSetProvider;
     DupChkQuery: TFDQuery;
     SignUpQuery2: TFDQuery;
     SignInQuery: TFDQuery;
     BizInfoQuery: TFDQuery;
     SignInQueryProvider: TDataSetProvider;
     BizInfoQueryProvider: TDataSetProvider;
+    SignInQueryBIZ_CODE: TIntegerField;
+    SignInQueryNAME: TStringField;
+    SignInQueryADDR: TStringField;
+    SignInQueryTEL: TStringField;
+    BizInfoQueryBIZ_CODE: TIntegerField;
+    BizInfoQueryCONTENT: TStringField;
+    BizInfoQueryAMENITY: TStringField;
+    BizInfoQuerySIG_IMG: TBlobField;
+    BizInfoQuerySIG_NAME: TStringField;
+    BizInfoQueryIMG_1: TBlobField;
+    BizInfoQueryIMG_2: TBlobField;
+    BizInfoQueryIMG_3: TBlobField;
+    BizInfoQueryIMG_4: TBlobField;
+    BizInfoQueryCOUPON: TIntegerField;
   private
     { Private declarations }
   public
-    var
-      BizCode: Integer;
     { Public declarations }
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
     function DupChk(ABizNum: string): Integer; // 중복체크: Return > 0 then 중복
     function SignUp(ABizNum, APw, AName, AAddr: string): Boolean; // 회원 가입
-    function SignIn(ABizNum, APw: string): Boolean; // 로그인
+    function SignIn(ABizNum, APw: string): Integer; // 로그인
 
   end;
 
@@ -61,28 +69,32 @@ begin
   Result := System.StrUtils.ReverseString(Value);
 end;
 
-function TServerMethods1.SignIn(ABizNum, APw: string): Boolean;
+function TServerMethods1.SignIn(ABizNum, APw: string): Integer;
+  var
+    BizCode: Integer;
 begin
   SignInQuery.Close;
   SignInQuery.Params[0].AsString := ABizNum;
   SignInQuery.Params[1].AsString := APw;
   SignInQuery.Open;
-  BizInfoQuery.Close;
-
+  // -999: 미등록, -998: 중복
   if SignInQuery.RecordCount = 0 then
-    Result := False
+    Result := -999
   else if SignInQuery.RecordCount = 1 then
   begin
 //  // 코드 받아와서
-    BizCode := SignInQuery.FieldByName('biz_code').AsInteger;
+    BizCode := SignInQuery.FieldByName('BIZ_CODE').AsInteger;
   // 데이터 넣음
-    BizInfoQuery.Params[0].AsInteger := BizCode;
-    BizInfoQuery.Open;
-    Result := True;
+//    BizInfoQuery.Close;
+//    BizInfoQuery.Params[0].AsInteger := BizCode;
+//    BizInfoQuery.Open;
+    Result := BizCode;
   end
   else
+    Result := -998
+//  else
 //    raise Exception.Create('로그인데이터 중복값 있는지 확인');
-
+// 이곳에 예외처리 하면 받을 곳이 없음
 end;
 
 function TServerMethods1.SignUp(ABizNum, APw, AName, AAddr: string): Boolean;
@@ -107,7 +119,6 @@ begin
     raise;
   end;
 
-
 end;
 
 function TServerMethods1.DupChk(ABizNum: string): Integer;
@@ -116,7 +127,7 @@ begin
   DupChkQuery.Params[0].AsString := ABizNum;
   DupChkQuery.Open;
 
-  Result := DupChkQuery.FieldByName('DUPCNT').AsInteger;
+  Result := DupChkQuery.FieldByName('DupCnt').AsInteger;
 end;
 
 end.

@@ -40,11 +40,7 @@ type
     Button3: TButton;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
-    StringGrid1: TStringGrid;
     DataSource1: TDataSource;
-    BindSourceDB1: TBindSourceDB;
-    BindingsList1: TBindingsList;
-    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure TabControl1Change(Sender: TObject);
@@ -84,21 +80,6 @@ begin
   FreeAndNil(dm);
 end;
 
-procedure TMainForm.FormCreate(Sender: TObject);
-var
-  SignForm: TSignForm;
-begin
-  dm := TDMAdminAccess.Create(application);
-  SignForm := TSignForm.Create(nil);
-  SignForm.ShowModal(procedure(modalResult: TModalResult)
-                      begin
-                        if ModalResult = mrOk then
-                           //do something
-                      end);
-  TabControl1.ActiveTab := TabItem1;
-
-end;
-
 procedure TMainForm.TabControl1Change(Sender: TObject);
 begin
   case TabControl1.TabIndex of
@@ -107,6 +88,21 @@ begin
     2: label1.Text := '예약설정';
     3: label1.Text := '회원관리';
   end;
+
+end;
+
+procedure TMainForm.FormCreate(Sender: TObject);
+var
+  SignForm: TSignForm;
+begin
+  Dm := TDMAdminAccess.Create(application);
+//  SignForm := TSignForm.Create(nil);
+//  SignForm.ShowModal(procedure(modalResult: TModalResult)
+//                      begin
+//                        if ModalResult = mrOk then
+//                           //do something
+//                      end);
+  TabControl1.ActiveTab := TabItem1;
 
 end;
 
