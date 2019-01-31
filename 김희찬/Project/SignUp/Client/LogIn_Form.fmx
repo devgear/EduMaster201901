@@ -4,6 +4,7 @@ object LogInFrm: TLogInFrm
   Caption = 'LogIn'
   ClientHeight = 480
   ClientWidth = 513
+  FormStyle = StayOnTop
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]

@@ -28,6 +28,8 @@ implementation
 
 {%CLASSGROUP 'FMX.Controls.TControl'}
 
+uses Client_Form;
+
 {$R *.dfm}
 
 end.

@@ -4,9 +4,6 @@ object ServerMethods1: TServerMethods1
   Width = 545
   object FDConnection1: TFDConnection
     Params.Strings = (
-      
-        'Database=C:\Users\Chan\Documents\Embarcadero\Studio\Projects\Pro' +
-        'ject\'#44608#55148#52268'\Project\SignUp\DB\SIGNUPDB.IB'
       'ConnectionDef=SIGNEDUP_PROJECT_DB')
     Connected = True
     LoginPrompt = False
@@ -134,7 +131,6 @@ object ServerMethods1: TServerMethods1
     Top = 208
   end
   object User_Log: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from USER_LOG')
