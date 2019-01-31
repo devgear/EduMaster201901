@@ -46,6 +46,9 @@ begin
   ShowCCFrame.Parent := Self;
 
   ShowCCFrame.ConfirmBtn.OnClick := ShowCCFrame.SignUpConfirmBtnClick;
+
+  ShowCCFrame.Label1.Text :=
+  Format('"%s"' + #13#10 + '수강신청 하시겠습니까?', [OverallDM.Subject_Log.FieldByName('TITLE').AsString]);
 end;
 
 procedure TSubjectDetailFrame.DropBtnClick(Sender: TObject);  //신청취소 버튼
@@ -56,6 +59,9 @@ begin
   ShowCCFrame.Parent := Self;
 
   ShowCCFrame.ConfirmBtn.OnClick := ShowCCFrame.DropConfirmClick;
+
+  ShowCCFrame.Label1.Text :=
+  Format('"%s"' + #13#10 + '수강취소 하시겠습니까?', [OverallDM.Subject_Log.FieldByName('TITLE').AsString]);
 end;
 
 procedure TSubjectDetailFrame.Rectangle1Click(Sender: TObject);

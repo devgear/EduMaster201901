@@ -18,6 +18,8 @@ type
     LinkControlToField1: TLinkControlToField;
     LogOutBtn: TButton;
     Label1: TLabel;
+    Button2: TButton;
+    Button3: TButton;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure LogOutBtnClick(Sender: TObject);

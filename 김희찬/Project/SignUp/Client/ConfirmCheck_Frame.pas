@@ -15,6 +15,7 @@ type
     ConfirmBtn: TButton;
     CancelBtn: TButton;
     SignUpDrop: TClientDataSet;
+    Label1: TLabel;
     procedure Rectangle1Click(Sender: TObject);
     procedure SignUpConfirmBtnClick(Sender: TObject);
     procedure DropConfirmClick(Sender: TObject);
