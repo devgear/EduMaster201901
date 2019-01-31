@@ -8,7 +8,7 @@ uses
   Data.SqlExpr;
 
 type
-  TForm3 = class(TForm)
+  TFrmClient = class(TForm)
     SQLConnection1: TSQLConnection;
   private
     { Private declarations }
@@ -17,7 +17,7 @@ type
   end;
 
 var
-  Form3: TForm3;
+  FrmClient: TFrmClient;
 
 implementation
 

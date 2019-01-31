@@ -100,7 +100,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="UCoffee_Server.pas">
-            <Form>Form1</Form>
+            <Form>FrmServer</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="ServerMethodsUnit1.pas">

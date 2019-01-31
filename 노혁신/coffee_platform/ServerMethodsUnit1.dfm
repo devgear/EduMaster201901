@@ -15,7 +15,7 @@ object ServerMethods1: TServerMethods1
     Connection = FDConnection1
     SQL.Strings = (
       'INSERT INTO TB_BIZ (BIZ_NUM, PW, NAME, ADDR) '
-      'VALUES ( :BIZ_NUM, :PW, :NAME, :ADDR);'
+      'VALUES (:BIZ_NUM, :PW, :NAME, :ADDR);'
       ''
       ''
       ''
@@ -69,7 +69,7 @@ object ServerMethods1: TServerMethods1
     Connection = FDConnection1
     SQL.Strings = (
       'INSERT INTO TB_BIZ_INFO (BIZ_CODE) '
-      'VALUES (gen_id(biz_code_gen,0));')
+      'VALUES (GEN_ID(BIZ_CODE_GEN, 0));')
     Left = 208
     Top = 16
   end
@@ -78,7 +78,7 @@ object ServerMethods1: TServerMethods1
     SQL.Strings = (
       'SELECT BIZ_CODE FROM TB_BIZ'
       'WHERE BIZ_NUM = :BIZ_NUM AND PW = :PW')
-    Left = 40
+    Left = 128
     Top = 88
     ParamData = <
       item
@@ -105,10 +105,10 @@ object ServerMethods1: TServerMethods1
   object BizInfoQuery: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      'select * from tb_biz_info'
-      'where biz_code = :biz_code')
-    Left = 40
-    Top = 216
+      'SELECT * FROM TB_BIZ_INFO'
+      'WHERE BIZ_CODE = :BIZ_CODE')
+    Left = 128
+    Top = 160
     ParamData = <
       item
         Name = 'BIZ_CODE'
@@ -116,61 +116,16 @@ object ServerMethods1: TServerMethods1
         ParamType = ptInput
         Value = Null
       end>
-    object BizInfoQueryBIZ_CODE: TIntegerField
-      FieldName = 'BIZ_CODE'
-      Origin = 'BIZ_CODE'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object BizInfoQueryCONTENT: TWideStringField
-      FieldName = 'CONTENT'
-      Origin = 'CONTENT'
-      Size = 200
-    end
-    object BizInfoQueryAMENITY: TWideStringField
-      FieldName = 'AMENITY'
-      Origin = 'AMENITY'
-      Size = 400
-    end
-    object BizInfoQuerySIG_IMG: TBlobField
-      FieldName = 'SIG_IMG'
-      Origin = 'SIG_IMG'
-    end
-    object BizInfoQuerySIG_NAME: TWideStringField
-      FieldName = 'SIG_NAME'
-      Origin = 'SIG_NAME'
-      Size = 200
-    end
-    object BizInfoQueryIMG_1: TBlobField
-      FieldName = 'IMG_1'
-      Origin = 'IMG_1'
-    end
-    object BizInfoQueryIMG_2: TBlobField
-      FieldName = 'IMG_2'
-      Origin = 'IMG_2'
-    end
-    object BizInfoQueryIMG_3: TBlobField
-      FieldName = 'IMG_3'
-      Origin = 'IMG_3'
-    end
-    object BizInfoQueryIMG_4: TBlobField
-      FieldName = 'IMG_4'
-      Origin = 'IMG_4'
-    end
-    object BizInfoQueryCOUPON: TIntegerField
-      FieldName = 'COUPON'
-      Origin = 'COUPON'
-    end
   end
   object SignInQueryProvider: TDataSetProvider
     DataSet = SignInQuery
-    Left = 40
-    Top = 152
+    Left = 208
+    Top = 88
   end
   object BizInfoQueryProvider: TDataSetProvider
     DataSet = BizInfoQuery
-    Left = 40
-    Top = 280
+    Left = 208
+    Top = 160
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
@@ -181,7 +136,53 @@ object ServerMethods1: TServerMethods1
       'Password=masterkey'
       'CharacterSet=UTF8'
       'DriverID=IB')
+    Connected = True
     Left = 40
     Top = 24
+  end
+  object NotifyQuery: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM TB_NOTIFY'
+      'WHERE BIZ_CODE = :BIZ_CODE'
+      'ORDER BY REG_DATE DESC')
+    Left = 128
+    Top = 232
+    ParamData = <
+      item
+        Name = 'BIZ_CODE'
+        DataType = ftString
+        ParamType = ptInput
+        Value = '1'
+      end>
+  end
+  object NotifyQueryProvider: TDataSetProvider
+    DataSet = NotifyQuery
+    Left = 208
+    Top = 232
+  end
+  object NotifyInsQuery: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'INSERT INTO TB_NOTIFY (BIZ_CODE, CONTENT) '
+      'VALUES (:BIZ_CODE, :CONTENT);'
+      ''
+      ''
+      '')
+    Left = 304
+    Top = 232
+    ParamData = <
+      item
+        Name = 'BIZ_CODE'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'CONTENT'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end>
   end
 end

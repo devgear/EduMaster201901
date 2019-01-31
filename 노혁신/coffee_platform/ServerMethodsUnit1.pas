@@ -25,17 +25,10 @@ type
     SignInQueryProvider: TDataSetProvider;
     BizInfoQueryProvider: TDataSetProvider;
     SignInQueryBIZ_CODE: TIntegerField;
-    BizInfoQueryBIZ_CODE: TIntegerField;
-    BizInfoQueryCONTENT: TWideStringField;
-    BizInfoQueryAMENITY: TWideStringField;
-    BizInfoQuerySIG_IMG: TBlobField;
-    BizInfoQuerySIG_NAME: TWideStringField;
-    BizInfoQueryIMG_1: TBlobField;
-    BizInfoQueryIMG_2: TBlobField;
-    BizInfoQueryIMG_3: TBlobField;
-    BizInfoQueryIMG_4: TBlobField;
-    BizInfoQueryCOUPON: TIntegerField;
     FDConnection1: TFDConnection;
+    NotifyQuery: TFDQuery;
+    NotifyQueryProvider: TDataSetProvider;
+    NotifyInsQuery: TFDQuery;
   private
     { Private declarations }
   public
@@ -45,6 +38,9 @@ type
     function DupChk(ABizNum: string): Integer; // 중복체크: Return > 0 then 중복
     function SignUp(ABizNum, APw, AName, AAddr: string): Boolean; // 회원 가입
     function SignIn(ABizNum, APw: string): Integer; // 로그인
+    function InsertNotify(ABizCode: Integer; AContent: string): Boolean;
+//    function DeleteNotify(ABizCode: Integer): Boolean;
+//    listview1.deleteselected
 
   end;
 
@@ -66,6 +62,22 @@ begin
   Result := System.StrUtils.ReverseString(Value);
 end;
 
+function TServerMethods1.InsertNotify(ABizCode: Integer;
+  AContent: string): Boolean;
+begin
+  Result := False;
+  NotifyInsQuery.Close;
+  NotifyInsQuery.Params[0].AsInteger := ABizCode;
+  NotifyInsQuery.Params[1].AsString := AContent;
+
+  try
+    NotifyInsQuery.ExecSQL;
+    Result := True;
+  except
+
+  end;
+end;
+
 function TServerMethods1.SignIn(ABizNum, APw: string): Integer;
   var
     BizCode: Integer;
@@ -79,17 +91,11 @@ begin
     Result := -999
   else if SignInQuery.RecordCount = 1 then
   begin
-//  // 코드 받아와서
     BizCode := SignInQuery.FieldByName('BIZ_CODE').AsInteger;
-  // 데이터 넣음
-//    BizInfoQuery.Close;
-//    BizInfoQuery.Params[0].AsInteger := BizCode;
-//    BizInfoQuery.Open;
     Result := BizCode;
   end
   else
-    Result := -998
-//  else
+    Result := -998;
 //    raise Exception.Create('로그인데이터 중복값 있는지 확인');
 // 이곳에 예외처리 하면 받을 곳이 없음
 end;
@@ -113,7 +119,7 @@ begin
     Result := True;
   except
     FDConnection1.Rollback;
-    raise;
+    raise;    //???
   end;
 
 end;

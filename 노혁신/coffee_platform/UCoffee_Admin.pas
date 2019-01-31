@@ -11,10 +11,12 @@ uses
   Data.Bind.EngExt, Fmx.Bind.DBEngExt, Fmx.Bind.Grid, System.Bindings.Outputs,
   Fmx.Bind.Editors, Data.Bind.Components, Data.Bind.Grid, Data.Bind.DBScope,
   FMX.ScrollBox, FMX.Grid, FMX.TabControl, FireDAC.UI.Intf, FireDAC.FMXUI.Login,
-  FireDAC.Stan.Intf, FireDAC.Comp.UI, FMX.Objects, FMX.Memo;
+  FireDAC.Stan.Intf, FireDAC.Comp.UI, FMX.Objects, FMX.Memo, FMX.ListView.Types,
+  FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView,
+  Data.Bind.GenData, Data.Bind.ObjectScope;
 
 type
-  TMainForm = class(TForm)
+  TFrmAdmin = class(TForm)
     Layout1: TLayout;
     TabControl1: TTabControl;
     TabItem1: TTabItem;
@@ -28,24 +30,37 @@ type
     Layout5: TLayout;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
-    Image1: TImage;
     GroupBox3: TGroupBox;
-    Image2: TImage;
-    Image3: TImage;
-    Image4: TImage;
-    Image5: TImage;
     GroupBox4: TGroupBox;
-    Button3: TButton;
+    Btn_Save: TButton;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
-    DataSource1: TDataSource;
-    Memo1: TMemo;
+    Memo_Intro: TMemo;
+    Memo_Sig: TMemo;
+    ImgCtl_Sig: TImageControl;
+    ImgCtr_1: TImageControl;
+    ImgCtr_2: TImageControl;
+    ImgCtr_3: TImageControl;
+    ImgCtr_4: TImageControl;
+    Edt_Notify: TEdit;
+    Btn_Save_Notify: TButton;
+    ListView1: TListView;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
+    LinkFillControlToField1: TLinkFillControlToField;
+    BindSourceDB2: TBindSourceDB;
     LinkControlToField1: TLinkControlToField;
+    LinkControlToField2: TLinkControlToField;
+    LinkControlToField3: TLinkControlToField;
+    LinkControlToField4: TLinkControlToField;
+    LinkControlToField5: TLinkControlToField;
+    LinkControlToField6: TLinkControlToField;
+    LinkControlToField7: TLinkControlToField;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure TabControl1Change(Sender: TObject);
+    procedure Btn_Save_NotifyClick(Sender: TObject);
+    procedure ListView1Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -54,19 +69,22 @@ type
   end;
 
 var
-  MainForm: TMainForm;
+  FrmAdmin: TFrmAdmin;
 
 implementation
 
 {$R *.fmx}
 {$R *.iPhone47in.fmx IOS}
 {$R *.LgXhdpiPh.fmx ANDROID}
+{$R *.iPhone55in.fmx IOS}
+{$R *.iPhone.fmx IOS}
+{$R *.LgXhdpiTb.fmx ANDROID}
 
 uses USignIn_Admin, DMAdmin;
 var
   dm: TDMAdminAccess;
 
-procedure TMainForm.TabControl1Change(Sender: TObject);
+procedure TFrmAdmin.TabControl1Change(Sender: TObject);
 begin
   case TabControl1.TabIndex of
     0: label1.Text := '홈';
@@ -76,24 +94,62 @@ begin
   end;
 end;
 
-procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TFrmAdmin.Btn_Save_NotifyClick(Sender: TObject);
+var
+  Chk: Boolean;
+  Content: string;
+  LItem: TListViewItem;
 begin
-  FreeAndNil(Client);
-  FreeAndNil(dm);
-  FreeAndNil(MainForm);
+  Content := Edt_Notify.Text;
+  if not Content.IsEmpty then
+  begin
+    Chk := Client.InsertNotify(BizCode, Content);
+    case Chk of
+      True:
+      begin
+//        ShowMessage('성공');
+        LItem := ListView1.Items.Insert(0);
+        LItem.Text := Content;
+      end;
+      False: ShowMessage('실패');
+    end;
+  end;
+  Edt_Notify.Text := '';
+
+//  var
+//  LItem: TListViewItem;
+//  I: Integer;
+//begin
+//  ListView1.BeginUpdate;
+//  try
+//    for I := 1 to 10 do
+//    begin
+//      LItem := ListView1.Items.Add;
+//      LItem.Text := IntToStr(I);
+//    end;
+//  finally
+//    ListView1.EndUpdate;
+//  end;
+//end;
 end;
 
-procedure TMainForm.FormCreate(Sender: TObject);
-var
-  SignForm: TSignForm;
+
+
+procedure TFrmAdmin.FormCreate(Sender: TObject);
 begin
-  ShowMessage('BizCode 키 확인중: ' + BizCode.ToString);
+//  ShowMessage('BizCode: ' + BizCode.ToString);
   Dm := TDMAdminAccess.Create(application);
   Dm.BizInfoQuery.Close;
   Dm.BizInfoQuery.ParamByName('BIZ_CODE').AsInteger := BizCode;
   Dm.BizInfoQuery.Open;
-  memo1.Text := dm.BizInfoQuery.FieldByName('content').Value;
+  Dm.NotifyQuery.Close;
+  Dm.NotifyQuery.ParamByName('BIZ_CODE').AsInteger := BizCode;
+  Dm.NotifyQuery.Open;
 
+//  Memo_Intro.Text := dm.BizInfoQuery.FieldByName('CONTENT').Value;
+
+// MainForm -> SignForm 띄우려다 문제 발생 시 에러뜨고
+// MainForm으로 넘어가는 현상 있어서 변경
 
 //  SignForm := TSignForm.Create(nil);
 //  SignForm.ShowModal(procedure(modalResult: TModalResult)
@@ -103,6 +159,18 @@ begin
 //                      end);
   TabControl1.ActiveTab := TabItem1;
 
+end;
+
+procedure TFrmAdmin.ListView1Click(Sender: TObject);
+//var
+//  LItem: TListViewItem;
+begin
+//  showmessage(inttostr(ListView1.Selected.Index));
+end;
+
+procedure TFrmAdmin.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FreeAndNil(FrmSignAdmin);
 end;
 
 end.

@@ -315,12 +315,12 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="UCoffee_Admin.pas">
-            <Form>MainForm</Form>
+            <Form>FrmAdmin</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="UAdminClass.pas"/>
         <DCCReference Include="USignIn_Admin.pas">
-            <Form>SignForm</Form>
+            <Form>FrmSignAdmin</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="DMAdmin.pas">

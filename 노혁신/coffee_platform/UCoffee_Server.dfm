@@ -1,7 +1,6 @@
-object Form1: TForm1
+object FrmServer: TFrmServer
   Left = 0
   Top = 0
-  Caption = 'Form1'
   ClientHeight = 246
   ClientWidth = 398
   Color = clBtnFace

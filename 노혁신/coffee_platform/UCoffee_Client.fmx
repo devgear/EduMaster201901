@@ -1,7 +1,6 @@
-object Form3: TForm3
+object FrmClient: TFrmClient
   Left = 0
   Top = 0
-  Caption = 'Form3'
   ClientHeight = 480
   ClientWidth = 640
   FormFactor.Width = 320

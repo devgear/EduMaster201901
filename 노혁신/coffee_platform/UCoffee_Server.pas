@@ -12,7 +12,7 @@ uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   FireDAC.Phys.IBBase, FireDAC.Comp.UI;
 
 type
-  TForm1 = class(TForm)
+  TFrmServer = class(TForm)
   private
     { Private declarations }
   public
@@ -20,7 +20,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FrmServer: TFrmServer;
 
 implementation
 

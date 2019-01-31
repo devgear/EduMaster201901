@@ -313,7 +313,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="UCoffee_Client.pas">
-            <Form>Form3</Form>
+            <Form>FrmClient</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

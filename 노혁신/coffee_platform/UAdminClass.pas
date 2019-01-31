@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 2019-01-31 오후 2:42:57
+// 2019-02-01 오전 1:05:28
 //
 
 unit UAdminClass;
@@ -17,6 +17,7 @@ type
     FDupChkCommand: TDBXCommand;
     FSignUpCommand: TDBXCommand;
     FSignInCommand: TDBXCommand;
+    FInsertNotifyCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
@@ -26,6 +27,7 @@ type
     function DupChk(ABizNum: string): Integer;
     function SignUp(ABizNum: string; APw: string; AName: string; AAddr: string): Boolean;
     function SignIn(ABizNum: string; APw: string): Integer;
+    function InsertNotify(ABizCode: Integer; AContent: string): Boolean;
   end;
 
 implementation
@@ -104,6 +106,21 @@ begin
   Result := FSignInCommand.Parameters[2].Value.GetInt32;
 end;
 
+function TServerMethods1Client.InsertNotify(ABizCode: Integer; AContent: string): Boolean;
+begin
+  if FInsertNotifyCommand = nil then
+  begin
+    FInsertNotifyCommand := FDBXConnection.CreateCommand;
+    FInsertNotifyCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FInsertNotifyCommand.Text := 'TServerMethods1.InsertNotify';
+    FInsertNotifyCommand.Prepare;
+  end;
+  FInsertNotifyCommand.Parameters[0].Value.SetInt32(ABizCode);
+  FInsertNotifyCommand.Parameters[1].Value.SetWideString(AContent);
+  FInsertNotifyCommand.ExecuteUpdate;
+  Result := FInsertNotifyCommand.Parameters[2].Value.GetBoolean;
+end;
+
 constructor TServerMethods1Client.Create(ADBXConnection: TDBXConnection);
 begin
   inherited Create(ADBXConnection);
@@ -121,6 +138,7 @@ begin
   FDupChkCommand.DisposeOf;
   FSignUpCommand.DisposeOf;
   FSignInCommand.DisposeOf;
+  FInsertNotifyCommand.DisposeOf;
   inherited;
 end;
 
