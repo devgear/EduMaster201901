@@ -2,8 +2,8 @@ object frmUser: TfrmUser
   Left = 0
   Top = 0
   Caption = #54924#50896' '#44288#47532
-  ClientHeight = 354
-  ClientWidth = 784
+  ClientHeight = 630
+  ClientWidth = 1028
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,19 +17,19 @@ object frmUser: TfrmUser
   object pnlHeader: TPanel
     Left = 0
     Top = 0
-    Width = 784
+    Width = 1028
     Height = 41
     Align = alTop
     TabOrder = 0
     DesignSize = (
-      784
+      1028
       41)
     object lblCaption: TLabel
       Left = 16
       Top = 14
       Width = 44
       Height = 13
-      Caption = #54924#50896#44288#47532
+      Caption = #49368#54540#50836#52397
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -38,7 +38,7 @@ object frmUser: TfrmUser
       ParentFont = False
     end
     object btnClose: TButton
-      Left = 689
+      Left = 933
       Top = 7
       Width = 75
       Height = 25
@@ -50,14 +50,14 @@ object frmUser: TfrmUser
   object pnlContent: TPanel
     Left = 0
     Top = 41
-    Width = 784
-    Height = 313
+    Width = 1028
+    Height = 589
     Align = alClient
     TabOrder = 1
     object Splitter1: TSplitter
-      Left = 453
+      Left = 697
       Top = 1
-      Height = 311
+      Height = 587
       Align = alRight
       ExplicitLeft = 392
       ExplicitTop = 176
@@ -66,14 +66,14 @@ object frmUser: TfrmUser
     object pnlGrid: TPanel
       Left = 1
       Top = 1
-      Width = 452
-      Height = 311
+      Width = 696
+      Height = 587
       Align = alClient
       TabOrder = 0
       object pnlGridHeader: TPanel
         Left = 1
         Top = 1
-        Width = 450
+        Width = 694
         Height = 41
         Align = alTop
         TabOrder = 0
@@ -95,8 +95,8 @@ object frmUser: TfrmUser
       object DBGrid1: TDBGrid
         Left = 1
         Top = 42
-        Width = 450
-        Height = 268
+        Width = 694
+        Height = 544
         Align = alClient
         DataSource = DataSource1
         Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -152,15 +152,15 @@ object frmUser: TfrmUser
       end
     end
     object pnlInput: TPanel
-      Left = 456
+      Left = 700
       Top = 1
       Width = 327
-      Height = 311
+      Height = 587
       Align = alRight
       TabOrder = 1
       DesignSize = (
         327
-        311)
+        587)
       object Label4: TLabel
         Left = 168
         Top = 59
@@ -199,9 +199,9 @@ object frmUser: TfrmUser
       object Label7: TLabel
         Left = 168
         Top = 14
-        Width = 22
+        Width = 44
         Height = 13
-        Caption = #51060#47492
+        Caption = #49345#54408#53076#46300
       end
       object edtPhone: TDBEdit
         Left = 168
@@ -210,7 +210,6 @@ object frmUser: TfrmUser
         Height = 21
         Anchors = [akLeft, akTop, akRight]
         DataField = 'PASSWORD'
-        DataSource = DM.UserSource
         TabOrder = 0
       end
       object edtMail: TDBEdit
@@ -220,7 +219,6 @@ object frmUser: TfrmUser
         Height = 21
         Anchors = [akLeft, akTop, akRight]
         DataField = 'PHONE'
-        DataSource = DM.UserSource
         TabOrder = 1
       end
       object btnClearImage: TButton
@@ -272,7 +270,6 @@ object frmUser: TfrmUser
         Height = 21
         Anchors = [akLeft, akTop, akRight]
         DataField = 'ID'
-        DataSource = DM.UserSource
         TabOrder = 7
       end
       object DBEdit2: TDBEdit
@@ -282,7 +279,6 @@ object frmUser: TfrmUser
         Height = 21
         Anchors = [akLeft, akTop, akRight]
         DataField = 'SCHOOL'
-        DataSource = DM.UserSource
         TabOrder = 8
       end
       object edtName: TDBEdit
@@ -292,7 +288,6 @@ object frmUser: TfrmUser
         Height = 21
         Anchors = [akLeft, akTop, akRight]
         DataField = 'USERCODE'
-        DataSource = DM.UserSource
         TabOrder = 9
       end
       object DBEdit3: TDBEdit
@@ -302,7 +297,6 @@ object frmUser: TfrmUser
         Height = 21
         Anchors = [akLeft, akTop, akRight]
         DataField = 'NAME'
-        DataSource = DM.UserSource
         TabOrder = 10
       end
       object btnAdd: TButton
@@ -320,6 +314,11 @@ object frmUser: TfrmUser
   object DataSource1: TDataSource
     DataSet = DM.UserQuery
     Left = 480
+    Top = 16
+  end
+  object DataSource2: TDataSource
+    DataSet = DM.PRQuery
+    Left = 584
     Top = 16
   end
 end

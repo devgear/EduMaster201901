@@ -4,7 +4,8 @@ uses
   Vcl.Forms,
   UDataModule in 'UDataModule.pas' {DM: TDataModule},
   UMain in 'UMain.pas' {MainForm},
-  UUserForm in 'UUserForm.pas' {frmUser};
+  USampleForm in 'USampleForm.pas' {frmSample},
+  CommonFunctions in 'CommonFunctions.pas';
 
 {$R *.res}
 
@@ -13,6 +14,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TMainForm, MainForm);
-  Application.CreateForm(TfrmUser, frmUser);
+  Application.CreateForm(TfrmSample, frmSample);
   Application.Run;
 end.

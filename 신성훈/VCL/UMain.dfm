@@ -2,8 +2,8 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = #49368#48173
-  ClientHeight = 559
-  ClientWidth = 853
+  ClientHeight = 650
+  ClientWidth = 872
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,12 +16,13 @@ object MainForm: TMainForm
   object pnlHeader: TPanel
     Left = 0
     Top = 0
-    Width = 853
+    Width = 872
     Height = 41
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 790
     DesignSize = (
-      853
+      872
       41)
     object lblCaption: TLabel
       Left = 16
@@ -37,78 +38,90 @@ object MainForm: TMainForm
       ParentFont = False
     end
     object BtnClose: TButton
-      Left = 761
+      Left = 780
       Top = 7
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = #45803#44592
       TabOrder = 0
+      OnClick = BtnCloseClick
+      ExplicitLeft = 698
     end
   end
   object pnlContent: TPanel
     Left = 0
     Top = 41
-    Width = 853
-    Height = 518
+    Width = 872
+    Height = 609
     Align = alClient
     TabOrder = 1
-    object Splitter1: TSplitter
-      Left = 557
-      Top = 1
-      Height = 516
-      Align = alRight
-      ExplicitLeft = 288
-      ExplicitTop = 168
-      ExplicitHeight = 100
-    end
+    ExplicitWidth = 790
+    ExplicitHeight = 711
     object pnlGrid: TPanel
       Left = 1
       Top = 1
-      Width = 556
-      Height = 516
+      Width = 870
+      Height = 607
       Align = alClient
       TabOrder = 0
+      ExplicitWidth = 493
+      ExplicitHeight = 709
       object TabControl1: TPageControl
         Left = 1
         Top = 1
-        Width = 554
-        Height = 514
+        Width = 868
+        Height = 605
         ActivePage = TabSheet1
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 491
+        ExplicitHeight = 707
         object TabSheet1: TTabSheet
           Caption = #54924#50896#51221#48372
+          ExplicitWidth = 483
+          ExplicitHeight = 679
+          object Splitter2: TSplitter
+            Left = 565
+            Top = 41
+            Height = 536
+            Align = alRight
+            ExplicitLeft = 648
+            ExplicitTop = 6
+            ExplicitHeight = 633
+          end
           object Panel1: TPanel
             Left = 0
             Top = 0
-            Width = 546
+            Width = 860
             Height = 41
             Align = alTop
             TabOrder = 0
+            ExplicitWidth = 483
             object Label12: TLabel
-              Left = 6
-              Top = 19
+              Left = 0
+              Top = 14
               Width = 22
               Height = 13
               Caption = #44160#49353
             end
-            object Edit1: TEdit
-              Left = 34
-              Top = 14
+            object EdtUserSearch: TEdit
+              Left = 28
+              Top = 9
               Width = 151
               Height = 21
               TabOrder = 0
+              OnKeyUp = EdtUserSearchKeyUp
             end
           end
-          object DBGrid1: TDBGrid
+          object GrdUser: TDBGrid
             Left = 0
             Top = 41
-            Width = 546
-            Height = 445
+            Width = 565
+            Height = 536
             Align = alClient
             DataSource = MainUserSource
-            Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            Options = [dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
             TabOrder = 1
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
@@ -155,314 +168,418 @@ object MainForm: TMainForm
                 Expanded = False
                 FieldName = 'PW'
                 Title.Caption = #48708#48128#48264#54840
-                Width = -1
                 Visible = False
               end>
+          end
+          object Panel5: TPanel
+            Left = 568
+            Top = 41
+            Width = 292
+            Height = 536
+            Align = alRight
+            TabOrder = 2
+            ExplicitLeft = 497
+            ExplicitTop = 1
+            ExplicitHeight = 709
+            DesignSize = (
+              292
+              536)
+            object GroupBox6: TGroupBox
+              Left = 6
+              Top = 4
+              Width = 275
+              Height = 189
+              Anchors = [akLeft, akTop, akRight]
+              Caption = #54924#50896' '#51221#48372
+              TabOrder = 0
+              object Label23: TLabel
+                Left = 7
+                Top = 108
+                Width = 11
+                Height = 14
+                Caption = 'ID'
+              end
+              object Label24: TLabel
+                Left = 175
+                Top = 65
+                Width = 33
+                Height = 14
+                Caption = #50672#46973#52376
+              end
+              object Label25: TLabel
+                Left = 7
+                Top = 65
+                Width = 33
+                Height = 14
+                Caption = #54617#44368#47749
+              end
+              object Label26: TLabel
+                Left = 107
+                Top = 108
+                Width = 48
+                Height = 14
+                Caption = 'PassWord'
+              end
+              object Label27: TLabel
+                Left = 7
+                Top = 23
+                Width = 22
+                Height = 14
+                Caption = #51060#47492
+              end
+              object EdtUserID: TDBEdit
+                Left = 7
+                Top = 123
+                Width = 94
+                Height = 21
+                DataField = 'ID'
+                DataSource = MainUserSource
+                TabOrder = 3
+              end
+              object EdtUserPhone: TDBEdit
+                Left = 175
+                Top = 80
+                Width = 94
+                Height = 21
+                DataField = 'PHONE'
+                DataSource = MainUserSource
+                TabOrder = 2
+              end
+              object EdtUserSChool: TDBEdit
+                Left = 7
+                Top = 80
+                Width = 162
+                Height = 21
+                DataField = 'SCHOOL'
+                DataSource = MainUserSource
+                TabOrder = 1
+              end
+              object EdtUserPW: TDBEdit
+                Left = 107
+                Top = 123
+                Width = 162
+                Height = 21
+                DataField = 'PW'
+                DataSource = MainUserSource
+                TabOrder = 4
+              end
+              object EdtUserName: TDBEdit
+                Left = 7
+                Top = 38
+                Width = 94
+                Height = 21
+                DataField = 'NAME'
+                DataSource = MainUserSource
+                TabOrder = 0
+              end
+              object BtnUserCancel: TButton
+                Left = 107
+                Top = 156
+                Width = 75
+                Height = 25
+                Caption = #52712#49548
+                TabOrder = 6
+                OnClick = BtnUserCancelClick
+              end
+              object BtnUserDelete: TButton
+                Left = 7
+                Top = 156
+                Width = 94
+                Height = 25
+                Caption = #54924#50896#51221#48372#49325#51228
+                TabOrder = 7
+                OnClick = BtnUserDeleteClick
+              end
+              object BtnUserSave: TButton
+                Left = 194
+                Top = 156
+                Width = 75
+                Height = 25
+                Caption = #54924#50896' '#51200#51109
+                TabOrder = 5
+                OnClick = BtnUserSaveClick
+              end
+              object BtnUserNew: TButton
+                Left = 107
+                Top = 34
+                Width = 162
+                Height = 25
+                Caption = #49888#44508#46321#47197
+                TabOrder = 8
+                OnClick = BtnUserNewClick
+              end
+            end
           end
         end
         object TabSheet2: TTabSheet
           Caption = #49345#54408#51221#48372
           ImageIndex = 1
+          ExplicitWidth = 483
+          ExplicitHeight = 679
+          object Splitter3: TSplitter
+            Left = 565
+            Top = 41
+            Height = 536
+            Align = alRight
+            ExplicitLeft = 349
+            ExplicitHeight = 633
+          end
           object Panel2: TPanel
             Left = 0
             Top = 0
-            Width = 546
+            Width = 860
             Height = 41
             Align = alTop
             TabOrder = 0
+            ExplicitWidth = 483
             object Label1: TLabel
-              Left = 6
-              Top = 21
+              Left = 0
+              Top = 16
               Width = 22
               Height = 13
               Caption = #44160#49353
             end
-            object Edit2: TEdit
-              Left = 34
-              Top = 14
+            object EdtPrSearch: TEdit
+              Left = 28
+              Top = 9
               Width = 151
               Height = 21
               TabOrder = 0
+              OnKeyUp = EdtPrSearchKeyUp
+            end
+          end
+          object GridPr: TDBGrid
+            Left = 0
+            Top = 41
+            Width = 565
+            Height = 536
+            Align = alClient
+            DataSource = MainPRSource
+            Options = [dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            TabOrder = 1
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'PRCODE'
+                Title.Caption = #53076#46300#47749
+                Width = 50
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'PRNAME'
+                Title.Caption = #49345#54408#47749
+                Width = 50
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'BRAND'
+                Title.Caption = #48652#47004#46300#47749
+                Width = 50
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CT'
+                Title.Caption = #52852#53580#44256#47532
+                Width = 54
+                Visible = True
+              end>
+          end
+          object Panel3: TPanel
+            Left = 568
+            Top = 41
+            Width = 292
+            Height = 536
+            Align = alRight
+            TabOrder = 2
+            ExplicitLeft = 497
+            ExplicitTop = 1
+            ExplicitHeight = 709
+            DesignSize = (
+              292
+              536)
+            object GroupBox4: TGroupBox
+              Left = 6
+              Top = 6
+              Width = 275
+              Height = 459
+              Anchors = [akLeft, akTop, akRight]
+              Caption = #49345#54408' '#51221#48372
+              TabOrder = 0
+              object Label18: TLabel
+                Left = 6
+                Top = 20
+                Width = 33
+                Height = 13
+                Caption = #49345#54408#47749
+              end
+              object Label19: TLabel
+                Left = 155
+                Top = 10
+                Width = 55
+                Height = 13
+                Caption = #49345#54408#51060#48120#51648
+              end
+              object Label20: TLabel
+                Left = 6
+                Top = 64
+                Width = 44
+                Height = 13
+                Caption = #48652#47004#46300#47749
+              end
+              object Label21: TLabel
+                Left = 3
+                Top = 161
+                Width = 44
+                Height = 13
+                Caption = #49345#49464#49444#47749
+              end
+              object Label22: TLabel
+                Left = 6
+                Top = 110
+                Width = 44
+                Height = 13
+                Caption = #52852#53580#44256#47532
+              end
+              object GroupBox5: TGroupBox
+                Left = 156
+                Top = 26
+                Width = 112
+                Height = 115
+                TabOrder = 0
+                object ImgPr: TImage
+                  Left = 2
+                  Top = 3
+                  Width = 108
+                  Height = 108
+                  Proportional = True
+                  Stretch = True
+                end
+              end
+              object EdtPrName: TDBEdit
+                Left = 3
+                Top = 37
+                Width = 136
+                Height = 21
+                DataField = 'PRNAME'
+                DataSource = MainPRSource
+                TabOrder = 1
+              end
+              object EdtPrBrand: TDBEdit
+                Left = 6
+                Top = 83
+                Width = 136
+                Height = 21
+                DataField = 'BRAND'
+                DataSource = MainPRSource
+                TabOrder = 2
+              end
+              object BtnPrImg: TButton
+                Left = 156
+                Top = 143
+                Width = 112
+                Height = 25
+                Caption = #48520#47084#50724#44592
+                TabOrder = 4
+                OnClick = BtnPrimgClick
+              end
+              object BtnPrNew: TButton
+                Left = 6
+                Top = 395
+                Width = 136
+                Height = 25
+                Caption = #49345#54408#46321#47197
+                TabOrder = 7
+                OnClick = BtnPrNewClick
+              end
+              object BtnPrCancel: TButton
+                Left = 148
+                Top = 426
+                Width = 120
+                Height = 25
+                Caption = #52712#49548
+                TabOrder = 8
+              end
+              object BtnPrDelete: TButton
+                Left = 6
+                Top = 426
+                Width = 136
+                Height = 25
+                Caption = #49345#54408#51221#48372#49325#51228
+                TabOrder = 9
+                OnClick = BtnPrDeleteClick
+              end
+              object BtnPrSave: TButton
+                Left = 148
+                Top = 395
+                Width = 120
+                Height = 25
+                Caption = #49345#54408' '#51200#51109
+                TabOrder = 6
+                OnClick = BtnPrSaveClick
+              end
+              object MemoPr: TDBMemo
+                Left = 3
+                Top = 180
+                Width = 269
+                Height = 209
+                DataField = 'EXPLANATION'
+                DataSource = MainPRSource
+                ScrollBars = ssVertical
+                TabOrder = 5
+              end
+              object CBPrCT: TDBComboBox
+                Left = 6
+                Top = 129
+                Width = 134
+                Height = 21
+                DataField = 'CT'
+                DataSource = MainPRSource
+                Items.Strings = (
+                  #48152#52268#47448
+                  #48165#47448
+                  #52236#44060#47448
+                  #46356#51200#53944#47448
+                  #51020#47308)
+                TabOrder = 3
+              end
+            end
+            object BtnSampleReq: TButton
+              Left = 6
+              Top = 471
+              Width = 275
+              Height = 25
+              Caption = #49368#54540#50836#52397#48372#44592
+              TabOrder = 1
+              OnClick = BtnSampleReqClick
             end
           end
         end
-      end
-    end
-    object pnlInput: TPanel
-      Left = 560
-      Top = 1
-      Width = 292
-      Height = 516
-      Align = alRight
-      TabOrder = 1
-      DesignSize = (
-        292
-        516)
-      object grpUser: TGroupBox
-        Left = 6
-        Top = 19
-        Width = 275
-        Height = 208
-        Anchors = [akLeft, akTop, akRight]
-        Caption = #54924#50896' '#51221#48372
-        TabOrder = 0
-        DesignSize = (
-          275
-          208)
-        object Label2: TLabel
-          Left = 3
-          Top = 109
-          Width = 11
-          Height = 13
-          Caption = 'ID'
-        end
-        object Label4: TLabel
-          Left = 171
-          Top = 69
-          Width = 33
-          Height = 13
-          Caption = #50672#46973#52376
-        end
-        object Label8: TLabel
-          Left = 3
-          Top = 69
-          Width = 33
-          Height = 13
-          Caption = #54617#44368#47749
-        end
-        object Label9: TLabel
-          Left = 103
-          Top = 109
-          Width = 48
-          Height = 13
-          Caption = 'PassWord'
-        end
-        object Label6: TLabel
-          Left = 3
-          Top = 24
-          Width = 22
-          Height = 13
-          Caption = #51060#47492
-        end
-        object EdtID: TDBEdit
-          Left = 3
-          Top = 128
-          Width = 94
-          Height = 25
-          Anchors = [akLeft, akTop, akRight]
-          DataField = 'ID'
-          DataSource = MainUserSource
-          TabOrder = 3
-        end
-        object EdtPhone: TDBEdit
-          Left = 171
-          Top = 86
-          Width = 94
-          Height = 25
-          Anchors = [akLeft, akTop, akRight]
-          DataField = 'PHONE'
-          DataSource = MainUserSource
-          TabOrder = 1
-        end
-        object EdtSchool: TDBEdit
-          Left = 3
-          Top = 86
-          Width = 162
-          Height = 25
-          Anchors = [akLeft, akTop, akRight]
-          DataField = 'SCHOOL'
-          DataSource = MainUserSource
-          TabOrder = 2
-        end
-        object EdtPW: TDBEdit
-          Left = 103
-          Top = 128
-          Width = 162
-          Height = 25
-          Anchors = [akLeft, akTop, akRight]
-          DataField = 'PW'
-          DataSource = MainUserSource
-          TabOrder = 4
-        end
-        object EdtUserName: TDBEdit
-          Left = 3
-          Top = 43
-          Width = 94
-          Height = 25
-          Anchors = [akLeft, akTop, akRight]
-          DataField = 'NAME'
-          DataSource = MainUserSource
-          TabOrder = 0
-        end
-        object BtnCancel: TButton
-          Left = 122
-          Top = 165
-          Width = 75
-          Height = 25
-          Caption = #52712#49548
-          TabOrder = 5
-          OnClick = BtnCancelClick
-        end
-        object BtnUserDelete: TButton
-          Left = 3
-          Top = 165
-          Width = 75
-          Height = 25
-          Caption = #54924#50896#51221#48372#49325#51228
-          TabOrder = 6
-          OnClick = BtnUserDeleteClick
-        end
-        object BtnUserSave: TButton
-          Left = 197
-          Top = 165
-          Width = 75
-          Height = 25
-          Caption = #51200#51109
-          TabOrder = 7
-          OnClick = BtnUserSaveClick
-        end
-      end
-      object GroupBox2: TGroupBox
-        Left = 6
-        Top = 257
-        Width = 275
-        Height = 193
-        Anchors = [akLeft, akTop, akRight]
-        Caption = #49345#54408' '#51221#48372
-        TabOrder = 5
-        DesignSize = (
-          275
-          193)
-        object Label5: TLabel
-          Left = 3
-          Top = 63
-          Width = 33
-          Height = 13
-          Caption = #49345#54408#47749
-        end
-        object Label7: TLabel
-          Left = 152
-          Top = 8
-          Width = 55
-          Height = 13
-          Caption = #49345#54408#51060#48120#51648
-        end
-        object Label10: TLabel
-          Left = 3
-          Top = 19
-          Width = 44
-          Height = 13
-          Caption = #49345#54408#53076#46300
-        end
-        object Label11: TLabel
-          Left = 3
-          Top = 107
-          Width = 22
-          Height = 13
-          Caption = #48516#47448
-        end
-        object GroupBox3: TGroupBox
-          Left = 153
-          Top = 24
-          Width = 112
-          Height = 137
-          TabOrder = 0
-          object ImgPr: TImage
-            Left = 2
-            Top = 3
-            Width = 108
-            Height = 132
-            Proportional = True
-            Stretch = True
-          end
-        end
-        object BtnPrFind: TButton
-          Left = 3
-          Top = 165
-          Width = 142
-          Height = 25
-          Caption = #49345#54408' '#44160#49353
-          TabOrder = 4
-        end
-        object EdtPrName: TDBEdit
-          Left = 3
-          Top = 80
-          Width = 142
-          Height = 21
-          Anchors = [akLeft, akTop, akRight]
-          DataField = 'NAME'
-          DataSource = DM.ProductSource
-          TabOrder = 2
-        end
-        object EdtPrCode: TDBEdit
-          Left = 5
-          Top = 36
-          Width = 142
-          Height = 21
-          Anchors = [akLeft, akTop, akRight]
-          DataField = 'CODE'
-          DataSource = DM.ProductSource
-          TabOrder = 1
-        end
-        object DBEdit5: TDBEdit
-          Left = 5
-          Top = 126
-          Width = 142
-          Height = 21
-          Anchors = [akLeft, akTop, akRight]
-          DataField = 'NAME'
-          DataSource = DM.ProductSource
-          TabOrder = 3
-        end
-      end
-      object BtnPrRent: TButton
-        Left = 87
-        Top = 456
-        Width = 75
-        Height = 25
-        Caption = #49345#54408#49688#51221
-        TabOrder = 3
-      end
-      object BtnPrNew: TButton
-        Left = 6
-        Top = 456
-        Width = 75
-        Height = 25
-        Caption = #49345#54408#46321#47197
-        TabOrder = 2
-      end
-      object BtnPrCancel: TButton
-        Left = 165
-        Top = 422
-        Width = 108
-        Height = 25
-        Anchors = [akTop, akRight]
-        Caption = #49325#51228
-        TabOrder = 6
-      end
-      object BtnUserNew: TButton
-        Left = 109
-        Top = 62
-        Width = 162
-        Height = 25
-        Caption = #49888#44508#46321#47197
-        TabOrder = 1
-        OnClick = BtnUserNewClick
-      end
-      object BtnPrSave: TButton
-        Left = 206
-        Top = 456
-        Width = 75
-        Height = 25
-        Caption = #49345#54408#51200#51109
-        TabOrder = 4
       end
     end
   end
   object MainUserSource: TDataSource
     DataSet = DM.UserQuery
     OnStateChange = MainUserSourceStateChange
-    Left = 248
-    Top = 320
+    Left = 200
+    Top = 368
+  end
+  object MainPRSource: TDataSource
+    DataSet = DM.PRQuery
+    OnStateChange = MainPRSourceStateChange
+    OnDataChange = MainPRSourceDataChange
+    Left = 344
+    Top = 368
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 816
+    Top = 144
   end
 end

@@ -15,26 +15,21 @@ type
     FDPhysIBDriverLink1: TFDPhysIBDriverLink;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     FDConnection1: TFDConnection;
-    UserTable: TFDTable;
-    UserSource: TDataSource;
     UserQuery: TFDQuery;
-    UserTableUSERCODE: TWideStringField;
-    UserTableSCHOOL: TWideStringField;
-    UserTablePHONE: TWideStringField;
-    UserTableID: TWideStringField;
-    UserTablePASSWORD: TWideStringField;
-    UserTableNAME: TWideStringField;
-    ProductTable: TFDTable;
-    ProductSource: TDataSource;
-    ProductTableCODE: TWideStringField;
-    ProductTableEXPLANATION: TWideStringField;
-    ProductTableNAME: TWideStringField;
+    PRQuery: TFDQuery;
+    PRQueryPRCODE: TWideStringField;
+    PRQueryPRNAME: TWideStringField;
+    PRQueryBRAND: TWideStringField;
+    PRQueryEXPLANATION: TWideStringField;
+    PRQueryIMAGE: TBlobField;
     UserQueryUSERCODE: TWideStringField;
     UserQuerySCHOOL: TWideStringField;
     UserQueryPHONE: TWideStringField;
     UserQueryID: TWideStringField;
     UserQueryPW: TWideStringField;
     UserQueryNAME: TWideStringField;
+    PRQueryCT: TWideStringField;
+    UserPRQuery: TFDQuery;
   private
     { Private declarations }
   public

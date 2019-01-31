@@ -40,6 +40,7 @@ type
     btnAdd: TButton;
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
+    DataSource2: TDataSource;
     procedure btnAddClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private

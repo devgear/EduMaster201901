@@ -107,10 +107,11 @@
             <Form>MainForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="UUserForm.pas">
-            <Form>frmUser</Form>
+        <DCCReference Include="USampleForm.pas">
+            <Form>frmSample</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="CommonFunctions.pas"/>
         <None Include="ModelSupport_Project_VCL\default.txaPackage"/>
         <None Include="ModelSupport_Project_VCL\default.txvpck"/>
         <None Include="ModelSupport_Project_VCL\UMain\default.txvpck"/>
@@ -150,9 +151,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="ModelSupport_Project_VCL\UMain\default.txaPackage" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="Win32\Debug\Project_VCL.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
+                        <RemoteName>Project_VCL.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -162,9 +163,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win32\Debug\Project_VCL.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="ModelSupport_Project_VCL\UMain\default.txaPackage" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
-                        <RemoteName>Project_VCL.exe</RemoteName>
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
