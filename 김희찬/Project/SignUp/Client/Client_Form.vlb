@@ -2,7 +2,7 @@
 Coordinates=430,20,53,51
 
 [SIgnUpFrm.BindSourceDB1]
-Coordinates=10,10,151,249
+Coordinates=10,10,151,267
 
 [Edit1]
 Coordinates=490,190,40,51
@@ -26,8 +26,27 @@ Coordinates=320,200,115,33
 Visible=False
 
 [BindSourceDB1]
-Coordinates=320,200,102,123
+Coordinates=320,200,127,87
 
 [BindingsList1]
 Coordinates=161,278,82,33
+
+[SIgnUpFrm.SqlServerMethod1]
+Coordinates=485,1,163,51
+
+[Button3]
+Coordinates=280,349,53,51
+
+[Button2]
+Coordinates=388,306,53,51
+
+[LogOutBtn]
+Coordinates=388,90,68,51
+
+[Label1]
+Coordinates=339,349,46,51
+
+[]
+Coordinates=201,349,70,51
+Visible=True
 

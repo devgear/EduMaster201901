@@ -3,14 +3,14 @@ object SubjectDetailFrame: TSubjectDetailFrame
   Size.Width = 438.000000000000000000
   Size.Height = 506.000000000000000000
   Size.PlatformDefault = False
-  object Rectangle1: TRectangle
+  object S: TRectangle
     Align = Client
     Opacity = 0.500000000000000000
     Sides = []
     Size.Width = 438.000000000000000000
     Size.Height = 506.000000000000000000
     Size.PlatformDefault = False
-    OnClick = Rectangle1Click
+    OnClick = SClick
   end
   object Panel1: TPanel
     Position.X = 72.000000000000000000
@@ -39,6 +39,16 @@ object SubjectDetailFrame: TSubjectDetailFrame
       TabOrder = 2
       Text = #49688#44053#49888#52397
       OnClick = SignUpBtnClick
+    end
+    object BasketCheck: TCheckBox
+      Position.X = 48.000000000000000000
+      Position.Y = 240.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 19.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = #44288#49900#44284#47785
+      OnChange = BasketCheckChange
     end
   end
   object BindingsList1: TBindingsList

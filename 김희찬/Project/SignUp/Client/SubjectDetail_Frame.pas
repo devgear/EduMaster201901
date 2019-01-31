@@ -14,7 +14,7 @@ uses
 
 type
   TSubjectDetailFrame = class(TFrame)
-    Rectangle1: TRectangle;
+    S: TRectangle;
     Panel1: TPanel;
     Edit1: TEdit;
     Edit2: TEdit;
@@ -23,9 +23,11 @@ type
     BindSourceDB2: TBindSourceDB;
     LinkControlToField1: TLinkControlToField;
     LinkControlToField2: TLinkControlToField;
-    procedure Rectangle1Click(Sender: TObject);
+    BasketCheck: TCheckBox;
+    procedure SClick(Sender: TObject);
     procedure SignUpBtnClick(Sender: TObject);
     procedure DropBtnClick(Sender: TObject);
+    procedure BasketCheckChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,6 +39,11 @@ implementation
 {$R *.fmx}
 
 uses Overall_DM, ConfirmCheck_Frame;
+
+procedure TSubjectDetailFrame.SClick(Sender: TObject);
+begin
+  Destroy;
+end;
 
 procedure TSubjectDetailFrame.SignUpBtnClick(Sender: TObject);  //수강신청 버튼
 var
@@ -64,9 +71,24 @@ begin
   Format('"%s"' + #13#10 + '수강취소 하시겠습니까?', [OverallDM.Subject_Log.FieldByName('TITLE').AsString]);
 end;
 
-procedure TSubjectDetailFrame.Rectangle1Click(Sender: TObject);
+procedure TSubjectDetailFrame.BasketCheckChange(Sender: TObject);
 begin
-  Destroy;
+  if BasketCheck.IsChecked then //관심과목 등록
+  begin
+        {
+      OverallDM.Basket.Insert;
+          OverallDM.Basket.FieldByName('SUBJECT_CODE').AsInteger :=
+          OverallDM.Subject_Log.FieldByName('SUBJECT_CODE').AsInteger;
+          OverallDM.Basket.FieldByName('STUDENT_CODE').AsInteger :=
+          OverallDM.User_Log.FieldByName('STUDENT_CODE').AsInteger;
+    }
+
+
+  end
+  else  //관심과목 등록 취소
+  begin
+
+  end;
 end;
 
 end.

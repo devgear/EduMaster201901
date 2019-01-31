@@ -1,8 +1,4 @@
-﻿[Rectangle1]
-Coordinates=10,78,69,33
-Visible=True
-
-[Edit2]
+﻿[Edit2]
 Coordinates=680,140,40,51
 
 [Panel1]
@@ -41,4 +37,8 @@ Coordinates=440,130,115,267
 
 [RequestBtn]
 Coordinates=118,10,72,51
+
+[S]
+Coordinates=10,78,69,33
+Visible=True
 
