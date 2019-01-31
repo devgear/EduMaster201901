@@ -3,15 +3,15 @@ object ClientFrm: TClientFrm
   Top = 0
   Caption = 'Client'
   ClientHeight = 448
-  ClientWidth = 448
+  ClientWidth = 444
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   DesignerMasterStyle = 0
   object Button1: TButton
-    Position.X = 184.000000000000000000
-    Position.Y = 208.000000000000000000
+    Position.X = 200.000000000000000000
+    Position.Y = 232.000000000000000000
     TabOrder = 1
     Text = 'Button1'
     OnClick = Button1Click
@@ -19,8 +19,21 @@ object ClientFrm: TClientFrm
   object Edit1: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 2
-    Position.X = 72.000000000000000000
-    Position.Y = 80.000000000000000000
+    Position.X = 88.000000000000000000
+    Position.Y = 88.000000000000000000
+  end
+  object LogOutBtn: TButton
+    Position.X = 320.000000000000000000
+    Position.Y = 72.000000000000000000
+    TabOrder = 5
+    Text = 'LogOutBtn'
+    OnClick = LogOutBtnClick
+  end
+  object Label1: TLabel
+    Position.X = 32.000000000000000000
+    Position.Y = 88.000000000000000000
+    Text = #54924#50896#47749
+    TabOrder = 7
   end
   object BindSourceDB1: TBindSourceDB
     DataSet = OverallDM.User_Log

@@ -16,8 +16,11 @@ type
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     LinkControlToField1: TLinkControlToField;
+    LogOutBtn: TButton;
+    Label1: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure LogOutBtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,6 +50,12 @@ var
 begin
   ShowLogInForm := TLogInFrm.Create(Application);
   ShowLogInForm.Show;
+end;
+
+procedure TClientFrm.LogOutBtnClick(Sender: TObject);
+begin
+  OverallDM.User_Log.Close;
+  FormCreate(Sender);
 end;
 
 end.
