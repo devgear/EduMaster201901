@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
-  FMX.Controls.Presentation, FMX.Objects;
+  FMX.Controls.Presentation, FMX.Objects, Data.DB, Datasnap.DBClient,
+  Data.FMTBcd, Data.SqlExpr;
 
 type
   TConfirmCheckFrame = class(TFrame)
@@ -13,6 +14,7 @@ type
     Panel1: TPanel;
     ConfirmBtn: TButton;
     CancelBtn: TButton;
+    SignUpDrop: TClientDataSet;
     procedure Rectangle1Click(Sender: TObject);
     procedure SignUpConfirmBtnClick(Sender: TObject);
     procedure DropConfirmClick(Sender: TObject);
@@ -43,12 +45,20 @@ begin
   OverallDM.User_Log.FieldByName('STUDENT_CODE').AsInteger;
   OverallDM.SignedUp.ApplyUpdates(-1);
 
+  //ShowSubjectDetail.RequestBtn.Text := '수강취소';
+  //ShowSubjectDetail.RequestBtn.OnClick := ShowSubjectDetail.DropBtnClick;
+
   Destroy;
 end;
 
 procedure TConfirmCheckFrame.DropConfirmClick(Sender: TObject); //신청취소 확인 핸들러
 begin
-  //
+  SignUpDrop.Open;
+  SignUpDrop.Delete;
+  SignUpDrop.ApplyUpdates(-1);
+
+  //ShowSubjectDetail.RequestBtn.Text := '수강신청';
+  //ShowSubjectDetail.RequestBtn.OnClick := ShowSubjectDetail.SignUpBtnClick;
 
   Destroy;
 end;

@@ -140,4 +140,9 @@ object ServerMethods1: TServerMethods1
     Left = 360
     Top = 48
   end
+  object SignedUpDropProvider: TDataSetProvider
+    DataSet = qrySignedUp
+    Left = 416
+    Top = 48
+  end
 end

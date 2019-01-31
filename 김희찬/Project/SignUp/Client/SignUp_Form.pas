@@ -70,15 +70,15 @@ begin
   SqlServerMethod1.ExecuteMethod;
 
   case SqlServerMethod1.Params[2].AsInteger of
-    SIGNEDUP_CHECK_NO:
-    begin
-      ShowSubjectDetail.RequestBtn.Text := '수강취소';
-      ShowSubjectDetail.RequestBtn.OnClick := ShowSubjectDetail.DropBtnClick;
-    end;
-    SIGNEDUP_CHECK_YES:
+    SIGNEDUP_CHECK_NO:  //등록하지 않은 과목
     begin
       ShowSubjectDetail.RequestBtn.Text := '수강신청';
       ShowSubjectDetail.RequestBtn.OnClick := ShowSubjectDetail.SignUpBtnClick;
+    end;
+    SIGNEDUP_CHECK_YES: //이미 등록한 과목
+    begin
+      ShowSubjectDetail.RequestBtn.Text := '수강취소';
+      ShowSubjectDetail.RequestBtn.OnClick := ShowSubjectDetail.DropBtnClick;
     end;
   end;
 end;

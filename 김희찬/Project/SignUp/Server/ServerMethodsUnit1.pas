@@ -40,6 +40,7 @@ type
     qrySignedUp: TFDQuery;
     SignedUpSUBJECT_CODE: TIntegerField;
     SignedUpSTUDENT_CODE: TIntegerField;
+    SignedUpDropProvider: TDataSetProvider;
   private
     { Private declarations }
   public
@@ -92,7 +93,7 @@ var
 begin
   qrySignedUp.Close;
   Msg :=
-  'select * from SignedUp where SUBJECT_CODE = :SUBJECT_CODE and STUDENT_CODE = :STUDENT_CODE';
+  'select * from SIGNEDUP where SUBJECT_CODE = :SUBJECT_CODE and STUDENT_CODE = :STUDENT_CODE';
   qrySignedUp.SQL.Text := Msg;
   qrySignedUp.ParamByName('SUBJECT_CODE').AsInteger := Subject;
   qrySignedUp.ParamByName('STUDENT_CODE').AsInteger := Student;

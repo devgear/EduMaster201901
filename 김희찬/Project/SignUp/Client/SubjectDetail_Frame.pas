@@ -44,6 +44,8 @@ var
 begin
   ShowCCFrame := TConfirmCheckFrame.Create(Self);
   ShowCCFrame.Parent := Self;
+
+  ShowCCFrame.ConfirmBtn.OnClick := ShowCCFrame.SignUpConfirmBtnClick;
 end;
 
 procedure TSubjectDetailFrame.DropBtnClick(Sender: TObject);  //신청취소 버튼
@@ -52,6 +54,8 @@ var
 begin
   ShowCCFrame := TConfirmCheckFrame.Create(Self);
   ShowCCFrame.Parent := Self;
+
+  ShowCCFrame.ConfirmBtn.OnClick := ShowCCFrame.DropConfirmClick;
 end;
 
 procedure TSubjectDetailFrame.Rectangle1Click(Sender: TObject);
