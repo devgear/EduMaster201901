@@ -74,11 +74,7 @@ begin
 
 end;
 
-procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  FreeAndNil(Client);
-  FreeAndNil(dm);
-end;
+
 
 procedure TMainForm.TabControl1Change(Sender: TObject);
 begin
@@ -91,10 +87,18 @@ begin
 
 end;
 
+procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FreeAndNil(Client);
+  FreeAndNil(dm);
+  FreeAndNil(MainForm);
+end;
+
 procedure TMainForm.FormCreate(Sender: TObject);
 var
   SignForm: TSignForm;
 begin
+  ShowMessage('BizCode 키 확인중: ' + BizCode.ToString);
   Dm := TDMAdminAccess.Create(application);
 //  SignForm := TSignForm.Create(nil);
 //  SignForm.ShowModal(procedure(modalResult: TModalResult)

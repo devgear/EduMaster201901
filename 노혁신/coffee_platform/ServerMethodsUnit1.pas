@@ -25,10 +25,6 @@ type
     BizInfoQuery: TFDQuery;
     SignInQueryProvider: TDataSetProvider;
     BizInfoQueryProvider: TDataSetProvider;
-    SignInQueryBIZ_CODE: TIntegerField;
-    SignInQueryNAME: TStringField;
-    SignInQueryADDR: TStringField;
-    SignInQueryTEL: TStringField;
     BizInfoQueryBIZ_CODE: TIntegerField;
     BizInfoQueryCONTENT: TStringField;
     BizInfoQueryAMENITY: TStringField;
@@ -39,6 +35,7 @@ type
     BizInfoQueryIMG_3: TBlobField;
     BizInfoQueryIMG_4: TBlobField;
     BizInfoQueryCOUPON: TIntegerField;
+    SignInQueryBIZ_CODE: TIntegerField;
   private
     { Private declarations }
   public

@@ -109,23 +109,6 @@ object ServerMethods1: TServerMethods1
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object SignInQueryNAME: TStringField
-      FieldName = 'NAME'
-      Origin = 'NAME'
-      Required = True
-      Size = 80
-    end
-    object SignInQueryADDR: TStringField
-      FieldName = 'ADDR'
-      Origin = 'ADDR'
-      Required = True
-      Size = 400
-    end
-    object SignInQueryTEL: TStringField
-      FieldName = 'TEL'
-      Origin = 'TEL'
-      Size = 80
-    end
   end
   object BizInfoQuery: TFDQuery
     Connection = FDConnection1
