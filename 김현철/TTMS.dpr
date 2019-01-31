@@ -5,7 +5,8 @@ uses
   MainMenu in 'MainMenu.pas' {frmMenu},
   EventManager in 'EventManager.pas' {frmEvent},
   Manager in 'Manager.pas' {frmManager},
-  DataModule in 'DataModule.pas' {DataModule1: TDataModule};
+  DataModule in 'DataModule.pas' {DataModule1: TDataModule},
+  TouristStatusForm in 'TouristStatusForm.pas' {frmTouristStatus};
 
 {$R *.res}
 
@@ -16,5 +17,6 @@ begin
   Application.CreateForm(TfrmEvent, frmEvent);
   Application.CreateForm(TfrmManager, frmManager);
   Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TfrmTouristStatus, frmTouristStatus);
   Application.Run;
 end.

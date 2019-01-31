@@ -20,7 +20,7 @@ type
     btnReservation: TButton;
     btnEvent: TButton;
     btnManager: TButton;
-    btnMogaek: TButton;
+    btnTourist: TButton;
     btnPartner: TButton;
     btnCalculate: TButton;
     btnHotel: TButton;
@@ -33,6 +33,7 @@ type
     procedure btnReservationClick(Sender: TObject);
     procedure edtPassKeyPress(Sender: TObject; var Key: Char);
     procedure btnManagerClick(Sender: TObject);
+    procedure btnTouristClick(Sender: TObject);
   private
     { Private declarations }
     procedure SetButton(Button: TButton; Bool: Integer);
@@ -48,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses DataModule, EventManager, Manager;
+uses DataModule, EventManager, Manager, TouristStatusForm;
 
 procedure TfrmMenu.SetButton(Button: TButton; Bool: Integer);
 begin
@@ -74,7 +75,7 @@ begin
       else begin
         SetButton(btnReservation, FieldByName('auth_reservation').AsInteger);
         SetButton(btnEvent,       FieldByName('auth_event').AsInteger);
-        SetButton(btnMogaek,      FieldByName('auth_mogaek').AsInteger);
+        SetButton(btnTourist,     FieldByName('auth_mogaek').AsInteger);
         SetButton(btnPartner,     FieldByName('auth_partner').AsInteger);
         SetButton(btnCalculate,   FieldByName('auth_calculate').AsInteger);
         SetButton(btnHotel,       FieldByName('auth_hotel').AsInteger);
@@ -92,6 +93,11 @@ end;
 procedure TfrmMenu.btnReservationClick(Sender: TObject);
 begin
   frmEvent.Show;
+end;
+
+procedure TfrmMenu.btnTouristClick(Sender: TObject);
+begin
+  frmTouristStatus.Show;
 end;
 
 procedure TfrmMenu.btnManagerClick(Sender: TObject);

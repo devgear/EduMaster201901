@@ -71,15 +71,14 @@ object frmMenu: TfrmMenu
       TabOrder = 2
       OnClick = btnManagerClick
     end
-    object btnMogaek: TButton
+    object btnTourist: TButton
       Left = 15
       Top = 63
       Width = 122
       Height = 41
       Caption = #47784#44061#54788#54889
-      Enabled = False
       TabOrder = 3
-      OnClick = btnReservationClick
+      OnClick = btnTouristClick
     end
     object btnPartner: TButton
       Left = 143
