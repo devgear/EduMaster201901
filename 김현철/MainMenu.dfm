@@ -124,8 +124,8 @@ object frmMenu: TfrmMenu
       Width = 122
       Height = 41
       Caption = #44256#44061#44288#47532
-      Enabled = False
       TabOrder = 8
+      OnClick = btnCustomerClick
     end
     object btnBanking: TButton
       Left = 15

@@ -1,15 +1,6 @@
-﻿[FDTable1]
+﻿[]
 Coordinates=174,20,60,33
-
-[DataSource1]
-Coordinates=103,71,77,33
-
-[]
-Coordinates=84,124,90,33
 Visible=True
-
-[DBNavigator1]
-Coordinates=330,30,82,51
 
 [DBGrid1]
 Coordinates=25,134,56,33

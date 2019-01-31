@@ -17,11 +17,8 @@ uses
 
 type
   TfrmEvent = class(TForm)
-    DataSource1: TDataSource;
-    FDTable1: TFDTable;
-    DBNavigator1: TDBNavigator;
     DBGrid1: TDBGrid;
-    DBEditManagerName: TDBEdit;
+    Panel1: TPanel;
     DBText1: TDBText;
     Label1: TLabel;
     Label2: TLabel;
@@ -42,58 +39,62 @@ type
     Label17: TLabel;
     DBTextReservationDate: TDBText;
     DBTextProcessDate: TDBText;
-    DBEdit2: TDBEdit;
-    DBEdit3: TDBEdit;
     Label18: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label29: TLabel;
+    Label30: TLabel;
+    Label31: TLabel;
+    Label32: TLabel;
+    Label33: TLabel;
+    Label34: TLabel;
+    Label35: TLabel;
+    Label36: TLabel;
+    Label37: TLabel;
+    Label38: TLabel;
+    DBNavigator1: TDBNavigator;
+    DBEditManagerName: TDBEdit;
+    edtPartner: TDBEdit;
+    DBEdit3: TDBEdit;
     DBEditNight: TDBEdit;
     DBEditDay: TDBEdit;
-    Label19: TLabel;
     DBEdit8: TDBEdit;
     DBEdit9: TDBEdit;
     DBEdit10: TDBEdit;
     DBEdit11: TDBEdit;
-    Label20: TLabel;
-    Label21: TLabel;
-    Label22: TLabel;
     DBEdit12: TDBEdit;
     DBEdit13: TDBEdit;
     DBEdit15: TDBEdit;
     DBEdit17: TDBEdit;
     DBEdit18: TDBEdit;
     DBEdit19: TDBEdit;
-    Label23: TLabel;
     DBEdit20: TDBEdit;
-    Label24: TLabel;
     edtDepartHour: TEdit;
-    Label25: TLabel;
     edtDepartMinute: TEdit;
-    Label26: TLabel;
     edtLocalHour: TEdit;
-    Label27: TLabel;
     edtLocalMinute: TEdit;
-    Label28: TLabel;
-    FDQuerySerial: TFDQuery;
-    DataSource2: TDataSource;
     edtFromYear: TEdit;
     edtFromMonth: TEdit;
     edtFromDay: TEdit;
-    Label29: TLabel;
-    Label30: TLabel;
-    Label31: TLabel;
     edtToYear: TEdit;
     edtToMonth: TEdit;
     edtToDay: TEdit;
-    Label32: TLabel;
-    Label33: TLabel;
-    Label34: TLabel;
-    Label35: TLabel;
-    Label36: TLabel;
     edtDepartMonth: TEdit;
     edtDepartDay: TEdit;
-    Label37: TLabel;
-    Label38: TLabel;
     edtLocalMonth: TEdit;
     edtLocalDay: TEdit;
+    DataSource1: TDataSource;
+    FDTable1: TFDTable;
+    FDQuerySerial: TFDQuery;
+    btnPost: TButton;
     procedure FormActivate(Sender: TObject);
     procedure FormDeactivate(Sender: TObject);
     procedure FDTable1NewRecord(DataSet: TDataSet);
@@ -101,6 +102,7 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure EventDateExit(Sender: TObject);
     procedure FDTable1AfterScroll(DataSet: TDataSet);
+    procedure btnPostClick(Sender: TObject);
   private
     { Private declarations }
     procedure SetDate2Edit(Date: TDate; edtYear: TEdit; edtMonth: TEdit; edtDay: TEdit);
@@ -117,29 +119,42 @@ implementation
 
 {$R *.dfm}
 
-uses DataModule, DateUtils;
+uses DataModule, DateUtils, MyLib;
 
 {** 행사기간 입력시 몇박 몇일을 자동으로 계산
 *}
+procedure TfrmEvent.btnPostClick(Sender: TObject);
+begin
+  FDTable1.Post;
+end;
+
 procedure TfrmEvent.EventDateExit(Sender: TObject);
 var
   fromDate, toDate : TDate;
+  Year, Month, Day: Integer;
   Night: Integer;
 begin
-  fromDate := EncodeDate(StrToInt(edtFromYear.Text),
-    StrToInt(edtFromMonth.Text), StrToInt(edtFromDay.Text));
-  toDate := EncodeDate(StrToInt(edtToYear.Text),
-    StrToInt(edtToMonth.Text), StrToInt(edtToDay.Text));
+  Convert3TextToDate(fromDate, edtFromYear.Text, edtFromMonth.Text, edtFromDay.Text);
+  Convert3TextToDate(ToDate, edtToYear.Text, edtToMonth.Text, edtToDay.Text);
 
-  Night := DaysBetween(toDate, fromDate);
-  with FDTable1 do
+//  fromDate := EncodeDate(StrToInt(edtFromYear.Text),
+//    StrToInt(edtFromMonth.Text), StrToInt(edtFromDay.Text));
+//  toDate := EncodeDate(StrToInt(edtToYear.Text),
+//    StrToInt(edtToMonth.Text), StrToInt(edtToDay.Text));
+
+  if (toDate <> 0) and (fromDate <> 0) then
   begin
-    Edit;
-    FieldByName('night').AsString := IntToStr(Night);
-    DBEditNight.Text := IntToStr(Night);
-    FieldByName('day').AsString := IntToStr(Night + 1);
-    DBEditDay.Text := IntToStr(Night + 1);
+    Night := DaysBetween(toDate, fromDate);
+    with FDTable1 do
+    begin
+      Edit;
+      FieldByName('night').AsString := IntToStr(Night);
+      DBEditNight.Text := IntToStr(Night);
+      FieldByName('day').AsString := IntToStr(Night + 1);
+      DBEditDay.Text := IntToStr(Night + 1);
+    end;
   end;
+
 end;
 
 {** 년월일(TDate)을 세개의 TEdit.Text에저장
@@ -247,7 +262,7 @@ begin
     FieldByName('event_start_date').AsDateTime  := EventStartDate;
     FieldByName('event_end_date').AsDateTime    := EventEndDate;
     FieldByName('start_time').AsDateTime        := DepartTime;
-    FieldByName('local_time').AsDateTime        := EventEndDate;
+    FieldByName('local_start_time').AsDateTime  := EventEndDate;
     FieldByName('modified_at').AsDateTime       := now;
   end;
 end;
@@ -274,7 +289,7 @@ begin
       result := formatDateTime('yyyymmdd', now) + '001'
     // 오늘 날짜의 예약이 있으면 1 증가
     else begin
-      Serial := StrToInt(Copy(FieldByName('serial').AsString, 7, 3));
+      Serial := StrToInt(Copy(FieldByName('serial').AsString, 9, 3));
       result := formatDateTime('yyyymmdd', now) + IntToStr(Serial + 1);
     end;
   end;
@@ -317,6 +332,8 @@ begin
   edtDepartDay.Clear;             edtLocalDay.Clear;
   edtDepartHour.Clear;            edtLocalHour.Clear;
   edtDepartMinute.Clear;          edtLocalMinute.Clear;
+
+  edtPartner.SetFocus;
 end;
 
 

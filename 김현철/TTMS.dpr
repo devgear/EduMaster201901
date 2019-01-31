@@ -6,7 +6,9 @@ uses
   EventManager in 'EventManager.pas' {frmEvent},
   Manager in 'Manager.pas' {frmManager},
   DataModule in 'DataModule.pas' {DataModule1: TDataModule},
-  TouristStatusForm in 'TouristStatusForm.pas' {frmTouristStatus};
+  TouristStatusForm in 'TouristStatusForm.pas' {frmTouristStatus},
+  CustomerForm in 'CustomerForm.pas' {frmCustomer},
+  MyLib in 'MyLib.pas';
 
 {$R *.res}
 
@@ -18,5 +20,6 @@ begin
   Application.CreateForm(TfrmManager, frmManager);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TfrmTouristStatus, frmTouristStatus);
+  Application.CreateForm(TfrmCustomer, frmCustomer);
   Application.Run;
 end.

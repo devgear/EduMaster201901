@@ -8,6 +8,7 @@ object DataModule1: TDataModule1
     Params.Strings = (
       'Database=D:\DelphiProject\EduMaster201901\'#44608#54788#52384'\ttms.sdb'
       'DriverID=SQLite')
+    Connected = True
     Left = 55
     Top = 96
   end
