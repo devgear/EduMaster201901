@@ -15,7 +15,6 @@ uses System.SysUtils, System.Classes, System.Json,
 
 type
   TServerMethods1 = class(TDSServerModule)
-    FDConnection1: TFDConnection;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     FDPhysIBDriverLink1: TFDPhysIBDriverLink;
     SignUpQuery: TFDQuery;
@@ -25,17 +24,18 @@ type
     BizInfoQuery: TFDQuery;
     SignInQueryProvider: TDataSetProvider;
     BizInfoQueryProvider: TDataSetProvider;
+    SignInQueryBIZ_CODE: TIntegerField;
     BizInfoQueryBIZ_CODE: TIntegerField;
-    BizInfoQueryCONTENT: TStringField;
-    BizInfoQueryAMENITY: TStringField;
+    BizInfoQueryCONTENT: TWideStringField;
+    BizInfoQueryAMENITY: TWideStringField;
     BizInfoQuerySIG_IMG: TBlobField;
-    BizInfoQuerySIG_NAME: TStringField;
+    BizInfoQuerySIG_NAME: TWideStringField;
     BizInfoQueryIMG_1: TBlobField;
     BizInfoQueryIMG_2: TBlobField;
     BizInfoQueryIMG_3: TBlobField;
     BizInfoQueryIMG_4: TBlobField;
     BizInfoQueryCOUPON: TIntegerField;
-    SignInQueryBIZ_CODE: TIntegerField;
+    FDConnection1: TFDConnection;
   private
     { Private declarations }
   public

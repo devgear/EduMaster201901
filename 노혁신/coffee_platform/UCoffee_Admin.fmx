@@ -54,19 +54,6 @@ object MainForm: TMainForm
           Size.PlatformDefault = False
           Text = #51064#49324#47568
           TabOrder = 1
-          object Memo1: TMemo
-            Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-            DataDetectorTypes = []
-            ImeMode = imHanguel
-            Position.X = 8.000000000000000000
-            Position.Y = 24.000000000000000000
-            Size.Width = 321.000000000000000000
-            Size.Height = 89.000000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 0
-            Viewport.Width = 317.000000000000000000
-            Viewport.Height = 85.000000000000000000
-          end
         end
         object GroupBox2: TGroupBox
           Position.X = 48.000000000000000000
@@ -76,19 +63,6 @@ object MainForm: TMainForm
           Size.PlatformDefault = False
           Text = #49884#44536#45768#52376' '#49345#54408' '#51060#48120#51648' '#48143' '#49548#44060
           TabOrder = 0
-          object Memo2: TMemo
-            Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-            DataDetectorTypes = []
-            ImeMode = imHanguel
-            Position.X = 168.000000000000000000
-            Position.Y = 24.000000000000000000
-            Size.Width = 161.000000000000000000
-            Size.Height = 153.000000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 1
-            Viewport.Width = 157.000000000000000000
-            Viewport.Height = 149.000000000000000000
-          end
           object Image1: TImage
             MultiResBitmap = <
               item
@@ -167,7 +141,6 @@ object MainForm: TMainForm
           Position.Y = 544.000000000000000000
           TabOrder = 4
           Text = #51200#51109
-          OnClick = Button3Click
         end
       end
       object TabItem2: TTabItem
@@ -251,9 +224,40 @@ object MainForm: TMainForm
       end
     end
   end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Position.X = 128.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 185.000000000000000000
+    Size.Height = 81.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Viewport.Width = 181.000000000000000000
+    Viewport.Height = 77.000000000000000000
+  end
   object DataSource1: TDataSource
-    DataSet = DMAdminAccess.SignInQuery
-    Left = 440
-    Top = 192
+    DataSet = DMAdminAccess.BizInfoQuery
+    Left = 416
+    Top = 80
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSource = DataSource1
+    ScopeMappings = <>
+    Left = 232
+    Top = 304
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkControlToField1: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'CONTENT'
+      Control = Memo1
+      Track = False
+    end
   end
 end

@@ -2,14 +2,6 @@ object ServerMethods1: TServerMethods1
   OldCreateOrder = False
   Height = 689
   Width = 594
-  object FDConnection1: TFDConnection
-    Params.Strings = (
-      'ConnectionDef=Coffee')
-    Connected = True
-    LoginPrompt = False
-    Left = 40
-    Top = 16
-  end
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Provider = 'Forms'
     Left = 530
@@ -20,7 +12,7 @@ object ServerMethods1: TServerMethods1
     Top = 64
   end
   object SignUpQuery: TFDQuery
-    ConnectionName = 'Coffee'
+    Connection = FDConnection1
     SQL.Strings = (
       'INSERT INTO TB_BIZ (BIZ_NUM, PW, NAME, ADDR) '
       'VALUES ( :BIZ_NUM, :PW, :NAME, :ADDR);'
@@ -58,7 +50,7 @@ object ServerMethods1: TServerMethods1
       end>
   end
   object DupChkQuery: TFDQuery
-    ConnectionName = 'Coffee'
+    Connection = FDConnection1
     SQL.Strings = (
       'SELECT COUNT(BIZ_CODE) AS DUPCNT FROM TB_BIZ'
       'WHERE BIZ_NUM = :BIZ_NUM')
@@ -74,7 +66,7 @@ object ServerMethods1: TServerMethods1
       end>
   end
   object SignUpQuery2: TFDQuery
-    ConnectionName = 'Coffee'
+    Connection = FDConnection1
     SQL.Strings = (
       'INSERT INTO TB_BIZ_INFO (BIZ_CODE) '
       'VALUES (gen_id(biz_code_gen,0));')
@@ -82,7 +74,7 @@ object ServerMethods1: TServerMethods1
     Top = 16
   end
   object SignInQuery: TFDQuery
-    ConnectionName = 'Coffee'
+    Connection = FDConnection1
     SQL.Strings = (
       'SELECT BIZ_CODE FROM TB_BIZ'
       'WHERE BIZ_NUM = :BIZ_NUM AND PW = :PW')
@@ -130,12 +122,12 @@ object ServerMethods1: TServerMethods1
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object BizInfoQueryCONTENT: TStringField
+    object BizInfoQueryCONTENT: TWideStringField
       FieldName = 'CONTENT'
       Origin = 'CONTENT'
       Size = 200
     end
-    object BizInfoQueryAMENITY: TStringField
+    object BizInfoQueryAMENITY: TWideStringField
       FieldName = 'AMENITY'
       Origin = 'AMENITY'
       Size = 400
@@ -144,7 +136,7 @@ object ServerMethods1: TServerMethods1
       FieldName = 'SIG_IMG'
       Origin = 'SIG_IMG'
     end
-    object BizInfoQuerySIG_NAME: TStringField
+    object BizInfoQuerySIG_NAME: TWideStringField
       FieldName = 'SIG_NAME'
       Origin = 'SIG_NAME'
       Size = 200
@@ -179,5 +171,17 @@ object ServerMethods1: TServerMethods1
     DataSet = BizInfoQuery
     Left = 40
     Top = 280
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      
+        'Database=C:\workspace\delphi_project\coffee_platForm_git\'#45432#54785#49888'\cof' +
+        'fee_platform\DB\COFFEE.IB'
+      'User_Name=SYSDBA'
+      'Password=masterkey'
+      'CharacterSet=UTF8'
+      'DriverID=IB')
+    Left = 40
+    Top = 24
   end
 end

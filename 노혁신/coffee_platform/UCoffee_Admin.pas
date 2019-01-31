@@ -26,10 +26,8 @@ type
     Layout3: TLayout;
     Layout4: TLayout;
     Layout5: TLayout;
-    Memo1: TMemo;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
-    Memo2: TMemo;
     Image1: TImage;
     GroupBox3: TGroupBox;
     Image2: TImage;
@@ -41,10 +39,13 @@ type
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     DataSource1: TDataSource;
+    Memo1: TMemo;
+    BindSourceDB1: TBindSourceDB;
+    BindingsList1: TBindingsList;
+    LinkControlToField1: TLinkControlToField;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure TabControl1Change(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -65,17 +66,6 @@ uses USignIn_Admin, DMAdmin;
 var
   dm: TDMAdminAccess;
 
-procedure TMainForm.Button3Click(Sender: TObject);
-var
-  Content: string;
-begin
-
-  Content := Memo1.Text;
-
-end;
-
-
-
 procedure TMainForm.TabControl1Change(Sender: TObject);
 begin
   case TabControl1.TabIndex of
@@ -84,7 +74,6 @@ begin
     2: label1.Text := '예약설정';
     3: label1.Text := '회원관리';
   end;
-
 end;
 
 procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -100,6 +89,12 @@ var
 begin
   ShowMessage('BizCode 키 확인중: ' + BizCode.ToString);
   Dm := TDMAdminAccess.Create(application);
+  Dm.BizInfoQuery.Close;
+  Dm.BizInfoQuery.ParamByName('BIZ_CODE').AsInteger := BizCode;
+  Dm.BizInfoQuery.Open;
+  memo1.Text := dm.BizInfoQuery.FieldByName('content').Value;
+
+
 //  SignForm := TSignForm.Create(nil);
 //  SignForm.ShowModal(procedure(modalResult: TModalResult)
 //                      begin

@@ -2,7 +2,7 @@
 Coordinates=241,78,53,33
 
 []
-Coordinates=430,80,70,51
+Coordinates=332,148,82,33
 Visible=True
 
 [TabControl1]
@@ -30,10 +30,6 @@ Coordinates=355,78,49,51
 [TabItem4]
 Coordinates=128,306,59,33
 
-[Memo1]
-Coordinates=355,155,49,51
-Visible=True
-
 [Layout4]
 Coordinates=59,306,53,33
 
@@ -57,6 +53,7 @@ Coordinates=221,133,70,51
 
 [GroupBox2]
 Coordinates=104,1,70,51
+Visible=True
 
 [Button3]
 Coordinates=355,232,53,51
@@ -76,9 +73,6 @@ Coordinates=221,210,84,51
 [SpeedButton2]
 Coordinates=22,132,84,51
 
-[Memo2]
-Coordinates=45,55,49,51
-
 [DMAdminAccess.SignInQuery]
 Coordinates=560,30,162,123
 
@@ -87,9 +81,19 @@ Coordinates=750,11,174,177
 Visible=False
 
 [DMAdminAccess.BizInfoQuery]
-Coordinates=725,180,165,231
+Coordinates=900,190,165,231
 
 [DataSource1]
-Coordinates=637,382,77,33
+Coordinates=540,120,77,33
 Visible=True
+
+[Memo1]
+Coordinates=460,90,49,51
+Visible=True
+
+[BindSourceDB1]
+Coordinates=627,120,92,249
+
+[BindingsList1]
+Coordinates=15,52,82,33
 
