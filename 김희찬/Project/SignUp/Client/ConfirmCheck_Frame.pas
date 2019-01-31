@@ -48,7 +48,7 @@ begin
   //ShowSubjectDetail.RequestBtn.Text := '수강취소';
   //ShowSubjectDetail.RequestBtn.OnClick := ShowSubjectDetail.DropBtnClick;
 
-  Destroy;
+  Parent.Destroy;
 end;
 
 procedure TConfirmCheckFrame.DropConfirmClick(Sender: TObject); //신청취소 확인 핸들러
@@ -57,10 +57,11 @@ begin
   SignUpDrop.Delete;
   SignUpDrop.ApplyUpdates(-1);
 
+
   //ShowSubjectDetail.RequestBtn.Text := '수강신청';
   //ShowSubjectDetail.RequestBtn.OnClick := ShowSubjectDetail.SignUpBtnClick;
 
-  Destroy;
+  Parent.Destroy;
 end;
 
 procedure TConfirmCheckFrame.Rectangle1Click(Sender: TObject);

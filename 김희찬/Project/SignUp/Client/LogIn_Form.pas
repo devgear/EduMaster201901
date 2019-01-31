@@ -7,7 +7,7 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.StdCtrls, FMX.Controls.Presentation, FMX.Edit, Data.DB,
   Datasnap.DBClient, System.Actions, FMX.ActnList, FMX.StdActns, Overall_DM,
-  Data.FMTBcd, Data.SqlExpr;
+  Data.FMTBcd, Data.SqlExpr, FMX.ScrollBox, FMX.Memo;
 
 type
   TLogInFrm = class(TForm)
@@ -15,6 +15,7 @@ type
     PWEdit: TEdit;
     LogInBtn: TButton;
     SqlServerMethod1: TSqlServerMethod;
+    Memo1: TMemo;
     procedure LogInBtnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private

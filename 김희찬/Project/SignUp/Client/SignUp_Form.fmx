@@ -1,7 +1,7 @@
 object SIgnUpFrm: TSIgnUpFrm
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'SignUp'
   ClientHeight = 480
   ClientWidth = 433
   Position = Designed
