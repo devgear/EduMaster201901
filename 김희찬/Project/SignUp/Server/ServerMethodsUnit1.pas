@@ -25,8 +25,6 @@ type
     qryLogInProvider: TDataSetProvider;
     BasketSUBJECT_CODE: TIntegerField;
     BasketSTUDENT_CODE: TIntegerField;
-    SignedUpSUBJECT_CODE: TIntegerField;
-    SignedUpSTUDENT_CODE: TIntegerField;
     qryLogIn: TFDQuery;
     Subject_LogTYPE: TIntegerField;
     Subject_LogSUBJECT_CODE: TIntegerField;
@@ -39,6 +37,9 @@ type
     Subject_LogCAPACITY: TIntegerField;
     Subject_LogSTUDENTNUM: TIntegerField;
     Subject_LogDETAIL: TStringField;
+    qrySignedUp: TFDQuery;
+    SignedUpSUBJECT_CODE: TIntegerField;
+    SignedUpSTUDENT_CODE: TIntegerField;
   private
     { Private declarations }
   public
@@ -46,6 +47,7 @@ type
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
     function LogInCheck(ID, PW: string): Integer;
+    function SignedUpCheck(Subject, Student: Integer): Integer;
   end;
 
 implementation
@@ -61,6 +63,11 @@ begin
   Result := Value;
 end;
 
+function TServerMethods1.ReverseString(Value: string): string;
+begin
+  Result := System.StrUtils.ReverseString(Value);
+end;
+
 function TServerMethods1.LogInCheck(ID, PW: string): Integer;
 var
   Msg: string;
@@ -70,6 +77,7 @@ begin
   qryLogIn.SQL.Text := Msg;
   qryLogIn.ParamByName('STUDENT_CODE').AsString := ID;
   qryLogIn.Open;
+
   if qryLogIn.Fields[1].AsString <> ID then //등록되지 않은 ID
     Result := LOGIN_CHECK_NOTFOUND_ID
   else if qryLogIn.Fields[2].AsString <> PW then  //비밀번호 틀림
@@ -78,9 +86,22 @@ begin
     Result := LOGIN_CHECK_OK;
 end;
 
-function TServerMethods1.ReverseString(Value: string): string;
+function TServerMethods1.SignedUpCheck(Subject, Student: Integer): Integer;
+var
+  Msg: string;
 begin
-  Result := System.StrUtils.ReverseString(Value);
+  qrySignedUp.Close;
+  Msg :=
+  'select * from SignedUp where SUBJECT_CODE = :SUBJECT_CODE and STUDENT_CODE = :STUDENT_CODE';
+  qrySignedUp.SQL.Text := Msg;
+  qrySignedUp.ParamByName('SUBJECT_CODE').AsInteger := Subject;
+  qrySignedUp.ParamByName('STUDENT_CODE').AsInteger := Student;
+  qrySIgnedUP.Open;
+
+  if qrySignedUp.Fields[0].AsInteger <> Subject then
+    Result := SIGNEDUP_CHECK_NO  //등록하지 않은 과목
+  else
+    Result := SIGNEDUP_CHECK_YES;  //이미 등록한 과목
 end;
 
 end.

@@ -4,9 +4,6 @@ Coordinates=105,298,47,33
 [ComboBox1]
 Coordinates=287,10,84,123
 
-[Label1]
-Coordinates=509,10,46,51
-
 [LiberalTab]
 Coordinates=170,298,66,33
 
@@ -23,9 +20,6 @@ Coordinates=256,298,60,33
 Coordinates=10,10,129,33
 Visible=False
 
-[Label2]
-Coordinates=572,10,46,51
-
 [ListView1]
 Coordinates=170,10,89,141
 Visible=True
@@ -34,20 +28,20 @@ Visible=True
 Coordinates=398,10,84,123
 
 []
-Coordinates=162,394,91,36
+Coordinates=572,10,46,51
 
 [BindSourceDB1]
-Coordinates=10,20,115,249
+Coordinates=10,20,115,87
 
 [BindingsList1]
 Coordinates=166,197,82,33
 
 [OverallDM.User_Log]
-Coordinates=460,200,115,51
+Coordinates=460,200,115,87
 
 [OverallDM.SignedUp]
-Coordinates=680,100,116,51
+Coordinates=680,100,116,87
 
 [OverallDM.Basket]
-Coordinates=310,200,101,51
+Coordinates=310,200,101,87
 

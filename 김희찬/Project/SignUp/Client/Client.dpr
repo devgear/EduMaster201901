@@ -9,7 +9,8 @@ uses
   Overall_DM in 'Overall_DM.pas' {OverallDM: TDataModule},
   ClientClass in 'ClientClass.pas',
   SubjectDetail_Frame in 'SubjectDetail_Frame.pas' {SubjectDetailFrame: TFrame},
-  CommonDefine in '..\CommonDefine.pas';
+  CommonDefine in '..\CommonDefine.pas',
+  ConfirmCheck_Frame in 'ConfirmCheck_Frame.pas' {ConfirmCheckFrame: TFrame};
 
 {$R *.res}
 

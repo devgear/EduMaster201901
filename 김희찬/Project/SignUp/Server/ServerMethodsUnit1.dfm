@@ -102,12 +102,10 @@ object ServerMethods1: TServerMethods1
     Left = 200
     Top = 144
     object SignedUpSUBJECT_CODE: TIntegerField
-      DisplayLabel = #44284#47785#53076#46300
       FieldName = 'SUBJECT_CODE'
       Origin = 'SUBJECT_CODE'
     end
     object SignedUpSTUDENT_CODE: TIntegerField
-      DisplayLabel = #54617#48264
       FieldName = 'STUDENT_CODE'
       Origin = 'STUDENT_CODE'
     end
@@ -136,5 +134,10 @@ object ServerMethods1: TServerMethods1
     Connection = FDConnection1
     Left = 384
     Top = 144
+  end
+  object qrySignedUp: TFDQuery
+    Connection = FDConnection1
+    Left = 360
+    Top = 48
   end
 end

@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 2019-01-31 오후 12:28:51
+// 2019-01-31 오후 3:58:49
 //
 
 unit ClientClass;
@@ -15,6 +15,7 @@ type
     FEchoStringCommand: TDBXCommand;
     FReverseStringCommand: TDBXCommand;
     FLogInCheckCommand: TDBXCommand;
+    FSignedUpCheckCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
@@ -22,6 +23,7 @@ type
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
     function LogInCheck(ID: string; PW: string): Integer;
+    function SignedUpCheck(Subject: Integer; Student: Integer): Integer;
   end;
 
 implementation
@@ -69,6 +71,21 @@ begin
   Result := FLogInCheckCommand.Parameters[2].Value.GetInt32;
 end;
 
+function TServerMethods1Client.SignedUpCheck(Subject: Integer; Student: Integer): Integer;
+begin
+  if FSignedUpCheckCommand = nil then
+  begin
+    FSignedUpCheckCommand := FDBXConnection.CreateCommand;
+    FSignedUpCheckCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FSignedUpCheckCommand.Text := 'TServerMethods1.SignedUpCheck';
+    FSignedUpCheckCommand.Prepare;
+  end;
+  FSignedUpCheckCommand.Parameters[0].Value.SetInt32(Subject);
+  FSignedUpCheckCommand.Parameters[1].Value.SetInt32(Student);
+  FSignedUpCheckCommand.ExecuteUpdate;
+  Result := FSignedUpCheckCommand.Parameters[2].Value.GetInt32;
+end;
+
 constructor TServerMethods1Client.Create(ADBXConnection: TDBXConnection);
 begin
   inherited Create(ADBXConnection);
@@ -84,6 +101,7 @@ begin
   FEchoStringCommand.DisposeOf;
   FReverseStringCommand.DisposeOf;
   FLogInCheckCommand.DisposeOf;
+  FSignedUpCheckCommand.DisposeOf;
   inherited;
 end;
 

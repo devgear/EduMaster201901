@@ -6,7 +6,11 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.Objects, FMX.Layouts, FMX.TreeView,
-  FMX.Edit, Data.DB, Datasnap.DBClient;
+  FMX.Edit, Data.DB, Datasnap.DBClient, System.Rtti,
+  System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.EngExt,
+  Fmx.Bind.DBEngExt, Data.Bind.Components, FMX.ListView.Types,
+  FMX.ListView.Appearances, FMX.ListView.Adapters.Base, Data.Bind.DBScope,
+  FMX.ListView;
 
 type
   TSubjectDetailFrame = class(TFrame)
@@ -14,10 +18,14 @@ type
     Panel1: TPanel;
     Edit1: TEdit;
     Edit2: TEdit;
-    Button1: TButton;
-    ClientDataSet1: TClientDataSet;
+    RequestBtn: TButton;
+    BindingsList1: TBindingsList;
+    BindSourceDB2: TBindSourceDB;
+    LinkControlToField1: TLinkControlToField;
+    LinkControlToField2: TLinkControlToField;
     procedure Rectangle1Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure SignUpBtnClick(Sender: TObject);
+    procedure DropBtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,11 +36,22 @@ implementation
 
 {$R *.fmx}
 
-uses SignUp_Form, Overall_DM;
+uses Overall_DM, ConfirmCheck_Frame;
 
-procedure TSubjectDetailFrame.Button1Click(Sender: TObject);
+procedure TSubjectDetailFrame.SignUpBtnClick(Sender: TObject);  //수강신청 버튼
+var
+  ShowCCFrame: TConfirmCheckFrame;
 begin
-  Destroy;
+  ShowCCFrame := TConfirmCheckFrame.Create(Self);
+  ShowCCFrame.Parent := Self;
+end;
+
+procedure TSubjectDetailFrame.DropBtnClick(Sender: TObject);  //신청취소 버튼
+var
+  ShowCCFrame: TConfirmCheckFrame;
+begin
+  ShowCCFrame := TConfirmCheckFrame.Create(Self);
+  ShowCCFrame.Parent := Self;
 end;
 
 procedure TSubjectDetailFrame.Rectangle1Click(Sender: TObject);

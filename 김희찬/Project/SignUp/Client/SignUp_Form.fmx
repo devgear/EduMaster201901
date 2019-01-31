@@ -49,38 +49,57 @@ object SIgnUpFrm: TSIgnUpFrm
           Size.PlatformDefault = False
           TabOrder = 0
           object ComboBox1: TComboBox
-            Position.X = 56.000000000000000000
+            ItemIndex = 1
+            Position.X = 16.000000000000000000
             Position.Y = 8.000000000000000000
-            Size.Width = 193.000000000000000000
+            Size.Width = 249.000000000000000000
             Size.Height = 32.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
-          end
-          object Label1: TLabel
-            Position.X = 8.000000000000000000
-            Position.Y = 16.000000000000000000
-            Size.Width = 57.000000000000000000
-            Size.Height = 25.000000000000000000
-            Size.PlatformDefault = False
-            Text = #51204#44277
-            TabOrder = 4
-          end
-          object Label2: TLabel
-            Position.X = 273.000000000000000000
-            Position.Y = 20.000000000000000000
-            Size.Width = 57.000000000000000000
-            Size.Height = 21.000000000000000000
-            Size.PlatformDefault = False
-            Text = #54617#45380
-            TabOrder = 3
+            object ListBoxItem2: TListBoxItem
+              Size.Width = 44.000000000000000000
+              Size.Height = 44.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              Text = #44277#44284#45824#54617'('#44277#53685')'
+            end
+            object ListBoxItem1: TListBoxItem
+              IsSelected = True
+              Size.Width = 44.000000000000000000
+              Size.Height = 44.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = #52980#54504#53552', '#51204#51088#49884#49828#53596' '#51204#44277
+            end
           end
           object ComboBox2: TComboBox
-            Position.X = 321.000000000000000000
+            ItemIndex = 0
+            Position.X = 337.000000000000000000
             Position.Y = 12.000000000000000000
             Size.Width = 64.000000000000000000
             Size.Height = 32.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 1
+            object ListBoxItem3: TListBoxItem
+              IsSelected = True
+              Size.Width = 44.000000000000000000
+              Size.Height = 44.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = '1'#54617#45380
+            end
+            object ListBoxItem4: TListBoxItem
+              TabOrder = 1
+              Text = '2'#54617#45380
+            end
+            object ListBoxItem5: TListBoxItem
+              TabOrder = 2
+              Text = '3'#54617#45380
+            end
+            object ListBoxItem6: TListBoxItem
+              TabOrder = 3
+              Text = '4'#54617#45380
+            end
           end
         end
         object ListView1: TListView
@@ -133,5 +152,32 @@ object SIgnUpFrm: TSIgnUpFrm
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
+  end
+  object SqlServerMethod1: TSqlServerMethod
+    Params = <
+      item
+        DataType = ftInteger
+        Precision = 4
+        Name = 'Subject_Code'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Precision = 4
+        Name = 'Student_Code'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Precision = 4
+        Name = 'ReturnParameter'
+        ParamType = ptResult
+        Size = 4
+        Value = 0
+      end>
+    SQLConnection = OverallDM.SQLConnection1
+    ServerMethodName = 'TServerMethods1.SignedUpCheck'
+    Left = 280
+    Top = 17
   end
 end

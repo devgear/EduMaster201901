@@ -1,26 +1,44 @@
 ﻿[Rectangle1]
 Coordinates=10,78,69,33
-
-[Button1]
-Coordinates=118,10,53,51
+Visible=True
 
 [Edit2]
-Coordinates=64,10,40,51
+Coordinates=680,140,40,51
 
 [Panel1]
 Coordinates=187,10,47,33
 Visible=True
 
 [Edit1]
-Coordinates=10,10,40,51
+Coordinates=690,70,40,51
 Visible=True
 
 [OverallDM.Subject_Log]
+Coordinates=440,130,129,33
 Visible=False
 
 []
-Coordinates=127,87,77,33
+Coordinates=40,290,103,105
+Visible=True
 
-[ClientDataSet1]
-Coordinates=260,30,87,231
+[OverallDM.SignedUp]
+Coordinates=416,216,116,33
+
+[OverallDM.Basket]
+Coordinates=290,100,101,87
+
+[OverallDM.User_Log]
+Coordinates=104,130,115,51
+
+[BindingsList1]
+Coordinates=0,0,82,33
+
+[SIgnUpFrm.BindSourceDB1]
+Coordinates=770,150,151,249
+
+[BindSourceDB2]
+Coordinates=440,130,115,267
+
+[RequestBtn]
+Coordinates=118,10,72,51
 
