@@ -500,58 +500,52 @@ object frmEvent: TfrmEvent
     Height = 26
     TabOrder = 21
   end
-  object edtStartYear: TEdit
+  object edtFromYear: TEdit
     Left = 83
     Top = 137
     Width = 38
     Height = 26
     TabOrder = 22
-    Text = '2019'
     OnExit = EventDateExit
   end
-  object edtStartMonth: TEdit
+  object edtFromMonth: TEdit
     Left = 146
     Top = 137
     Width = 27
     Height = 26
     TabOrder = 23
-    Text = '11'
     OnExit = EventDateExit
   end
-  object edtStartDay: TEdit
+  object edtFromDay: TEdit
     Left = 198
     Top = 137
     Width = 27
     Height = 26
     TabOrder = 24
-    Text = '30'
     OnExit = EventDateExit
   end
-  object edtEndYear: TEdit
+  object edtToYear: TEdit
     Left = 288
     Top = 137
     Width = 38
     Height = 26
     TabOrder = 25
-    Text = '2019'
     OnExit = EventDateExit
   end
-  object edtEndMonth: TEdit
+  object edtToMonth: TEdit
     Left = 351
     Top = 137
     Width = 27
     Height = 26
     TabOrder = 26
-    Text = '11'
     OnExit = EventDateExit
   end
-  object edtEndDay: TEdit
+  object edtToDay: TEdit
     Left = 403
     Top = 137
     Width = 27
     Height = 26
     TabOrder = 27
-    Text = '30'
     OnExit = EventDateExit
   end
   object edtDepartMonth: TEdit
@@ -560,7 +554,6 @@ object frmEvent: TfrmEvent
     Width = 27
     Height = 26
     TabOrder = 28
-    Text = '11'
     OnExit = EventDateExit
   end
   object edtDepartDay: TEdit
@@ -569,7 +562,6 @@ object frmEvent: TfrmEvent
     Width = 27
     Height = 26
     TabOrder = 29
-    Text = '30'
     OnExit = EventDateExit
   end
   object edtLocalMonth: TEdit
@@ -578,7 +570,6 @@ object frmEvent: TfrmEvent
     Width = 27
     Height = 26
     TabOrder = 30
-    Text = '11'
     OnExit = EventDateExit
   end
   object edtLocalDay: TEdit
@@ -587,7 +578,6 @@ object frmEvent: TfrmEvent
     Width = 27
     Height = 26
     TabOrder = 31
-    Text = '30'
     OnExit = EventDateExit
   end
   object DataSource1: TDataSource
