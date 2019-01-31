@@ -1,0 +1,51 @@
+object SubjectDetailFrame: TSubjectDetailFrame
+  Align = Client
+  Size.Width = 444.000000000000000000
+  Size.Height = 388.000000000000000000
+  Size.PlatformDefault = False
+  object Rectangle1: TRectangle
+    Align = Client
+    Opacity = 0.500000000000000000
+    Sides = []
+    Size.Width = 444.000000000000000000
+    Size.Height = 388.000000000000000000
+    Size.PlatformDefault = False
+    OnClick = Rectangle1Click
+  end
+  object Panel1: TPanel
+    Position.X = 64.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 297.000000000000000000
+    Size.Height = 297.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Edit1: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 0
+      Position.X = 56.000000000000000000
+      Position.Y = 48.000000000000000000
+    end
+    object Edit2: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 1
+      Position.X = 56.000000000000000000
+      Position.Y = 96.000000000000000000
+    end
+    object Button1: TButton
+      Position.X = 176.000000000000000000
+      Position.Y = 240.000000000000000000
+      TabOrder = 2
+      Text = 'Button1'
+      OnClick = Button1Click
+    end
+  end
+  object ClientDataSet1: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'Subject_logProvider'
+    RemoteServer = OverallDM.DSProviderConnection1
+    Left = 32
+    Top = 72
+  end
+end

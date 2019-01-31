@@ -1,0 +1,67 @@
+object LogInFrm: TLogInFrm
+  Left = 0
+  Top = 0
+  Caption = 'LogIn'
+  ClientHeight = 480
+  ClientWidth = 513
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  DesignerMasterStyle = 0
+  object IDEdit: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 2
+    KeyboardType = NumberPad
+    Position.X = 160.000000000000000000
+    Position.Y = 312.000000000000000000
+    Size.Width = 193.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object PWEdit: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 0
+    Position.X = 160.000000000000000000
+    Position.Y = 352.000000000000000000
+    Size.Width = 193.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object LogInBtn: TButton
+    Position.X = 376.000000000000000000
+    Position.Y = 320.000000000000000000
+    Size.Width = 80.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #47196#44536#51064
+    OnClick = LogInBtnClick
+  end
+  object SqlServerMethod1: TSqlServerMethod
+    Params = <
+      item
+        DataType = ftWideString
+        Precision = 2000
+        Name = 'ID'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftWideString
+        Precision = 2000
+        Name = 'PW'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Precision = 4
+        Name = 'ReturnParameter'
+        ParamType = ptResult
+        Size = 4
+      end>
+    SQLConnection = OverallDM.SQLConnection1
+    ServerMethodName = 'TServerMethods1.LogInCheck'
+    Left = 40
+    Top = 56
+  end
+end
