@@ -359,7 +359,7 @@ object FrmAdmin: TFrmAdmin
   object BindSourceDB2: TBindSourceDB
     DataSet = DMAdminAccess.BizInfoQuery
     ScopeMappings = <>
-    Left = 288
-    Top = 16
+    Left = 312
+    Top = 8
   end
 end
