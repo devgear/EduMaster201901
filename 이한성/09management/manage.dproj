@@ -113,7 +113,32 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Udatamodule.pas">
-            <Form>Udata</Form>
+            <Form>udata</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="itemquery.pas">
+            <Form>frm_itemquery</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Urent.pas">
+            <Form>Frm_Rent</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uitem_list.pas">
+            <Form>frm_item_list</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Urent_det_item.pas">
+            <Form>frm_rent_det_item</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Urent_det_cus.pas">
+            <Form>frm_rent_det_cus</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="urent_det.pas">
+            <Form>frm_rent_det</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

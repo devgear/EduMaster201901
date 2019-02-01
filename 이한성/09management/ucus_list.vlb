@@ -10,9 +10,15 @@ Coordinates=188,10,43,51
 [Edit1]
 Coordinates=68,10,40,51
 
-[DBGrid1]
-Coordinates=60,71,56,33
-
 [btn_sp]
 Coordinates=10,10,48,51
+
+[Udata.CUSQUERY]
+Coordinates=135,80,104,231
+
+[customersource]
+Coordinates=49,141,94,33
+
+[]
+Coordinates=60,71,56,33
 
