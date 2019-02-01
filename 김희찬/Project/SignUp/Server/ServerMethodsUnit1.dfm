@@ -78,23 +78,6 @@ object ServerMethods1: TServerMethods1
       Size = 200
     end
   end
-  object Basket: TFDQuery
-    Connection = FDConnection1
-    SQL.Strings = (
-      'select * from BASKET')
-    Left = 128
-    Top = 144
-    object BasketSUBJECT_CODE: TIntegerField
-      DisplayLabel = #44284#47785#53076#46300
-      FieldName = 'SUBJECT_CODE'
-      Origin = 'SUBJECT_CODE'
-    end
-    object BasketSTUDENT_CODE: TIntegerField
-      DisplayLabel = #54617#48264
-      FieldName = 'STUDENT_CODE'
-      Origin = 'STUDENT_CODE'
-    end
-  end
   object SignedUp: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
@@ -109,15 +92,14 @@ object ServerMethods1: TServerMethods1
       FieldName = 'STUDENT_CODE'
       Origin = 'STUDENT_CODE'
     end
+    object SignedUpSIGNEDUP_TYPE: TIntegerField
+      FieldName = 'SIGNEDUP_TYPE'
+      Origin = 'SIGNEDUP_TYPE'
+    end
   end
   object Subject_logProvider: TDataSetProvider
     DataSet = Subject_Log
     Left = 56
-    Top = 208
-  end
-  object BasketProvider: TDataSetProvider
-    DataSet = Basket
-    Left = 128
     Top = 208
   end
   object SignedUpProvider: TDataSetProvider
@@ -132,17 +114,31 @@ object ServerMethods1: TServerMethods1
   end
   object qryLogIn: TFDQuery
     Connection = FDConnection1
+    SQL.Strings = (
+      '')
     Left = 384
     Top = 144
   end
   object qrySignedUp: TFDQuery
     Connection = FDConnection1
-    Left = 360
-    Top = 48
+    Left = 352
+    Top = 16
+    object qrySignedUpSUBJECT_CODE: TIntegerField
+      FieldName = 'SUBJECT_CODE'
+      Origin = 'SUBJECT_CODE'
+    end
+    object qrySignedUpSTUDENT_CODE: TIntegerField
+      FieldName = 'STUDENT_CODE'
+      Origin = 'STUDENT_CODE'
+    end
+    object qrySignedUpSIGNEDUP_TYPE: TIntegerField
+      FieldName = 'SIGNEDUP_TYPE'
+      Origin = 'SIGNEDUP_TYPE'
+    end
   end
   object SignedUpDropProvider: TDataSetProvider
     DataSet = qrySignedUp
-    Left = 416
-    Top = 48
+    Left = 424
+    Top = 16
   end
 end

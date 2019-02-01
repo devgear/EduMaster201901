@@ -48,7 +48,7 @@ object SubjectDetailFrame: TSubjectDetailFrame
       Size.PlatformDefault = False
       TabOrder = 3
       Text = #44288#49900#44284#47785
-      OnChange = BasketCheckChange
+      OnClick = BasketCheckClick
     end
   end
   object BindingsList1: TBindingsList

@@ -27,7 +27,7 @@ type
     procedure SClick(Sender: TObject);
     procedure SignUpBtnClick(Sender: TObject);
     procedure DropBtnClick(Sender: TObject);
-    procedure BasketCheckChange(Sender: TObject);
+    procedure BasketCheckClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,7 +38,7 @@ implementation
 
 {$R *.fmx}
 
-uses Overall_DM, ConfirmCheck_Frame;
+uses Overall_DM, ConfirmCheck_Frame, CommonDefine;
 
 procedure TSubjectDetailFrame.SClick(Sender: TObject);
 begin
@@ -71,23 +71,26 @@ begin
   Format('"%s"' + #13#10 + '수강취소 하시겠습니까?', [OverallDM.Subject_Log.FieldByName('TITLE').AsString]);
 end;
 
-procedure TSubjectDetailFrame.BasketCheckChange(Sender: TObject);
+procedure TSubjectDetailFrame.BasketCheckClick(Sender: TObject);
 begin
-  if BasketCheck.IsChecked then //관심과목 등록
+  if not BasketCheck.IsChecked then //관심과목 등록
   begin
-        {
-      OverallDM.Basket.Insert;
-          OverallDM.Basket.FieldByName('SUBJECT_CODE').AsInteger :=
-          OverallDM.Subject_Log.FieldByName('SUBJECT_CODE').AsInteger;
-          OverallDM.Basket.FieldByName('STUDENT_CODE').AsInteger :=
-          OverallDM.User_Log.FieldByName('STUDENT_CODE').AsInteger;
-    }
-
-
+    OverallDM.SignedUp.Insert;
+    OverallDM.SignedUp.FieldByName('SUBJECT_CODE').AsInteger :=
+    OverallDM.Subject_Log.FieldByName('SUBJECT_CODE').AsInteger;
+    OverallDM.SignedUp.FieldByName('STUDENT_CODE').AsInteger :=
+    OverallDM.User_Log.FieldByName('STUDENT_CODE').AsInteger;
+    OverallDM.SignedUp.FieldByName('SIGNEDUP_TYPE').AsInteger := BASKET_CHECK;
+    OverallDM.SignedUp.ApplyUpdates(-1);
   end
   else  //관심과목 등록 취소
   begin
+    OverallDM.SQLExcuteMethod(BASKET_CHECK);
 
+    OverallDM.SignUpDrop.Open;
+    OverallDM.SignUpDrop.Delete;
+    OverallDM.SignUpDrop.ApplyUpdates(-1);
+    OverallDM.SignUpDrop.Close;
   end;
 end;
 

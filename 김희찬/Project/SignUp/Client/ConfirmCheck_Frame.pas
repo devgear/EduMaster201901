@@ -14,7 +14,6 @@ type
     Panel1: TPanel;
     ConfirmBtn: TButton;
     CancelBtn: TButton;
-    SignUpDrop: TClientDataSet;
     Label1: TLabel;
     procedure Rectangle1Click(Sender: TObject);
     procedure SignUpConfirmBtnClick(Sender: TObject);
@@ -30,7 +29,7 @@ implementation
 
 {$R *.fmx}
 
-uses Overall_DM;
+uses Overall_DM, CommonDefine;
 
 procedure TConfirmCheckFrame.CancelBtnClick(Sender: TObject); //취소
 begin
@@ -44,23 +43,20 @@ begin
   OverallDM.Subject_Log.FieldByName('SUBJECT_CODE').AsInteger;
   OverallDM.SignedUp.FieldByName('STUDENT_CODE').AsInteger :=
   OverallDM.User_Log.FieldByName('STUDENT_CODE').AsInteger;
+  OverallDM.SignedUp.FieldByName('SIGNEDUP_TYPE').AsInteger := SIGNEDUP_CHECK;
   OverallDM.SignedUp.ApplyUpdates(-1);
-
-  //ShowSubjectDetail.RequestBtn.Text := '수강취소';
-  //ShowSubjectDetail.RequestBtn.OnClick := ShowSubjectDetail.DropBtnClick;
 
   Parent.Destroy;
 end;
 
 procedure TConfirmCheckFrame.DropConfirmClick(Sender: TObject); //신청취소 확인 핸들러
 begin
-  SignUpDrop.Open;
-  SignUpDrop.Delete;
-  SignUpDrop.ApplyUpdates(-1);
+  OverallDM.SQLExcuteMethod(SIGNEDUP_CHECK);
 
-
-  //ShowSubjectDetail.RequestBtn.Text := '수강신청';
-  //ShowSubjectDetail.RequestBtn.OnClick := ShowSubjectDetail.SignUpBtnClick;
+  OverallDM.SignUpDrop.Open;
+  OverallDM.SignUpDrop.Delete;
+  OverallDM.SignUpDrop.ApplyUpdates(-1);
+  OverallDM.SignUpDrop.Close;
 
   Parent.Destroy;
 end;

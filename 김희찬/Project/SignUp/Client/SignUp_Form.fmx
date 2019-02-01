@@ -74,7 +74,7 @@ object SIgnUpFrm: TSIgnUpFrm
           end
           object ComboBox2: TComboBox
             ItemIndex = 0
-            Position.X = 337.000000000000000000
+            Position.X = 281.000000000000000000
             Position.Y = 12.000000000000000000
             Size.Width = 64.000000000000000000
             Size.Height = 32.000000000000000000
@@ -99,6 +99,27 @@ object SIgnUpFrm: TSIgnUpFrm
             object ListBoxItem6: TListBoxItem
               TabOrder = 3
               Text = '4'#54617#45380
+            end
+          end
+          object ComboBox3: TComboBox
+            ItemIndex = 0
+            Position.X = 352.000000000000000000
+            Position.Y = 16.000000000000000000
+            Size.Width = 81.000000000000000000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 3
+            object ListBoxItem7: TListBoxItem
+              IsSelected = True
+              Size.Width = 44.000000000000000000
+              Size.Height = 44.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              Text = '1'#54617#44592
+            end
+            object ListBoxItem8: TListBoxItem
+              TabOrder = 1
+              Text = '2'#54617#44592
             end
           end
         end
@@ -152,32 +173,5 @@ object SIgnUpFrm: TSIgnUpFrm
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
-  end
-  object SqlServerMethod1: TSqlServerMethod
-    Params = <
-      item
-        DataType = ftInteger
-        Precision = 4
-        Name = 'Subject_Code'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Precision = 4
-        Name = 'Student_Code'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Precision = 4
-        Name = 'ReturnParameter'
-        ParamType = ptResult
-        Size = 4
-        Value = 0
-      end>
-    SQLConnection = OverallDM.SQLConnection1
-    ServerMethodName = 'TServerMethods1.SignedUpCheck'
-    Left = 280
-    Top = 17
   end
 end

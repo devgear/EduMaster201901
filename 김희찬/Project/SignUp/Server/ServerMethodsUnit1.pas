@@ -17,14 +17,10 @@ type
     FDConnection1: TFDConnection;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     Subject_Log: TFDQuery;
-    Basket: TFDQuery;
     SignedUp: TFDQuery;
     Subject_logProvider: TDataSetProvider;
-    BasketProvider: TDataSetProvider;
     SignedUpProvider: TDataSetProvider;
     qryLogInProvider: TDataSetProvider;
-    BasketSUBJECT_CODE: TIntegerField;
-    BasketSTUDENT_CODE: TIntegerField;
     qryLogIn: TFDQuery;
     Subject_LogTYPE: TIntegerField;
     Subject_LogSUBJECT_CODE: TIntegerField;
@@ -41,6 +37,10 @@ type
     SignedUpSUBJECT_CODE: TIntegerField;
     SignedUpSTUDENT_CODE: TIntegerField;
     SignedUpDropProvider: TDataSetProvider;
+    SignedUpSIGNEDUP_TYPE: TIntegerField;
+    qrySignedUpSUBJECT_CODE: TIntegerField;
+    qrySignedUpSTUDENT_CODE: TIntegerField;
+    qrySignedUpSIGNEDUP_TYPE: TIntegerField;
   private
     { Private declarations }
   public
@@ -48,7 +48,7 @@ type
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
     function LogInCheck(ID, PW: string): Integer;
-    function SignedUpCheck(Subject, Student: Integer): Integer;
+    function SignedUpCheck(Subject, Student, SignedUpType: Integer): Integer;
   end;
 
 implementation
@@ -87,16 +87,17 @@ begin
     Result := LOGIN_CHECK_OK;
 end;
 
-function TServerMethods1.SignedUpCheck(Subject, Student: Integer): Integer;
+function TServerMethods1.SignedUpCheck(Subject, Student, SignedUpType: Integer): Integer;
 var
   Msg: string;
 begin
   qrySignedUp.Close;
   Msg :=
-  'select * from SIGNEDUP where SUBJECT_CODE = :SUBJECT_CODE and STUDENT_CODE = :STUDENT_CODE';
+  'select * from SIGNEDUP where SUBJECT_CODE = :SUBJECT_CODE and STUDENT_CODE = :STUDENT_CODE and SIGNEDUP_TYPE = :SIGNEDUP_TYPE';
   qrySignedUp.SQL.Text := Msg;
   qrySignedUp.ParamByName('SUBJECT_CODE').AsInteger := Subject;
   qrySignedUp.ParamByName('STUDENT_CODE').AsInteger := Student;
+  qrySignedUp.ParamByName('SIGNEDUP_TYPE').AsInteger := SignedUpType;
   qrySIgnedUP.Open;
 
   if qrySignedUp.Fields[0].AsInteger <> Subject then

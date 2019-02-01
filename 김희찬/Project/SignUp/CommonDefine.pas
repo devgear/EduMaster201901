@@ -10,6 +10,9 @@ const
   SIGNEDUP_CHECK_NO = 0;
   SIGNEDUP_CHECK_YES = 1;
 
+  SIGNEDUP_CHECK = 0;
+  BASKET_CHECK = 1;
+
 implementation
 
 end.

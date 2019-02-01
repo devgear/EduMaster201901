@@ -43,12 +43,4 @@ object ConfirmCheckFrame: TConfirmCheckFrame
       TabOrder = 2
     end
   end
-  object SignUpDrop: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'SignedUpDropProvider'
-    RemoteServer = OverallDM.DSProviderConnection1
-    Left = 64
-    Top = 48
-  end
 end

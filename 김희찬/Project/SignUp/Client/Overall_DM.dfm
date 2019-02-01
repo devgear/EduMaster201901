@@ -36,6 +36,62 @@ object OverallDM: TOverallDM
     RemoteServer = DSProviderConnection1
     Left = 120
     Top = 136
+    object Subject_LogTYPE: TIntegerField
+      FieldName = 'TYPE'
+      Origin = '"TYPE"'
+      Required = True
+    end
+    object Subject_LogSUBJECT_CODE: TIntegerField
+      FieldName = 'SUBJECT_CODE'
+      Origin = 'SUBJECT_CODE'
+      Required = True
+    end
+    object Subject_LogTITLE: TStringField
+      FieldName = 'TITLE'
+      Origin = 'TITLE'
+      Required = True
+      Size = 50
+    end
+    object Subject_LogLECTURER: TStringField
+      FieldName = 'LECTURER'
+      Origin = 'LECTURER'
+      Required = True
+      Size = 30
+    end
+    object Subject_LogTIME: TStringField
+      FieldName = 'TIME'
+      Origin = '"TIME"'
+      Size = 30
+    end
+    object Subject_LogCLASSROOM: TStringField
+      FieldName = 'CLASSROOM'
+      Origin = 'CLASSROOM'
+      Size = 30
+    end
+    object Subject_LogCREDIT: TIntegerField
+      FieldName = 'CREDIT'
+      Origin = 'CREDIT'
+      Required = True
+    end
+    object Subject_LogGRADE: TIntegerField
+      FieldName = 'GRADE'
+      Origin = 'GRADE'
+    end
+    object Subject_LogCAPACITY: TIntegerField
+      FieldName = 'CAPACITY'
+      Origin = 'CAPACITY'
+      Required = True
+    end
+    object Subject_LogSTUDENTNUM: TIntegerField
+      FieldName = 'STUDENTNUM'
+      Origin = 'STUDENTNUM'
+      Required = True
+    end
+    object Subject_LogDETAIL: TStringField
+      FieldName = 'DETAIL'
+      Origin = 'DETAIL'
+      Size = 200
+    end
   end
   object SignedUp: TClientDataSet
     Active = True
@@ -45,22 +101,65 @@ object OverallDM: TOverallDM
     RemoteServer = DSProviderConnection1
     Left = 208
     Top = 136
-  end
-  object Basket: TClientDataSet
-    Active = True
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'BasketProvider'
-    RemoteServer = DSProviderConnection1
-    Left = 296
-    Top = 136
+    object SignedUpSUBJECT_CODE: TIntegerField
+      FieldName = 'SUBJECT_CODE'
+      Origin = 'SUBJECT_CODE'
+    end
+    object SignedUpSTUDENT_CODE: TIntegerField
+      FieldName = 'STUDENT_CODE'
+      Origin = 'STUDENT_CODE'
+    end
+    object SignedUpSIGNEDUP_TYPE: TIntegerField
+      FieldName = 'SIGNEDUP_TYPE'
+      Origin = 'SIGNEDUP_TYPE'
+    end
   end
   object User_Log: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'qryLogInProvider'
     RemoteServer = DSProviderConnection1
-    Left = 384
+    Left = 296
+    Top = 64
+  end
+  object SignedUpCheck_ServerMethod: TSqlServerMethod
+    Params = <
+      item
+        DataType = ftInteger
+        Precision = 4
+        Name = 'Subject'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Precision = 4
+        Name = 'Student'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Precision = 4
+        Name = 'SignedUpType'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Precision = 4
+        Name = 'ReturnParameter'
+        ParamType = ptResult
+        Size = 4
+      end>
+    SQLConnection = SQLConnection1
+    ServerMethodName = 'TServerMethods1.SignedUpCheck'
+    Left = 120
+    Top = 240
+  end
+  object SignUpDrop: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'SignedUpDropProvider'
+    RemoteServer = DSProviderConnection1
+    Left = 296
     Top = 136
   end
 end

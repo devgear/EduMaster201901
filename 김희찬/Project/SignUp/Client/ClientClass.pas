@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 2019-01-31 오후 4:30:12
+// 2019-02-01 오전 10:56:26
 //
 
 unit ClientClass;
@@ -23,7 +23,7 @@ type
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
     function LogInCheck(ID: string; PW: string): Integer;
-    function SignedUpCheck(Subject: Integer; Student: Integer): Integer;
+    function SignedUpCheck(Subject: Integer; Student: Integer; SignedUpType: Integer): Integer;
   end;
 
 implementation
@@ -71,7 +71,7 @@ begin
   Result := FLogInCheckCommand.Parameters[2].Value.GetInt32;
 end;
 
-function TServerMethods1Client.SignedUpCheck(Subject: Integer; Student: Integer): Integer;
+function TServerMethods1Client.SignedUpCheck(Subject: Integer; Student: Integer; SignedUpType: Integer): Integer;
 begin
   if FSignedUpCheckCommand = nil then
   begin
@@ -82,8 +82,9 @@ begin
   end;
   FSignedUpCheckCommand.Parameters[0].Value.SetInt32(Subject);
   FSignedUpCheckCommand.Parameters[1].Value.SetInt32(Student);
+  FSignedUpCheckCommand.Parameters[2].Value.SetInt32(SignedUpType);
   FSignedUpCheckCommand.ExecuteUpdate;
-  Result := FSignedUpCheckCommand.Parameters[2].Value.GetInt32;
+  Result := FSignedUpCheckCommand.Parameters[3].Value.GetInt32;
 end;
 
 constructor TServerMethods1Client.Create(ADBXConnection: TDBXConnection);

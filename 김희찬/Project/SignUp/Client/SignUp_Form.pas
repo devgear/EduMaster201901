@@ -30,7 +30,9 @@ type
     ListBoxItem4: TListBoxItem;
     ListBoxItem5: TListBoxItem;
     ListBoxItem6: TListBoxItem;
-    SqlServerMethod1: TSqlServerMethod;
+    ComboBox3: TComboBox;
+    ListBoxItem7: TListBoxItem;
+    ListBoxItem8: TListBoxItem;
     procedure ListView1ItemClick(const Sender: TObject;
       const AItem: TListViewItem);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -62,14 +64,8 @@ begin
   ShowSubjectDetail := TSubjectDetailFrame.Create(Self);
   ShowSubjectDetail.Parent := Self;
 
-  SqlServerMethod1.Close;
-  SqlServerMethod1.Params[0].AsInteger :=
-  OverallDM.Subject_Log.FieldByName('SUBJECT_CODE').AsInteger;
-  SqlServerMethod1.Params[1].AsInteger :=
-  StrToInt(OverallDM.User_Log.FieldByName('STUDENT_CODE').AsString);
-  SqlServerMethod1.ExecuteMethod;
-
-  case SqlServerMethod1.Params[2].AsInteger of
+  OverallDM.SQLExcuteMethod(SIGNEDUP_CHECK);  //수강신청 상태
+  case OverallDM.SignedUpCheck_ServerMethod.Params[3].AsInteger of
     SIGNEDUP_CHECK_NO:  //등록하지 않은 과목
     begin
       ShowSubjectDetail.RequestBtn.Text := '수강신청';
@@ -80,6 +76,12 @@ begin
       ShowSubjectDetail.RequestBtn.Text := '수강취소';
       ShowSubjectDetail.RequestBtn.OnClick := ShowSubjectDetail.DropBtnClick;
     end;
+  end;
+
+  OverallDM.SQLExcuteMethod(BASKET_CHECK);
+  case OverallDM.SignedUpCheck_ServerMethod.Params[3].AsInteger of
+    SIGNEDUP_CHECK_NO: ShowSubjectDetail.BasketCheck.IsChecked := False;  //관심과목이 아닌 과목
+    SIGNEDUP_CHECK_YES: ShowSubjectDetail.BasketCheck.IsChecked := True;  //관심과목인 과목
   end;
 end;
 

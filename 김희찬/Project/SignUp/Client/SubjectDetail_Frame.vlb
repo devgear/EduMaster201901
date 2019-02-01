@@ -20,9 +20,6 @@ Visible=True
 [OverallDM.SignedUp]
 Coordinates=416,216,116,33
 
-[OverallDM.Basket]
-Coordinates=290,100,101,87
-
 [OverallDM.User_Log]
 Coordinates=104,130,115,51
 
@@ -41,4 +38,7 @@ Coordinates=118,10,72,51
 [S]
 Coordinates=10,78,69,33
 Visible=True
+
+[OverallDM.]
+Coordinates=290,100,101,87
 
