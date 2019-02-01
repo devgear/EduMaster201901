@@ -31,6 +31,8 @@ type
     Subject_LogDETAIL: TStringField;
     SignUpDrop: TClientDataSet;
     procedure SQLExcuteMethod(SignedUpType: Integer);
+    procedure SignUpSubject(SignUpType: Integer);
+    procedure DropSubject(DropType: Integer);
   private
     { Private declarations }
   public
@@ -59,6 +61,27 @@ begin
   StrToInt(OverallDM.User_Log.FieldByName('STUDENT_CODE').AsString);
   SignedUpCheck_ServerMethod.Params[2].AsInteger := SignedUpType;
   SignedUpCheck_ServerMethod.ExecuteMethod;
+end;
+
+procedure TOverallDM.SignUpSubject(SignUpType: Integer);  //수강신청 and 관심과목 등록
+begin
+  SignedUp.Insert;
+  SignedUp.FieldByName('SUBJECT_CODE').AsInteger :=
+  Subject_Log.FieldByName('SUBJECT_CODE').AsInteger;
+  SignedUp.FieldByName('STUDENT_CODE').AsInteger :=
+  User_Log.FieldByName('STUDENT_CODE').AsInteger;
+  SignedUp.FieldByName('SIGNEDUP_TYPE').AsInteger := SignUpType;
+  SignedUp.ApplyUpdates(-1);
+end;
+
+procedure TOverallDM.DropSubject(DropType: Integer);  //신청취소 and 관심과목 등록취소
+begin
+  SQLExcuteMethod(DropType);
+
+  SignUpDrop.Open;
+  SignUpDrop.Delete;
+  SignUpDrop.ApplyUpdates(-1);
+  SignUpDrop.Close;
 end;
 
 end.

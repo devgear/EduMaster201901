@@ -74,24 +74,9 @@ end;
 procedure TSubjectDetailFrame.BasketCheckClick(Sender: TObject);
 begin
   if not BasketCheck.IsChecked then //관심과목 등록
-  begin
-    OverallDM.SignedUp.Insert;
-    OverallDM.SignedUp.FieldByName('SUBJECT_CODE').AsInteger :=
-    OverallDM.Subject_Log.FieldByName('SUBJECT_CODE').AsInteger;
-    OverallDM.SignedUp.FieldByName('STUDENT_CODE').AsInteger :=
-    OverallDM.User_Log.FieldByName('STUDENT_CODE').AsInteger;
-    OverallDM.SignedUp.FieldByName('SIGNEDUP_TYPE').AsInteger := BASKET_CHECK;
-    OverallDM.SignedUp.ApplyUpdates(-1);
-  end
+    OverallDM.SignUpSubject(BASKET_CHECK)
   else  //관심과목 등록 취소
-  begin
-    OverallDM.SQLExcuteMethod(BASKET_CHECK);
-
-    OverallDM.SignUpDrop.Open;
-    OverallDM.SignUpDrop.Delete;
-    OverallDM.SignUpDrop.ApplyUpdates(-1);
-    OverallDM.SignUpDrop.Close;
-  end;
+    OverallDM.DropSubject(BASKET_CHECK);
 end;
 
 end.

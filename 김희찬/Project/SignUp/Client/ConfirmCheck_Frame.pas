@@ -38,26 +38,13 @@ end;
 
 procedure TConfirmCheckFrame.SignUpConfirmBtnClick(Sender: TObject);  //수강신청 확인 핸들러
 begin
-  OverallDM.SignedUp.Insert;
-  OverallDM.SignedUp.FieldByName('SUBJECT_CODE').AsInteger :=
-  OverallDM.Subject_Log.FieldByName('SUBJECT_CODE').AsInteger;
-  OverallDM.SignedUp.FieldByName('STUDENT_CODE').AsInteger :=
-  OverallDM.User_Log.FieldByName('STUDENT_CODE').AsInteger;
-  OverallDM.SignedUp.FieldByName('SIGNEDUP_TYPE').AsInteger := SIGNEDUP_CHECK;
-  OverallDM.SignedUp.ApplyUpdates(-1);
-
+  OverallDM.SignUpSubject(SIGNEDUP_CHECK);
   Parent.Destroy;
 end;
 
 procedure TConfirmCheckFrame.DropConfirmClick(Sender: TObject); //신청취소 확인 핸들러
 begin
-  OverallDM.SQLExcuteMethod(SIGNEDUP_CHECK);
-
-  OverallDM.SignUpDrop.Open;
-  OverallDM.SignUpDrop.Delete;
-  OverallDM.SignUpDrop.ApplyUpdates(-1);
-  OverallDM.SignUpDrop.Close;
-
+  OverallDM.DropSubject(SIGNEDUP_CHECK);
   Parent.Destroy;
 end;
 
