@@ -103,6 +103,7 @@ type
     procedure EventDateExit(Sender: TObject);
     procedure FDTable1AfterScroll(DataSet: TDataSet);
     procedure btnPostClick(Sender: TObject);
+    procedure DBEdit3DblClick(Sender: TObject);
   private
     { Private declarations }
     procedure SetDate2Edit(Date: TDate; edtYear: TEdit; edtMonth: TEdit; edtDay: TEdit);
@@ -119,13 +120,23 @@ implementation
 
 {$R *.dfm}
 
-uses DataModule, DateUtils, MyLib;
+uses DataModule, DateUtils, MyLib, SearchForm;
 
 {** 행사기간 입력시 몇박 몇일을 자동으로 계산
 *}
 procedure TfrmEvent.btnPostClick(Sender: TObject);
 begin
   FDTable1.Post;
+end;
+
+procedure TfrmEvent.DBEdit3DblClick(Sender: TObject);
+begin
+  if frmSearch.ShowModal = mrOk then
+  begin
+    FDTable1.Edit;
+//    FDTable1.FieldByName('event_name').AsString := frmSearch.SearchResult;
+    DBEdit3.Text := frmSearch.SearchResult;
+  end;
 end;
 
 procedure TfrmEvent.EventDateExit(Sender: TObject);

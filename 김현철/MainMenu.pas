@@ -35,6 +35,7 @@ type
     procedure btnManagerClick(Sender: TObject);
     procedure btnTouristClick(Sender: TObject);
     procedure btnCustomerClick(Sender: TObject);
+    procedure btnEventClick(Sender: TObject);
   private
     { Private declarations }
     procedure SetButton(Button: TButton; Bool: Integer);
@@ -50,7 +51,8 @@ implementation
 
 {$R *.dfm}
 
-uses DataModule, EventManager, Manager, TouristStatusForm, CustomerForm;
+uses DataModule, EventManager, Manager, TouristStatusForm, CustomerForm,
+  ManageEventForm;
 
 procedure TfrmMenu.SetButton(Button: TButton; Bool: Integer);
 begin
@@ -104,6 +106,11 @@ end;
 procedure TfrmMenu.btnCustomerClick(Sender: TObject);
 begin
   frmCustomer.Show;
+end;
+
+procedure TfrmMenu.btnEventClick(Sender: TObject);
+begin
+  frmManageEvent.Show;
 end;
 
 procedure TfrmMenu.btnManagerClick(Sender: TObject);

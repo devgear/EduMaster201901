@@ -8,7 +8,9 @@ uses
   DataModule in 'DataModule.pas' {DataModule1: TDataModule},
   TouristStatusForm in 'TouristStatusForm.pas' {frmTouristStatus},
   CustomerForm in 'CustomerForm.pas' {frmCustomer},
-  MyLib in 'MyLib.pas';
+  MyLib in 'MyLib.pas',
+  ManageEventForm in 'ManageEventForm.pas' {frmManageEvent},
+  SearchForm in 'SearchForm.pas' {frmSearch};
 
 {$R *.res}
 
@@ -21,5 +23,7 @@ begin
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TfrmTouristStatus, frmTouristStatus);
   Application.CreateForm(TfrmCustomer, frmCustomer);
+  Application.CreateForm(TfrmManageEvent, frmManageEvent);
+  Application.CreateForm(TfrmSearch, frmSearch);
   Application.Run;
 end.

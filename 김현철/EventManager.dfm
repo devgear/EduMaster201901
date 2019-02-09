@@ -364,6 +364,7 @@ object frmEvent: TfrmEvent
       DataField = 'event_name'
       DataSource = DataSource1
       TabOrder = 3
+      OnDblClick = DBEdit3DblClick
     end
     object DBEditNight: TDBEdit
       Left = 489
