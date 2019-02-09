@@ -355,6 +355,7 @@ object frmEvent: TfrmEvent
       DataField = 'partner_name'
       DataSource = DataSource1
       TabOrder = 2
+      OnDblClick = edtPartnerDblClick
     end
     object DBEdit3: TDBEdit
       Left = 82

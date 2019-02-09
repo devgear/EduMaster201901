@@ -17,10 +17,9 @@ type
     Label1: TLabel;
     Edit1: TEdit;
     DataSource1: TDataSource;
-    FDTable1: TFDTable;
+    FDTableEvent: TFDTable;
+    FDTablePartner: TFDTable;
     procedure DBGrid1DblClick(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
-    procedure FormDeactivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,19 +38,8 @@ uses DataModule;
 
 procedure TfrmSearch.DBGrid1DblClick(Sender: TObject);
 begin
-  SearchResult := FDTable1.FieldByName('name').AsString;
+  SearchResult := DataSource1.DataSet.FieldByName('name').AsString;
   ModalResult := mrOk;
-end;
-
-procedure TfrmSearch.FormActivate(Sender: TObject);
-begin
-  FDTable1.Open;
-  DBGrid1.SelectedRows.CurrentRowSelected := False;
-end;
-
-procedure TfrmSearch.FormDeactivate(Sender: TObject);
-begin
-  FDTable1.Close;
 end;
 
 end.

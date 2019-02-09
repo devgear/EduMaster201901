@@ -11,8 +11,6 @@ object frmSearch: TfrmSearch
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnActivate = FormActivate
-  OnDeactivate = FormDeactivate
   PixelsPerInch = 96
   TextHeight = 18
   object Panel1: TPanel
@@ -60,16 +58,24 @@ object frmSearch: TfrmSearch
       end>
   end
   object DataSource1: TDataSource
-    DataSet = FDTable1
-    Left = 256
-    Top = 216
+    DataSet = FDTablePartner
+    Left = 328
+    Top = 168
   end
-  object FDTable1: TFDTable
+  object FDTableEvent: TFDTable
     IndexFieldNames = 'serial'
     Connection = DataModule1.FDConnection1
     UpdateOptions.UpdateTableName = 'event_name'
     TableName = 'event_name'
     Left = 192
-    Top = 216
+    Top = 168
+  end
+  object FDTablePartner: TFDTable
+    IndexFieldNames = 'serial'
+    Connection = DataModule1.FDConnection1
+    UpdateOptions.UpdateTableName = 'partner'
+    TableName = 'partner'
+    Left = 192
+    Top = 232
   end
 end

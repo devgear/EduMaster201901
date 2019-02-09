@@ -104,6 +104,7 @@ type
     procedure FDTable1AfterScroll(DataSet: TDataSet);
     procedure btnPostClick(Sender: TObject);
     procedure DBEdit3DblClick(Sender: TObject);
+    procedure edtPartnerDblClick(Sender: TObject);
   private
     { Private declarations }
     procedure SetDate2Edit(Date: TDate; edtYear: TEdit; edtMonth: TEdit; edtDay: TEdit);
@@ -131,12 +132,30 @@ end;
 
 procedure TfrmEvent.DBEdit3DblClick(Sender: TObject);
 begin
+  frmSearch.DataSource1.DataSet := frmSearch.FDTableEvent;
+  frmSearch.FDTableEvent.Open;
+
   if frmSearch.ShowModal = mrOk then
   begin
     FDTable1.Edit;
-//    FDTable1.FieldByName('event_name').AsString := frmSearch.SearchResult;
-    DBEdit3.Text := frmSearch.SearchResult;
+    FDTable1.FieldByName('event_name').AsString := frmSearch.SearchResult;
   end;
+
+  frmSearch.FDTableEvent.Close;
+end;
+
+procedure TfrmEvent.edtPartnerDblClick(Sender: TObject);
+begin
+  frmSearch.DataSource1.DataSet := frmSearch.FDTablePartner;
+  frmSearch.FDTablePartner.Open;
+
+  if frmSearch.ShowModal = mrOk then
+  begin
+    FDTable1.Edit;
+    FDTable1.FieldByName('partner_name').AsString := frmSearch.SearchResult;
+  end;
+
+  frmSearch.FDTablePartner.Close;
 end;
 
 procedure TfrmEvent.EventDateExit(Sender: TObject);
