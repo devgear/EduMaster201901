@@ -36,6 +36,7 @@ type
     procedure btnTouristClick(Sender: TObject);
     procedure btnCustomerClick(Sender: TObject);
     procedure btnEventClick(Sender: TObject);
+    procedure btnPartnerClick(Sender: TObject);
   private
     { Private declarations }
     procedure SetButton(Button: TButton; Bool: Integer);
@@ -52,7 +53,7 @@ implementation
 {$R *.dfm}
 
 uses DataModule, EventManager, Manager, TouristStatusForm, CustomerForm,
-  ManageEventForm;
+  ManageEventForm, PartnerForm;
 
 procedure TfrmMenu.SetButton(Button: TButton; Bool: Integer);
 begin
@@ -116,6 +117,11 @@ end;
 procedure TfrmMenu.btnManagerClick(Sender: TObject);
 begin
   frmManager.Show;
+end;
+
+procedure TfrmMenu.btnPartnerClick(Sender: TObject);
+begin
+  frmPartner.Show;
 end;
 
 procedure TfrmMenu.edtPassKeyPress(Sender: TObject; var Key: Char);

@@ -86,8 +86,8 @@ object frmMenu: TfrmMenu
       Width = 122
       Height = 41
       Caption = #44144#47000#52376#44288#47532
-      Enabled = False
       TabOrder = 4
+      OnClick = btnPartnerClick
     end
     object btnCalculate: TButton
       Left = 15

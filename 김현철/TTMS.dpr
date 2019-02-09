@@ -10,7 +10,8 @@ uses
   CustomerForm in 'CustomerForm.pas' {frmCustomer},
   MyLib in 'MyLib.pas',
   ManageEventForm in 'ManageEventForm.pas' {frmManageEvent},
-  SearchForm in 'SearchForm.pas' {frmSearch};
+  SearchForm in 'SearchForm.pas' {frmSearch},
+  PartnerForm in 'PartnerForm.pas' {frmPartner};
 
 {$R *.res}
 
@@ -25,5 +26,6 @@ begin
   Application.CreateForm(TfrmCustomer, frmCustomer);
   Application.CreateForm(TfrmManageEvent, frmManageEvent);
   Application.CreateForm(TfrmSearch, frmSearch);
+  Application.CreateForm(TfrmPartner, frmPartner);
   Application.Run;
 end.
