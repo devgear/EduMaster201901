@@ -16,12 +16,16 @@ type
     DataSource1: TDataSource;
     Edit1: TEdit;
     Edit2: TEdit;
-    ListView1: TListView;
+    Button2: TButton;
     procedure Edit1Change(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    var
+    rent_det_item :string;
+    iname : string;
   end;
 
 var
@@ -32,6 +36,12 @@ implementation
 {$R *.dfm}
 
 uses Udatamodule;
+
+procedure Tfrm_rent_det_item.DBGrid1DblClick(Sender: TObject);
+begin
+   rent_det_item := DataSource1.DataSet.FieldByName('ITEM_NUMBER').AsString;
+  close;
+end;
 
 procedure Tfrm_rent_det_item.Edit1Change(Sender: TObject);
 begin

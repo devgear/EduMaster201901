@@ -11,6 +11,9 @@
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  DesignSize = (
+    896
+    589)
   PixelsPerInch = 96
   TextHeight = 13
   object 거래처명: TLabel
@@ -25,6 +28,7 @@
     Top = 200
     Width = 833
     Height = 345
+    Anchors = [akLeft, akTop, akRight, akBottom]
     DataSource = DataSource1
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 0
@@ -33,6 +37,7 @@
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnDblClick = DBGrid1DblClick
   end
   object DBEdit1: TDBEdit
     Left = 112
@@ -47,5 +52,10 @@
     DataSet = udata.CUSQUERY
     Left = 512
     Top = 80
+  end
+  object DataSource2: TDataSource
+    DataSet = udata.rentquery
+    Left = 648
+    Top = 96
   end
 end

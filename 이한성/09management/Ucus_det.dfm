@@ -2,7 +2,7 @@ object frm_cus_detail: Tfrm_cus_detail
   Left = 0
   Top = 0
   Caption = #44144#47000#52376' '#51221#48372
-  ClientHeight = 522
+  ClientHeight = 554
   ClientWidth = 1063
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -85,7 +85,7 @@ object frm_cus_detail: Tfrm_cus_detail
     Height = 21
     DataField = 'CUS_NAME1'
     DataSource = frm_cus_list.customersource
-    TabOrder = 0
+    TabOrder = 7
   end
   object CUS_DPHONE: TDBEdit
     Left = 176
@@ -94,7 +94,7 @@ object frm_cus_detail: Tfrm_cus_detail
     Height = 21
     DataField = 'CUS_PHONE'
     DataSource = frm_cus_list.customersource
-    TabOrder = 1
+    TabOrder = 8
   end
   object CUS_EMAIL: TDBEdit
     Left = 176
@@ -103,7 +103,7 @@ object frm_cus_detail: Tfrm_cus_detail
     Height = 21
     DataField = 'CUS_EMAIL'
     DataSource = frm_cus_list.customersource
-    TabOrder = 2
+    TabOrder = 9
   end
   object CUS_CARNUM: TDBEdit
     Left = 176
@@ -112,7 +112,7 @@ object frm_cus_detail: Tfrm_cus_detail
     Height = 21
     DataField = 'CUS_CARNUM'
     DataSource = frm_cus_list.customersource
-    TabOrder = 3
+    TabOrder = 10
   end
   object CUS_COPY: TDBEdit
     Left = 176
@@ -121,7 +121,7 @@ object frm_cus_detail: Tfrm_cus_detail
     Height = 21
     DataField = 'CUS_COPY'
     DataSource = frm_cus_list.customersource
-    TabOrder = 4
+    TabOrder = 11
   end
   object CUS_BIGO: TDBEdit
     Left = 176
@@ -130,7 +130,7 @@ object frm_cus_detail: Tfrm_cus_detail
     Height = 21
     DataField = 'CUS_BIGO'
     DataSource = frm_cus_list.customersource
-    TabOrder = 5
+    TabOrder = 12
   end
   object BTNINS: TButton
     Left = 104
@@ -138,7 +138,7 @@ object frm_cus_detail: Tfrm_cus_detail
     Width = 55
     Height = 25
     Caption = #46321#47197
-    TabOrder = 6
+    TabOrder = 0
     OnClick = BTNINSClick
   end
   object BTNDEL: TButton
@@ -147,15 +147,16 @@ object frm_cus_detail: Tfrm_cus_detail
     Width = 49
     Height = 25
     Caption = #49325#51228
-    TabOrder = 7
+    TabOrder = 1
+    OnClick = BTNDELClick
   end
   object btnmodify: TButton
-    Left = 184
+    Left = 176
     Top = 8
     Width = 49
     Height = 25
     Caption = #49688#51221
-    TabOrder = 8
+    TabOrder = 2
   end
   object DBEdit1: TDBEdit
     Left = 176
@@ -164,7 +165,7 @@ object frm_cus_detail: Tfrm_cus_detail
     Height = 21
     DataField = 'CUS_CUSNUM'
     DataSource = frm_cus_list.customersource
-    TabOrder = 9
+    TabOrder = 5
   end
   object DBEdit2: TDBEdit
     Left = 176
@@ -173,7 +174,7 @@ object frm_cus_detail: Tfrm_cus_detail
     Height = 21
     DataField = 'CUS_ADRS'
     DataSource = frm_cus_list.customersource
-    TabOrder = 10
+    TabOrder = 6
   end
   object DBGrid1: TDBGrid
     Left = 336
@@ -182,7 +183,7 @@ object frm_cus_detail: Tfrm_cus_detail
     Height = 433
     DataSource = DataSource1
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-    TabOrder = 11
+    TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -196,7 +197,7 @@ object frm_cus_detail: Tfrm_cus_detail
     Height = 21
     DataField = 'CUS_NAME'
     DataSource = frm_cus_list.customersource
-    TabOrder = 12
+    TabOrder = 4
   end
   object DataSource1: TDataSource
     DataSet = udata.CUSQUERY

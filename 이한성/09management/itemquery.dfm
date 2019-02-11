@@ -2,7 +2,7 @@ object frm_itemquery: Tfrm_itemquery
   Left = 0
   Top = 0
   Caption = #51228#54408#51312#54924
-  ClientHeight = 680
+  ClientHeight = 619
   ClientWidth = 1032
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,6 +12,9 @@ object frm_itemquery: Tfrm_itemquery
   Font.Style = []
   OldCreateOrder = False
   OnClose = FormClose
+  DesignSize = (
+    1032
+    619)
   PixelsPerInch = 96
   TextHeight = 13
   object label1: TLabel
@@ -23,9 +26,10 @@ object frm_itemquery: Tfrm_itemquery
   end
   object DBGrid1: TDBGrid
     Left = 40
-    Top = 200
-    Width = 913
-    Height = 409
+    Top = 128
+    Width = 945
+    Height = 444
+    Anchors = [akLeft, akTop, akRight, akBottom]
     DataSource = itemsource
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
     TabOrder = 0
@@ -61,20 +65,13 @@ object frm_itemquery: Tfrm_itemquery
     Caption = #45824#50668#51473
     TabOrder = 3
   end
-  object DBLookupListBox1: TDBLookupListBox
-    Left = 584
-    Top = 49
-    Width = 369
-    Height = 121
-    TabOrder = 4
-  end
   object btnclose: TButton
-    Left = 752
-    Top = 8
+    Left = 656
+    Top = 69
     Width = 75
     Height = 25
     Caption = 'btnclose'
-    TabOrder = 5
+    TabOrder = 4
     OnClick = btncloseClick
   end
   object Button1: TButton
@@ -83,7 +80,7 @@ object frm_itemquery: Tfrm_itemquery
     Width = 75
     Height = 25
     Caption = 'Button1'
-    TabOrder = 6
+    TabOrder = 5
     OnClick = Button1Click
   end
   object itemsource: TDataSource

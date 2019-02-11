@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.ExtCtrls;
+  Vcl.DBGrids, Vcl.ExtCtrls, Vcl.DBCtrls;
 
 type
   Tfrm_cus_list = class(TForm)
@@ -15,18 +15,20 @@ type
     Edit2: TEdit;
     btn_sp: TButton;
     customersource: TDataSource;
-    Button1: TButton;
     Button2: TButton;
     DBGrid1: TDBGrid;
-    Image1: TImage;
+    DBImage1: TDBImage;
     procedure btn_spClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Edit2Change(Sender: TObject);
 
   private
     { Private declarations }
   public
     { Public declarations }
+    dept_code,dept_name : String;
   end;
 
 var
@@ -55,13 +57,25 @@ end;
 
 procedure Tfrm_cus_list.Button2Click(Sender: TObject);
 begin
-udata.cusquery.Delete;
+  udata.cusquery.Delete;
 end;
 
 procedure Tfrm_cus_list.Edit1Change(Sender: TObject);
 begin
   Udata.CUSQUERY.IndexFieldNames := 'Cus_name';
   Udata.CUSQUERY.findnearest([edit1.Text]);
+end;
+
+procedure Tfrm_cus_list.Edit2Change(Sender: TObject);
+begin
+ Udata.CUSQUERY.IndexFieldNames := 'Cus_cusnum';
+  Udata.CUSQUERY.findnearest([edit2.Text]);
+end;
+
+procedure Tfrm_cus_list.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  action := cafree;
+
 end;
 
 end.

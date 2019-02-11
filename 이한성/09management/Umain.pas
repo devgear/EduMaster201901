@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ToolWin, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.ToolWin, Vcl.ExtCtrls,
+  Vcl.Buttons, System.ImageList, Vcl.ImgList, Vcl.DBCtrls;
 
 type
   TUmain_form = class(TForm)
@@ -17,6 +18,7 @@ type
     ToolButton5: TToolButton;
     ToolButton7: TToolButton;
     pnllayout: TPanel;
+    ImageList1: TImageList;
     procedure ToolButton1Click(Sender: TObject);
     procedure ToolButton2Click(Sender: TObject);
     procedure ToolButton4Click(Sender: TObject);

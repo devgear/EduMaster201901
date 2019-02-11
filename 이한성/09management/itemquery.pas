@@ -14,7 +14,6 @@ type
     Edit1: TEdit;
     chk1: TCheckBox;
     chk2: TCheckBox;
-    DBLookupListBox1: TDBLookupListBox;
     btnclose: TButton;
     itemsource: TDataSource;
     Button1: TButton;
@@ -39,7 +38,7 @@ uses Udatamodule, uitem_list;
 procedure Tfrm_itemquery.btncloseClick(Sender: TObject);
 begin
  // frm_itemquery.Free;
-  //frm_itemquery.Close;
+ //frm_itemquery.Close;
 
 
 
@@ -55,7 +54,7 @@ end;
 
 procedure Tfrm_itemquery.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  frm_itemquery.Free;
+  action := cafree;
 
 end;
 

@@ -3,7 +3,7 @@ object Umain_form: TUmain_form
   Top = 0
   Caption = #44277#44396#45824#50668' '#44288#47532
   ClientHeight = 574
-  ClientWidth = 647
+  ClientWidth = 894
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,14 +16,18 @@ object Umain_form: TUmain_form
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 647
-    Height = 19
-    ButtonHeight = 19
-    ButtonWidth = 70
+    Width = 894
+    Height = 89
+    ButtonHeight = 86
+    ButtonWidth = 85
     Caption = 'ToolBar1'
+    HotImages = ImageList1
+    Images = ImageList1
     List = True
     ShowCaptions = True
     TabOrder = 0
+    ExplicitTop = -6
+    ExplicitWidth = 647
     object ToolButton1: TToolButton
       Left = 0
       Top = 0
@@ -33,33 +37,33 @@ object Umain_form: TUmain_form
       OnClick = ToolButton1Click
     end
     object ToolButton2: TToolButton
-      Left = 70
+      Left = 85
       Top = 0
       Caption = #44277#44396#51312#54924
       ImageIndex = 1
       OnClick = ToolButton2Click
     end
     object ToolButton3: TToolButton
-      Left = 140
+      Left = 170
       Top = 0
       Caption = 'ToolButton3'
       ImageIndex = 2
     end
     object ToolButton4: TToolButton
-      Left = 210
+      Left = 255
       Top = 0
       Caption = #45824#50668
       ImageIndex = 3
       OnClick = ToolButton4Click
     end
     object ToolButton5: TToolButton
-      Left = 280
+      Left = 340
       Top = 0
       Caption = 'ToolButton5'
       ImageIndex = 4
     end
     object ToolButton7: TToolButton
-      Left = 350
+      Left = 425
       Top = 0
       Caption = 'ToolButton7'
       ImageIndex = 6
@@ -67,10 +71,17 @@ object Umain_form: TUmain_form
   end
   object pnllayout: TPanel
     Left = 0
-    Top = 19
-    Width = 647
-    Height = 555
+    Top = 89
+    Width = 894
+    Height = 485
     Align = alClient
     TabOrder = 1
+    ExplicitTop = 95
+    ExplicitWidth = 647
+  end
+  object ImageList1: TImageList
+    Height = 80
+    Left = 264
+    Top = 208
   end
 end

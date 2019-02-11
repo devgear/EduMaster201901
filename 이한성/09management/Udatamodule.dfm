@@ -59,24 +59,28 @@ object udata: Tudata
       Size = 320
     end
     object CUSQUERYCUS_PHONE: TWideStringField
+      DisplayLabel = #51204#54868#48264#54840
       FieldName = 'CUS_PHONE'
       Origin = 'CUS_PHONE'
       FixedChar = True
       Size = 44
     end
     object CUSQUERYCUS_NAME1: TWideStringField
+      DisplayLabel = #45812#45817#51088#51060#47492
       FieldName = 'CUS_NAME1'
       Origin = 'CUS_NAME1'
       FixedChar = True
       Size = 40
     end
     object CUSQUERYCUS_CARNUM: TWideStringField
+      DisplayLabel = #52264#51333
       FieldName = 'CUS_CARNUM'
       Origin = 'CUS_CARNUM'
       FixedChar = True
       Size = 40
     end
     object CUSQUERYCUS_BIGO: TWideStringField
+      DisplayLabel = #48708#44256
       FieldName = 'CUS_BIGO'
       Origin = 'CUS_BIGO'
       FixedChar = True
@@ -173,6 +177,32 @@ object udata: Tudata
       'SELECT * FROM RENTLIST')
     Left = 240
     Top = 48
+    object rentqueryRENT_NUM: TIntegerField
+      DisplayLabel = #51204#54364#48264#54840
+      FieldName = 'RENT_NUM'
+      Origin = 'RENT_NUM'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object rentqueryRENT_CUS_NUM: TWideStringField
+      DisplayLabel = #44144#47000#52376#48264#54840
+      FieldName = 'RENT_CUS_NUM'
+      Origin = 'RENT_CUS_NUM'
+      FixedChar = True
+      Size = 80
+    end
+    object rentqueryRENT_DATE: TWideStringField
+      DisplayLabel = #45824#50668#51068
+      FieldName = 'RENT_DATE'
+      Origin = 'RENT_DATE'
+      FixedChar = True
+      Size = 44
+    end
+    object rentqueryRENT_PHOTO: TBlobField
+      DisplayLabel = #49324#51652
+      FieldName = 'RENT_PHOTO'
+      Origin = 'RENT_PHOTO'
+    end
   end
   object rent_detquery: TFDQuery
     Active = True
@@ -181,5 +211,81 @@ object udata: Tudata
       'SELECT * FROM rent_det_rentlist')
     Left = 304
     Top = 48
+    object rent_detqueryRENT_RENT_NUM: TIntegerField
+      DisplayLabel = #49692#48264
+      FieldName = 'RENT_RENT_NUM'
+      Origin = 'RENT_RENT_NUM'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object rent_detqueryRENT_RENT_CUS: TWideStringField
+      DisplayLabel = #44144#47000#52376#48264#54840
+      FieldName = 'RENT_RENT_CUS'
+      Origin = 'RENT_RENT_CUS'
+      FixedChar = True
+      Size = 80
+    end
+    object rent_detqueryRENT_RENT_ITEM_NUM: TWideStringField
+      DisplayLabel = #44277#44396#48264#54840
+      FieldName = 'RENT_RENT_ITEM_NUM'
+      Origin = 'RENT_RENT_ITEM_NUM'
+      FixedChar = True
+      Size = 44
+    end
+    object rent_detqueryRENT_RENT_LASTDATE: TBlobField
+      DisplayLabel = #52572#51333#45824#50668#51068
+      FieldName = 'RENT_RENT_LASTDATE'
+      Origin = 'RENT_RENT_LASTDATE'
+    end
+  end
+  object fdtRent_detExec: TFDQuery
+    Active = True
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM rent_det_rentlist')
+    Left = 464
+    Top = 48
+    object IntegerField1: TIntegerField
+      FieldName = 'RENT_RENT_NUM'
+      Origin = 'RENT_RENT_NUM'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object WideStringField1: TWideStringField
+      FieldName = 'RENT_RENT_CUS'
+      Origin = 'RENT_RENT_CUS'
+      FixedChar = True
+      Size = 80
+    end
+    object WideStringField2: TWideStringField
+      FieldName = 'RENT_RENT_ITEM_NUM'
+      Origin = 'RENT_RENT_ITEM_NUM'
+      FixedChar = True
+      Size = 44
+    end
+    object BlobField1: TBlobField
+      FieldName = 'RENT_RENT_LASTDATE'
+      Origin = 'RENT_RENT_LASTDATE'
+    end
+  end
+  object fdtRent_det: TFDTable
+    Active = True
+    Filtered = True
+    IndexFieldNames = 'RENT_RENT_NUM'
+    Connection = FDConnection1
+    UpdateOptions.UpdateTableName = 'Rent_det_rentlist'
+    TableName = 'Rent_det_rentlist'
+    Left = 400
+    Top = 48
+  end
+  object fdtrent_item: TFDTable
+    Active = True
+    Filtered = True
+    IndexFieldNames = 'RENT_RENT_ITEM_NUM'
+    Connection = FDConnection1
+    UpdateOptions.UpdateTableName = 'RENT_DET_RENTLIST'
+    TableName = 'RENT_DET_RENTLIST'
+    Left = 344
+    Top = 136
   end
 end

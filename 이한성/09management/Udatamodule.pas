@@ -36,6 +36,21 @@ type
     CUSQUERYCUS_BIGO: TWideStringField;
     CUSQUERYCUS_COPY: TBlobField;
     rent_detquery: TFDQuery;
+    rent_detqueryRENT_RENT_NUM: TIntegerField;
+    rent_detqueryRENT_RENT_CUS: TWideStringField;
+    rent_detqueryRENT_RENT_ITEM_NUM: TWideStringField;
+    rent_detqueryRENT_RENT_LASTDATE: TBlobField;
+    fdtRent_detExec: TFDQuery;
+    IntegerField1: TIntegerField;
+    WideStringField1: TWideStringField;
+    WideStringField2: TWideStringField;
+    BlobField1: TBlobField;
+    fdtRent_det: TFDTable;
+    fdtrent_item: TFDTable;
+    rentqueryRENT_NUM: TIntegerField;
+    rentqueryRENT_CUS_NUM: TWideStringField;
+    rentqueryRENT_DATE: TWideStringField;
+    rentqueryRENT_PHOTO: TBlobField;
   private
     { Private declarations }
   public

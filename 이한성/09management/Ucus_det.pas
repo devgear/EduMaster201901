@@ -43,6 +43,7 @@ type
     procedure customersourceDataChange(Sender: TObject; Field: TField);
     procedure customersourceStateChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure BTNDELClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -60,6 +61,11 @@ implementation
 {$R *.dfm}
 
 uses Udatamodule, ucus_list;
+
+procedure Tfrm_cus_detail.BTNDELClick(Sender: TObject);
+begin
+ udata.cusquery.Delete;
+end;
 
 procedure Tfrm_cus_detail.BTNINSClick(Sender: TObject);
 begin
@@ -91,7 +97,7 @@ end;
 
 procedure Tfrm_cus_detail.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-
+action := cafree;
   // close;
   // cafree;
 end;
