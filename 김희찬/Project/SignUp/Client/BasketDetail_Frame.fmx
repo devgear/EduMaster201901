@@ -1,0 +1,69 @@
+object BasketDetailFrame: TBasketDetailFrame
+  Align = Client
+  Size.Width = 416.000000000000000000
+  Size.Height = 428.000000000000000000
+  Size.PlatformDefault = False
+  object Rectangle1: TRectangle
+    Align = Client
+    Opacity = 0.500000000000000000
+    Size.Width = 416.000000000000000000
+    Size.Height = 428.000000000000000000
+    Size.PlatformDefault = False
+    OnClick = Rectangle1Click
+  end
+  object Panel1: TPanel
+    Position.X = 64.000000000000000000
+    Position.Y = 56.000000000000000000
+    Size.Width = 297.000000000000000000
+    Size.Height = 297.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Edit1: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 0
+      Text = #54028#51060#50028' '#54532#47196#44536#47000#48141
+      Position.X = 56.000000000000000000
+      Position.Y = 48.000000000000000000
+    end
+    object Edit2: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 1
+      Text = #48149#46041#52384
+      Position.X = 56.000000000000000000
+      Position.Y = 96.000000000000000000
+    end
+    object RequestBtn: TButton
+      Position.X = 176.000000000000000000
+      Position.Y = 240.000000000000000000
+      TabOrder = 2
+      Text = 'RequestBtn'
+    end
+    object DeleteBtn: TButton
+      Position.X = 48.000000000000000000
+      Position.Y = 240.000000000000000000
+      TabOrder = 3
+      Text = 'DeleteBtn'
+      OnClick = DeleteBtnClick
+    end
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkControlToField1: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BasketFrm.BindSourceDB1
+      FieldName = 'TITLE'
+      Control = Edit1
+      Track = False
+    end
+    object LinkControlToField2: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BasketFrm.BindSourceDB1
+      FieldName = 'LECTURER'
+      Control = Edit2
+      Track = False
+    end
+  end
+end
