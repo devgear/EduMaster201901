@@ -1,24 +1,25 @@
-object SIgnUpFrm: TSIgnUpFrm
+object SignUpFrm: TSignUpFrm
   Left = 0
   Top = 0
   Caption = 'SignUp'
   ClientHeight = 480
-  ClientWidth = 433
+  ClientWidth = 424
   Position = Designed
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
   OnClose = FormClose
   DesignerMasterStyle = 3
   object Panel1: TPanel
     Align = Client
-    Size.Width = 433.000000000000000000
+    Size.Width = 424.000000000000000000
     Size.Height = 480.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 4
     object TabControl1: TTabControl
       Align = Client
-      Size.Width = 433.000000000000000000
+      Size.Width = 424.000000000000000000
       Size.Height = 480.000000000000000000
       Size.PlatformDefault = False
       TabHeight = 49.000000000000000000
@@ -26,16 +27,16 @@ object SIgnUpFrm: TSIgnUpFrm
       TabOrder = 1
       TabPosition = PlatformDefault
       Sizes = (
-        433s
+        424s
         431s
-        433s
+        424s
         431s)
       object MajorTab: TTabItem
         CustomIcon = <
           item
           end>
         IsSelected = True
-        Size.Width = 216.000000000000000000
+        Size.Width = 212.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
@@ -44,11 +45,11 @@ object SIgnUpFrm: TSIgnUpFrm
         ExplicitSize.cx = 216.000000000000000000
         ExplicitSize.cy = 49.000000000000000000
         object ToolBar1: TToolBar
-          Size.Width = 433.000000000000000000
+          Size.Width = 424.000000000000000000
           Size.Height = 48.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
-          object ComboBox1: TComboBox
+          object MajorComboBox: TComboBox
             ItemIndex = 1
             Position.X = 16.000000000000000000
             Position.Y = 8.000000000000000000
@@ -72,68 +73,32 @@ object SIgnUpFrm: TSIgnUpFrm
               Text = #52980#54504#53552', '#51204#51088#49884#49828#53596' '#51204#44277
             end
           end
-          object ComboBox2: TComboBox
-            ItemIndex = 0
-            Position.X = 281.000000000000000000
+          object GradeComboBox: TComboBox
+            Items.Strings = (
+              '1'#54617#45380
+              '2'#54617#45380
+              '3'#54617#45380
+              '4'#54617#45380)
+            Position.X = 305.000000000000000000
             Position.Y = 12.000000000000000000
             Size.Width = 64.000000000000000000
             Size.Height = 32.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 1
-            object ListBoxItem3: TListBoxItem
-              IsSelected = True
-              Size.Width = 44.000000000000000000
-              Size.Height = 44.000000000000000000
-              Size.PlatformDefault = False
-              TabOrder = 0
-              Text = '1'#54617#45380
-            end
-            object ListBoxItem4: TListBoxItem
-              TabOrder = 1
-              Text = '2'#54617#45380
-            end
-            object ListBoxItem5: TListBoxItem
-              TabOrder = 2
-              Text = '3'#54617#45380
-            end
-            object ListBoxItem6: TListBoxItem
-              TabOrder = 3
-              Text = '4'#54617#45380
-            end
-          end
-          object ComboBox3: TComboBox
-            ItemIndex = 0
-            Position.X = 352.000000000000000000
-            Position.Y = 16.000000000000000000
-            Size.Width = 81.000000000000000000
-            Size.Height = 32.000000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 3
-            object ListBoxItem7: TListBoxItem
-              IsSelected = True
-              Size.Width = 44.000000000000000000
-              Size.Height = 44.000000000000000000
-              Size.PlatformDefault = False
-              TabOrder = 0
-              Text = '1'#54617#44592
-            end
-            object ListBoxItem8: TListBoxItem
-              TabOrder = 1
-              Text = '2'#54617#44592
-            end
+            OnChange = ComboBoxChange
           end
         end
         object ListView1: TListView
-          ItemAppearanceClassName = 'TListItemAppearance'
-          ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+          ItemAppearanceClassName = 'TListItemRightDetailAppearance'
+          ItemEditAppearanceClassName = 'TListItemRightDetailDeleteAppearance'
           HeaderAppearanceClassName = 'TListHeaderObjects'
           FooterAppearanceClassName = 'TListHeaderObjects'
-          ItemIndex = 0
           Align = Client
-          Size.Width = 433.000000000000000000
+          Size.Width = 424.000000000000000000
           Size.Height = 383.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
+          ItemAppearanceObjects.ItemObjects.Detail.TextAlign = Leading
           OnItemClick = ListView1ItemClick
         end
       end
@@ -142,7 +107,7 @@ object SIgnUpFrm: TSIgnUpFrm
           item
           end>
         IsSelected = False
-        Size.Width = 217.000000000000000000
+        Size.Width = 212.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
@@ -156,7 +121,7 @@ object SIgnUpFrm: TSIgnUpFrm
   object BindSourceDB1: TBindSourceDB
     DataSet = OverallDM.Subject_Log
     ScopeMappings = <>
-    Left = 176
+    Left = 64
     Top = 8
   end
   object BindingsList1: TBindingsList
@@ -169,9 +134,21 @@ object SIgnUpFrm: TSIgnUpFrm
       DataSource = BindSourceDB1
       FieldName = 'TITLE'
       Control = ListView1
-      FillExpressions = <>
+      FillExpressions = <
+        item
+          SourceMemberName = 'LECTURER'
+          ControlMemberName = 'Detail'
+        end>
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
+  end
+  object ClientDataSet1: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'Subject_TypeProvider'
+    RemoteServer = OverallDM.DSProviderConnection1
+    Left = 368
+    Top = 17
   end
 end

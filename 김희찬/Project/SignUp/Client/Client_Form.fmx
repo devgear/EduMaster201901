@@ -36,11 +36,11 @@ object ClientFrm: TClientFrm
     TabOrder = 6
   end
   object Button2: TButton
-    Enabled = False
     Position.X = 256.000000000000000000
     Position.Y = 216.000000000000000000
     TabOrder = 7
     Text = #44288#49900#44284#47785
+    OnClick = Button2Click
   end
   object Button3: TButton
     Enabled = False
@@ -49,17 +49,11 @@ object ClientFrm: TClientFrm
     TabOrder = 8
     Text = #49884#44036#54364
   end
-  object BindSourceDB1: TBindSourceDB
-    DataSet = OverallDM.User_Log
-    ScopeMappings = <>
-    Left = 104
-    Top = 24
-  end
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 28
-    Top = 21
+    Left = 20
+    Top = 5
     object LinkControlToField1: TLinkControlToField
       Category = 'Quick Bindings'
       DataSource = BindSourceDB1
@@ -67,5 +61,11 @@ object ClientFrm: TClientFrm
       Control = Edit1
       Track = False
     end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = OverallDM.User_Log
+    ScopeMappings = <>
+    Left = 64
+    Top = 9
   end
 end

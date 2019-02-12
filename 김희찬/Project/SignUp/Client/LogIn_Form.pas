@@ -14,8 +14,7 @@ type
     IDEdit: TEdit;
     PWEdit: TEdit;
     LogInBtn: TButton;
-    SqlServerMethod1: TSqlServerMethod;
-    Memo1: TMemo;
+    LogInCheck_ServerMethod: TSqlServerMethod;
     procedure LogInBtnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
@@ -40,19 +39,21 @@ end;
 
 procedure TLogInFrm.LogInBtnClick(Sender: TObject);
 begin
-  SqlServerMethod1.Close;
-  SqlServerMethod1.Params[0].AsString := IDEdit.Text;
-  SqlServerMethod1.Params[1].AsString := PWEdit.Text;
-  SqlServerMethod1.ExecuteMethod;
+  LogInCheck_ServerMethod.Close;
+  LogInCheck_ServerMethod.Params[0].AsString := IDEdit.Text;
+  LogInCheck_ServerMethod.Params[1].AsString := PWEdit.Text;
+  LogInCheck_ServerMethod.ExecuteMethod;
 
-  case SqlServerMethod1.Params[2].AsInteger of
+  case LogInCheck_ServerMethod.Params[2].AsInteger of
     LOGIN_CHECK_NOTFOUND_ID: ShowMessage('등록되지 않은 학번(ID)입니다.');
     LOGIN_CHECK_INCORRECT_PW: ShowMessage('비밀번호가 올바르지 않습니다.');
     LOGIN_CHECK_OK:
     begin
+      OverallDM.User_Log.Params[0].AsString := IDEdit.Text;
       OverallDM.User_Log.Open;
       Close;
     end;
   end;
 end;
+
 end.

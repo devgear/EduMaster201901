@@ -22,60 +22,33 @@ type
     SignedUpProvider: TDataSetProvider;
     qryLogInProvider: TDataSetProvider;
     qryLogIn: TFDQuery;
-    Subject_LogTYPE: TIntegerField;
-    Subject_LogSUBJECT_CODE: TIntegerField;
-    Subject_LogTITLE: TStringField;
-    Subject_LogLECTURER: TStringField;
-    Subject_LogTIME: TStringField;
-    Subject_LogCLASSROOM: TStringField;
-    Subject_LogCREDIT: TIntegerField;
-    Subject_LogGRADE: TIntegerField;
-    Subject_LogCAPACITY: TIntegerField;
-    Subject_LogSTUDENTNUM: TIntegerField;
-    Subject_LogDETAIL: TStringField;
     qrySignedUp: TFDQuery;
-    SignedUpSUBJECT_CODE: TIntegerField;
-    SignedUpSTUDENT_CODE: TIntegerField;
     SignedUpDropProvider: TDataSetProvider;
-    SignedUpSIGNEDUP_TYPE: TIntegerField;
-    qrySignedUpSUBJECT_CODE: TIntegerField;
-    qrySignedUpSTUDENT_CODE: TIntegerField;
-    qrySignedUpSIGNEDUP_TYPE: TIntegerField;
+    qrySignedUpSearch: TFDQuery;
+    SignedUpSearchProvider: TDataSetProvider;
+    qryBasketDetail: TFDQuery;
+    BasketDetailProvider: TDataSetProvider;
+    Subject_Type: TFDTable;
+    Subject_TypeProvider: TDataSetProvider;
   private
     { Private declarations }
   public
     { Public declarations }
-    function EchoString(Value: string): string;
-    function ReverseString(Value: string): string;
     function LogInCheck(ID, PW: string): Integer;
-    function SignedUpCheck(Subject, Student, SignedUpType: Integer): Integer;
+    function SignedUpCheck(Subject, Student: string; SignedUpType: Integer): Integer;
   end;
 
 implementation
 
-
 {$R *.dfm}
 
-
 uses System.StrUtils, CommonDefine;
-
-function TServerMethods1.EchoString(Value: string): string;
-begin
-  Result := Value;
-end;
-
-function TServerMethods1.ReverseString(Value: string): string;
-begin
-  Result := System.StrUtils.ReverseString(Value);
-end;
 
 function TServerMethods1.LogInCheck(ID, PW: string): Integer;
 var
   Msg: string;
 begin
   qryLogIn.Close;
-  Msg := 'select * from USER_LOG where STUDENT_CODE = :STUDENT_CODE';
-  qryLogIn.SQL.Text := Msg;
   qryLogIn.ParamByName('STUDENT_CODE').AsString := ID;
   qryLogIn.Open;
 
@@ -87,20 +60,17 @@ begin
     Result := LOGIN_CHECK_OK;
 end;
 
-function TServerMethods1.SignedUpCheck(Subject, Student, SignedUpType: Integer): Integer;
+function TServerMethods1.SignedUpCheck(Subject, Student: string; SignedUpType: Integer): Integer;
 var
   Msg: string;
 begin
   qrySignedUp.Close;
-  Msg :=
-  'select * from SIGNEDUP where SUBJECT_CODE = :SUBJECT_CODE and STUDENT_CODE = :STUDENT_CODE and SIGNEDUP_TYPE = :SIGNEDUP_TYPE';
-  qrySignedUp.SQL.Text := Msg;
-  qrySignedUp.ParamByName('SUBJECT_CODE').AsInteger := Subject;
-  qrySignedUp.ParamByName('STUDENT_CODE').AsInteger := Student;
+  qrySignedUp.ParamByName('SUBJECT_CODE').AsString := Subject;
+  qrySignedUp.ParamByName('STUDENT_CODE').AsString := Student;
   qrySignedUp.ParamByName('SIGNEDUP_TYPE').AsInteger := SignedUpType;
-  qrySIgnedUP.Open;
+  qrySignedUp.Open;
 
-  if qrySignedUp.Fields[0].AsInteger <> Subject then
+  if qrySignedUp.Fields[0].AsString <> Subject then
     Result := SIGNEDUP_CHECK_NO  //등록하지 않은 과목
   else
     Result := SIGNEDUP_CHECK_YES;  //이미 등록한 과목

@@ -14,7 +14,7 @@ uses
 
 type
   TSubjectDetailFrame = class(TFrame)
-    S: TRectangle;
+    Rectangle1: TRectangle;
     Panel1: TPanel;
     Edit1: TEdit;
     Edit2: TEdit;
@@ -24,7 +24,7 @@ type
     LinkControlToField1: TLinkControlToField;
     LinkControlToField2: TLinkControlToField;
     BasketCheck: TCheckBox;
-    procedure SClick(Sender: TObject);
+    procedure Rectangle1Click(Sender: TObject);
     procedure SignUpBtnClick(Sender: TObject);
     procedure DropBtnClick(Sender: TObject);
     procedure BasketCheckClick(Sender: TObject);
@@ -38,9 +38,9 @@ implementation
 
 {$R *.fmx}
 
-uses Overall_DM, ConfirmCheck_Frame, CommonDefine;
+uses Overall_DM, ConfirmCheck_Frame, CommonDefine, SignedUp_DM;
 
-procedure TSubjectDetailFrame.SClick(Sender: TObject);
+procedure TSubjectDetailFrame.Rectangle1Click(Sender: TObject);
 begin
   Destroy;
 end;

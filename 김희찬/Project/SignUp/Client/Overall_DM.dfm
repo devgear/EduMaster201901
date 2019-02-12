@@ -1,12 +1,13 @@
 object OverallDM: TOverallDM
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 333
   Width = 556
   object DSProviderConnection1: TDSProviderConnection
     ServerClassName = 'TServerMethods1'
     Connected = True
     SQLConnection = SQLConnection1
-    Left = 112
+    Left = 144
     Top = 40
   end
   object SQLConnection1: TSQLConnection
@@ -24,74 +25,22 @@ object OverallDM: TOverallDM
         'Token=91d62ebb5b0d1b1b'
       'Filters={}')
     Connected = True
-    Left = 32
+    Left = 40
     Top = 40
     UniqueId = '{79909507-016C-4B6B-A775-A56B00D8D594}'
   end
   object Subject_Log: TClientDataSet
-    Active = True
     Aggregates = <>
-    Params = <>
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'GRADE'
+        ParamType = ptInput
+      end>
     ProviderName = 'Subject_logProvider'
     RemoteServer = DSProviderConnection1
     Left = 120
     Top = 136
-    object Subject_LogTYPE: TIntegerField
-      FieldName = 'TYPE'
-      Origin = '"TYPE"'
-      Required = True
-    end
-    object Subject_LogSUBJECT_CODE: TIntegerField
-      FieldName = 'SUBJECT_CODE'
-      Origin = 'SUBJECT_CODE'
-      Required = True
-    end
-    object Subject_LogTITLE: TStringField
-      FieldName = 'TITLE'
-      Origin = 'TITLE'
-      Required = True
-      Size = 50
-    end
-    object Subject_LogLECTURER: TStringField
-      FieldName = 'LECTURER'
-      Origin = 'LECTURER'
-      Required = True
-      Size = 30
-    end
-    object Subject_LogTIME: TStringField
-      FieldName = 'TIME'
-      Origin = '"TIME"'
-      Size = 30
-    end
-    object Subject_LogCLASSROOM: TStringField
-      FieldName = 'CLASSROOM'
-      Origin = 'CLASSROOM'
-      Size = 30
-    end
-    object Subject_LogCREDIT: TIntegerField
-      FieldName = 'CREDIT'
-      Origin = 'CREDIT'
-      Required = True
-    end
-    object Subject_LogGRADE: TIntegerField
-      FieldName = 'GRADE'
-      Origin = 'GRADE'
-    end
-    object Subject_LogCAPACITY: TIntegerField
-      FieldName = 'CAPACITY'
-      Origin = 'CAPACITY'
-      Required = True
-    end
-    object Subject_LogSTUDENTNUM: TIntegerField
-      FieldName = 'STUDENTNUM'
-      Origin = 'STUDENTNUM'
-      Required = True
-    end
-    object Subject_LogDETAIL: TStringField
-      FieldName = 'DETAIL'
-      Origin = 'DETAIL'
-      Size = 200
-    end
   end
   object SignedUp: TClientDataSet
     Active = True
@@ -101,22 +50,16 @@ object OverallDM: TOverallDM
     RemoteServer = DSProviderConnection1
     Left = 208
     Top = 136
-    object SignedUpSUBJECT_CODE: TIntegerField
-      FieldName = 'SUBJECT_CODE'
-      Origin = 'SUBJECT_CODE'
-    end
-    object SignedUpSTUDENT_CODE: TIntegerField
-      FieldName = 'STUDENT_CODE'
-      Origin = 'STUDENT_CODE'
-    end
-    object SignedUpSIGNEDUP_TYPE: TIntegerField
-      FieldName = 'SIGNEDUP_TYPE'
-      Origin = 'SIGNEDUP_TYPE'
-    end
   end
   object User_Log: TClientDataSet
     Aggregates = <>
-    Params = <>
+    Params = <
+      item
+        DataType = ftFixedChar
+        Name = 'STUDENT_CODE'
+        ParamType = ptInput
+        Size = 20
+      end>
     ProviderName = 'qryLogInProvider'
     RemoteServer = DSProviderConnection1
     Left = 296
@@ -125,14 +68,14 @@ object OverallDM: TOverallDM
   object SignedUpCheck_ServerMethod: TSqlServerMethod
     Params = <
       item
-        DataType = ftInteger
-        Precision = 4
+        DataType = ftWideString
+        Precision = 2000
         Name = 'Subject'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
-        Precision = 4
+        DataType = ftWideString
+        Precision = 2000
         Name = 'Student'
         ParamType = ptInput
       end
@@ -156,7 +99,24 @@ object OverallDM: TOverallDM
   end
   object SignUpDrop: TClientDataSet
     Aggregates = <>
-    Params = <>
+    Params = <
+      item
+        DataType = ftFixedChar
+        Name = 'SUBJECT_CODE'
+        ParamType = ptInput
+        Size = 20
+      end
+      item
+        DataType = ftFixedChar
+        Name = 'STUDENT_CODE'
+        ParamType = ptInput
+        Size = 20
+      end
+      item
+        DataType = ftInteger
+        Name = 'SIGNEDUP_TYPE'
+        ParamType = ptInput
+      end>
     ProviderName = 'SignedUpDropProvider'
     RemoteServer = DSProviderConnection1
     Left = 296

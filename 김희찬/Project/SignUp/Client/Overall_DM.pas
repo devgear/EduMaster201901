@@ -15,24 +15,11 @@ type
     SignedUp: TClientDataSet;
     User_Log: TClientDataSet;
     SignedUpCheck_ServerMethod: TSqlServerMethod;
-    SignedUpSUBJECT_CODE: TIntegerField;
-    SignedUpSTUDENT_CODE: TIntegerField;
-    SignedUpSIGNEDUP_TYPE: TIntegerField;
-    Subject_LogTYPE: TIntegerField;
-    Subject_LogSUBJECT_CODE: TIntegerField;
-    Subject_LogTITLE: TStringField;
-    Subject_LogLECTURER: TStringField;
-    Subject_LogTIME: TStringField;
-    Subject_LogCLASSROOM: TStringField;
-    Subject_LogCREDIT: TIntegerField;
-    Subject_LogGRADE: TIntegerField;
-    Subject_LogCAPACITY: TIntegerField;
-    Subject_LogSTUDENTNUM: TIntegerField;
-    Subject_LogDETAIL: TStringField;
     SignUpDrop: TClientDataSet;
     procedure SQLExcuteMethod(SignedUpType: Integer);
     procedure SignUpSubject(SignUpType: Integer);
     procedure DropSubject(DropType: Integer);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,25 +39,35 @@ uses Client_Form;
 
 { TOverallDM }
 
+procedure TOverallDM.DataModuleCreate(Sender: TObject);
+begin
+  SignedUp.Open;
+  Subject_Log.Open;
+end;
+
 procedure TOverallDM.SQLExcuteMethod(SignedUpType: Integer);
 begin
   SignedUpCheck_ServerMethod.Close;
-  SignedUpCheck_ServerMethod.Params[0].AsInteger :=
-  OverallDM.Subject_Log.FieldByName('SUBJECT_CODE').AsInteger;
-  SignedUpCheck_ServerMethod.Params[1].AsInteger :=
-  StrToInt(OverallDM.User_Log.FieldByName('STUDENT_CODE').AsString);
+
+  SignedUpCheck_ServerMethod.Params[0].AsString :=
+  OverallDM.Subject_Log.FieldByName('SUBJECT_CODE').AsString;
+  SignedUpCheck_ServerMethod.Params[1].AsString :=
+  OverallDM.User_Log.FieldByName('STUDENT_CODE').AsString;
   SignedUpCheck_ServerMethod.Params[2].AsInteger := SignedUpType;
+
   SignedUpCheck_ServerMethod.ExecuteMethod;
 end;
 
 procedure TOverallDM.SignUpSubject(SignUpType: Integer);  //수강신청 and 관심과목 등록
 begin
   SignedUp.Insert;
-  SignedUp.FieldByName('SUBJECT_CODE').AsInteger :=
-  Subject_Log.FieldByName('SUBJECT_CODE').AsInteger;
-  SignedUp.FieldByName('STUDENT_CODE').AsInteger :=
-  User_Log.FieldByName('STUDENT_CODE').AsInteger;
+
+  SignedUp.FieldByName('SUBJECT_CODE').AsString :=
+  Subject_Log.FieldByName('SUBJECT_CODE').AsString;
+  SignedUp.FieldByName('STUDENT_CODE').AsString :=
+  User_Log.FieldByName('STUDENT_CODE').AsString;
   SignedUp.FieldByName('SIGNEDUP_TYPE').AsInteger := SignUpType;
+
   SignedUp.ApplyUpdates(-1);
 end;
 

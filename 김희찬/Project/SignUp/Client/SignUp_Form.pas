@@ -9,33 +9,29 @@ uses
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
   FMX.ListView, System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors,
   Data.Bind.EngExt, Fmx.Bind.DBEngExt, Data.Bind.Components,
-  Data.Bind.DBScope, Data.FMTBcd, Data.DB, Data.SqlExpr;
+  Data.Bind.DBScope, Data.FMTBcd, Data.DB, Data.SqlExpr, Datasnap.DBClient;
 
 type
-  TSIgnUpFrm = class(TForm)
+  TSignUpFrm = class(TForm)
     Panel1: TPanel;
     TabControl1: TTabControl;
     MajorTab: TTabItem;
     LiberalTab: TTabItem;
     ToolBar1: TToolBar;
-    ComboBox1: TComboBox;
-    ComboBox2: TComboBox;
+    MajorComboBox: TComboBox;
+    GradeComboBox: TComboBox;
     ListView1: TListView;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     LinkListControlToField1: TLinkListControlToField;
     ListBoxItem1: TListBoxItem;
     ListBoxItem2: TListBoxItem;
-    ListBoxItem3: TListBoxItem;
-    ListBoxItem4: TListBoxItem;
-    ListBoxItem5: TListBoxItem;
-    ListBoxItem6: TListBoxItem;
-    ComboBox3: TComboBox;
-    ListBoxItem7: TListBoxItem;
-    ListBoxItem8: TListBoxItem;
+    ClientDataSet1: TClientDataSet;
     procedure ListView1ItemClick(const Sender: TObject;
       const AItem: TListViewItem);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure ComboBoxChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -43,7 +39,7 @@ type
   end;
 
 var
-  SIgnUpFrm: TSIgnUpFrm;
+  SignUpFrm: TSignUpFrm;
 
 implementation
 
@@ -51,12 +47,23 @@ implementation
 
 uses Overall_DM, SubjectDetail_Frame, CommonDefine;
 
-procedure TSIgnUpFrm.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TSignUpFrm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := TCloseAction.caFree;
 end;
 
-procedure TSIgnUpFrm.ListView1ItemClick(const Sender: TObject;
+procedure TSignUpFrm.FormCreate(Sender: TObject);
+begin
+
+  //MajorComboBox.Items.Add()
+
+  MajorComboBox.ItemIndex := 0;
+  GradeComboBox.ItemIndex := 0;
+
+
+end;
+
+procedure TSignUpFrm.ListView1ItemClick(const Sender: TObject;
   const AItem: TListViewItem);
 var
   ShowSubjectDetail: TSubjectDetailFrame;
@@ -83,6 +90,14 @@ begin
     SIGNEDUP_CHECK_NO: ShowSubjectDetail.BasketCheck.IsChecked := False;  //관심과목이 아닌 과목
     SIGNEDUP_CHECK_YES: ShowSubjectDetail.BasketCheck.IsChecked := True;  //관심과목인 과목
   end;
+end;
+
+procedure TSignUpFrm.ComboBoxChange(Sender: TObject);
+begin
+  OverallDM.Subject_Log.Close;
+  OverallDM.Subject_Log.ParamByName('GRADE').AsInteger :=
+  GradeComboBox.Selected.Index + 1;
+  OverallDM.Subject_Log.Open;
 end;
 
 end.

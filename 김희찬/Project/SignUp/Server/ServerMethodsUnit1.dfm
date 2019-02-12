@@ -1,7 +1,7 @@
 object ServerMethods1: TServerMethods1
   OldCreateOrder = False
-  Height = 343
-  Width = 545
+  Height = 336
+  Width = 606
   object FDConnection1: TFDConnection
     Params.Strings = (
       'ConnectionDef=SIGNEDUP_PROJECT_DB')
@@ -18,84 +18,24 @@ object ServerMethods1: TServerMethods1
   object Subject_Log: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      'select * from SUBJECT_LOG')
+      'select * from SUBJECT_LOG'
+      'where Grade = :Grade')
     Left = 56
     Top = 144
-    object Subject_LogTYPE: TIntegerField
-      FieldName = 'TYPE'
-      Origin = '"TYPE"'
-      Required = True
-    end
-    object Subject_LogSUBJECT_CODE: TIntegerField
-      FieldName = 'SUBJECT_CODE'
-      Origin = 'SUBJECT_CODE'
-      Required = True
-    end
-    object Subject_LogTITLE: TStringField
-      FieldName = 'TITLE'
-      Origin = 'TITLE'
-      Required = True
-      Size = 50
-    end
-    object Subject_LogLECTURER: TStringField
-      FieldName = 'LECTURER'
-      Origin = 'LECTURER'
-      Required = True
-      Size = 30
-    end
-    object Subject_LogTIME: TStringField
-      FieldName = 'TIME'
-      Origin = '"TIME"'
-      Size = 30
-    end
-    object Subject_LogCLASSROOM: TStringField
-      FieldName = 'CLASSROOM'
-      Origin = 'CLASSROOM'
-      Size = 30
-    end
-    object Subject_LogCREDIT: TIntegerField
-      FieldName = 'CREDIT'
-      Origin = 'CREDIT'
-      Required = True
-    end
-    object Subject_LogGRADE: TIntegerField
-      FieldName = 'GRADE'
-      Origin = 'GRADE'
-    end
-    object Subject_LogCAPACITY: TIntegerField
-      FieldName = 'CAPACITY'
-      Origin = 'CAPACITY'
-      Required = True
-    end
-    object Subject_LogSTUDENTNUM: TIntegerField
-      FieldName = 'STUDENTNUM'
-      Origin = 'STUDENTNUM'
-      Required = True
-    end
-    object Subject_LogDETAIL: TStringField
-      FieldName = 'DETAIL'
-      Origin = 'DETAIL'
-      Size = 200
-    end
+    ParamData = <
+      item
+        Name = 'GRADE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
   end
   object SignedUp: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       'select * from SIGNEDUP')
-    Left = 200
+    Left = 120
     Top = 144
-    object SignedUpSUBJECT_CODE: TIntegerField
-      FieldName = 'SUBJECT_CODE'
-      Origin = 'SUBJECT_CODE'
-    end
-    object SignedUpSTUDENT_CODE: TIntegerField
-      FieldName = 'STUDENT_CODE'
-      Origin = 'STUDENT_CODE'
-    end
-    object SignedUpSIGNEDUP_TYPE: TIntegerField
-      FieldName = 'SIGNEDUP_TYPE'
-      Origin = 'SIGNEDUP_TYPE'
-    end
   end
   object Subject_logProvider: TDataSetProvider
     DataSet = Subject_Log
@@ -104,41 +44,138 @@ object ServerMethods1: TServerMethods1
   end
   object SignedUpProvider: TDataSetProvider
     DataSet = SignedUp
-    Left = 200
+    Left = 120
     Top = 208
   end
   object qryLogInProvider: TDataSetProvider
     DataSet = qryLogIn
-    Left = 384
+    Left = 184
     Top = 208
   end
   object qryLogIn: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      '')
-    Left = 384
+      'select * from USER_LOG'
+      'where STUDENT_CODE = :STUDENT_CODE')
+    Left = 184
     Top = 144
+    ParamData = <
+      item
+        Name = 'STUDENT_CODE'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 20
+        Value = Null
+      end>
   end
   object qrySignedUp: TFDQuery
     Connection = FDConnection1
-    Left = 352
-    Top = 16
-    object qrySignedUpSUBJECT_CODE: TIntegerField
-      FieldName = 'SUBJECT_CODE'
-      Origin = 'SUBJECT_CODE'
-    end
-    object qrySignedUpSTUDENT_CODE: TIntegerField
-      FieldName = 'STUDENT_CODE'
-      Origin = 'STUDENT_CODE'
-    end
-    object qrySignedUpSIGNEDUP_TYPE: TIntegerField
-      FieldName = 'SIGNEDUP_TYPE'
-      Origin = 'SIGNEDUP_TYPE'
-    end
+    SQL.Strings = (
+      'select * from SIGNEDUP'
+      
+        'where SUBJECT_CODE = :SUBJECT_CODE and STUDENT_CODE = :STUDENT_C' +
+        'ODE and SIGNEDUP_TYPE = :SIGNEDUP_TYPE')
+    Left = 248
+    Top = 144
+    ParamData = <
+      item
+        Name = 'SUBJECT_CODE'
+        DataType = ftFixedChar
+        ParamType = ptInput
+        Size = 20
+        Value = Null
+      end
+      item
+        Name = 'STUDENT_CODE'
+        DataType = ftFixedChar
+        ParamType = ptInput
+        Size = 20
+      end
+      item
+        Name = 'SIGNEDUP_TYPE'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
   end
   object SignedUpDropProvider: TDataSetProvider
     DataSet = qrySignedUp
-    Left = 424
-    Top = 16
+    Left = 248
+    Top = 208
+  end
+  object qrySignedUpSearch: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from SUBJECT_LOG, SIGNEDUP'
+      
+        'where STUDENT_CODE = :STUDENT_CODE and SIGNEDUP_TYPE = :SIGNEDUP' +
+        '_TYPE'
+      'and SUBJECT_LOG.SUBJECT_CODE = SIGNEDUP.SUBJECT_CODE')
+    Left = 376
+    Top = 144
+    ParamData = <
+      item
+        Name = 'STUDENT_CODE'
+        DataType = ftFixedChar
+        ParamType = ptInput
+        Size = 20
+        Value = Null
+      end
+      item
+        Name = 'SIGNEDUP_TYPE'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object SignedUpSearchProvider: TDataSetProvider
+    DataSet = qrySignedUpSearch
+    Left = 376
+    Top = 208
+  end
+  object qryBasketDetail: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from SIGNEDUP'
+      
+        'where SUBJECT_CODE = :SUBJECT_CODE and STUDENT_CODE = :STUDENT_C' +
+        'ODE and SIGNEDUP_TYPE = :SIGNEDUP_TYPE')
+    Left = 472
+    Top = 144
+    ParamData = <
+      item
+        Name = 'SUBJECT_CODE'
+        DataType = ftFixedChar
+        ParamType = ptInput
+        Size = 20
+        Value = Null
+      end
+      item
+        Name = 'STUDENT_CODE'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 20
+      end
+      item
+        Name = 'SIGNEDUP_TYPE'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object BasketDetailProvider: TDataSetProvider
+    DataSet = qryBasketDetail
+    Left = 472
+    Top = 208
+  end
+  object Subject_Type: TFDTable
+    IndexFieldNames = 'SEQ_SUBJECT_TYPE'
+    Connection = FDConnection1
+    UpdateOptions.UpdateTableName = 'SUBJECT_TYPE'
+    TableName = 'SUBJECT_TYPE'
+    Left = 376
+    Top = 48
+  end
+  object Subject_TypeProvider: TDataSetProvider
+    DataSet = Subject_Type
+    Left = 456
+    Top = 48
   end
 end

@@ -323,7 +323,7 @@
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="SignUp_Form.pas">
-            <Form>SIgnUpFrm</Form>
+            <Form>SignUpFrm</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="Overall_DM.pas">
@@ -331,7 +331,6 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="ClientClass.pas"/>
         <DCCReference Include="SubjectDetail_Frame.pas">
             <Form>SubjectDetailFrame</Form>
             <FormType>fmx</FormType>
@@ -340,6 +339,22 @@
         <DCCReference Include="..\CommonDefine.pas"/>
         <DCCReference Include="ConfirmCheck_Frame.pas">
             <Form>ConfirmCheckFrame</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Basket_Form.pas">
+            <Form>BasketFrm</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="SignedUp_DM.pas">
+            <Form>SignedUpDM</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="SignedUp_ClientClass.pas"/>
+        <DCCReference Include="Overall_ClientClass.pas"/>
+        <DCCReference Include="BasketDetail_Frame.pas">
+            <Form>BasketDetailFrame</Form>
             <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
@@ -882,7 +897,8 @@
                 <Platform value="Win64">True</Platform>
             </Platforms>
             <DataSnapProxyLookup>
-                <ClientClass>{79909507-016C-4B6B-A775-A56B00D8D594}</ClientClass>
+                <Overall_ClientClass>{79909507-016C-4B6B-A775-A56B00D8D594}</Overall_ClientClass>
+                <SignedUp_ClientClass>{EE7343A0-693D-46F5-9610-492C4895263E}</SignedUp_ClientClass>
             </DataSnapProxyLookup>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>

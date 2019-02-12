@@ -3,7 +3,7 @@ object LogInFrm: TLogInFrm
   Top = 0
   Caption = 'LogIn'
   ClientHeight = 480
-  ClientWidth = 513
+  ClientWidth = 481
   Position = Designed
   FormStyle = StayOnTop
   FormFactor.Width = 320
@@ -15,7 +15,7 @@ object LogInFrm: TLogInFrm
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 2
     KeyboardType = NumberPad
-    Position.X = 160.000000000000000000
+    Position.X = 136.000000000000000000
     Position.Y = 312.000000000000000000
     Size.Width = 193.000000000000000000
     Size.Height = 25.000000000000000000
@@ -24,14 +24,14 @@ object LogInFrm: TLogInFrm
   object PWEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 0
-    Position.X = 160.000000000000000000
+    Position.X = 136.000000000000000000
     Position.Y = 352.000000000000000000
     Size.Width = 193.000000000000000000
     Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
   end
   object LogInBtn: TButton
-    Position.X = 376.000000000000000000
+    Position.X = 352.000000000000000000
     Position.Y = 320.000000000000000000
     Size.Width = 80.000000000000000000
     Size.Height = 49.000000000000000000
@@ -40,25 +40,7 @@ object LogInFrm: TLogInFrm
     Text = #47196#44536#51064
     OnClick = LogInBtnClick
   end
-  object Memo1: TMemo
-    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-    DataDetectorTypes = []
-    Lines.Strings = (
-      'ID                 / PW'
-      '201801285   password'
-      '201800130   password'
-      '1                   pw')
-    Enabled = False
-    Position.X = 200.000000000000000000
-    Position.Y = 136.000000000000000000
-    Size.Width = 137.000000000000000000
-    Size.Height = 129.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 4
-    Viewport.Width = 137.000000000000000000
-    Viewport.Height = 129.000000000000000000
-  end
-  object SqlServerMethod1: TSqlServerMethod
+  object LogInCheck_ServerMethod: TSqlServerMethod
     Params = <
       item
         DataType = ftWideString
@@ -81,7 +63,7 @@ object LogInFrm: TLogInFrm
       end>
     SQLConnection = OverallDM.SQLConnection1
     ServerMethodName = 'TServerMethods1.LogInCheck'
-    Left = 80
-    Top = 40
+    Left = 64
+    Top = 32
   end
 end

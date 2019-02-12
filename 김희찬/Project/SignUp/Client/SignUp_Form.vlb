@@ -1,14 +1,13 @@
 ﻿[Panel1]
 Coordinates=105,298,47,33
 
-[ComboBox1]
-Coordinates=287,10,84,123
-
 [LiberalTab]
 Coordinates=170,298,66,33
+Visible=True
 
 [TabControl1]
 Coordinates=10,298,74,33
+Visible=True
 
 [ToolBar1]
 Coordinates=335,298,58,33
@@ -21,27 +20,42 @@ Coordinates=10,10,129,33
 Visible=False
 
 [ListView1]
-Coordinates=170,10,89,141
+Coordinates=900,270,89,159
 Visible=True
 
-[ComboBox2]
-Coordinates=398,10,84,123
-
 []
-Coordinates=572,10,46,51
+Coordinates=363,252,79,33
 
 [BindSourceDB1]
-Coordinates=10,20,115,87
+Coordinates=630,260,115,285
 
 [BindingsList1]
 Coordinates=166,197,82,33
 
 [OverallDM.User_Log]
-Coordinates=460,200,115,87
+Coordinates=380,190,115,51
 
 [OverallDM.SignedUp]
-Coordinates=680,100,116,87
+Coordinates=680,100,116,105
 
 [OverallDM.]
 Coordinates=310,200,101,87
+
+[ListBoxItem2]
+Coordinates=81,361,79,33
+
+[OverallDM.SignedUpCheck_ServerMethod]
+Coordinates=10,60,221,51
+
+[ListBoxItem1]
+Coordinates=66,435,79,33
+
+[OverallDM.SignUpDrop]
+Coordinates=140,170,128,51
+
+[MajorComboBox]
+Coordinates=287,10,96,123
+
+[GradeComboBox]
+Coordinates=450,300,99,123
 
