@@ -24,9 +24,6 @@ type
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     LinkListControlToField1: TLinkListControlToField;
-    ListBoxItem1: TListBoxItem;
-    ListBoxItem2: TListBoxItem;
-    ClientDataSet1: TClientDataSet;
     procedure ListView1ItemClick(const Sender: TObject;
       const AItem: TListViewItem);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -54,13 +51,16 @@ end;
 
 procedure TSignUpFrm.FormCreate(Sender: TObject);
 begin
-
-  //MajorComboBox.Items.Add()
-
-  MajorComboBox.ItemIndex := 0;
+  OverallDM.Subject_Type.Open;
+  OverallDM.Subject_Type.First; //SEQ_SUBJECT_TYPE = 0, NAME_SUBJECT_TYPE = 교양
+  OverallDM.Subject_Type.Next;
+  while not OverallDM.Subject_Type.Eof do //첫번째 Record를 제외하고 추가
+  begin
+    MajorComboBox.Items.AddObject(OverallDM.Subject_Type.FieldByName('NAME_SUBJECT_TYPE').AsString, NIL);
+    OverallDM.Subject_Type.Next;
+  end;
+  MajorComboBox.ItemIndex := 1;
   GradeComboBox.ItemIndex := 0;
-
-
 end;
 
 procedure TSignUpFrm.ListView1ItemClick(const Sender: TObject;
@@ -78,7 +78,7 @@ begin
       ShowSubjectDetail.RequestBtn.Text := '수강신청';
       ShowSubjectDetail.RequestBtn.OnClick := ShowSubjectDetail.SignUpBtnClick;
     end;
-    SIGNEDUP_CHECK_YES: //이미 등록한 과목
+    SIGNEDUP_CHECK_YES: //이미 등록한 과1목
     begin
       ShowSubjectDetail.RequestBtn.Text := '수강취소';
       ShowSubjectDetail.RequestBtn.OnClick := ShowSubjectDetail.DropBtnClick;
@@ -95,6 +95,8 @@ end;
 procedure TSignUpFrm.ComboBoxChange(Sender: TObject);
 begin
   OverallDM.Subject_Log.Close;
+  OverallDM.Subject_Log.ParamByName('SEQ_SUBJECT_TYPE').AsInteger :=
+  MajorComboBox.Selected.Index;
   OverallDM.Subject_Log.ParamByName('GRADE').AsInteger :=
   GradeComboBox.Selected.Index + 1;
   OverallDM.Subject_Log.Open;

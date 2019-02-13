@@ -57,21 +57,7 @@ object SignUpFrm: TSignUpFrm
             Size.Height = 32.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
-            object ListBoxItem2: TListBoxItem
-              Size.Width = 44.000000000000000000
-              Size.Height = 44.000000000000000000
-              Size.PlatformDefault = False
-              TabOrder = 1
-              Text = #44277#44284#45824#54617'('#44277#53685')'
-            end
-            object ListBoxItem1: TListBoxItem
-              IsSelected = True
-              Size.Width = 44.000000000000000000
-              Size.Height = 44.000000000000000000
-              Size.PlatformDefault = False
-              TabOrder = 0
-              Text = #52980#54504#53552', '#51204#51088#49884#49828#53596' '#51204#44277
-            end
+            OnChange = ComboBoxChange
           end
           object GradeComboBox: TComboBox
             Items.Strings = (
@@ -142,13 +128,5 @@ object SignUpFrm: TSignUpFrm
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
-  end
-  object ClientDataSet1: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'Subject_TypeProvider'
-    RemoteServer = OverallDM.DSProviderConnection1
-    Left = 368
-    Top = 17
   end
 end

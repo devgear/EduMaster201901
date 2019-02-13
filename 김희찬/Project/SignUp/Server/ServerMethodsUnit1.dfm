@@ -18,16 +18,23 @@ object ServerMethods1: TServerMethods1
   object Subject_Log: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      'select * from SUBJECT_LOG'
-      'where Grade = :Grade')
+      'select * from SUBJECT_LOG, SUBJECT_TYPE'
+      
+        'where SUBJECT_TYPE = SEQ_SUBJECT_TYPE and SEQ_SUBJECT_TYPE = :SE' +
+        'Q_SUBJECT_TYPE and GRADE = :Grade')
     Left = 56
     Top = 144
     ParamData = <
       item
-        Name = 'GRADE'
+        Name = 'SEQ_SUBJECT_TYPE'
         DataType = ftInteger
         ParamType = ptInput
         Value = Null
+      end
+      item
+        Name = 'GRADE'
+        DataType = ftInteger
+        ParamType = ptInput
       end>
   end
   object SignedUp: TFDQuery

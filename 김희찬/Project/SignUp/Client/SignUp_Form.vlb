@@ -24,7 +24,7 @@ Coordinates=900,270,89,159
 Visible=True
 
 []
-Coordinates=363,252,79,33
+Coordinates=81,361,79,33
 
 [BindSourceDB1]
 Coordinates=630,260,115,285
@@ -41,14 +41,8 @@ Coordinates=680,100,116,105
 [OverallDM.]
 Coordinates=310,200,101,87
 
-[ListBoxItem2]
-Coordinates=81,361,79,33
-
 [OverallDM.SignedUpCheck_ServerMethod]
 Coordinates=10,60,221,51
-
-[ListBoxItem1]
-Coordinates=66,435,79,33
 
 [OverallDM.SignUpDrop]
 Coordinates=140,170,128,51

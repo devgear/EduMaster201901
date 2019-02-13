@@ -30,8 +30,14 @@ object OverallDM: TOverallDM
     UniqueId = '{79909507-016C-4B6B-A775-A56B00D8D594}'
   end
   object Subject_Log: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <
+      item
+        DataType = ftInteger
+        Name = 'SEQ_SUBJECT_TYPE'
+        ParamType = ptInput
+      end
       item
         DataType = ftInteger
         Name = 'GRADE'
@@ -121,5 +127,13 @@ object OverallDM: TOverallDM
     RemoteServer = DSProviderConnection1
     Left = 296
     Top = 136
+  end
+  object Subject_Type: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'Subject_TypeProvider'
+    RemoteServer = DSProviderConnection1
+    Left = 384
+    Top = 65
   end
 end

@@ -16,6 +16,7 @@ type
     User_Log: TClientDataSet;
     SignedUpCheck_ServerMethod: TSqlServerMethod;
     SignUpDrop: TClientDataSet;
+    Subject_Type: TClientDataSet;
     procedure SQLExcuteMethod(SignedUpType: Integer);
     procedure SignUpSubject(SignUpType: Integer);
     procedure DropSubject(DropType: Integer);
