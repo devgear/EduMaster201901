@@ -11,13 +11,15 @@ type
   TOverallDM = class(TDataModule)
     DSProviderConnection1: TDSProviderConnection;
     SQLConnection1: TSQLConnection;
-    Subject_Log: TClientDataSet;
+    Major_Subject_Log: TClientDataSet;
     SignedUp: TClientDataSet;
     User_Log: TClientDataSet;
     SignedUpCheck_ServerMethod: TSqlServerMethod;
     SignUpDrop: TClientDataSet;
     Subject_Type: TClientDataSet;
-    procedure SQLExcuteMethod(SignedUpType: Integer);
+    Liberal_Subject_Log: TClientDataSet;
+    Subject_Log: TClientDataSet;
+    procedure SQLExcuteMethod(SignedUpType: Integer; RequestCheck: Boolean);
     procedure SignUpSubject(SignUpType: Integer);
     procedure DropSubject(DropType: Integer);
     procedure DataModuleCreate(Sender: TObject);
@@ -34,7 +36,7 @@ implementation
 
 {%CLASSGROUP 'FMX.Controls.TControl'}
 
-uses Client_Form;
+uses Client_Form, CommonDefine;
 
 {$R *.dfm}
 
@@ -43,20 +45,40 @@ uses Client_Form;
 procedure TOverallDM.DataModuleCreate(Sender: TObject);
 begin
   SignedUp.Open;
-  Subject_Log.Open;
+  Major_Subject_Log.Open;
+  Liberal_Subject_Log.Open;
 end;
 
-procedure TOverallDM.SQLExcuteMethod(SignedUpType: Integer);
+procedure TOverallDM.SQLExcuteMethod(SignedUpType: Integer; RequestCheck: Boolean);
 begin
-  SignedUpCheck_ServerMethod.Close;
+  if RequestCheck then
+  begin
+    SignedUpCheck_ServerMethod.Close;
 
-  SignedUpCheck_ServerMethod.Params[0].AsString :=
-  OverallDM.Subject_Log.FieldByName('SUBJECT_CODE').AsString;
-  SignedUpCheck_ServerMethod.Params[1].AsString :=
-  OverallDM.User_Log.FieldByName('STUDENT_CODE').AsString;
-  SignedUpCheck_ServerMethod.Params[2].AsInteger := SignedUpType;
+    SignedUpCheck_ServerMethod.Params[0].AsString :=
+    Subject_Log.FieldByName('SUBJECT_CODE').AsString;
+    SignedUpCheck_ServerMethod.Params[1].AsString :=
+    User_Log.FieldByName('STUDENT_CODE').AsString;
+    SignedUpCheck_ServerMethod.Params[2].AsInteger := SignedUpType;
 
-  SignedUpCheck_ServerMethod.ExecuteMethod;
+    SignedUpCheck_ServerMethod.ExecuteMethod;
+  end
+  else
+  begin
+  {
+    if Now_Subject_Type = MAJOR_SUBJECT then
+      SignUpDrop.ParamByName('SUBJECT_CODE').AsString :=
+      Major_Subject_Log.FieldByName('SUBJECT_CODE').AsString
+    else
+      SignUpDrop.ParamByName('SUBJECT_CODE').AsString :=
+      Liberal_Subject_Log.FieldByName('SUBJECT_CODE').AsString;
+      }
+    SignUpDrop.ParamByName('SUBJECT_CODE').AsString :=
+    Subject_Log.FieldByName('SUBJECT_CODE').AsString;
+    SignUpDrop.ParamByName('STUDENT_CODE').AsString :=
+    User_Log.FieldByName('STUDENT_CODE').AsString;
+    SignUpDrop.ParamByName('SIGNEDUP_TYPE').AsInteger := SignedUpType;
+  end;
 end;
 
 procedure TOverallDM.SignUpSubject(SignUpType: Integer);  //수강신청 and 관심과목 등록
@@ -74,7 +96,7 @@ end;
 
 procedure TOverallDM.DropSubject(DropType: Integer);  //신청취소 and 관심과목 등록취소
 begin
-  SQLExcuteMethod(DropType);
+  SQLExcuteMethod(DropType, False);
 
   SignUpDrop.Open;
   SignUpDrop.Delete;

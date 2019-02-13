@@ -23,7 +23,7 @@ object SignUpFrm: TSignUpFrm
       Size.Height = 480.000000000000000000
       Size.PlatformDefault = False
       TabHeight = 49.000000000000000000
-      TabIndex = 0
+      TabIndex = 1
       TabOrder = 1
       TabPosition = PlatformDefault
       Sizes = (
@@ -35,7 +35,7 @@ object SignUpFrm: TSignUpFrm
         CustomIcon = <
           item
           end>
-        IsSelected = True
+        IsSelected = False
         Size.Width = 212.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
@@ -92,20 +92,34 @@ object SignUpFrm: TSignUpFrm
         CustomIcon = <
           item
           end>
-        IsSelected = False
+        IsSelected = True
         Size.Width = 212.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
         TabOrder = 0
         Text = #44368#50577
+        OnClick = LiberalTabClick
         ExplicitSize.cx = 217.000000000000000000
         ExplicitSize.cy = 49.000000000000000000
+        object ListView2: TListView
+          ItemAppearanceClassName = 'TListItemRightDetailAppearance'
+          ItemEditAppearanceClassName = 'TListItemRightDetailDeleteAppearance'
+          HeaderAppearanceClassName = 'TListHeaderObjects'
+          FooterAppearanceClassName = 'TListHeaderObjects'
+          Align = Client
+          Size.Width = 424.000000000000000000
+          Size.Height = 431.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          ItemAppearanceObjects.ItemObjects.Detail.TextAlign = Leading
+          OnItemClick = ListView1ItemClick
+        end
       end
     end
   end
   object BindSourceDB1: TBindSourceDB
-    DataSet = OverallDM.Subject_Log
+    DataSet = OverallDM.Major_Subject_Log
     ScopeMappings = <>
     Left = 64
     Top = 8
@@ -128,5 +142,24 @@ object SignUpFrm: TSignUpFrm
       FillHeaderExpressions = <>
       FillBreakGroups = <>
     end
+    object LinkListControlToField2: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      FieldName = 'TITLE'
+      Control = ListView2
+      FillExpressions = <
+        item
+          SourceMemberName = 'LECTURER'
+          ControlMemberName = 'Detail'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = OverallDM.Liberal_Subject_Log
+    ScopeMappings = <>
+    Left = 200
+    Top = 224
   end
 end

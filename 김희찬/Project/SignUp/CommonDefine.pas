@@ -13,6 +13,12 @@ const
   SIGNEDUP_CHECK = 0;
   BASKET_CHECK = 1;
 
+  MAJOR_SUBJECT = 1;
+  LIBERAL_SUBJECT = 0;
+
+var
+  Now_Subject_Type: Integer;
+
 implementation
 
 end.

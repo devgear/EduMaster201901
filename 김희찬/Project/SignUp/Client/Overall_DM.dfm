@@ -29,7 +29,7 @@ object OverallDM: TOverallDM
     Top = 40
     UniqueId = '{79909507-016C-4B6B-A775-A56B00D8D594}'
   end
-  object Subject_Log: TClientDataSet
+  object Major_Subject_Log: TClientDataSet
     Active = True
     Aggregates = <>
     Params = <
@@ -45,7 +45,7 @@ object OverallDM: TOverallDM
       end>
     ProviderName = 'Subject_logProvider'
     RemoteServer = DSProviderConnection1
-    Left = 120
+    Left = 48
     Top = 136
   end
   object SignedUp: TClientDataSet
@@ -100,8 +100,8 @@ object OverallDM: TOverallDM
       end>
     SQLConnection = SQLConnection1
     ServerMethodName = 'TServerMethods1.SignedUpCheck'
-    Left = 120
-    Top = 240
+    Left = 168
+    Top = 232
   end
   object SignUpDrop: TClientDataSet
     Aggregates = <>
@@ -135,5 +135,49 @@ object OverallDM: TOverallDM
     RemoteServer = DSProviderConnection1
     Left = 384
     Top = 65
+  end
+  object Liberal_Subject_Log: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'SEQ_SUBJECT_TYPE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'GRADE'
+        ParamType = ptInput
+      end>
+    ProviderName = 'Subject_logProvider'
+    RemoteServer = DSProviderConnection1
+    Left = 128
+    Top = 136
+  end
+  object Subject_Log: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'SEQ_SUBJECT_TYPE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'GRADE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'SUBJECT_CODE'
+        ParamType = ptInput
+        Size = 20
+      end>
+    ProviderName = 'Subject_logProvider'
+    RemoteServer = DSProviderConnection1
+    Left = 48
+    Top = 232
   end
 end

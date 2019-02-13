@@ -11,19 +11,20 @@ uses
 
 type
   TClientFrm = class(TForm)
-    Button1: TButton;
+    SignUpBtn: TButton;
     Edit1: TEdit;
     LogOutBtn: TButton;
     Label1: TLabel;
-    Button2: TButton;
+    BasketBtn: TButton;
     Button3: TButton;
     BindingsList1: TBindingsList;
     BindSourceDB1: TBindSourceDB;
     LinkControlToField1: TLinkControlToField;
+    SignedUpBtn: TButton;
     procedure FormCreate(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure SignUpBtnClick(Sender: TObject);
     procedure LogOutBtnClick(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
+    procedure BasketBtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,7 +40,7 @@ implementation
 
 uses LogIn_Form, SignUp_Form, Overall_DM, Basket_Form;
 
-procedure TClientFrm.Button1Click(Sender: TObject);
+procedure TClientFrm.SignUpBtnClick(Sender: TObject);
 var
   ShowSignUpForm: TSignUpFrm;
 begin
@@ -47,7 +48,7 @@ begin
   ShowSignUpForm.Show;
 end;
 
-procedure TClientFrm.Button2Click(Sender: TObject);
+procedure TClientFrm.BasketBtnClick(Sender: TObject);
 var
   ShowBasketForm: TBasketFrm;
 begin

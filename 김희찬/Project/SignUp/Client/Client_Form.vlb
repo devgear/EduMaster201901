@@ -1,7 +1,4 @@
-﻿[Button1]
-Coordinates=319,287,53,51
-
-[Edit1]
+﻿[Edit1]
 Coordinates=580,160,40,51
 Visible=True
 
@@ -29,9 +26,6 @@ Coordinates=485,1,163,51
 
 [Button3]
 Coordinates=66,348,53,51
-
-[Button2]
-Coordinates=179,348,53,51
 
 [LogOutBtn]
 Coordinates=241,287,68,51
@@ -65,4 +59,10 @@ Coordinates=180,80,82,33
 
 [BindSourceDB1]
 Coordinates=420,160,102,123
+
+[SignUpBtn]
+Coordinates=319,287,53,51
+
+[BasketBtn]
+Coordinates=179,348,53,51
 

@@ -22,14 +22,12 @@ object SubjectDetailFrame: TSubjectDetailFrame
     object Edit1: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 0
-      Text = #54028#51060#50028' '#54532#47196#44536#47000#48141
       Position.X = 56.000000000000000000
       Position.Y = 48.000000000000000000
     end
     object Edit2: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 1
-      Text = #48149#46041#52384
       Position.X = 56.000000000000000000
       Position.Y = 96.000000000000000000
     end
@@ -51,6 +49,12 @@ object SubjectDetailFrame: TSubjectDetailFrame
       OnClick = BasketCheckClick
     end
   end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = OverallDM.Subject_Log
+    ScopeMappings = <>
+    Left = 72
+    Top = 16
+  end
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
@@ -58,23 +62,17 @@ object SubjectDetailFrame: TSubjectDetailFrame
     Top = 5
     object LinkControlToField1: TLinkControlToField
       Category = 'Quick Bindings'
-      DataSource = BindSourceDB2
+      DataSource = BindSourceDB1
       FieldName = 'TITLE'
       Control = Edit1
       Track = False
     end
     object LinkControlToField2: TLinkControlToField
       Category = 'Quick Bindings'
-      DataSource = BindSourceDB2
+      DataSource = BindSourceDB1
       FieldName = 'LECTURER'
       Control = Edit2
       Track = False
     end
-  end
-  object BindSourceDB2: TBindSourceDB
-    DataSet = OverallDM.Subject_Log
-    ScopeMappings = <>
-    Left = 88
-    Top = 8
   end
 end

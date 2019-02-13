@@ -21,9 +21,6 @@ Coordinates=581,53,72,51
 [DeleteBtn]
 Coordinates=345,141,62,51
 
-[OverallDM.Subject_Log]
-Coordinates=206,169,129,249
-
 [OverallDM.SignedUpCheck_ServerMethod]
 Coordinates=122,80,221,51
 
@@ -57,4 +54,7 @@ Coordinates=0,0,82,33
 
 [SignedUpDM.]
 Coordinates=691,1,238,51
+
+[OverallDM.Major_Subject_Log]
+Coordinates=206,169,129,249
 

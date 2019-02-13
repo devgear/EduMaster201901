@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 2019-02-13 오전 11:12:08
+// 2019-02-13 오후 3:50:21
 //
 
 unit SignedUp_ClientClass;

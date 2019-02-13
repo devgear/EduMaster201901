@@ -19,9 +19,11 @@ object ServerMethods1: TServerMethods1
     Connection = FDConnection1
     SQL.Strings = (
       'select * from SUBJECT_LOG, SUBJECT_TYPE'
+      'where (SUBJECT_LOG.SUBJECT_TYPE = SEQ_SUBJECT_TYPE'
+      'and SEQ_SUBJECT_TYPE = :SEQ_SUBJECT_TYPE and GRADE = :GRADE)'
       
-        'where SUBJECT_TYPE = SEQ_SUBJECT_TYPE and SEQ_SUBJECT_TYPE = :SE' +
-        'Q_SUBJECT_TYPE and GRADE = :Grade')
+        'or (SUBJECT_LOG.SUBJECT_TYPE = SEQ_SUBJECT_TYPE and SUBJECT_CODE' +
+        ' = :SUBJECT_CODE)')
     Left = 56
     Top = 144
     ParamData = <
@@ -35,6 +37,12 @@ object ServerMethods1: TServerMethods1
         Name = 'GRADE'
         DataType = ftInteger
         ParamType = ptInput
+      end
+      item
+        Name = 'SUBJECT_CODE'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 20
       end>
   end
   object SignedUp: TFDQuery
@@ -87,14 +95,14 @@ object ServerMethods1: TServerMethods1
     ParamData = <
       item
         Name = 'SUBJECT_CODE'
-        DataType = ftFixedChar
+        DataType = ftString
         ParamType = ptInput
         Size = 20
         Value = Null
       end
       item
         Name = 'STUDENT_CODE'
-        DataType = ftFixedChar
+        DataType = ftString
         ParamType = ptInput
         Size = 20
       end

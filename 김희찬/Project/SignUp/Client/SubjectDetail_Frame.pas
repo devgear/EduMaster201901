@@ -19,11 +19,11 @@ type
     Edit1: TEdit;
     Edit2: TEdit;
     RequestBtn: TButton;
+    BasketCheck: TCheckBox;
+    BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
-    BindSourceDB2: TBindSourceDB;
     LinkControlToField1: TLinkControlToField;
     LinkControlToField2: TLinkControlToField;
-    BasketCheck: TCheckBox;
     procedure Rectangle1Click(Sender: TObject);
     procedure SignUpBtnClick(Sender: TObject);
     procedure DropBtnClick(Sender: TObject);
@@ -47,6 +47,7 @@ end;
 
 procedure TSubjectDetailFrame.SignUpBtnClick(Sender: TObject);  //수강신청 버튼
 var
+  Msg: string;
   ShowCCFrame: TConfirmCheckFrame;
 begin
   ShowCCFrame := TConfirmCheckFrame.Create(Self);
@@ -54,12 +55,13 @@ begin
 
   ShowCCFrame.ConfirmBtn.OnClick := ShowCCFrame.SignUpConfirmBtnClick;
 
-  ShowCCFrame.Label1.Text :=
-  Format('"%s"' + #13#10 + '수강신청 하시겠습니까?', [OverallDM.Subject_Log.FieldByName('TITLE').AsString]);
+  Msg := OverallDM.Subject_Log.FieldByName('TITLE').AsString;
+  ShowCCFrame.Label1.Text := Format('"%s"' + #13#10 + '수강신청 하시겠습니까?', [Msg]);
 end;
 
 procedure TSubjectDetailFrame.DropBtnClick(Sender: TObject);  //신청취소 버튼
 var
+  Msg: string;
   ShowCCFrame: TConfirmCheckFrame;
 begin
   ShowCCFrame := TConfirmCheckFrame.Create(Self);
@@ -67,8 +69,8 @@ begin
 
   ShowCCFrame.ConfirmBtn.OnClick := ShowCCFrame.DropConfirmClick;
 
-  ShowCCFrame.Label1.Text :=
-  Format('"%s"' + #13#10 + '수강취소 하시겠습니까?', [OverallDM.Subject_Log.FieldByName('TITLE').AsString]);
+  Msg := OverallDM.Subject_Log.FieldByName('TITLE').AsString;
+  ShowCCFrame.Label1.Text := Format('"%s"' + #13#10 + '수강취소 하시겠습니까?', [Msg]);
 end;
 
 procedure TSubjectDetailFrame.BasketCheckClick(Sender: TObject);

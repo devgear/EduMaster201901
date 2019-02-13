@@ -40,7 +40,7 @@ begin
   ShowSignedUpDM.SignedUpSearch.FieldByName('SUBJECT_CODE').AsString;
   ShowSignedUpDM.BasketDetail.ParamByName('STUDENT_CODE').AsString :=
   OverallDM.User_Log.FieldByName('STUDENT_CODE').AsString;
-  ShowSignedUpDM.BasketDetail.ParamByName('SIGNED_TYPE').AsInteger := 1;//BASKET_CHECK;
+  ShowSignedUpDM.BasketDetail.ParamByName('SIGNEDUP_TYPE').AsInteger := 1;//BASKET_CHECK;
 
   ShowSignedUpDM.BasketDetail.Open;
   ShowSignedUpDM.BasketDetail.Delete;

@@ -9,12 +9,12 @@ object ClientFrm: TClientFrm
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   DesignerMasterStyle = 0
-  object Button1: TButton
+  object SignUpBtn: TButton
     Position.X = 96.000000000000000000
     Position.Y = 216.000000000000000000
     TabOrder = 1
     Text = #49688#44053#49888#52397
-    OnClick = Button1Click
+    OnClick = SignUpBtnClick
   end
   object Edit1: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -35,12 +35,12 @@ object ClientFrm: TClientFrm
     Text = #54924#50896#47749
     TabOrder = 6
   end
-  object Button2: TButton
+  object BasketBtn: TButton
     Position.X = 256.000000000000000000
     Position.Y = 216.000000000000000000
     TabOrder = 7
     Text = #44288#49900#44284#47785
-    OnClick = Button2Click
+    OnClick = BasketBtnClick
   end
   object Button3: TButton
     Enabled = False
@@ -48,6 +48,12 @@ object ClientFrm: TClientFrm
     Position.Y = 296.000000000000000000
     TabOrder = 8
     Text = #49884#44036#54364
+  end
+  object SignedUpBtn: TButton
+    Position.X = 96.000000000000000000
+    Position.Y = 296.000000000000000000
+    TabOrder = 11
+    Text = #49688#44053#45236#50669
   end
   object BindingsList1: TBindingsList
     Methods = <>

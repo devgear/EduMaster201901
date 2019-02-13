@@ -54,6 +54,11 @@ object SignedUpDM: TSignedUpDM
         Name = 'STUDENT_CODE'
         ParamType = ptInput
         Size = 20
+      end
+      item
+        DataType = ftInteger
+        Name = 'SIGNEDUP_TYPE'
+        ParamType = ptInput
       end>
     ProviderName = 'BasketDetailProvider'
     RemoteServer = DSProviderConnection1

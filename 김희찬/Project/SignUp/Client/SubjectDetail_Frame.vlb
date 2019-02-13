@@ -1,36 +1,26 @@
 ﻿[Edit2]
-Coordinates=560,280,40,51
+Coordinates=600,270,40,51
 
 [Panel1]
 Coordinates=187,10,47,33
 Visible=True
 
 [Edit1]
-Coordinates=570,160,40,51
+Coordinates=600,170,40,51
 Visible=True
 
-[OverallDM.Subject_Log]
-Coordinates=440,130,129,33
-Visible=False
-
 []
-Coordinates=40,290,103,105
+Coordinates=0,0,82,33
 Visible=True
 
 [OverallDM.SignedUp]
 Coordinates=220,190,116,105
 
 [OverallDM.User_Log]
-Coordinates=104,130,115,105
-
-[BindingsList1]
-Coordinates=0,0,82,33
+Coordinates=104,130,115,51
 
 [SIgnUpFrm.BindSourceDB1]
 Coordinates=770,150,151,249
-
-[BindSourceDB2]
-Coordinates=380,190,115,267
 
 [RequestBtn]
 Coordinates=118,10,72,51
@@ -49,20 +39,39 @@ Coordinates=20,270,220,51
 Coordinates=239,1,79,51
 
 [SignedUpDM.BasketDetail]
-Coordinates=421,71,143,303
+Coordinates=421,71,143,51
 
 [SignedUpDM.SignedUpSearch_ServerMethod]
 Coordinates=421,1,238,51
 
 [SignedUpDM.SignedUpSearch]
-Coordinates=220,70,163,303
+Coordinates=220,70,163,51
 
 [SignedUpDM.BasketDetail_ServerMethod]
 Coordinates=697,1,217,51
 
 [OverallDM.SignUpDrop]
-Coordinates=91,70,128,105
+Coordinates=91,70,128,51
 
 [OverallDM.SignedUpCheck_ServerMethod]
-Coordinates=697,210,221,51
+Coordinates=900,120,221,51
+
+[OverallDM.Major_Subject_Log]
+Coordinates=370,170,163,303
+
+[OverallDM.Liberal_Subject_Log]
+Coordinates=40,210,169,303
+
+[OverallDM.Subject_Type]
+Coordinates=220,360,135,87
+
+[OverallDM.Subject_Log]
+Coordinates=710,170,129,33
+Visible=False
+
+[BindSourceDB1]
+Coordinates=710,170,121,321
+
+[BindingsList1]
+Coordinates=0,0,82,33
 
