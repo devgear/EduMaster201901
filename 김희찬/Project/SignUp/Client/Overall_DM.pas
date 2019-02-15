@@ -44,6 +44,8 @@ uses Client_Form, CommonDefine;
 
 procedure TOverallDM.DataModuleCreate(Sender: TObject);
 begin
+  SQLConnection1.Open;
+
   SignedUp.Open;
   Major_Subject_Log.Open;
   Liberal_Subject_Log.Open;
@@ -53,8 +55,6 @@ procedure TOverallDM.SQLExcuteMethod(SignedUpType: Integer; RequestCheck: Boolea
 begin
   if RequestCheck then
   begin
-    SignedUpCheck_ServerMethod.Close;
-
     SignedUpCheck_ServerMethod.Params[0].AsString :=
     Subject_Log.FieldByName('SUBJECT_CODE').AsString;
     SignedUpCheck_ServerMethod.Params[1].AsString :=
@@ -65,14 +65,6 @@ begin
   end
   else
   begin
-  {
-    if Now_Subject_Type = MAJOR_SUBJECT then
-      SignUpDrop.ParamByName('SUBJECT_CODE').AsString :=
-      Major_Subject_Log.FieldByName('SUBJECT_CODE').AsString
-    else
-      SignUpDrop.ParamByName('SUBJECT_CODE').AsString :=
-      Liberal_Subject_Log.FieldByName('SUBJECT_CODE').AsString;
-      }
     SignUpDrop.ParamByName('SUBJECT_CODE').AsString :=
     Subject_Log.FieldByName('SUBJECT_CODE').AsString;
     SignUpDrop.ParamByName('STUDENT_CODE').AsString :=

@@ -36,13 +36,14 @@ object BasketDetailFrame: TBasketDetailFrame
       Position.X = 176.000000000000000000
       Position.Y = 240.000000000000000000
       TabOrder = 2
-      Text = 'RequestBtn'
+      Text = #49688#44053#49888#52397
+      OnClick = RequestBtnClick
     end
     object DeleteBtn: TButton
       Position.X = 48.000000000000000000
       Position.Y = 240.000000000000000000
       TabOrder = 3
-      Text = 'DeleteBtn'
+      Text = #44288#49900#44284#47785#49325#51228
       OnClick = DeleteBtnClick
     end
   end

@@ -19,6 +19,9 @@ type
     procedure SignUpConfirmBtnClick(Sender: TObject);
     procedure DropConfirmClick(Sender: TObject);
     procedure CancelBtnClick(Sender: TObject);
+    procedure BasketConfirmBtnClick(Sender: TObject);
+    procedure BasketDropConfirmBtnClick(Sender: TObject);
+    procedure ConfirmBtnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -29,7 +32,7 @@ implementation
 
 {$R *.fmx}
 
-uses Overall_DM, CommonDefine;
+uses Overall_DM, CommonDefine, Basket_Form;
 
 procedure TConfirmCheckFrame.CancelBtnClick(Sender: TObject); //취소
 begin
@@ -38,7 +41,12 @@ end;
 
 procedure TConfirmCheckFrame.SignUpConfirmBtnClick(Sender: TObject);  //수강신청 확인 핸들러
 begin
-  OverallDM.SignUpSubject(SIGNEDUP_CHECK);
+  try
+    OverallDM.SignUpSubject(SIGNEDUP_CHECK);
+  except
+
+  end;
+
   Parent.Destroy;
 end;
 
@@ -46,6 +54,61 @@ procedure TConfirmCheckFrame.DropConfirmClick(Sender: TObject); //신청취소 확인 
 begin
   OverallDM.DropSubject(SIGNEDUP_CHECK);
   Parent.Destroy;
+end;
+
+procedure TConfirmCheckFrame.BasketConfirmBtnClick(Sender: TObject);  //장바구니에서 신청
+begin
+  OverallDM.SignedUp.Insert;
+
+  OverallDM.SignedUp.FieldByName('SUBJECT_CODE').AsString :=
+  ShowSignedUpDM.SignedUpSearch.FieldByName('SUBJECT_CODE').AsString;
+  OverallDM.SignedUp.FieldByName('STUDENT_CODE').AsString :=
+  ShowSignedUpDM.SignedUpSearch.FieldByName('STUDENT_CODE').AsString;
+  OverallDM.SignedUp.FieldByName('SIGNEDUP_TYPE').AsInteger := SIGNEDUP_CHECK;
+
+  //중복내용(정리 필요)
+
+  OverallDM.SignedUp.ApplyUpdates(-1);
+
+  ShowSignedUpDM.BasketDetail.ParamByName('SUBJECT_CODE').AsString :=
+  ShowSignedUpDM.SignedUpSearch.FieldByName('SUBJECT_CODE').AsString;
+  ShowSignedUpDM.BasketDetail.ParamByName('STUDENT_CODE').AsString :=
+  OverallDM.User_Log.FieldByName('STUDENT_CODE').AsString;
+  ShowSignedUpDM.BasketDetail.ParamByName('SIGNEDUP_TYPE').AsInteger :=
+  BASKET_CHECK;
+
+  ShowSignedUpDM.BasketDetail.Open;
+  ShowSignedUpDM.BasketDetail.Delete;
+  ShowSignedUpDM.BasketDetail.ApplyUpdates(-1);
+  ShowSignedUpDM.BasketDetail.Close;
+
+  ShowSignedUpDM.SignedUpSearch.Refresh;
+
+  Parent.Destroy;
+end;
+
+procedure TConfirmCheckFrame.BasketDropConfirmBtnClick(Sender: TObject); //장바구니에서 취소
+begin
+  ShowSignedUpDM.BasketDetail.ParamByName('SUBJECT_CODE').AsString :=
+  ShowSignedUpDM.SignedUpSearch.FieldByName('SUBJECT_CODE').AsString;
+  ShowSignedUpDM.BasketDetail.ParamByName('STUDENT_CODE').AsString :=
+  OverallDM.User_Log.FieldByName('STUDENT_CODE').AsString;
+  ShowSignedUpDM.BasketDetail.ParamByName('SIGNEDUP_TYPE').AsInteger :=
+  BASKET_CHECK;
+
+  ShowSignedUpDM.BasketDetail.Open;
+  ShowSignedUpDM.BasketDetail.Delete;
+  ShowSignedUpDM.BasketDetail.ApplyUpdates(-1);
+  ShowSignedUpDM.BasketDetail.Close;
+
+  ShowSignedUpDM.SignedUpSearch.Refresh;
+
+  Parent.Destroy;
+end;
+
+procedure TConfirmCheckFrame.ConfirmBtnClick(Sender: TObject);  //수강내역에서 취소
+begin
+  //
 end;
 
 procedure TConfirmCheckFrame.Rectangle1Click(Sender: TObject);

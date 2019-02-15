@@ -1,5 +1,5 @@
 ﻿[IDEdit]
-Coordinates=79,161,44,51
+Coordinates=640,320,44,51
 
 [PWEdit]
 Coordinates=227,10,50,51
@@ -11,28 +11,37 @@ Coordinates=10,161,59,51
 Coordinates=228,20,108,33
 
 []
-Coordinates=147,1,49,51
+Coordinates=460,320,102,123
 Visible=True
 ExplicitSubNodes=
 
 [OverallDM.SignedUp]
-Coordinates=330,60,116,105
+Coordinates=310,20,116,105
 
 [OverallDM.Basket]
 Coordinates=0,0,101,87
 
 [OverallDM.Subject_Log]
-Coordinates=490,30,129,249
+Coordinates=490,10,129,303
 
 [OverallDM.User_Log]
-Coordinates=495,320,115,105
+Coordinates=585,330,115,33
 
 [LogInCheck_ServerMethod]
-Coordinates=148,195,147,51
+Coordinates=20,100,147,51
 
 [OverallDM.SignUpDrop]
-Coordinates=0,0,128,105
+Coordinates=0,0,128,51
 
 [OverallDM.SignedUpCheck_ServerMethod]
-Coordinates=147,70,221,51
+Coordinates=720,80,221,51
+
+[OverallDM.Major_Subject_Log]
+Coordinates=250,180,163,303
+
+[OverallDM.Subject_Type]
+Coordinates=730,210,135,51
+
+[OverallDM.Liberal_Subject_Log]
+Coordinates=40,330,169,303
 

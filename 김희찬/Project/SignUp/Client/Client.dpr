@@ -14,9 +14,14 @@ uses
   SignedUp_DM in 'SignedUp_DM.pas' {SignedUpDM: TDataModule},
   SignedUp_ClientClass in 'SignedUp_ClientClass.pas',
   Overall_ClientClass in 'Overall_ClientClass.pas',
-  BasketDetail_Frame in 'BasketDetail_Frame.pas' {BasketDetailFrame: TFrame};
+  BasketDetail_Frame in 'BasketDetail_Frame.pas' {BasketDetailFrame: TFrame},
+  MySubjects_Form in 'MySubjects_Form.pas' {MySubjectsFrm},
+  TimeTable_Form in 'TimeTable_Form.pas' {TimeTableFrm};
 
 {$R *.res}
+
+var
+  S: TLogInFrm;
 
 begin
   Application.Initialize;

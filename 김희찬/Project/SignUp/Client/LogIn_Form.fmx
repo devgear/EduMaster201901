@@ -24,6 +24,7 @@ object LogInFrm: TLogInFrm
   object PWEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 0
+    Password = True
     Position.X = 136.000000000000000000
     Position.Y = 352.000000000000000000
     Size.Width = 193.000000000000000000
@@ -31,7 +32,7 @@ object LogInFrm: TLogInFrm
     Size.PlatformDefault = False
   end
   object LogInBtn: TButton
-    Position.X = 352.000000000000000000
+    Position.X = 360.000000000000000000
     Position.Y = 320.000000000000000000
     Size.Width = 80.000000000000000000
     Size.Height = 49.000000000000000000
@@ -63,7 +64,7 @@ object LogInFrm: TLogInFrm
       end>
     SQLConnection = OverallDM.SQLConnection1
     ServerMethodName = 'TServerMethods1.LogInCheck'
-    Left = 64
-    Top = 32
+    Left = 56
+    Top = 88
   end
 end

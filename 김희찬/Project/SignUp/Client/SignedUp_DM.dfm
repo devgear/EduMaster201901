@@ -1,20 +1,30 @@
 object SignedUpDM: TSignedUpDM
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 214
   Width = 414
   object SQLConnection1: TSQLConnection
     DriverName = 'DataSnap'
     LoginPrompt = False
     Params.Strings = (
+      'DriverUnit=Data.DBXDataSnap'
+      'CommunicationProtocol=tcp/ip'
+      'DatasnapContext=datasnap/'
+      
+        'DriverAssemblyLoader=Borland.Data.TDBXClientDriverLoader,Borland' +
+        '.Data.DbxClientDriver,Version=24.0.0.0,Culture=neutral,PublicKey' +
+        'Token=91d62ebb5b0d1b1b'
       'DriverName=DataSnap'
-      'HostName=localhost'
-      'port=211')
+      'HostName=192.168.1.3'
+      'port=211'
+      'Filters={}')
     Connected = True
     Left = 48
     Top = 40
     UniqueId = '{EE7343A0-693D-46F5-9610-492C4895263E}'
   end
   object SignedUpSearch: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <
       item

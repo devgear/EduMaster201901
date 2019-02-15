@@ -56,6 +56,8 @@ procedure TBasketFrm.FormCreate(Sender: TObject);
 begin
   ShowSignedUpDM := TSignedUpDM.Create(Self);
 
+  ShowSignedUpDM.SignedUpSearch.Close;
+
   ShowSignedUpDM.SignedUpSearch.ParamByName('STUDENT_CODE').AsString :=
   OverallDM.User_Log.FieldByName('STUDENT_CODE').AsString;
   ShowSignedUpDM.SignedUpSearch.ParamByName('SIGNEDUP_TYPE').AsInteger :=

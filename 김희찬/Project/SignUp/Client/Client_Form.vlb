@@ -38,13 +38,13 @@ Coordinates=540,170,102,69
 Visible=True
 
 [OverallDM.SignUpDrop]
-Coordinates=242,348,128,105
+Coordinates=242,348,128,51
 
 [OverallDM.SignedUpCheck_ServerMethod]
 Coordinates=10,287,221,51
 
 [SIgnUpFrm.BindSourceDB1]
-Coordinates=10,10,151,267
+Coordinates=10,10,151,321
 
 [Module Settings]
 ModelLayerNames=
@@ -52,17 +52,37 @@ ActiveLayerNames=
 EditingLayerName=
 
 [BasketFrm.BindSourceDB1]
-Coordinates=640,50,148,303
+Coordinates=640,50,148,51
 
 [BindingsList1]
 Coordinates=180,80,82,33
 
 [BindSourceDB1]
-Coordinates=420,160,102,123
+Coordinates=650,160,102,123
 
 [SignUpBtn]
-Coordinates=319,287,53,51
+Coordinates=319,287,67,51
 
 [BasketBtn]
-Coordinates=179,348,53,51
+Coordinates=179,348,65,51
+
+[OverallDM.Major_Subject_Log]
+Visible=False
+Coordinates=424,1,163,33
+
+[OverallDM.Liberal_Subject_Log]
+Visible=False
+Coordinates=180,204,169,33
+
+[OverallDM.Subject_Type]
+Coordinates=180,134,135,51
+
+[SignUpFrm.BindSourceDB2]
+Coordinates=400,160,151,321
+
+[SignedUpBtn]
+Coordinates=0,0,79,51
+
+[LogInFrm.LogInCheck_ServerMethod]
+Coordinates=306,53,198,51
 

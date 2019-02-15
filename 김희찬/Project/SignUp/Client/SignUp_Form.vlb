@@ -23,7 +23,7 @@ Visible=True
 Coordinates=81,361,79,33
 
 [BindSourceDB1]
-Coordinates=570,220,123,321
+Coordinates=570,220,146,321
 
 [BindingsList1]
 Coordinates=166,197,82,33
@@ -50,20 +50,23 @@ Coordinates=287,10,96,123
 Coordinates=450,300,99,123
 
 [OverallDM.Subject_Type]
-Coordinates=853,1,135,87
+Coordinates=853,1,135,51
 
 [ListView2]
 Coordinates=130,380,89,159
 Visible=True
 
 [BindSourceDB2]
-Coordinates=287,350,128,321
+Coordinates=287,350,151,321
 
 [OverallDM.Major_Subject_Log]
-Coordinates=10,10,138,33
+Coordinates=10,10,163,33
 Visible=False
 
 [OverallDM.Liberal_Subject_Log]
-Coordinates=287,350,144,33
+Coordinates=287,350,169,33
 Visible=False
+
+[OverallDM.Subject_Log]
+Coordinates=0,0,129,303
 

@@ -13,6 +13,7 @@ type
     SignedUpSearch: TClientDataSet;
     DSProviderConnection1: TDSProviderConnection;
     BasketDetail: TClientDataSet;
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -27,5 +28,10 @@ implementation
 {%CLASSGROUP 'FMX.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TSignedUpDM.DataModuleCreate(Sender: TObject);
+begin
+  SQLConnection1.Open;
+end;
 
 end.

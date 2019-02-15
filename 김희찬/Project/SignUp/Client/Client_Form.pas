@@ -19,12 +19,14 @@ type
     Button3: TButton;
     BindingsList1: TBindingsList;
     BindSourceDB1: TBindSourceDB;
-    LinkControlToField1: TLinkControlToField;
     SignedUpBtn: TButton;
-    procedure FormCreate(Sender: TObject);
+    LinkControlToField1: TLinkControlToField;
     procedure SignUpBtnClick(Sender: TObject);
     procedure LogOutBtnClick(Sender: TObject);
     procedure BasketBtnClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure SignedUpBtnClick(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,7 +40,16 @@ implementation
 
 {$R *.fmx}
 
-uses LogIn_Form, SignUp_Form, Overall_DM, Basket_Form;
+uses LogIn_Form, SignUp_Form, Overall_DM, Basket_Form, MySubjects_Form,
+  TimeTable_Form;
+
+procedure TClientFrm.SignedUpBtnClick(Sender: TObject);
+var
+  ShowMySubjectsForm: TMySubjectsFrm;
+begin
+  ShowMySubjectsForm := TMySubjectsFrm.Create(Application);
+  ShowMySubjectsForm.Show;
+end;
 
 procedure TClientFrm.SignUpBtnClick(Sender: TObject);
 var
@@ -56,7 +67,15 @@ begin
   ShowBasketForm.Show;
 end;
 
-procedure TClientFrm.FormCreate(Sender: TObject); //로그인창 띄우기
+procedure TClientFrm.Button3Click(Sender: TObject);
+var
+  ShowTimeTableForm: TTimeTableFrm;
+begin
+  ShowTimeTableForm := TTimeTableFrm.Create(Application);
+  ShowTimeTableForm.Show;
+end;
+
+procedure TClientFrm.FormCreate(Sender: TObject);
 var
   ShowLogInForm: TLogInFrm;
 begin

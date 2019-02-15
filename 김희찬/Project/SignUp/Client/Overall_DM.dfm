@@ -5,7 +5,6 @@ object OverallDM: TOverallDM
   Width = 556
   object DSProviderConnection1: TDSProviderConnection
     ServerClassName = 'TServerMethods1'
-    Connected = True
     SQLConnection = SQLConnection1
     Left = 144
     Top = 40
@@ -15,7 +14,7 @@ object OverallDM: TOverallDM
     LoginPrompt = False
     Params.Strings = (
       'DriverUnit=Data.DBXDataSnap'
-      'HostName=localhost'
+      'HostName=192.168.1.3'
       'Port=211'
       'CommunicationProtocol=tcp/ip'
       'DatasnapContext=datasnap/'
@@ -24,13 +23,11 @@ object OverallDM: TOverallDM
         '.Data.DbxClientDriver,Version=24.0.0.0,Culture=neutral,PublicKey' +
         'Token=91d62ebb5b0d1b1b'
       'Filters={}')
-    Connected = True
-    Left = 40
+    Left = 48
     Top = 40
     UniqueId = '{79909507-016C-4B6B-A775-A56B00D8D594}'
   end
   object Major_Subject_Log: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <
       item
@@ -49,7 +46,6 @@ object OverallDM: TOverallDM
     Top = 136
   end
   object SignedUp: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'SignedUpProvider'
@@ -100,7 +96,7 @@ object OverallDM: TOverallDM
       end>
     SQLConnection = SQLConnection1
     ServerMethodName = 'TServerMethods1.SignedUpCheck'
-    Left = 168
+    Left = 128
     Top = 232
   end
   object SignUpDrop: TClientDataSet
@@ -137,7 +133,6 @@ object OverallDM: TOverallDM
     Top = 65
   end
   object Liberal_Subject_Log: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <
       item
@@ -156,7 +151,6 @@ object OverallDM: TOverallDM
     Top = 136
   end
   object Subject_Log: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <
       item

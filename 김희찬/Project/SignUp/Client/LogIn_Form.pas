@@ -30,7 +30,7 @@ implementation
 
 {$R *.fmx}
 
-uses CommonDefine;
+uses CommonDefine, Client_Form;
 
 procedure TLogInFrm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -38,8 +38,9 @@ begin
 end;
 
 procedure TLogInFrm.LogInBtnClick(Sender: TObject);
+var
+  ShowClientFrm: TClientFrm;
 begin
-  LogInCheck_ServerMethod.Close;
   LogInCheck_ServerMethod.Params[0].AsString := IDEdit.Text;
   LogInCheck_ServerMethod.Params[1].AsString := PWEdit.Text;
   LogInCheck_ServerMethod.ExecuteMethod;

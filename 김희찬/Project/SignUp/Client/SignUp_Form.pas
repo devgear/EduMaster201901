@@ -33,6 +33,7 @@ type
     procedure ComboBoxChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure LiberalTabClick(Sender: TObject);
+    procedure MajorTabClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,26 +56,32 @@ end;
 
 procedure TSignUpFrm.FormCreate(Sender: TObject);
 begin
-  OverallDM.Subject_Type.Close;
+  OverallDM.Major_Subject_Log.Open;
+  OverallDM.Liberal_Subject_Log.Open;
+
   OverallDM.Subject_Type.Open;
   OverallDM.Subject_Type.First; //SEQ_SUBJECT_TYPE = 0, NAME_SUBJECT_TYPE = 교양
   OverallDM.Subject_Type.Next;
   while not OverallDM.Subject_Type.Eof do //첫번째 Record를 제외하고 추가
   begin
-    MajorComboBox.Items.AddObject(OverallDM.Subject_Type.FieldByName('NAME_SUBJECT_TYPE').AsString, NIL);
+    MajorComboBox.Items.Add(OverallDM.Subject_Type.FieldByName('NAME_SUBJECT_TYPE').AsString);
     OverallDM.Subject_Type.Next;
   end;
   MajorComboBox.ItemIndex := 1;
   GradeComboBox.ItemIndex := 0;
 
-  OverallDM.Liberal_Subject_Log.Close;
   OverallDM.Liberal_Subject_Log.ParamByName('SEQ_SUBJECT_TYPE').AsInteger :=
   LIBERAL_SUBJECT;
   OverallDM.Liberal_Subject_Log.ParamByName('GRADE').AsInteger :=
   LIBERAL_SUBJECT;
-  OverallDM.Liberal_Subject_Log.Open;
+  OverallDM.Liberal_Subject_Log.Refresh;
 
   TabControl1.TabIndex := 0;
+  Now_Subject_Type := MAJOR_SUBJECT;
+end;
+
+procedure TSignUpFrm.MajorTabClick(Sender: TObject);
+begin
   Now_Subject_Type := MAJOR_SUBJECT;
 end;
 
@@ -92,24 +99,11 @@ begin
   case Now_Subject_Type of
     MAJOR_SUBJECT:
     begin
-    {
-      OverallDM.Subject_Log.ParamByName('SEQ_SUBJECT_TYPE').AsInteger :=
-      MajorComboBox.Selected.Index;
-      OverallDM.Subject_Log.ParamByName('GRADE').AsInteger :=
-      GradeComboBox.Selected.Index + 1;
-      OverallDM.Subject_Log.
-      }
       OverallDM.Subject_Log.ParamByName('SUBJECT_CODE').AsString :=
       OverallDM.Major_Subject_Log.FieldByName('SUBJECT_CODE').AsString;
     end;
     LIBERAL_SUBJECT:
     begin
-    {
-      OverallDM.Subject_Log.ParamByName('SEQ_SUBJECT_TYPE').AsInteger :=
-      LIBERAL_SUBJECT;
-      OverallDM.Subject_Log.ParamByName('GRADE').AsInteger :=
-      LIBERAL_SUBJECT;
-      }
       OverallDM.Subject_Log.ParamByName('SUBJECT_CODE').AsString :=
       OverallDM.Liberal_Subject_Log.FieldByName('SUBJECT_CODE').AsString;
     end;
@@ -142,12 +136,11 @@ end;
 
 procedure TSignUpFrm.ComboBoxChange(Sender: TObject);
 begin
-  OverallDM.Major_Subject_Log.Close;
   OverallDM.Major_Subject_Log.ParamByName('SEQ_SUBJECT_TYPE').AsInteger :=
-  MajorComboBox.Selected.Index;
+  MajorComboBox.Selected.Index + 1;
   OverallDM.Major_Subject_Log.ParamByName('GRADE').AsInteger :=
   GradeComboBox.Selected.Index + 1;
-  OverallDM.Major_Subject_Log.Open;
+  OverallDM.Major_Subject_Log.Refresh;
 end;
 
 end.
