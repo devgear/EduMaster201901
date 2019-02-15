@@ -5,8 +5,9 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.ExtCtrls, Vcl.DBCtrls;
+  Vcl.DBGrids, Vcl.Mask, Vcl.DBCtrls, Vcl.ExtCtrls;
 
+ 
 type
   Tfrm_cus_list = class(TForm)
     거래처명: TLabel;
@@ -17,7 +18,6 @@ type
     customersource: TDataSource;
     Button2: TButton;
     DBGrid1: TDBGrid;
-    DBImage1: TDBImage;
     procedure btn_spClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
@@ -26,7 +26,7 @@ type
 
   private
     { Private declarations }
-  public
+      public
     { Public declarations }
     dept_code,dept_name : String;
   end;
@@ -48,9 +48,6 @@ begin
 //frm_cus_detail.Parent := pnlLayout;
 //  frm_cus_detail.BorderStyle := bsNone;
   frm_cus_detail.Show;
-
-
-
 
 end;
 

@@ -3,7 +3,7 @@
   Top = 0
   Caption = #44144#47000#52376' '#47532#49828#53944
   ClientHeight = 655
-  ClientWidth = 948
+  ClientWidth = 1006
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,7 +13,7 @@
   OldCreateOrder = False
   OnClose = FormClose
   DesignSize = (
-    948
+    1006
     655)
   PixelsPerInch = 96
   TextHeight = 13
@@ -66,10 +66,10 @@
     OnClick = Button2Click
   end
   object DBGrid1: TDBGrid
-    Left = 40
-    Top = 184
-    Width = 812
-    Height = 419
+    Left = 17
+    Top = 112
+    Width = 953
+    Height = 521
     Anchors = [akLeft, akTop, akRight, akBottom]
     DataSource = customersource
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -79,15 +79,6 @@
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
-  end
-  object DBImage1: TDBImage
-    Left = 742
-    Top = 32
-    Width = 110
-    Height = 129
-    DataField = 'CUS_COPY'
-    DataSource = customersource
-    TabOrder = 5
   end
   object customersource: TDataSource
     DataSet = udata.CUSQUERY

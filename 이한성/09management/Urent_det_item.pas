@@ -16,15 +16,15 @@ type
     DataSource1: TDataSource;
     Edit1: TEdit;
     Edit2: TEdit;
-    Button2: TButton;
     procedure Edit1Change(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
     { Public declarations }
     var
-    rent_det_item :string;
+    rent_det_item :integer;
     iname : string;
   end;
 
@@ -35,18 +35,25 @@ implementation
 
 {$R *.dfm}
 
-uses Udatamodule;
+uses Udatamodule, urent_det, Urent_det_cus, Urent;
 
 procedure Tfrm_rent_det_item.DBGrid1DblClick(Sender: TObject);
 begin
-   rent_det_item := DataSource1.DataSet.FieldByName('ITEM_NUMBER').AsString;
-  close;
+  rent_det_item := DataSource1.DataSet.FieldByName('ITEM_NUMBER').Asinteger;
+ close;
+
 end;
 
 procedure Tfrm_rent_det_item.Edit1Change(Sender: TObject);
 begin
   Udata.itemquery.IndexFieldNames := 'Item_name';
   Udata.itemquery.findnearest([edit1.Text]);
+end;
+
+procedure Tfrm_rent_det_item.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  action := cafree;
 end;
 
 end.

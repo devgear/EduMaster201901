@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.DBCtrls;
+  Vcl.DBGrids, Vcl.DBCtrls, Vcl.ExtCtrls;
 
 type
   Tfrm_itemquery = class(TForm)
@@ -20,6 +20,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btncloseClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -33,7 +34,7 @@ implementation
 
 {$R *.dfm}
 
-uses Udatamodule, uitem_list;
+uses Udatamodule, uitem_list, CommonFunctions;
 
 procedure Tfrm_itemquery.btncloseClick(Sender: TObject);
 begin
@@ -51,6 +52,10 @@ frm_item_list.Show;
 
 
 end;
+
+
+
+
 
 procedure Tfrm_itemquery.FormClose(Sender: TObject; var Action: TCloseAction);
 begin

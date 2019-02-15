@@ -10,9 +10,6 @@ Coordinates=104,192,79,33
 [Label2]
 Coordinates=81,78,46,51
 
-[CUS_COPY]
-Coordinates=10,192,70,33
-
 [Label8]
 Coordinates=344,10,46,51
 
@@ -50,6 +47,6 @@ Coordinates=333,78,68,33
 Coordinates=144,78,46,51
 
 []
-Coordinates=571,284,94,33
+Coordinates=10,192,70,33
 Visible=True
 

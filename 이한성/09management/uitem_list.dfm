@@ -36,35 +36,32 @@ object frm_item_list: Tfrm_item_list
   end
   object Label4: TLabel
     Left = 40
-    Top = 285
+    Top = 373
     Width = 33
     Height = 13
     Caption = #49548#50976#51452
   end
   object Label5: TLabel
     Left = 40
-    Top = 341
+    Top = 429
     Width = 44
     Height = 13
     Caption = #52852#53580#44256#47532
   end
+  object Image1: TImage
+    Left = 176
+    Top = 229
+    Width = 105
+    Height = 105
+  end
   object CUS_DNAME: TDBEdit
     Left = 176
-    Top = 282
+    Top = 370
     Width = 121
     Height = 21
     DataField = 'ITEM_OWNERT'
     DataSource = DataSource1
     TabOrder = 0
-  end
-  object CUS_DPHONE: TDBEdit
-    Left = 176
-    Top = 338
-    Width = 121
-    Height = 21
-    DataField = 'Item_category'
-    DataSource = DataSource1
-    TabOrder = 1
   end
   object DBEdit1: TDBEdit
     Left = 176
@@ -73,16 +70,7 @@ object frm_item_list: Tfrm_item_list
     Height = 21
     DataField = 'ITEM_MAKER'
     DataSource = DataSource1
-    TabOrder = 2
-  end
-  object DBEdit2: TDBEdit
-    Left = 176
-    Top = 226
-    Width = 121
-    Height = 21
-    DataField = 'ITEM_PHOTO'
-    DataSource = DataSource1
-    TabOrder = 3
+    TabOrder = 1
   end
   object DBEdit3: TDBEdit
     Left = 176
@@ -91,7 +79,7 @@ object frm_item_list: Tfrm_item_list
     Height = 21
     DataField = 'ITEM_NAME'
     DataSource = DataSource1
-    TabOrder = 4
+    TabOrder = 2
   end
   object DBGrid1: TDBGrid
     Left = 320
@@ -100,12 +88,53 @@ object frm_item_list: Tfrm_item_list
     Height = 438
     DataSource = DataSource1
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-    TabOrder = 5
+    TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ITEM_NUMBER'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ITEM_NAME'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ITEM_MAKER'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ITEM_OWNERT'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ITEM_LASTRENT'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ITEM_LASTCUS'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ITEM_BIGO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ITEM_PHOTO'
+        Visible = True
+      end>
   end
   object Button1: TButton
     Left = 480
@@ -113,15 +142,17 @@ object frm_item_list: Tfrm_item_list
     Width = 75
     Height = 25
     Caption = #47592' '#48145#50640' '#52628#44032
-    TabOrder = 6
+    TabOrder = 4
+    OnClick = Button1Click
   end
   object Button2: TButton
     Left = 624
     Top = 64
     Width = 75
     Height = 25
-    Caption = #52628#44032
-    TabOrder = 7
+    Caption = #49688#51221
+    TabOrder = 5
+    OnClick = Button2Click
   end
   object Button3: TButton
     Left = 760
@@ -129,10 +160,34 @@ object frm_item_list: Tfrm_item_list
     Width = 75
     Height = 25
     Caption = #49325#51228
+    TabOrder = 6
+    OnClick = Button3Click
+  end
+  object CUS_DPHONE: TDBEdit
+    Left = 176
+    Top = 426
+    Width = 121
+    Height = 21
+    DataSource = DataSource1
+    TabOrder = 7
+  end
+  object btnloadimg: TButton
+    Left = 40
+    Top = 288
+    Width = 75
+    Height = 25
+    Caption = #48520#47084#50724#44592
     TabOrder = 8
+    OnClick = btnloadimgClick
   end
   object DataSource1: TDataSource
     DataSet = udata.itemquery
-    Left = 480
+    Left = 344
+    Top = 48
+  end
+  object dlgLoadImage: TOpenDialog
+    FileName = 'C:\Users\home\Desktop\images.jpg'
+    Left = 128
+    Top = 248
   end
 end

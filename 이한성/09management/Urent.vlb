@@ -1,8 +1,4 @@
-﻿[rentsource]
-Coordinates=62,297,75,58
-Visible=True
-
-[Button1]
+﻿[Button1]
 Coordinates=125,298,59,58
 
 [DBGrid1]
@@ -24,5 +20,6 @@ Coordinates=259,10,152,146
 Coordinates=265,56,166,36
 
 []
-Coordinates=286,386,91,36
+Coordinates=62,297,75,58
+Visible=True
 

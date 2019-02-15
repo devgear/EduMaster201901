@@ -16,7 +16,7 @@ object Form6: TForm6
     Size.Height = 550.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
@@ -30,7 +30,7 @@ object Form6: TForm6
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 157.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -44,7 +44,6 @@ object Form6: TForm6
         ItemEditAppearanceClassName = 'TDynamicAppearance'
         HeaderAppearanceClassName = 'TListHeaderObjects'
         FooterAppearanceClassName = 'TListHeaderObjects'
-        ScrollViewPos = 210.000000000000000000
         Align = Client
         Size.Width = 472.000000000000000000
         Size.Height = 501.000000000000000000
@@ -91,7 +90,7 @@ object Form6: TForm6
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 158.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False

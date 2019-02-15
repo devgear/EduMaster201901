@@ -2,8 +2,8 @@ object frm_cus_detail: Tfrm_cus_detail
   Left = 0
   Top = 0
   Caption = #44144#47000#52376' '#51221#48372
-  ClientHeight = 554
-  ClientWidth = 1063
+  ClientHeight = 717
+  ClientWidth = 1167
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,6 +13,9 @@ object frm_cus_detail: Tfrm_cus_detail
   OldCreateOrder = False
   OnClose = FormClose
   OnCreate = FormCreate
+  DesignSize = (
+    1167
+    717)
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -52,14 +55,14 @@ object frm_cus_detail: Tfrm_cus_detail
   end
   object Label7: TLabel
     Left = 40
-    Top = 474
+    Top = 423
     Width = 22
     Height = 13
     Caption = #48708#44256
   end
   object Label8: TLabel
     Left = 40
-    Top = 335
+    Top = 327
     Width = 33
     Height = 13
     Caption = #51060#47700#51068
@@ -72,11 +75,17 @@ object frm_cus_detail: Tfrm_cus_detail
     Caption = #51088#46041#52264#48264#54840
   end
   object Label10: TLabel
-    Left = 37
-    Top = 423
+    Left = 40
+    Top = 470
     Width = 58
     Height = 13
     Caption = #49324#50629#51088' '#49324#48376
+  end
+  object Image1: TImage
+    Left = 176
+    Top = 458
+    Width = 121
+    Height = 105
   end
   object CUS_DNAME: TDBEdit
     Left = 176
@@ -98,7 +107,7 @@ object frm_cus_detail: Tfrm_cus_detail
   end
   object CUS_EMAIL: TDBEdit
     Left = 176
-    Top = 332
+    Top = 324
     Width = 121
     Height = 21
     DataField = 'CUS_EMAIL'
@@ -114,23 +123,14 @@ object frm_cus_detail: Tfrm_cus_detail
     DataSource = frm_cus_list.customersource
     TabOrder = 10
   end
-  object CUS_COPY: TDBEdit
+  object CUS_BIGO: TDBEdit
     Left = 176
     Top = 420
     Width = 121
     Height = 21
-    DataField = 'CUS_COPY'
-    DataSource = frm_cus_list.customersource
-    TabOrder = 11
-  end
-  object CUS_BIGO: TDBEdit
-    Left = 176
-    Top = 471
-    Width = 121
-    Height = 21
     DataField = 'CUS_BIGO'
     DataSource = frm_cus_list.customersource
-    TabOrder = 12
+    TabOrder = 11
   end
   object BTNINS: TButton
     Left = 104
@@ -177,10 +177,10 @@ object frm_cus_detail: Tfrm_cus_detail
     TabOrder = 6
   end
   object DBGrid1: TDBGrid
-    Left = 336
-    Top = 54
+    Left = 360
+    Top = 57
     Width = 697
-    Height = 433
+    Height = 536
     DataSource = DataSource1
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 3
@@ -199,9 +199,33 @@ object frm_cus_detail: Tfrm_cus_detail
     DataSource = frm_cus_list.customersource
     TabOrder = 4
   end
+  object btnLoadImage: TButton
+    Left = -82
+    Top = 514
+    Width = 75
+    Height = 25
+    Anchors = [akTop, akRight]
+    Caption = #48520#47084#50724#44592
+    TabOrder = 12
+    OnClick = btnLoadImageClick
+  end
+  object DBImage1: TDBImage
+    Left = 176
+    Top = 458
+    Width = 121
+    Height = 129
+    DataField = 'CUS_COPY'
+    DataSource = DataSource1
+    TabOrder = 13
+  end
   object DataSource1: TDataSource
     DataSet = udata.CUSQUERY
     Left = 392
     Top = 8
+  end
+  object dlgLoadImage: TOpenDialog
+    FileName = 'C:\Users\home\Desktop\images.jpg'
+    Left = 96
+    Top = 570
   end
 end

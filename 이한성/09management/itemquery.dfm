@@ -3,7 +3,7 @@ object frm_itemquery: Tfrm_itemquery
   Top = 0
   Caption = #51228#54408#51312#54924
   ClientHeight = 619
-  ClientWidth = 1032
+  ClientWidth = 794
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,7 +13,7 @@ object frm_itemquery: Tfrm_itemquery
   OldCreateOrder = False
   OnClose = FormClose
   DesignSize = (
-    1032
+    794
     619)
   PixelsPerInch = 96
   TextHeight = 13
@@ -25,9 +25,9 @@ object frm_itemquery: Tfrm_itemquery
     Caption = #44277#44396#47749
   end
   object DBGrid1: TDBGrid
-    Left = 40
-    Top = 128
-    Width = 945
+    Left = 24
+    Top = 136
+    Width = 707
     Height = 444
     Anchors = [akLeft, akTop, akRight, akBottom]
     DataSource = itemsource
@@ -76,10 +76,10 @@ object frm_itemquery: Tfrm_itemquery
   end
   object Button1: TButton
     Left = 432
-    Top = 74
-    Width = 75
+    Top = 69
+    Width = 89
     Height = 25
-    Caption = 'Button1'
+    Caption = #46321#47197'/'#49688#51221'/'#49325#51228
     TabOrder = 5
     OnClick = Button1Click
   end

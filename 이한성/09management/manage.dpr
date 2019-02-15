@@ -11,7 +11,8 @@ uses
   uitem_list in 'uitem_list.pas' {frm_item_list},
   Urent_det_item in 'Urent_det_item.pas' {frm_rent_det_item},
   Urent_det_cus in 'Urent_det_cus.pas' {frm_rent_det_cus},
-  urent_det in 'urent_det.pas' {frm_rent_det};
+  urent_det in 'urent_det.pas' {frm_rent_det},
+  CommonFunctions in 'CommonFunctions.pas';
 
 {$R *.res}
 

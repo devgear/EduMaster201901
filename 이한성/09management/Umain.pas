@@ -13,12 +13,9 @@ type
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
-    ToolButton3: TToolButton;
     ToolButton4: TToolButton;
-    ToolButton5: TToolButton;
-    ToolButton7: TToolButton;
     pnllayout: TPanel;
-    ImageList1: TImageList;
+    ilToolbar: TImageList;
     procedure ToolButton1Click(Sender: TObject);
     procedure ToolButton2Click(Sender: TObject);
     procedure ToolButton4Click(Sender: TObject);

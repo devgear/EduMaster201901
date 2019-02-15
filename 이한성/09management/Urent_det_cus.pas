@@ -3,7 +3,8 @@ unit Urent_det_cus;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Mask,
   Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
 
@@ -15,13 +16,14 @@ type
     거래처명: TLabel;
     DataSource2: TDataSource;
     procedure DBGrid1DblClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
-    rent_cus_Name : String;
-  var
-  rent_cus_num : string;
+    rent_cus_Name: String;
 
+  var
+    rent_cus_num: integer;
 
     { Public declarations }
   end;
@@ -37,12 +39,16 @@ uses Udatamodule;
 
 procedure Tfrm_rent_det_cus.DBGrid1DblClick(Sender: TObject);
 begin
-  rent_cus_num := DataSource1.DataSet.FieldByName('CUS_NUMBER').Asstring;
+  rent_cus_num := DataSource1.DataSet.FieldByName('CUS_NUMBER').AsInteger;
   rent_cus_Name := DataSource1.DataSet.FieldByName('CUS_NAME').AsString;
-//  rent_cus_num := dbgrid1.Columns[1].Field.asstring;
-  //showmessage(dbgrid1.Columns[1].Field.asstring);
   close;
-//  udata.rentquery.FieldByName(rent_cus_num).AsString := rent_cus_num;
+
+end;
+
+procedure Tfrm_rent_det_cus.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action := cafree;
 end;
 
 end.

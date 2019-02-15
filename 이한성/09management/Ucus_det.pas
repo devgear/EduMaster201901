@@ -11,7 +11,7 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  Vcl.Grids, Vcl.DBGrids;
+  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls;
 
 type
   Tfrm_cus_detail = class(TForm)
@@ -28,7 +28,6 @@ type
     CUS_DPHONE: TDBEdit;
     CUS_EMAIL: TDBEdit;
     CUS_CARNUM: TDBEdit;
-    CUS_COPY: TDBEdit;
     CUS_BIGO: TDBEdit;
     BTNINS: TButton;
     BTNDEL: TButton;
@@ -38,12 +37,18 @@ type
     DBGrid1: TDBGrid;
     DataSource1: TDataSource;
     DBEdit3: TDBEdit;
+    dlgLoadImage: TOpenDialog;
+    btnLoadImage: TButton;
+    Image1: TImage;
+    DBImage1: TDBImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BTNINSClick(Sender: TObject);
     procedure customersourceDataChange(Sender: TObject; Field: TField);
     procedure customersourceStateChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BTNDELClick(Sender: TObject);
+    procedure btnLoadImageClick(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -60,7 +65,7 @@ implementation
 
 {$R *.dfm}
 
-uses Udatamodule, ucus_list;
+uses Udatamodule, ucus_list, CommonFunctions;
 
 procedure Tfrm_cus_detail.BTNDELClick(Sender: TObject);
 begin
@@ -78,6 +83,23 @@ begin
   // Udata.CUSQUERY.Refresh;
 
 end;
+
+
+procedure Tfrm_cus_detail.btnLoadImageClick(Sender: TObject);
+var
+  Field: TField;
+begin
+  if dlgLoadImage.Execute then
+  begin
+    LoadImageFromFile(image1, dlgLoadImage.FileName);
+
+    Field := uData.CUSQUERY.FieldByName('cus_copy');
+    SaveImageToBlobField(image1, Field as TBlobField);
+  end;
+end;
+
+
+
 
 procedure Tfrm_cus_detail.customersourceDataChange(Sender: TObject;
   Field: TField);

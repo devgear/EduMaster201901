@@ -13,6 +13,7 @@
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
   OnDblClick = DBGrid1DblClick
   DesignSize = (
     1076
@@ -72,17 +73,9 @@
     Height = 21
     TabOrder = 3
   end
-  object Button2: TButton
-    Left = 744
-    Top = 96
-    Width = 75
-    Height = 25
-    Caption = 'Button2'
-    TabOrder = 4
-  end
   object DataSource1: TDataSource
     DataSet = udata.itemquery
-    Left = 424
-    Top = 112
+    Left = 536
+    Top = 104
   end
 end
