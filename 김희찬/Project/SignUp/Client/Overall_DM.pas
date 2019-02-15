@@ -19,9 +19,11 @@ type
     Subject_Type: TClientDataSet;
     Liberal_Subject_Log: TClientDataSet;
     Subject_Log: TClientDataSet;
+    SignUp_ServerMethod: TSqlServerMethod;
+    Drop_ServerMethod: TSqlServerMethod;
     procedure SQLExcuteMethod(SignedUpType: Integer; RequestCheck: Boolean);
-    procedure SignUpSubject(SignUpType: Integer);
-    procedure DropSubject(DropType: Integer);
+    procedure SignUpSubject(Subject, Student: string; SignUpType: Integer);
+    procedure DropSubject(Subject, Student: string; DropType: Integer);
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -73,27 +75,22 @@ begin
   end;
 end;
 
-procedure TOverallDM.SignUpSubject(SignUpType: Integer);  //수강신청 and 관심과목 등록
+procedure TOverallDM.SignUpSubject(Subject, Student: string; SignUpType: Integer);  //수강신청 and 관심과목 등록
 begin
-  SignedUp.Insert;
+  SignUp_ServerMethod.Params[0].AsString := Subject;
+  SignUp_ServerMethod.Params[1].AsString := Student;
+  SignUp_ServerMethod.Params[2].AsInteger := SignUpType;
 
-  SignedUp.FieldByName('SUBJECT_CODE').AsString :=
-  Subject_Log.FieldByName('SUBJECT_CODE').AsString;
-  SignedUp.FieldByName('STUDENT_CODE').AsString :=
-  User_Log.FieldByName('STUDENT_CODE').AsString;
-  SignedUp.FieldByName('SIGNEDUP_TYPE').AsInteger := SignUpType;
-
-  SignedUp.ApplyUpdates(-1);
+  SignUp_ServerMethod.ExecuteMethod;
 end;
 
-procedure TOverallDM.DropSubject(DropType: Integer);  //신청취소 and 관심과목 등록취소
+procedure TOverallDM.DropSubject(Subject, Student: string; DropType: Integer);  //신청취소 and 관심과목 등록취소
 begin
-  SQLExcuteMethod(DropType, False);
+  Drop_ServerMethod.Params[0].AsString := Subject;
+  Drop_ServerMethod.Params[1].AsString := Student;
+  Drop_ServerMethod.Params[2].AsInteger := DropType;
 
-  SignUpDrop.Open;
-  SignUpDrop.Delete;
-  SignUpDrop.ApplyUpdates(-1);
-  SignUpDrop.Close;
+  Drop_ServerMethod.ExecuteMethod;
 end;
 
 end.

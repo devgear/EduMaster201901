@@ -21,14 +21,12 @@ object BasketDetailFrame: TBasketDetailFrame
     object Edit1: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 0
-      Text = #54028#51060#50028' '#54532#47196#44536#47000#48141
       Position.X = 56.000000000000000000
       Position.Y = 48.000000000000000000
     end
     object Edit2: TEdit
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       TabOrder = 1
-      Text = #48149#46041#52384
       Position.X = 56.000000000000000000
       Position.Y = 96.000000000000000000
     end
@@ -45,6 +43,18 @@ object BasketDetailFrame: TBasketDetailFrame
       TabOrder = 3
       Text = #44288#49900#44284#47785#49325#51228
       OnClick = DeleteBtnClick
+    end
+    object Edit3: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 4
+      Position.X = 56.000000000000000000
+      Position.Y = 152.000000000000000000
+    end
+    object Edit4: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 5
+      Position.X = 168.000000000000000000
+      Position.Y = 152.000000000000000000
     end
   end
   object BindingsList1: TBindingsList
@@ -64,6 +74,20 @@ object BasketDetailFrame: TBasketDetailFrame
       DataSource = BasketFrm.BindSourceDB1
       FieldName = 'LECTURER'
       Control = Edit2
+      Track = False
+    end
+    object LinkControlToField3: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BasketFrm.BindSourceDB1
+      FieldName = 'CAPACITY'
+      Control = Edit4
+      Track = False
+    end
+    object LinkControlToField4: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BasketFrm.BindSourceDB1
+      FieldName = 'STUDENTNUM'
+      Control = Edit3
       Track = False
     end
   end

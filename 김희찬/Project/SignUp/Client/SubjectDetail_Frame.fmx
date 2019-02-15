@@ -48,6 +48,18 @@ object SubjectDetailFrame: TSubjectDetailFrame
       Text = #44288#49900#44284#47785
       OnClick = BasketCheckClick
     end
+    object Edit3: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 4
+      Position.X = 56.000000000000000000
+      Position.Y = 152.000000000000000000
+    end
+    object Edit4: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 5
+      Position.X = 168.000000000000000000
+      Position.Y = 152.000000000000000000
+    end
   end
   object BindSourceDB1: TBindSourceDB
     DataSet = OverallDM.Subject_Log
@@ -72,6 +84,20 @@ object SubjectDetailFrame: TSubjectDetailFrame
       DataSource = BindSourceDB1
       FieldName = 'LECTURER'
       Control = Edit2
+      Track = False
+    end
+    object LinkControlToField3: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'CAPACITY'
+      Control = Edit3
+      Track = False
+    end
+    object LinkControlToField4: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'STUDENTNUM'
+      Control = Edit4
       Track = False
     end
   end

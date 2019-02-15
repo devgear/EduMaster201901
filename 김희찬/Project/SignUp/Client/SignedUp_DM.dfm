@@ -15,7 +15,7 @@ object SignedUpDM: TSignedUpDM
         '.Data.DbxClientDriver,Version=24.0.0.0,Culture=neutral,PublicKey' +
         'Token=91d62ebb5b0d1b1b'
       'DriverName=DataSnap'
-      'HostName=192.168.1.3'
+      'HostName=192.168.1.6'
       'port=211'
       'Filters={}')
     Connected = True
@@ -24,7 +24,6 @@ object SignedUpDM: TSignedUpDM
     UniqueId = '{EE7343A0-693D-46F5-9610-492C4895263E}'
   end
   object SignedUpSearch: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <
       item

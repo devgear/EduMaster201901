@@ -193,4 +193,36 @@ object ServerMethods1: TServerMethods1
     Left = 456
     Top = 48
   end
+  object qryFindSubject: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from SUBJECT_LOG'
+      'where SUBJECT_CODE = :SUBJECT_CODE')
+    Left = 192
+    Top = 280
+    ParamData = <
+      item
+        Name = 'SUBJECT_CODE'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 20
+        Value = Null
+      end>
+  end
+  object qryFindUser: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from USER_LOG'
+      'where STUDENT_CODE = :STUDENT_CODE')
+    Left = 264
+    Top = 280
+    ParamData = <
+      item
+        Name = 'STUDENT_CODE'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 20
+        Value = Null
+      end>
+  end
 end

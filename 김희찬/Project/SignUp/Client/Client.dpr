@@ -20,9 +20,6 @@ uses
 
 {$R *.res}
 
-var
-  S: TLogInFrm;
-
 begin
   Application.Initialize;
   Application.CreateForm(TClientFrm, ClientFrm);

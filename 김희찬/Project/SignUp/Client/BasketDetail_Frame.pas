@@ -20,6 +20,10 @@ type
     BindingsList1: TBindingsList;
     LinkControlToField1: TLinkControlToField;
     LinkControlToField2: TLinkControlToField;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    LinkControlToField3: TLinkControlToField;
+    LinkControlToField4: TLinkControlToField;
     procedure Rectangle1Click(Sender: TObject);
     procedure DeleteBtnClick(Sender: TObject);
     procedure RequestBtnClick(Sender: TObject);

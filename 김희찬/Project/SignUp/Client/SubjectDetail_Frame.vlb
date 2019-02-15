@@ -14,7 +14,7 @@ Coordinates=0,0,82,33
 Visible=True
 
 [OverallDM.SignedUp]
-Coordinates=220,190,116,105
+Coordinates=220,190,116,51
 
 [OverallDM.User_Log]
 Coordinates=104,130,115,51
@@ -45,7 +45,7 @@ Coordinates=421,71,143,51
 Coordinates=421,1,238,51
 
 [SignedUpDM.SignedUpSearch]
-Coordinates=220,70,163,51
+Coordinates=220,70,163,321
 
 [SignedUpDM.BasketDetail_ServerMethod]
 Coordinates=697,1,217,51
@@ -57,13 +57,13 @@ Coordinates=91,70,128,51
 Coordinates=900,120,221,51
 
 [OverallDM.Major_Subject_Log]
-Coordinates=370,170,163,303
+Coordinates=370,170,163,51
 
 [OverallDM.Liberal_Subject_Log]
-Coordinates=40,210,169,303
+Coordinates=40,210,169,51
 
 [OverallDM.Subject_Type]
-Coordinates=220,360,135,87
+Coordinates=220,360,135,51
 
 [OverallDM.Subject_Log]
 Coordinates=710,170,129,33
@@ -74,4 +74,17 @@ Coordinates=710,170,121,321
 
 [BindingsList1]
 Coordinates=0,0,82,33
+
+[OverallDM.Drop_ServerMethod]
+Coordinates=421,310,166,51
+
+[OverallDM.SignUp_ServerMethod]
+Coordinates=421,380,178,51
+
+[Edit4]
+Coordinates=880,370,40,51
+Visible=True
+
+[Edit3]
+Coordinates=880,250,40,51
 

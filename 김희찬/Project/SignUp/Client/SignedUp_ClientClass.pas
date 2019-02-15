@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 2019-02-14 오전 10:21:35
+// 2019-02-15 오후 2:32:04
 //
 
 unit SignedUp_ClientClass;
@@ -14,12 +14,16 @@ type
   private
     FLogInCheckCommand: TDBXCommand;
     FSignedUpCheckCommand: TDBXCommand;
+    FSignedUpFuncCommand: TDBXCommand;
+    FDropFuncCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
     destructor Destroy; override;
     function LogInCheck(ID: string; PW: string): Integer;
     function SignedUpCheck(Subject: string; Student: string; SignedUpType: Integer): Integer;
+    function SignedUpFunc(Subject: string; Student: string; SignedUpType: Integer): Integer;
+    procedure DropFunc(Subject: string; Student: string; DropType: Integer);
   end;
 
 implementation
@@ -55,6 +59,37 @@ begin
   Result := FSignedUpCheckCommand.Parameters[3].Value.GetInt32;
 end;
 
+function TServerMethods1Client.SignedUpFunc(Subject: string; Student: string; SignedUpType: Integer): Integer;
+begin
+  if FSignedUpFuncCommand = nil then
+  begin
+    FSignedUpFuncCommand := FDBXConnection.CreateCommand;
+    FSignedUpFuncCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FSignedUpFuncCommand.Text := 'TServerMethods1.SignedUpFunc';
+    FSignedUpFuncCommand.Prepare;
+  end;
+  FSignedUpFuncCommand.Parameters[0].Value.SetWideString(Subject);
+  FSignedUpFuncCommand.Parameters[1].Value.SetWideString(Student);
+  FSignedUpFuncCommand.Parameters[2].Value.SetInt32(SignedUpType);
+  FSignedUpFuncCommand.ExecuteUpdate;
+  Result := FSignedUpFuncCommand.Parameters[3].Value.GetInt32;
+end;
+
+procedure TServerMethods1Client.DropFunc(Subject: string; Student: string; DropType: Integer);
+begin
+  if FDropFuncCommand = nil then
+  begin
+    FDropFuncCommand := FDBXConnection.CreateCommand;
+    FDropFuncCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FDropFuncCommand.Text := 'TServerMethods1.DropFunc';
+    FDropFuncCommand.Prepare;
+  end;
+  FDropFuncCommand.Parameters[0].Value.SetWideString(Subject);
+  FDropFuncCommand.Parameters[1].Value.SetWideString(Student);
+  FDropFuncCommand.Parameters[2].Value.SetInt32(DropType);
+  FDropFuncCommand.ExecuteUpdate;
+end;
+
 constructor TServerMethods1Client.Create(ADBXConnection: TDBXConnection);
 begin
   inherited Create(ADBXConnection);
@@ -69,6 +104,8 @@ destructor TServerMethods1Client.Destroy;
 begin
   FLogInCheckCommand.DisposeOf;
   FSignedUpCheckCommand.DisposeOf;
+  FSignedUpFuncCommand.DisposeOf;
+  FDropFuncCommand.DisposeOf;
   inherited;
 end;
 

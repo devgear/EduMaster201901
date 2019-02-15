@@ -5,6 +5,7 @@ object OverallDM: TOverallDM
   Width = 556
   object DSProviderConnection1: TDSProviderConnection
     ServerClassName = 'TServerMethods1'
+    Connected = True
     SQLConnection = SQLConnection1
     Left = 144
     Top = 40
@@ -14,7 +15,7 @@ object OverallDM: TOverallDM
     LoginPrompt = False
     Params.Strings = (
       'DriverUnit=Data.DBXDataSnap'
-      'HostName=192.168.1.3'
+      'HostName=192.168.1.6'
       'Port=211'
       'CommunicationProtocol=tcp/ip'
       'DatasnapContext=datasnap/'
@@ -23,6 +24,7 @@ object OverallDM: TOverallDM
         '.Data.DbxClientDriver,Version=24.0.0.0,Culture=neutral,PublicKey' +
         'Token=91d62ebb5b0d1b1b'
       'Filters={}')
+    Connected = True
     Left = 48
     Top = 40
     UniqueId = '{79909507-016C-4B6B-A775-A56B00D8D594}'
@@ -96,7 +98,7 @@ object OverallDM: TOverallDM
       end>
     SQLConnection = SQLConnection1
     ServerMethodName = 'TServerMethods1.SignedUpCheck'
-    Left = 128
+    Left = 144
     Top = 232
   end
   object SignUpDrop: TClientDataSet
@@ -172,6 +174,64 @@ object OverallDM: TOverallDM
     ProviderName = 'Subject_logProvider'
     RemoteServer = DSProviderConnection1
     Left = 48
+    Top = 232
+  end
+  object SignUp_ServerMethod: TSqlServerMethod
+    Params = <
+      item
+        DataType = ftWideString
+        Precision = 2000
+        Name = 'Subject'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftWideString
+        Precision = 2000
+        Name = 'Student'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Precision = 4
+        Name = 'SignedUpType'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Precision = 4
+        Name = 'ReturnParameter'
+        ParamType = ptResult
+        Size = 4
+        Value = 1
+      end>
+    SQLConnection = SQLConnection1
+    ServerMethodName = 'TServerMethods1.SignedUpFunc'
+    Left = 320
+    Top = 232
+  end
+  object Drop_ServerMethod: TSqlServerMethod
+    Params = <
+      item
+        DataType = ftWideString
+        Precision = 2000
+        Name = 'Subject'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftWideString
+        Precision = 2000
+        Name = 'Student'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Precision = 4
+        Name = 'SignedUpType'
+        ParamType = ptInput
+      end>
+    SQLConnection = SQLConnection1
+    ServerMethodName = 'TServerMethods1.DropFunc'
+    Left = 432
     Top = 232
   end
 end

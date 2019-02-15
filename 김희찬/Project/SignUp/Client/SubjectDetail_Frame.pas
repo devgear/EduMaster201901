@@ -24,6 +24,10 @@ type
     BindingsList1: TBindingsList;
     LinkControlToField1: TLinkControlToField;
     LinkControlToField2: TLinkControlToField;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    LinkControlToField3: TLinkControlToField;
+    LinkControlToField4: TLinkControlToField;
     procedure Rectangle1Click(Sender: TObject);
     procedure SignUpBtnClick(Sender: TObject);
     procedure DropBtnClick(Sender: TObject);
@@ -74,11 +78,15 @@ begin
 end;
 
 procedure TSubjectDetailFrame.BasketCheckClick(Sender: TObject);
+var
+  NowSubject, NowStudent: string;
 begin
+  NowSubject := OverallDM.Subject_Log.FieldByName('SUBJECT_CODE').AsString;
+  NowStudent := OverallDM.User_Log.FieldByName('STUDENT_CODE').AsString;
   if not BasketCheck.IsChecked then //관심과목 등록
-    OverallDM.SignUpSubject(BASKET_CHECK)
+    OverallDM.SignUpSubject(NowSubject, NowStudent, BASKET_CHECK)
   else  //관심과목 등록 취소
-    OverallDM.DropSubject(BASKET_CHECK);
+    OverallDM.DropSubject(NowSubject, NowStudent, BASKET_CHECK);
 end;
 
 end.

@@ -1,7 +1,7 @@
 object TimeTableFrm: TTimeTableFrm
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'TimeTable'
   ClientHeight = 496
   ClientWidth = 550
   FormFactor.Width = 320
@@ -9,11 +9,12 @@ object TimeTableFrm: TTimeTableFrm
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   OnClose = FormClose
-  DesignerMasterStyle = 0
+  DesignerMasterStyle = 3
   object StringGrid1: TStringGrid
     Align = Client
     CanFocus = True
     ClipChildren = True
+    Locked = True
     Size.Width = 550.000000000000000000
     Size.Height = 496.000000000000000000
     Size.PlatformDefault = False
@@ -21,8 +22,8 @@ object TimeTableFrm: TTimeTableFrm
     RowHeight = 50.000000000000000000
     RowCount = 9
     Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, Header, HeaderClick, AutoDisplacement]
-    Viewport.Width = 546.000000000000000000
-    Viewport.Height = 471.000000000000000000
+    Viewport.Width = 550.000000000000000000
+    Viewport.Height = 496.000000000000000000
     object StringColumn1: TStringColumn
       ReadOnly = True
       Size.Width = 41.000000000000000000

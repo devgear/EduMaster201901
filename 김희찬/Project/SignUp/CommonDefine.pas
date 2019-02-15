@@ -16,6 +16,8 @@ const
   MAJOR_SUBJECT = 1;
   LIBERAL_SUBJECT = 0;
 
+  CREDIT_LIMIT = 20;
+
 var
   Now_Subject_Type: Integer;
 
