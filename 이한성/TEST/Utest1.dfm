@@ -2,7 +2,7 @@ object Form6: TForm6
   Left = 0
   Top = 0
   Caption = 'Form6'
-  ClientHeight = 704
+  ClientHeight = 523
   ClientWidth = 1037
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,14 +14,14 @@ object Form6: TForm6
   OnClose = FormClose
   DesignSize = (
     1037
-    704)
+    523)
   PixelsPerInch = 96
   TextHeight = 13
   object DBGrid1: TDBGrid
     Left = 24
     Top = 200
     Width = 989
-    Height = 466
+    Height = 285
     Anchors = [akLeft, akTop, akRight, akBottom]
     DataSource = DataSource1
     Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
