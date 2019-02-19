@@ -1,0 +1,211 @@
+object Form6: TForm6
+  Left = 0
+  Top = 15
+  Caption = 'Form6'
+  ClientHeight = 550
+  ClientWidth = 472
+  Position = Designed
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  Top = 15
+  DesignerMasterStyle = 3
+  object TabControl1: TTabControl
+    Align = Contents
+    Size.Width = 472.000000000000000000
+    Size.Height = 550.000000000000000000
+    Size.PlatformDefault = False
+    TabHeight = 49.000000000000000000
+    TabIndex = 0
+    TabOrder = 0
+    TabPosition = PlatformDefault
+    Sizes = (
+      472s
+      501s
+      472s
+      501s
+      472s
+      501s)
+    object TabItem1: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 157.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = #44144#47000#52376#51221#48372
+      ExplicitSize.cx = 151.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object ListView1: TListView
+        ItemAppearanceClassName = 'TDynamicAppearance'
+        ItemEditAppearanceClassName = 'TDynamicAppearance'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        Align = Client
+        Size.Width = 472.000000000000000000
+        Size.Height = 501.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+          item
+            AppearanceObjectName = 'Text1'
+            AppearanceClassName = 'TTextObjectAppearance'
+          end>
+        ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+          item
+            AppearanceObjectName = 'Text1'
+            AppearanceClassName = 'TTextObjectAppearance'
+          end>
+      end
+    end
+    object TabItem2: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 157.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = #44277#44396#47785#47197
+      ExplicitSize.cx = 151.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object ListView2: TListView
+        ItemAppearanceClassName = 'TImageListItemBottomDetailRightButtonAppearance'
+        ItemEditAppearanceClassName = 'TImageListItemBottomDetailRightButtonShowCheckAppearance'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        Align = Client
+        Size.Width = 472.000000000000000000
+        Size.Height = 501.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+      end
+    end
+    object TabItem3: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 158.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = #51204#54364#47785#47197
+      ExplicitSize.cx = 153.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object ListView3: TListView
+        ItemAppearanceClassName = 'TDynamicAppearance'
+        ItemEditAppearanceClassName = 'TDynamicAppearance'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        Align = Client
+        Size.Width = 472.000000000000000000
+        Size.Height = 501.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        ItemAppearanceObjects.ItemObjects.ObjectsCollection = <
+          item
+            AppearanceObjectName = 'Text1'
+            AppearanceClassName = 'TTextObjectAppearance'
+          end>
+        ItemAppearanceObjects.ItemEditObjects.ObjectsCollection = <
+          item
+            AppearanceObjectName = 'Text1'
+            AppearanceClassName = 'TTextObjectAppearance'
+          end>
+      end
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSource = DataSource1
+    ScopeMappings = <>
+    Left = 304
+    Top = 265
+  end
+  object DataSource1: TDataSource
+    DataSet = udata.CUSQUERY
+    Left = 264
+    Top = 193
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 260
+    Top = 477
+    object LinkFillControlToField2: TLinkFillControlToField
+      Category = 'Quick Bindings'
+      Control = ListView2
+      Track = True
+      FillDataSource = BindSourceDB3
+      FillDisplayFieldName = 'ITEM_NAME'
+      AutoFill = True
+      FillExpressions = <
+        item
+          SourceMemberName = 'ITEM_MAKER'
+          ControlMemberName = 'Detail'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkFillControlToField1: TLinkFillControlToField
+      Category = 'Quick Bindings'
+      Control = ListView1
+      Track = True
+      FillDataSource = BindSourceDB2
+      FillDisplayFieldName = 'CUS_NUMBER'
+      AutoFill = True
+      FillExpressions = <
+        item
+          SourceMemberName = 'CUS_NAME'
+          ControlMemberName = 'Text1'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkFillControlToField3: TLinkFillControlToField
+      Category = 'Quick Bindings'
+      Control = ListView3
+      Track = True
+      FillDataSource = BindSourceDB4
+      FillDisplayFieldName = 'RENT_RENT_NUM'
+      AutoFill = True
+      FillExpressions = <
+        item
+          SourceMemberName = 'RENT_RENT_CUS'
+          ControlMemberName = 'Text1'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+  object TetheringManager1: TTetheringManager
+    Text = 'TetheringManager1'
+    AllowedAdapters = 'Network_V4'
+    Left = 384
+    Top = 265
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = udata.CUSQUERY
+    ScopeMappings = <>
+    Left = 328
+    Top = 344
+  end
+  object BindSourceDB3: TBindSourceDB
+    DataSet = udata.itemquery
+    ScopeMappings = <>
+    Left = 336
+    Top = 408
+  end
+  object BindSourceDB4: TBindSourceDB
+    DataSet = udata.fdtRent_det
+    ScopeMappings = <>
+    Left = 336
+    Top = 480
+  end
+end
