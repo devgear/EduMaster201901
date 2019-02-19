@@ -1,0 +1,132 @@
+object SIgnUpFrm: TSIgnUpFrm
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 433
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 3
+  object Panel1: TPanel
+    Align = Client
+    Size.Width = 433.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object TabControl1: TTabControl
+      Align = Client
+      Size.Width = 433.000000000000000000
+      Size.Height = 480.000000000000000000
+      Size.PlatformDefault = False
+      TabHeight = 49.000000000000000000
+      TabIndex = 0
+      TabOrder = 1
+      TabPosition = PlatformDefault
+      Sizes = (
+        433s
+        431s
+        433s
+        431s)
+      object MajorTab: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = True
+        Size.Width = 216.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = #51204#44277
+        ExplicitSize.cx = 216.000000000000000000
+        ExplicitSize.cy = 49.000000000000000000
+        object ToolBar1: TToolBar
+          Size.Width = 433.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object ComboBox1: TComboBox
+            Position.X = 56.000000000000000000
+            Position.Y = 8.000000000000000000
+            Size.Width = 193.000000000000000000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+          end
+          object Label1: TLabel
+            Position.X = 8.000000000000000000
+            Position.Y = 16.000000000000000000
+            Size.Width = 57.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
+            Text = #51204#44277
+            TabOrder = 4
+          end
+          object Label2: TLabel
+            Position.X = 273.000000000000000000
+            Position.Y = 20.000000000000000000
+            Size.Width = 57.000000000000000000
+            Size.Height = 21.000000000000000000
+            Size.PlatformDefault = False
+            Text = #54617#45380
+            TabOrder = 3
+          end
+          object ComboBox2: TComboBox
+            Position.X = 321.000000000000000000
+            Position.Y = 12.000000000000000000
+            Size.Width = 64.000000000000000000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+          end
+        end
+        object ListView1: TListView
+          ItemAppearanceClassName = 'TListItemAppearance'
+          ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+          HeaderAppearanceClassName = 'TListHeaderObjects'
+          FooterAppearanceClassName = 'TListHeaderObjects'
+          Align = Client
+          Size.Width = 433.000000000000000000
+          Size.Height = 383.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+        end
+      end
+      object LiberalTab: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 217.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = #44368#50577
+        ExplicitSize.cx = 217.000000000000000000
+        ExplicitSize.cy = 49.000000000000000000
+      end
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = OverallDM.Subject_Log
+    ScopeMappings = <>
+    Left = 176
+    Top = 8
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      Control = ListView1
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+end

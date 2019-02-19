@@ -1,0 +1,167 @@
+object SignUpFrm: TSignUpFrm
+  Left = 0
+  Top = 0
+  Caption = 'SignUp'
+  ClientHeight = 480
+  ClientWidth = 424
+  Position = Designed
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnClose = FormClose
+  DesignerMasterStyle = 3
+  object Panel1: TPanel
+    Align = Client
+    Size.Width = 424.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object TabControl1: TTabControl
+      Align = Client
+      Size.Width = 424.000000000000000000
+      Size.Height = 480.000000000000000000
+      Size.PlatformDefault = False
+      TabHeight = 49.000000000000000000
+      TabIndex = 0
+      TabOrder = 1
+      TabPosition = PlatformDefault
+      Sizes = (
+        424s
+        431s
+        424s
+        431s)
+      object MajorTab: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = True
+        Size.Width = 212.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = #51204#44277
+        OnClick = MajorTabClick
+        ExplicitSize.cx = 216.000000000000000000
+        ExplicitSize.cy = 49.000000000000000000
+        object ToolBar1: TToolBar
+          Size.Width = 424.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object MajorComboBox: TComboBox
+            ItemIndex = 1
+            Position.X = 16.000000000000000000
+            Position.Y = 8.000000000000000000
+            Size.Width = 249.000000000000000000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            OnChange = ComboBoxChange
+          end
+          object GradeComboBox: TComboBox
+            Items.Strings = (
+              '1'#54617#45380
+              '2'#54617#45380
+              '3'#54617#45380
+              '4'#54617#45380)
+            Position.X = 305.000000000000000000
+            Position.Y = 12.000000000000000000
+            Size.Width = 64.000000000000000000
+            Size.Height = 32.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            OnChange = ComboBoxChange
+          end
+        end
+        object ListView1: TListView
+          ItemAppearanceClassName = 'TListItemRightDetailAppearance'
+          ItemEditAppearanceClassName = 'TListItemRightDetailDeleteAppearance'
+          HeaderAppearanceClassName = 'TListHeaderObjects'
+          FooterAppearanceClassName = 'TListHeaderObjects'
+          Align = Client
+          Size.Width = 424.000000000000000000
+          Size.Height = 383.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          ItemAppearanceObjects.ItemObjects.Detail.TextAlign = Leading
+          CanSwipeDelete = False
+          OnItemClick = ListView1ItemClick
+        end
+      end
+      object LiberalTab: TTabItem
+        CustomIcon = <
+          item
+          end>
+        IsSelected = False
+        Size.Width = 212.000000000000000000
+        Size.Height = 49.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = ''
+        TabOrder = 0
+        Text = #44368#50577
+        OnClick = LiberalTabClick
+        ExplicitSize.cx = 217.000000000000000000
+        ExplicitSize.cy = 49.000000000000000000
+        object ListView2: TListView
+          ItemAppearanceClassName = 'TListItemRightDetailAppearance'
+          ItemEditAppearanceClassName = 'TListItemRightDetailDeleteAppearance'
+          HeaderAppearanceClassName = 'TListHeaderObjects'
+          FooterAppearanceClassName = 'TListHeaderObjects'
+          Align = Client
+          Size.Width = 424.000000000000000000
+          Size.Height = 431.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          ItemAppearanceObjects.ItemObjects.Detail.TextAlign = Leading
+          OnItemClick = ListView1ItemClick
+        end
+      end
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = OverallDM.Major_Subject_Log
+    ScopeMappings = <>
+    Left = 64
+    Top = 8
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'TITLE'
+      Control = ListView1
+      FillExpressions = <
+        item
+          SourceMemberName = 'LECTURER'
+          ControlMemberName = 'Detail'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkListControlToField2: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      FieldName = 'TITLE'
+      Control = ListView2
+      FillExpressions = <
+        item
+          SourceMemberName = 'LECTURER'
+          ControlMemberName = 'Detail'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = OverallDM.Liberal_Subject_Log
+    ScopeMappings = <>
+    Left = 152
+    Top = 8
+  end
+end

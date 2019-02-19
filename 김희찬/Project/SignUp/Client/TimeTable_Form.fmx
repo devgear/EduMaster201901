@@ -1,0 +1,52 @@
+object TimeTableFrm: TTimeTableFrm
+  Left = 0
+  Top = 0
+  Caption = 'TimeTable'
+  ClientHeight = 496
+  ClientWidth = 550
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnClose = FormClose
+  DesignerMasterStyle = 3
+  object StringGrid1: TStringGrid
+    Align = Client
+    CanFocus = True
+    ClipChildren = True
+    Locked = True
+    Size.Width = 550.000000000000000000
+    Size.Height = 496.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    RowHeight = 50.000000000000000000
+    RowCount = 9
+    Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, Header, HeaderClick, AutoDisplacement]
+    Viewport.Width = 550.000000000000000000
+    Viewport.Height = 496.000000000000000000
+    object StringColumn1: TStringColumn
+      ReadOnly = True
+      Size.Width = 41.000000000000000000
+    end
+    object Mon: TStringColumn
+      Header = #50900
+      ReadOnly = True
+    end
+    object Tue: TStringColumn
+      Header = #54868
+      ReadOnly = True
+    end
+    object Wed: TStringColumn
+      Header = #49688
+      ReadOnly = True
+    end
+    object Thu: TStringColumn
+      Header = #47785
+      ReadOnly = True
+    end
+    object Fri: TStringColumn
+      Header = #44552
+      ReadOnly = True
+    end
+  end
+end
