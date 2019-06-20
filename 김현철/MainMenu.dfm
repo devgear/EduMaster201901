@@ -49,7 +49,6 @@ object frmMenu: TfrmMenu
       Width = 122
       Height = 41
       Caption = #50696#50557#44288#47532
-      Enabled = False
       TabOrder = 0
       OnClick = btnReservationClick
     end
@@ -59,8 +58,8 @@ object frmMenu: TfrmMenu
       Width = 122
       Height = 41
       Caption = #54665#49324#44288#47532
-      Enabled = False
       TabOrder = 1
+      OnClick = btnEventClick
     end
     object btnManager: TButton
       Left = 143
@@ -72,15 +71,14 @@ object frmMenu: TfrmMenu
       TabOrder = 2
       OnClick = btnManagerClick
     end
-    object btnMogaek: TButton
+    object btnTourist: TButton
       Left = 15
       Top = 63
       Width = 122
       Height = 41
       Caption = #47784#44061#54788#54889
-      Enabled = False
       TabOrder = 3
-      OnClick = btnReservationClick
+      OnClick = btnTouristClick
     end
     object btnPartner: TButton
       Left = 143
@@ -88,8 +86,8 @@ object frmMenu: TfrmMenu
       Width = 122
       Height = 41
       Caption = #44144#47000#52376#44288#47532
-      Enabled = False
       TabOrder = 4
+      OnClick = btnPartnerClick
     end
     object btnCalculate: TButton
       Left = 15
@@ -126,8 +124,8 @@ object frmMenu: TfrmMenu
       Width = 122
       Height = 41
       Caption = #44256#44061#44288#47532
-      Enabled = False
       TabOrder = 8
+      OnClick = btnCustomerClick
     end
     object btnBanking: TButton
       Left = 15
@@ -167,19 +165,5 @@ object frmMenu: TfrmMenu
       Enabled = False
       TabOrder = 12
     end
-  end
-  object FDQuery1: TFDQuery
-    Connection = DataModule1.FDConnection1
-    SQL.Strings = (
-      'SELECT * '
-      'FROM manager'
-      'WHERE pass = :pass')
-    Left = 216
-    Top = 280
-    ParamData = <
-      item
-        Name = 'PASS'
-        ParamType = ptInput
-      end>
   end
 end

@@ -16,12 +16,11 @@ type
     edtPass: TEdit;
     Label1: TLabel;
     btnPass: TButton;
-    FDQuery1: TFDQuery;
     Panel1: TPanel;
     btnReservation: TButton;
     btnEvent: TButton;
     btnManager: TButton;
-    btnMogaek: TButton;
+    btnTourist: TButton;
     btnPartner: TButton;
     btnCalculate: TButton;
     btnHotel: TButton;
@@ -34,6 +33,10 @@ type
     procedure btnReservationClick(Sender: TObject);
     procedure edtPassKeyPress(Sender: TObject; var Key: Char);
     procedure btnManagerClick(Sender: TObject);
+    procedure btnTouristClick(Sender: TObject);
+    procedure btnCustomerClick(Sender: TObject);
+    procedure btnEventClick(Sender: TObject);
+    procedure btnPartnerClick(Sender: TObject);
   private
     { Private declarations }
     procedure SetButton(Button: TButton; Bool: Integer);
@@ -49,7 +52,8 @@ implementation
 
 {$R *.dfm}
 
-uses DataModule, EventManager, Manager;
+uses DataModule, EventManager, Manager, TouristStatusForm, CustomerForm,
+  ManageEventForm, PartnerForm;
 
 procedure TfrmMenu.SetButton(Button: TButton; Bool: Integer);
 begin
@@ -61,7 +65,7 @@ end;
 
 procedure TfrmMenu.SetAllButton;
 begin
-    with FDQuery1 do
+    with DataModule1.FDQueryManager do
     begin
       Close;
       ParamByName('pass').AsString := edtPass.Text;
@@ -75,7 +79,7 @@ begin
       else begin
         SetButton(btnReservation, FieldByName('auth_reservation').AsInteger);
         SetButton(btnEvent,       FieldByName('auth_event').AsInteger);
-        SetButton(btnMogaek,      FieldByName('auth_mogaek').AsInteger);
+        SetButton(btnTourist,     FieldByName('auth_mogaek').AsInteger);
         SetButton(btnPartner,     FieldByName('auth_partner').AsInteger);
         SetButton(btnCalculate,   FieldByName('auth_calculate').AsInteger);
         SetButton(btnHotel,       FieldByName('auth_hotel').AsInteger);
@@ -95,9 +99,29 @@ begin
   frmEvent.Show;
 end;
 
+procedure TfrmMenu.btnTouristClick(Sender: TObject);
+begin
+  frmTouristStatus.Show;
+end;
+
+procedure TfrmMenu.btnCustomerClick(Sender: TObject);
+begin
+  frmCustomer.Show;
+end;
+
+procedure TfrmMenu.btnEventClick(Sender: TObject);
+begin
+  frmManageEvent.Show;
+end;
+
 procedure TfrmMenu.btnManagerClick(Sender: TObject);
 begin
   frmManager.Show;
+end;
+
+procedure TfrmMenu.btnPartnerClick(Sender: TObject);
+begin
+  frmPartner.Show;
 end;
 
 procedure TfrmMenu.edtPassKeyPress(Sender: TObject; var Key: Char);

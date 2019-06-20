@@ -1,0 +1,200 @@
+object Form1: TForm1
+  Left = 336
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 600
+  ClientWidth = 538
+  Position = Designed
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  Left = 336
+  DesignerMasterStyle = 3
+  object Panel1: TPanel
+    Align = Top
+    Size.Width = 538.000000000000000000
+    Size.Height = 120.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+  end
+  object ListView1: TListView
+    ItemAppearanceClassName = 'TListItemRightDetailAppearance'
+    ItemEditAppearanceClassName = 'TListItemRightDetailDeleteAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    ItemIndex = 1
+    Align = Client
+    Size.Width = 538.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+  end
+  object FDTable1: TFDTable
+    Active = True
+    IndexFieldNames = 'serial'
+    Connection = FDConnection1
+    UpdateOptions.UpdateTableName = 'event'
+    TableName = 'event'
+    Left = 256
+    Top = 56
+    object FDTable1serial: TStringField
+      FieldName = 'serial'
+      Origin = 'serial'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 11
+    end
+    object FDTable1reservation_date: TDateField
+      FieldName = 'reservation_date'
+      Origin = 'reservation_date'
+      Required = True
+    end
+    object FDTable1process_date: TDateField
+      FieldName = 'process_date'
+      Origin = 'process_date'
+      Required = True
+    end
+    object FDTable1manager_name: TStringField
+      FieldName = 'manager_name'
+      Origin = 'manager_name'
+      Required = True
+      Size = 10
+    end
+    object FDTable1partner_name: TStringField
+      FieldName = 'partner_name'
+      Origin = 'partner_name'
+      Size = 40
+    end
+    object FDTable1event_name: TStringField
+      FieldName = 'event_name'
+      Origin = 'event_name'
+      Required = True
+      Size = 40
+    end
+    object FDTable1event_start_date: TDateField
+      FieldName = 'event_start_date'
+      Origin = 'event_start_date'
+    end
+    object FDTable1event_end_date: TDateField
+      FieldName = 'event_end_date'
+      Origin = 'event_end_date'
+    end
+    object FDTable1night: TIntegerField
+      FieldName = 'night'
+      Origin = 'night'
+    end
+    object FDTable1day: TIntegerField
+      FieldName = 'day'
+      Origin = 'day'
+    end
+    object FDTable1customer_name: TStringField
+      FieldName = 'customer_name'
+      Origin = 'customer_name'
+    end
+    object FDTable1adult_total: TIntegerField
+      FieldName = 'adult_total'
+      Origin = 'adult_total'
+    end
+    object FDTable1child_total: TIntegerField
+      FieldName = 'child_total'
+      Origin = 'child_total'
+    end
+    object FDTable1phone: TStringField
+      FieldName = 'phone'
+      Origin = 'phone'
+      Size = 13
+    end
+    object FDTable1mobile: TStringField
+      FieldName = 'mobile'
+      Origin = 'mobile'
+      Size = 13
+    end
+    object FDTable1start_time: TDateTimeField
+      FieldName = 'start_time'
+      Origin = 'start_time'
+    end
+    object FDTable1start_site: TStringField
+      FieldName = 'start_site'
+      Origin = 'start_site'
+      Size = 30
+    end
+    object FDTable1local_start_time: TDateTimeField
+      FieldName = 'local_start_time'
+      Origin = 'local_start_time'
+    end
+    object FDTable1local_start_site: TStringField
+      FieldName = 'local_start_site'
+      Origin = 'local_start_site'
+      Size = 30
+    end
+    object FDTable1hotel_name: TStringField
+      FieldName = 'hotel_name'
+      Origin = 'hotel_name'
+      Size = 40
+    end
+    object FDTable1room_name: TStringField
+      FieldName = 'room_name'
+      Origin = 'room_name'
+      Size = 10
+    end
+    object FDTable1room_number: TIntegerField
+      FieldName = 'room_number'
+      Origin = 'room_number'
+    end
+    object FDTable1memo: TWideMemoField
+      FieldName = 'memo'
+      Origin = 'memo'
+      BlobType = ftWideMemo
+    end
+    object FDTable1created_at: TSQLTimeStampField
+      FieldName = 'created_at'
+      Origin = 'created_at'
+      Required = True
+    end
+    object FDTable1modified_at: TSQLTimeStampField
+      FieldName = 'modified_at'
+      Origin = 'modified_at'
+      Required = True
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = FDTable1
+    Left = 464
+    Top = 56
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDTable1
+    ScopeMappings = <>
+    Left = 360
+    Top = 56
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'event_name'
+      Control = ListView1
+      FillExpressions = <
+        item
+          SourceMemberName = 'event_start_date'
+          ControlMemberName = 'Detail'
+        end>
+      FillHeaderExpressions = <>
+      FillHeaderFieldName = 'customer_name'
+      FillBreakGroups = <>
+    end
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=D:\DelphiProject\EduMaster201901\'#44608#54788#52384'\ttms.sdb'
+      'DriverID=SQLite')
+    Connected = True
+    LoginPrompt = False
+    Left = 144
+    Top = 56
+  end
+end
